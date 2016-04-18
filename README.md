@@ -1,10 +1,17 @@
+![ZalandoTechRadar icon](ZalandoTechRadar-Logo-medium.jpg)   
+
+.
+
 # Zalando Tech Radar
 
-The [Tech Radar](http://zalando.github.io/tech-radar) helps our teams make the right technology choices. It reflects the current consensus of the Technology Guild at Zalando and is updated quarterly. It is inspired by the [ThoughtWorks Tech Radar](http://www.thoughtworks.com/radar/).
+The **Zalando Tech Radar** is a tool to inspire and support teams to pick the best technologies for new projects. Based on ideas of [ThoughtWorks](https://www.thoughtworks.com/radar), our Tech Radar sets out the changes in technologies that are interesting in software development; changes that we think our engineering teams should pay attention to and consider using in their projects.
 
-The visualization is based on [protovis](http://mbostock.github.io/protovis/) and was originally developed by [Brett Dargan](https://github.com/bdargan/techradar).
+Here, we share both, the...
 
-The layout has been optimized to make the chart and explanations fit on an A4 sheet (double-sided).
+* *visualization* of the **[latest Zalando Tech Radar release](http://zalando.github.io/tech-radar/)** - including a short summary of what it is and how we are using it, and the..
+
+* *code* for generating the Tech Radar visualization from a simple tabular representation (tsv). The visualization code is based on [Protovis JavaScript visualization library](http://mbostock.github.io/protovis/) and a fork of [Brett Dargan's Tech Radar visualization tool](https://github.com/bdargan/techradar). The layout has been optimized to make the chart and explanations fit on an A4 sheet (double-sided).
+
 
 ## Cool, how can I create my own?
 
