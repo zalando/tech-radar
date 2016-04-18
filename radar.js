@@ -9,7 +9,7 @@ var radar = new pv.Panel()
 radar.add(pv.Label)
   .left(40)
   .top(78)
-  .text("Zalando Tech Radar — 2016-04")
+  .text("Zalando Tech Radar — 2016.04")
   .font("40px sans-serif");
 
 //quadrant lines -- vertical
