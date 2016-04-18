@@ -22,8 +22,8 @@ Then, follow the instructions below.
 
 Note: the score-to-ring mapping we use is not linear:
 
-		2 ----- 1.5 --------------- 0 ---------- -1 ---------- -2
-	  	  ADOPT          TRIAL          ASSESS         HOLD
+		score    2 ----- 1.5 --------------- 0 ---------- -1 ---------- -2
+	  	 ring      ADOPT          TRIAL          ASSESS         HOLD
 
 ## How to generate a new chart
 
