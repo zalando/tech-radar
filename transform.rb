@@ -64,9 +64,9 @@ class Blip
   end
 
   def ring
-    return :adopt if score > 1.5
-    return :trial if score > 0
-    return :assess if score > -1
+    return :adopt if score >= 1.5
+    return :trial if score >= 0
+    return :assess if score >= -1
     return :hold
   end
 
