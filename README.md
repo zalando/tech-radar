@@ -13,12 +13,17 @@ Create a google doc with the following columns:
 * **Technology** (e.g. "Hystrix")
 * **Quadrant** (e.g. "Platforms & Infrastructure")
 * *[optional] Comments (e.g. "lib for fault tolerance")* 
-* **Score** as a float between -2 and 2 (e.g. "1.8")
+* **Score** as a float between 2.0 and -2.0 (e.g. "1.8")
 * *[optional] Number of votes, for internal bookkeeping*
 * *[optional] Consensus score, for internal bookkeeping*
 * **Skip** &mdash; set to true if entry should not be visualized on chart
 
 Then, follow the instructions below.
+
+Note: the score-to-ring mapping we use is not linear:
+
+		2 ----- 1.5 --------------- 0 ---------- -1 ---------- -2
+	  	  ADOPT          TRIAL          ASSESS         HOLD
 
 ## How to generate a new chart
 
