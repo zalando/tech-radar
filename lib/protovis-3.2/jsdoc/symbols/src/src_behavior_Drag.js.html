@@ -1,0 +1,120 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a new drag behavior to be registered on mousedown events.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @class Implements interactive dragging starting with mousedown events.
+<span class='line'>  5</span>  * Register this behavior on marks that should be draggable by the user, such as
+<span class='line'>  6</span>  * the selected region for brushing and linking. This behavior can be used in
+<span class='line'>  7</span>  * tandom with {@link pv.Behavior.select} to allow the selected region to be
+<span class='line'>  8</span>  * dragged interactively.
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  * &lt;p>After the initial mousedown event is triggered, this behavior listens for
+<span class='line'> 11</span>  * mousemove and mouseup events on the window. This allows dragging to continue
+<span class='line'> 12</span>  * even if the mouse temporarily leaves the mark that is being dragged, or even
+<span class='line'> 13</span>  * the root panel.
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * &lt;p>This behavior requires that the data associated with the mark being
+<span class='line'> 16</span>  * dragged have &lt;tt>x&lt;/tt> and &lt;tt>y&lt;/tt> attributes that correspond to the
+<span class='line'> 17</span>  * mark's location in pixels. The mark's positional properties are not set
+<span class='line'> 18</span>  * directly by this behavior; instead, the positional properties should be
+<span class='line'> 19</span>  * defined as:
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * &lt;pre>    .left(function(d) d.x)
+<span class='line'> 22</span>  *     .top(function(d) d.y)&lt;/pre>
+<span class='line'> 23</span>  *
+<span class='line'> 24</span>  * Thus, the behavior does not move the mark directly, but instead updates the
+<span class='line'> 25</span>  * mark position by updating the underlying data. Note that if the positional
+<span class='line'> 26</span>  * properties are defined with bottom and right (rather than top and left), the
+<span class='line'> 27</span>  * drag behavior will be inverted, which will confuse users!
+<span class='line'> 28</span>  *
+<span class='line'> 29</span>  * &lt;p>The drag behavior is bounded by the parent panel; the &lt;tt>x&lt;/tt> and
+<span class='line'> 30</span>  * &lt;tt>y&lt;/tt> attributes are clamped such that the mark being dragged does not
+<span class='line'> 31</span>  * extend outside the enclosing panel's bounds. To facilitate this, the drag
+<span class='line'> 32</span>  * behavior also queries for &lt;tt>dx&lt;/tt> and &lt;tt>dy&lt;/tt> attributes on the
+<span class='line'> 33</span>  * underlying data, to determine the dimensions of the bar being dragged. For
+<span class='line'> 34</span>  * non-rectangular marks, the drag behavior simply treats the mark as a point,
+<span class='line'> 35</span>  * which means that only the mark's center is bounded.
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * &lt;p>The mark being dragged is automatically re-rendered for each mouse event
+<span class='line'> 38</span>  * as part of the drag operation. In addition, a &lt;tt>fix&lt;/tt> attribute is
+<span class='line'> 39</span>  * populated on the mark, which allows visual feedback for dragging. For
+<span class='line'> 40</span>  * example, to change the mark fill color while dragging:
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * &lt;pre>    .fillStyle(function(d) d.fix ? "#ff7f0e" : "#aec7e8")&lt;/pre>
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * In some cases, such as with network layouts, dragging the mark may cause
+<span class='line'> 45</span>  * related marks to change, in which case additional marks may also need to be
+<span class='line'> 46</span>  * rendered. This can be accomplished by listening for the drag
+<span class='line'> 47</span>  * psuedo-events:&lt;ul>
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * &lt;li>dragstart (on mousedown)
+<span class='line'> 50</span>  * &lt;li>drag (on mousemove)
+<span class='line'> 51</span>  * &lt;li>dragend (on mouseup)
+<span class='line'> 52</span>  *
+<span class='line'> 53</span>  * &lt;/ul>For example, to render the parent panel while dragging, thus
+<span class='line'> 54</span>  * re-rendering all sibling marks:
+<span class='line'> 55</span>  *
+<span class='line'> 56</span>  * &lt;pre>    .event("mousedown", pv.Behavior.drag())
+<span class='line'> 57</span>  *     .event("drag", function() this.parent)&lt;/pre>
+<span class='line'> 58</span>  *
+<span class='line'> 59</span>  * This behavior may be enhanced in the future to allow more flexible
+<span class='line'> 60</span>  * configuration of drag behavior.
+<span class='line'> 61</span>  *
+<span class='line'> 62</span>  * @extends pv.Behavior
+<span class='line'> 63</span>  * @see pv.Behavior
+<span class='line'> 64</span>  * @see pv.Behavior.select
+<span class='line'> 65</span>  * @see pv.Layout.force
+<span class='line'> 66</span>  */</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="NAME">pv.Behavior.drag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// scene context</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">      </span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// scene context</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">      </span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// particle being dragged</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">      </span><span class="NAME">v1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// initial mouse-particle offset</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">      </span><span class="NAME">max</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> 
+<span class='line'> 74</span> </span><span class="WHIT">  </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">mousedown</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="NAME">index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.index</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="NAME">scene</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.scene</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.mouse</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="NAME">v1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">fix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.vector</span><span class="PUNC">(</span><span class="NAME">d.x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">d.y</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">minus</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="NAME">max</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">      </span><span class="NAME">x</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.parent.width</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">d.dx</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">      </span><span class="NAME">y</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.parent.height</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">d.dy</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="NAME">scene.mark.context</span><span class="PUNC">(</span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">this.render</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">    </span><span class="NAME">pv.Mark.dispatch</span><span class="PUNC">(</span><span class="STRN">"dragstart"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="WHIT">  </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">mousemove</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">scene</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="NAME">scene.mark.context</span><span class="PUNC">(</span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.mouse</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">        </span><span class="NAME">p.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">p.fix.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NAME">v1.x</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">m.x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">max.x</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="NAME">p.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">p.fix.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NAME">v1.y</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">m.y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">max.y</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">        </span><span class="NAME">this.render</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    </span><span class="NAME">pv.Mark.dispatch</span><span class="PUNC">(</span><span class="STRN">"drag"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 99</span> 
+<span class='line'>100</span> </span><span class="WHIT">  </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">mouseup</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">scene</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="NAME">p.fix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="NAME">scene.mark.context</span><span class="PUNC">(</span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">this.render</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="NAME">pv.Mark.dispatch</span><span class="PUNC">(</span><span class="STRN">"dragend"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">    </span><span class="NAME">scene</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="WHIT">  </span><span class="NAME">pv.listen</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"mousemove"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mousemove</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">  </span><span class="NAME">pv.listen</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"mouseup"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mouseup</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mousedown</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span></pre></body></html>

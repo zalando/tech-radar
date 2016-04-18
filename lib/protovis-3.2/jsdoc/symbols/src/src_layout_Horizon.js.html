@@ -1,0 +1,167 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Constructs a new, empty horizon layout. Layouts are not typically constructed
+<span class='line'>  3</span>  * directly; instead, they are added to an existing panel via
+<span class='line'>  4</span>  * {@link pv.Mark#add}.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Implements a horizon layout, which is a variation of a single-series
+<span class='line'>  7</span>  * area chart where the area is folded into multiple bands. Color is used to
+<span class='line'>  8</span>  * encode band, allowing the size of the chart to be reduced significantly
+<span class='line'>  9</span>  * without impeding readability. This layout algorithm is based on the work of
+<span class='line'> 10</span>  * J. Heer, N. Kong and M. Agrawala in &lt;a
+<span class='line'> 11</span>  * href="http://hci.stanford.edu/publications/2009/heer-horizon-chi09.pdf">"Sizing
+<span class='line'> 12</span>  * the Horizon: The Effects of Chart Size and Layering on the Graphical
+<span class='line'> 13</span>  * Perception of Time Series Visualizations"&lt;/a>, CHI 2009.
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * &lt;p>This layout exports a single &lt;tt>band&lt;/tt> mark prototype, which is
+<span class='line'> 16</span>  * intended to be used with an area mark. The band mark is contained in a panel
+<span class='line'> 17</span>  * which is replicated per band (and for negative/positive bands). For example,
+<span class='line'> 18</span>  * to create a simple horizon graph given an array of numbers:
+<span class='line'> 19</span>  *
+<span class='line'> 20</span>  * &lt;pre>vis.add(pv.Layout.Horizon)
+<span class='line'> 21</span>  *     .bands(n)
+<span class='line'> 22</span>  *   .band.add(pv.Area)
+<span class='line'> 23</span>  *     .data(data)
+<span class='line'> 24</span>  *     .left(function() this.index * 35)
+<span class='line'> 25</span>  *     .height(function(d) d * 40);&lt;/pre>
+<span class='line'> 26</span>  *
+<span class='line'> 27</span>  * The layout can be further customized by changing the number of bands, and
+<span class='line'> 28</span>  * toggling whether the negative bands are mirrored or offset. (See the
+<span class='line'> 29</span>  * above-referenced paper for guidance.)
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * &lt;p>The &lt;tt>fillStyle&lt;/tt> of the area can be overridden, though typically it
+<span class='line'> 32</span>  * is easier to customize the layout's behavior through the custom
+<span class='line'> 33</span>  * &lt;tt>backgroundStyle&lt;/tt>, &lt;tt>positiveStyle&lt;/tt> and &lt;tt>negativeStyle&lt;/tt>
+<span class='line'> 34</span>  * properties. By default, the background is white, positive bands are blue, and
+<span class='line'> 35</span>  * negative bands are red. For the most accurate presentation, use fully-opaque
+<span class='line'> 36</span>  * colors of equal intensity for the negative and positive bands.
+<span class='line'> 37</span>  *
+<span class='line'> 38</span>  * @extends pv.Layout
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="NAME">pv.Layout.Horizon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="NAME">pv.Layout.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">that</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">      </span><span class="NAME">bands</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached bands</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">      </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached mode</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">      </span><span class="NAME">size</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached height</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">      </span><span class="NAME">fill</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached background style</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">      </span><span class="NAME">red</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached negative color (ramp)</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">      </span><span class="NAME">blue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached positive color (ramp)</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">      </span><span class="NAME">buildImplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.buildImplied</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="COMM">/** @private Cache the layout state to optimize properties. */</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">  </span><span class="NAME">this.buildImplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="NAME">buildImplied.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="NAME">bands</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.bands</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.mode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"color"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">.</span><span class="NUMB">5</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">s.height</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="NAME">fill</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.backgroundStyle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NAME">red</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.ramp</span><span class="PUNC">(</span><span class="NAME">fill</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s.negativeStyle</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">domain</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">bands</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="NAME">blue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.ramp</span><span class="PUNC">(</span><span class="NAME">fill</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s.positiveStyle</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">domain</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">bands</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> 
+<span class='line'> 62</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">bands</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Panel</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">data</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.range</span><span class="PUNC">(</span><span class="NAME">bands</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">overflow</span><span class="PUNC">(</span><span class="STRN">"hidden"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">height</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">top</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"color"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">fillStyle</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">fill</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 70</span>    * The band prototype. This prototype is intended to be used with an Area
+<span class='line'> 71</span>    * mark to render the horizon bands.
+<span class='line'> 72</span>    *
+<span class='line'> 73</span>    * @type pv.Mark
+<span class='line'> 74</span>    * @name pv.Layout.Horizon.prototype.band
+<span class='line'> 75</span>    */</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">  </span><span class="NAME">this.band</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Mark</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">top</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"mirror"</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">              </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">>></span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">              </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">bottom</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"mirror"</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">              </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">>></span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">size</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">              </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">>></span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">fillStyle</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">red</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">blue</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">>></span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="WHIT">  </span><span class="NAME">this.band.add</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">that.add</span><span class="PUNC">(</span><span class="NAME">pv.Panel</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="NAME">bands</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">add</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="NAME">pv.Layout.Horizon.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Layout</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"bands"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"mode"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"backgroundStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"positiveStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"negativeStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> 
+<span class='line'>103</span> </span><span class="COMM">/**
+<span class='line'>104</span>  * Default properties for horizon layouts. By default, there are two bands, the
+<span class='line'>105</span>  * mode is "offset", the background style is "white", the positive style is
+<span class='line'>106</span>  * blue, negative style is red.
+<span class='line'>107</span>  *
+<span class='line'>108</span>  * @type pv.Layout.Horizon
+<span class='line'>109</span>  */</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="NAME">pv.Layout.Horizon.prototype.defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Layout.Horizon</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="NAME">pv.Layout.prototype.defaults</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">bands</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">mode</span><span class="PUNC">(</span><span class="STRN">"offset"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">backgroundStyle</span><span class="PUNC">(</span><span class="STRN">"white"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">positiveStyle</span><span class="PUNC">(</span><span class="STRN">"#1f77b4"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">negativeStyle</span><span class="PUNC">(</span><span class="STRN">"#d62728"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> 
+<span class='line'>118</span> </span><span class="COMM">/**
+<span class='line'>119</span>  * The horizon mode: offset, mirror, or color. The default is "offset".
+<span class='line'>120</span>  *
+<span class='line'>121</span>  * @type string
+<span class='line'>122</span>  * @name pv.Layout.Horizon.prototype.mode
+<span class='line'>123</span>  */</span><span class="WHIT">
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="COMM">/**
+<span class='line'>126</span>  * The number of bands. Must be at least one. The default value is two.
+<span class='line'>127</span>  *
+<span class='line'>128</span>  * @type number
+<span class='line'>129</span>  * @name pv.Layout.Horizon.prototype.bands
+<span class='line'>130</span>  */</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="COMM">/**
+<span class='line'>133</span>  * The positive band color; if non-null, the interior of positive bands are
+<span class='line'>134</span>  * filled with the specified color. The default value of this property is blue.
+<span class='line'>135</span>  * For accurate blending, this color should be fully opaque.
+<span class='line'>136</span>  *
+<span class='line'>137</span>  * @type pv.Color
+<span class='line'>138</span>  * @name pv.Layout.Horizon.prototype.positiveStyle
+<span class='line'>139</span>  */</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="COMM">/**
+<span class='line'>142</span>  * The negative band color; if non-null, the interior of negative bands are
+<span class='line'>143</span>  * filled with the specified color. The default value of this property is red.
+<span class='line'>144</span>  * For accurate blending, this color should be fully opaque.
+<span class='line'>145</span>  *
+<span class='line'>146</span>  * @type pv.Color
+<span class='line'>147</span>  * @name pv.Layout.Horizon.prototype.negativeStyle
+<span class='line'>148</span>  */</span><span class="WHIT">
+<span class='line'>149</span> 
+<span class='line'>150</span> </span><span class="COMM">/**
+<span class='line'>151</span>  * The background color. The panel background is filled with the specified
+<span class='line'>152</span>  * color, and the negative and positive bands are filled with an interpolated
+<span class='line'>153</span>  * color between this color and the respective band color. The default value of
+<span class='line'>154</span>  * this property is white. For accurate blending, this color should be fully
+<span class='line'>155</span>  * opaque.
+<span class='line'>156</span>  *
+<span class='line'>157</span>  * @type pv.Color
+<span class='line'>158</span>  * @name pv.Layout.Horizon.prototype.backgroundStyle
+<span class='line'>159</span>  */</span><span class="WHIT">
+<span class='line'>160</span> </span></pre></body></html>

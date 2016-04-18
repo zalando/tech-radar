@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Crimean War</title>
+    <link type="text/css" rel="stylesheet" href="../ex.css"/>
+    <script type="text/javascript" src="../../protovis-r3.2.js"></script>
+    <script type="text/javascript" src="crimea.js"></script>
+    <style type="text/css">
+
+#fig {
+  width: 800px;
+  height: 450px;
+}
+
+#title {
+  font: 16px baskerville;
+  text-transform: uppercase;
+}
+
+#caption {
+  position: absolute;
+  font: oblique 12px baskerville;
+  top: 300px;
+  left: 25px;
+  width: 320px;
+}
+
+#caption p {
+  margin: 0;
+  text-indent: 12px;
+}
+
+    </style>
+  </head>
+  <body><div id="center"><div id="fig">
+    <center id="title">
+      Diagram <small>of the</small> Causes <small>of</small> Mortality<br>
+      <small><small>in the</small> Army <small>of the</small> East</small>
+    </center>
+    <script type="text/javascript+protovis">
+
+/* Compute maximum. */
+crimea.forEach(function(d) d.max = Math.max(350, d.wounds, d.other, d.disease));
+
+/* Scales for radius, angle, and fill. */
+var format = pv.Format.date("%b"),
+    radius = pv.Scale.linear(0, 1400).range(0, 275),
+    angle = pv.Scale.linear(0, 12).range(Math.PI / 2, 5 * Math.PI / 2),
+    fill = pv.colors("lightpink", "darkgray", "lightblue").domain(causes);
+
+var vis = new pv.Panel()
+    .width(800)
+    .height(450);
+
+/* Split the root panel by year. */
+var panel = vis.add(pv.Panel)
+    .data([crimea.slice(12), crimea.slice(0, 12)])
+    .left(function() this.index * 400);
+
+/* Add a panel per month, and sort causes by that month's deaths. */
+var wedge = panel.add(pv.Panel)
+    .data(function(d) d)
+  .add(pv.Wedge)
+    .data(function(d) causes.sort(function(a, b) d[b] - d[a]))
+    .left(200)
+    .top(150)
+    .angle(Math.PI / 6)
+    .startAngle(function(c, d) angle(d.date.getMonth()))
+    .outerRadius(function(c, d) radius(d[c]))
+    .fillStyle(fill)
+    .strokeStyle(function() this.fillStyle().darker())
+    .lineWidth(1);
+
+/* Add a label using the pre-computed maximum value. */
+wedge.add(pv.Wedge)
+    .data(["max"])
+    .fillStyle(null)
+    .strokeStyle(null)
+  .anchor("outer").add(pv.Label)
+    .text(function(c, d) format(d.date))
+    .textAlign("center")
+    .textBaseline("bottom")
+    .textAngle(function() this.anchorTarget().midAngle() + Math.PI / 2);
+
+vis.render();
+
+    </script>
+    <div id="caption">
+      The Areas of the blue, red, &amp; black wedges are each measured from the
+      centre as the common vertex
+      <p>The blue wedges measured from the centre of the circle represent area
+      for area the deaths from Preventible or Mitigable Zymotic Diseases, the
+      red wedges measured from the center the deaths from wounds, &amp; the
+      black wedges measured from the center the deaths from all other causes
+      <p>In October 1844, &amp; April 1855, the black area coincides with the
+      red, in January &amp; February 1856, the blue coincides with the black
+      <p>The entire areas may be compared by following the blue, the red &amp;
+      the black lines enclosing them.
+    </div>
+  </div></div></body>
+</html>

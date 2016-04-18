@@ -1,0 +1,93 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a new zoom behavior to be registered on mousewheel events.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @class Implements interactive zooming using mousewheel events. Register this
+<span class='line'>  5</span>  * behavior on panels to allow zooming. This behavior can be used in tandem with
+<span class='line'>  6</span>  * {@link pv.Behavior.pan} to allow both panning and zooming:
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * &lt;pre>    .event("mousedown", pv.Behavior.pan())
+<span class='line'>  9</span>  *     .event("mousewheel", pv.Behavior.zoom())&lt;/pre>
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  * The zoom behavior currently supports only mousewheel events; support for
+<span class='line'> 12</span>  * keyboard shortcuts and gesture events to improve accessibility may be added
+<span class='line'> 13</span>  * in the future.
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * &lt;p>The implementation of this behavior relies on the panel's
+<span class='line'> 16</span>  * &lt;tt>transform&lt;/tt> property, which specifies a matrix transformation that is
+<span class='line'> 17</span>  * applied to child marks. Note that the transform property only affects the
+<span class='line'> 18</span>  * panel's children, but not the panel itself; therefore the panel's fill and
+<span class='line'> 19</span>  * stroke will not change when the contents are zoomed. The built-in support for
+<span class='line'> 20</span>  * transforms only supports uniform scaling and translates, which is sufficient
+<span class='line'> 21</span>  * for panning and zooming.  Note that this is not a strict geometric
+<span class='line'> 22</span>  * transformation, as the &lt;tt>lineWidth&lt;/tt> property is scale-aware: strokes
+<span class='line'> 23</span>  * are drawn at constant size independent of scale.
+<span class='line'> 24</span>  *
+<span class='line'> 25</span>  * &lt;p>Panels have transparent fill styles by default; this means that panels may
+<span class='line'> 26</span>  * not receive mousewheel events to zoom. To fix this problem, either given the
+<span class='line'> 27</span>  * panel a visible fill style (such as "white"), or set the &lt;tt>events&lt;/tt>
+<span class='line'> 28</span>  * property to "all" such that the panel receives events despite its transparent
+<span class='line'> 29</span>  * fill.
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * &lt;p>The zoom behavior has optional support for bounding. If enabled, the user
+<span class='line'> 32</span>  * will not be able to zoom out farther than the initial bounds. This feature is
+<span class='line'> 33</span>  * designed to work in conjunction with the pan behavior.
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  * @extends pv.Behavior
+<span class='line'> 36</span>  * @see pv.Panel#transform
+<span class='line'> 37</span>  * @see pv.Mark#scale
+<span class='line'> 38</span>  * @param {number} speed
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="NAME">pv.Behavior.zoom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">speed</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">bound</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// whether to bound to the panel</span><span class="WHIT">
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">arguments.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">speed</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">48</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">mousewheel</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.mouse</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">        </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.event.wheel</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">speed</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">        </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.transform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">translate</span><span class="PUNC">(</span><span class="NAME">v.x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">v.y</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">scale</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="NAME">e3</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="NAME">e3</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="NAME">e3</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e3</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">            </span><span class="PUNC">.</span><span class="NAME">translate</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">v.x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">v.y</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">bound</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">      </span><span class="NAME">m.k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">m.k</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">      </span><span class="NAME">m.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m.k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">m.x</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">      </span><span class="NAME">m.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m.k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">m.y</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="NAME">this.transform</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">render</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NAME">pv.Mark.dispatch</span><span class="PUNC">(</span><span class="STRN">"zoom"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.scene</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 62</span>    * Sets or gets the bound parameter. If bounding is enabled, the user will not
+<span class='line'> 63</span>    * be able to zoom out farther than the initial panel bounds. Bounding is not
+<span class='line'> 64</span>    * enabled by default. If this behavior is used in tandem with the pan
+<span class='line'> 65</span>    * behavior, both should use the same bound parameter.
+<span class='line'> 66</span>    *
+<span class='line'> 67</span>    * &lt;p>Note: enabling bounding after zooming has already occurred will not
+<span class='line'> 68</span>    * immediately reset the transform. Bounding should be enabled before the zoom
+<span class='line'> 69</span>    * behavior is applied.
+<span class='line'> 70</span>    *
+<span class='line'> 71</span>    * @function
+<span class='line'> 72</span>    * @returns {pv.Behavior.zoom} this, or the current bound parameter.
+<span class='line'> 73</span>    * @name pv.Behavior.zoom.prototype.bound
+<span class='line'> 74</span>    * @param {boolean} [x] the new bound parameter.
+<span class='line'> 75</span>    */</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">  </span><span class="NAME">mousewheel.bound</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">      </span><span class="NAME">bound</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Boolean</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Boolean</span><span class="PUNC">(</span><span class="NAME">bound</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> 
+<span class='line'> 84</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mousewheel</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span></pre></body></html>

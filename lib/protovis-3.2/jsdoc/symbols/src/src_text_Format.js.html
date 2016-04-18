@@ -1,0 +1,86 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Abstract; see an implementing class.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @class Represents an abstract text formatter and parser. A &lt;i>format&lt;/i> is a
+<span class='line'>  5</span>  * function that converts an object of a given type, such as a &lt;tt>Date&lt;/tt>, to
+<span class='line'>  6</span>  * a human-readable string representation. The format may also have a
+<span class='line'>  7</span>  * {@link #parse} method for converting a string representation back to the
+<span class='line'>  8</span>  * given object type.
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  * &lt;p>Because formats are themselves functions, they can be used directly as
+<span class='line'> 11</span>  * mark properties. For example, if the data associated with a label are dates,
+<span class='line'> 12</span>  * a date format can be used as label text:
+<span class='line'> 13</span>  *
+<span class='line'> 14</span>  * &lt;pre>    .text(pv.Format.date("%m/%d/%y"))&lt;/pre>
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * And as with scales, if the format is used in multiple places, it can be
+<span class='line'> 17</span>  * convenient to declare it as a global variable and then reference it from the
+<span class='line'> 18</span>  * appropriate property functions. For example, if the data has a &lt;tt>date&lt;/tt>
+<span class='line'> 19</span>  * attribute, and &lt;tt>format&lt;/tt> references a given date format:
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * &lt;pre>    .text(function(d) format(d.date))&lt;/pre>
+<span class='line'> 22</span>  *
+<span class='line'> 23</span>  * Similarly, to parse a string into a date:
+<span class='line'> 24</span>  *
+<span class='line'> 25</span>  * &lt;pre>var date = format.parse("4/30/2010");&lt;/pre>
+<span class='line'> 26</span>  *
+<span class='line'> 27</span>  * Not all format implementations support parsing. See the implementing class
+<span class='line'> 28</span>  * for details.
+<span class='line'> 29</span>  *
+<span class='line'> 30</span>  * @see pv.Format.date
+<span class='line'> 31</span>  * @see pv.Format.number
+<span class='line'> 32</span>  * @see pv.Format.time
+<span class='line'> 33</span>  */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">pv.Format</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="COMM">/**
+<span class='line'> 37</span>  * Formats the specified object, returning the string representation.
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * @function
+<span class='line'> 40</span>  * @name pv.Format.prototype.format
+<span class='line'> 41</span>  * @param {object} x the object to format.
+<span class='line'> 42</span>  * @returns {string} the formatted string.
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * Parses the specified string, returning the object representation.
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * @function
+<span class='line'> 49</span>  * @name pv.Format.prototype.parse
+<span class='line'> 50</span>  * @param {string} x the string to parse.
+<span class='line'> 51</span>  * @returns {object} the parsed object.
+<span class='line'> 52</span>  */</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="COMM">/**
+<span class='line'> 55</span>  * @private Given a string that may be used as part of a regular expression,
+<span class='line'> 56</span>  * this methods returns an appropriately quoted version of the specified string,
+<span class='line'> 57</span>  * with any special characters escaped.
+<span class='line'> 58</span>  *
+<span class='line'> 59</span>  * @param {string} s a string to quote.
+<span class='line'> 60</span>  * @returns {string} the quoted string.
+<span class='line'> 61</span>  */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="NAME">pv.Format.re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">s.replace</span><span class="PUNC">(</span><span class="REGX">/[\\\^\$\*\+\?\[\]\(\)\.\{\}]/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"\\$&"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * @private Optionally pads the specified string &lt;i>s&lt;/i> so that it is at least
+<span class='line'> 68</span>  * &lt;i>n&lt;/i> characters long, using the padding character &lt;i>c&lt;/i>.
+<span class='line'> 69</span>  *
+<span class='line'> 70</span>  * @param {string} c the padding character.
+<span class='line'> 71</span>  * @param {number} n the minimum string length.
+<span class='line'> 72</span>  * @param {string} s the string to pad.
+<span class='line'> 73</span>  * @returns {string} the padded string.
+<span class='line'> 74</span>  */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="NAME">pv.Format.pad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">c</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">n</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">join</span><span class="PUNC">(</span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span></pre></body></html>

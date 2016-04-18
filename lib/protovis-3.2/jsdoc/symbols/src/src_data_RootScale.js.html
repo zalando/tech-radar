@@ -1,0 +1,63 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a root scale for the specified domain. The arguments to this
+<span class='line'>  3</span>  * constructor are optional, and equivalent to calling {@link #domain}.
+<span class='line'>  4</span>  * The default domain and range are [0,1].
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents a root scale; a function that performs a power
+<span class='line'>  7</span>  * transformation. &lt;style type="text/css">sub{line-height:0}&lt;/style> Most
+<span class='line'>  8</span>  * commonly, a root scale represents a 1-dimensional root transformation from a
+<span class='line'>  9</span>  * numeric domain of input data [&lt;i>d&lt;sub>0&lt;/sub>&lt;/i>, &lt;i>d&lt;sub>1&lt;/sub>&lt;/i>] to
+<span class='line'> 10</span>  * a numeric range of pixels [&lt;i>r&lt;sub>0&lt;/sub>&lt;/i>, &lt;i>r&lt;sub>1&lt;/sub>&lt;/i>].
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * &lt;p>Note that the scale is itself a function, and thus can be used as a
+<span class='line'> 13</span>  * property directly, assuming that the data associated with a mark is a
+<span class='line'> 14</span>  * number. While this is convenient for single-use scales, frequently it is
+<span class='line'> 15</span>  * desirable to define scales globally:
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * &lt;pre>var y = pv.Scale.root(0, 100).range(0, 640);&lt;/pre>
+<span class='line'> 18</span>  *
+<span class='line'> 19</span>  * The &lt;tt>y&lt;/tt> scale can now be equivalently referenced within a property:
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * &lt;pre>    .height(function(d) y(d))&lt;/pre>
+<span class='line'> 22</span>  *
+<span class='line'> 23</span>  * Alternatively, if the data are not simple numbers, the appropriate value can
+<span class='line'> 24</span>  * be passed to the &lt;tt>y&lt;/tt> scale (e.g., &lt;tt>d.foo&lt;/tt>). The {@link #by}
+<span class='line'> 25</span>  * method similarly allows the data to be mapped to a numeric value before
+<span class='line'> 26</span>  * performing the root transformation.
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * @param {number...} domain... optional domain values.
+<span class='line'> 29</span>  * @extends pv.Scale.quantitative
+<span class='line'> 30</span>  */</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="NAME">pv.Scale.root</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Scale.quantitative</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> 
+<span class='line'> 34</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 35</span>    * Sets or gets the exponent; defaults to 2.
+<span class='line'> 36</span>    *
+<span class='line'> 37</span>    * @function
+<span class='line'> 38</span>    * @name pv.Scale.root.prototype.power
+<span class='line'> 39</span>    * @param {number} [v] the new exponent.
+<span class='line'> 40</span>    * @returns {pv.Scale.root} &lt;tt>this&lt;/tt>, or the current base.
+<span class='line'> 41</span>    */</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="NAME">scale.power</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">v</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">      </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">v</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">      </span><span class="NAME">scale.transform</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> 
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale.power</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span></pre></body></html>

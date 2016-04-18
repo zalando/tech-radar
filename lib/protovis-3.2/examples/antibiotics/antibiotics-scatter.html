@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Antibiotic Effectiveness</title>
+    <link type="text/css" rel="stylesheet" href="../ex.css"/>
+    <script type="text/javascript" src="../../protovis-r3.2.js"></script>
+    <script type="text/javascript" src="antibiotics.js"></script>
+    <style type="text/css">
+
+#fig {
+  height: 638px;
+  width: 608px;
+}
+
+    </style>
+  </head>
+  <body><div id="center"><div id="fig">
+    <script type="text/javascript+protovis">
+
+var s = 180,
+    p = 20,
+    z = pv.Scale.log(0.001, 1000).range(0, s),
+    color = pv.colors("darkred", "darkblue").by(function(d) d.gram),
+    ticks = pv.range(-2, 3).map(function(e) Math.pow(10, e));
+
+/* Root panel. */
+var vis = new pv.Panel()
+    .height(s * antibiotics.length + p * (antibiotics.length - 1))
+    .width(function() this.height())
+    .top(14.5)
+    .left(14.5)
+    .bottom(44)
+    .right(14);
+
+/* Cell for each antibiotic pair. */
+var cell = vis.add(pv.Panel)
+    .data(antibiotics)
+    .width(s)
+    .left(function() (s + p) * this.index)
+  .add(pv.Panel)
+    .data(antibiotics)
+    .height(s)
+    .top(function() (s + p) * this.index);
+
+/* Label. */
+cell.anchor("center").add(pv.Label)
+    .visible(function(d, y, x) x == y)
+    .font("bold 14px sans-serif")
+    .text(function(d, y, x) x);
+
+/* Dot plot and frame. */
+var plot = cell.add(pv.Panel)
+    .data(function(y, x) [x])
+    .visible(function(x, y) x != y)
+    .strokeStyle("#aaa");
+
+/* Ticks. */
+var tick = new pv.Rule()
+    .visible(function(d, x, y) x != y)
+    .data(ticks)
+    .strokeStyle("#ddd");
+
+/* X-axis ticks. */
+var xtick = plot.add(pv.Rule)
+    .extend(tick)
+    .left(z);
+
+/* Bottom and top labels. */
+xtick.anchor("bottom").add(pv.Label)
+    .visible(function() cell.index == antibiotics.length - 1);
+xtick.anchor("top").add(pv.Label)
+    .visible(function() cell.index == 0);
+
+/* Y-axis ticks. */
+var ytick = plot.add(pv.Rule)
+    .extend(tick)
+    .bottom(z);
+
+/* Bottom and top labels. */
+ytick.anchor("right").add(pv.Label)
+    .visible(function() cell.parent.index == antibiotics.length - 1)
+    .textAngle(Math.PI / 2)
+    .textBaseline("bottom")
+    .textAlign("center");
+ytick.anchor("left").add(pv.Label)
+    .visible(function() cell.parent.index == 0)
+    .textAngle(-Math.PI / 2)
+    .textBaseline("bottom")
+    .textAlign("center");
+
+/* Dot plot. */
+var dot = plot.add(pv.Dot)
+    .data(bacteria)
+    .strokeStyle(color)
+    .fillStyle(function() this.strokeStyle().alpha(.2))
+    .left(function(d, x, y) z(d[x]))
+    .bottom(function(d, x, y) z(d[y]))
+    .title(function(d) d.name);
+
+/* Legend. */
+vis.add(pv.Dot)
+    .extend(dot)
+    .data([{gram:"positive"}, {gram:"negative"}])
+    .bottom(-30)
+    .left(function() this.index * 100)
+    .title(null)
+  .anchor("right").add(pv.Label)
+    .text(function(d) "Gram-" + d.gram);
+
+vis.render();
+
+    </script>
+  </div></div></body>
+</html>

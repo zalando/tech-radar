@@ -1,0 +1,151 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Constructs a new rule with default properties. Rules are not typically
+<span class='line'>  3</span>  * constructed directly, but by adding to a panel or an existing mark via
+<span class='line'>  4</span>  * {@link pv.Mark#add}.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents a horizontal or vertical rule. Rules are frequently used
+<span class='line'>  7</span>  * for axes and grid lines. For example, specifying only the bottom property
+<span class='line'>  8</span>  * draws horizontal rules, while specifying only the left draws vertical
+<span class='line'>  9</span>  * rules. Rules can also be used as thin bars. The visual style is controlled in
+<span class='line'> 10</span>  * the same manner as lines.
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * &lt;p>Rules are positioned exclusively the standard box model properties. The
+<span class='line'> 13</span>  * following combinations of properties are supported:
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * &lt;table>
+<span class='line'> 16</span>  * &lt;thead>&lt;th style="width:12em;">Properties&lt;/th>&lt;th>Orientation&lt;/th>&lt;/thead>
+<span class='line'> 17</span>  * &lt;tbody>
+<span class='line'> 18</span>  * &lt;tr>&lt;td>left&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 19</span>  * &lt;tr>&lt;td>right&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 20</span>  * &lt;tr>&lt;td>left, bottom, top&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 21</span>  * &lt;tr>&lt;td>right, bottom, top&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 22</span>  * &lt;tr>&lt;td>top&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 23</span>  * &lt;tr>&lt;td>bottom&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 24</span>  * &lt;tr>&lt;td>top, left, right&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 25</span>  * &lt;tr>&lt;td>bottom, left, right&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 26</span>  * &lt;tr>&lt;td>left, top, height&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 27</span>  * &lt;tr>&lt;td>left, bottom, height&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 28</span>  * &lt;tr>&lt;td>right, top, height&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 29</span>  * &lt;tr>&lt;td>right, bottom, height&lt;/td>&lt;td>vertical&lt;/td>&lt;/tr>
+<span class='line'> 30</span>  * &lt;tr>&lt;td>left, top, width&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 31</span>  * &lt;tr>&lt;td>left, bottom, width&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 32</span>  * &lt;tr>&lt;td>right, top, width&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 33</span>  * &lt;tr>&lt;td>right, bottom, width&lt;/td>&lt;td>horizontal&lt;/td>&lt;/tr>
+<span class='line'> 34</span>  * &lt;/tbody>
+<span class='line'> 35</span>  * &lt;/table>
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * &lt;p>Small rules can be used as tick marks; alternatively, a {@link Dot} with
+<span class='line'> 38</span>  * the "tick" shape can be used.
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * &lt;p>See also the &lt;a href="../../api/Rule.html">Rule guide&lt;/a>.
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * @see pv.Line
+<span class='line'> 43</span>  * @extends pv.Mark
+<span class='line'> 44</span>  */</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="NAME">pv.Rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">  </span><span class="NAME">pv.Mark.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> 
+<span class='line'> 49</span> </span><span class="NAME">pv.Rule.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Mark</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"width"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"height"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"lineWidth"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"strokeStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> 
+<span class='line'> 55</span> </span><span class="NAME">pv.Rule.prototype.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"rule"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> 
+<span class='line'> 57</span> </span><span class="COMM">/**
+<span class='line'> 58</span>  * The width of the rule, in pixels. If the left position is specified, the rule
+<span class='line'> 59</span>  * extends rightward from the left edge; if the right position is specified, the
+<span class='line'> 60</span>  * rule extends leftward from the right edge.
+<span class='line'> 61</span>  *
+<span class='line'> 62</span>  * @type number
+<span class='line'> 63</span>  * @name pv.Rule.prototype.width
+<span class='line'> 64</span>  */</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * The height of the rule, in pixels. If the bottom position is specified, the
+<span class='line'> 68</span>  * rule extends upward from the bottom edge; if the top position is specified,
+<span class='line'> 69</span>  * the rule extends downward from the top edge.
+<span class='line'> 70</span>  *
+<span class='line'> 71</span>  * @type number
+<span class='line'> 72</span>  * @name pv.Rule.prototype.height
+<span class='line'> 73</span>  */</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> </span><span class="COMM">/**
+<span class='line'> 76</span>  * The width of stroked lines, in pixels; used in conjunction with
+<span class='line'> 77</span>  * &lt;tt>strokeStyle&lt;/tt> to stroke the rule. The default value is 1 pixel.
+<span class='line'> 78</span>  *
+<span class='line'> 79</span>  * @type number
+<span class='line'> 80</span>  * @name pv.Rule.prototype.lineWidth
+<span class='line'> 81</span>  */</span><span class="WHIT">
+<span class='line'> 82</span> 
+<span class='line'> 83</span> </span><span class="COMM">/**
+<span class='line'> 84</span>  * The style of stroked lines; used in conjunction with &lt;tt>lineWidth&lt;/tt> to
+<span class='line'> 85</span>  * stroke the rule. The default value of this property is black.
+<span class='line'> 86</span>  *
+<span class='line'> 87</span>  * @type string
+<span class='line'> 88</span>  * @name pv.Rule.prototype.strokeStyle
+<span class='line'> 89</span>  * @see pv.color
+<span class='line'> 90</span>  */</span><span class="WHIT">
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span><span class="COMM">/**
+<span class='line'> 93</span>  * Default properties for rules. By default, a single-pixel black line is
+<span class='line'> 94</span>  * stroked.
+<span class='line'> 95</span>  *
+<span class='line'> 96</span>  * @type pv.Rule
+<span class='line'> 97</span>  */</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="NAME">pv.Rule.prototype.defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Rule</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="NAME">pv.Mark.prototype.defaults</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">lineWidth</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">strokeStyle</span><span class="PUNC">(</span><span class="STRN">"black"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">antialias</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> 
+<span class='line'>104</span> </span><span class="COMM">/**
+<span class='line'>105</span>  * Constructs a new rule anchor with default properties. Rules support five
+<span class='line'>106</span>  * different anchors:&lt;ul>
+<span class='line'>107</span>  *
+<span class='line'>108</span>  * &lt;li>top
+<span class='line'>109</span>  * &lt;li>left
+<span class='line'>110</span>  * &lt;li>center
+<span class='line'>111</span>  * &lt;li>bottom
+<span class='line'>112</span>  * &lt;li>right
+<span class='line'>113</span>  *
+<span class='line'>114</span>  * &lt;/ul>In addition to positioning properties (left, right, top bottom), the
+<span class='line'>115</span>  * anchors support text rendering properties (text-align, text-baseline). Text is
+<span class='line'>116</span>  * rendered to appear outside the rule. Note that this behavior is different
+<span class='line'>117</span>  * from other mark anchors, which default to rendering text &lt;i>inside&lt;/i> the
+<span class='line'>118</span>  * mark.
+<span class='line'>119</span>  *
+<span class='line'>120</span>  * &lt;p>For consistency with the other mark types, the anchor positions are
+<span class='line'>121</span>  * defined in terms of their opposite edge. For example, the top anchor defines
+<span class='line'>122</span>  * the bottom property, such that a bar added to the top anchor grows upward.
+<span class='line'>123</span>  *
+<span class='line'>124</span>  * @param {string} name the anchor name; either a string or a property function.
+<span class='line'>125</span>  * @returns {pv.Anchor}
+<span class='line'>126</span>  */</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="NAME">pv.Rule.prototype.anchor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Line.prototype.anchor</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> 
+<span class='line'>129</span> </span><span class="COMM">/** @private Sets width or height based on orientation. */</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="NAME">pv.Rule.prototype.buildImplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.right</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">t</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.top</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.bottom</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">  </span><span class="COMM">/* Determine horizontal or vertical orientation. */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">s.width</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">      </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">      </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="NAME">s.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="NAME">s.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="WHIT">  </span><span class="NAME">pv.Mark.prototype.buildImplied.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span></pre></body></html>

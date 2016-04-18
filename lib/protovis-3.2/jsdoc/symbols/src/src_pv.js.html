@@ -1,0 +1,103 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * The top-level Protovis namespace. All public methods and fields should be
+<span class='line'>  3</span>  * registered on this object. Note that core Protovis source is surrounded by an
+<span class='line'>  4</span>  * anonymous function, so any other declared globals will not be visible outside
+<span class='line'>  5</span>  * of core methods. This also allows multiple versions of Protovis to coexist,
+<span class='line'>  6</span>  * since each version will see their own &lt;tt>pv&lt;/tt> namespace.
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * @namespace The top-level Protovis namespace, &lt;tt>pv&lt;/tt>.
+<span class='line'>  9</span>  */</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 11</span> 
+<span class='line'> 12</span> </span><span class="COMM">/**
+<span class='line'> 13</span>  * Protovis major and minor version numbers.
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * @namespace Protovis major and minor version numbers.
+<span class='line'> 16</span>  */</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="NAME">pv.version</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 19</span>    * The major version number.
+<span class='line'> 20</span>    *
+<span class='line'> 21</span>    * @type number
+<span class='line'> 22</span>    * @constant
+<span class='line'> 23</span>    */</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">  </span><span class="NAME">major</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 27</span>    * The minor version number.
+<span class='line'> 28</span>    *
+<span class='line'> 29</span>    * @type number
+<span class='line'> 30</span>    * @constant
+<span class='line'> 31</span>    */</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="NAME">minor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="COMM">/**
+<span class='line'> 36</span>  * Returns the passed-in argument, &lt;tt>x&lt;/tt>; the identity function. This method
+<span class='line'> 37</span>  * is provided for convenience since it is used as the default behavior for a
+<span class='line'> 38</span>  * number of property functions.
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * @param x a value.
+<span class='line'> 41</span>  * @returns the value &lt;tt>x&lt;/tt>.
+<span class='line'> 42</span>  */</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="NAME">pv.identity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">x</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * Returns &lt;tt>this.index&lt;/tt>. This method is provided for convenience for use
+<span class='line'> 47</span>  * with scales. For example, to color bars by their index, say:
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * &lt;pre>.fillStyle(pv.Colors.category10().by(pv.index))&lt;/pre>
+<span class='line'> 50</span>  *
+<span class='line'> 51</span>  * This method is equivalent to &lt;tt>function() this.index&lt;/tt>, but more
+<span class='line'> 52</span>  * succinct. Note that the &lt;tt>index&lt;/tt> property is also supported for
+<span class='line'> 53</span>  * accessor functions with {@link pv.max}, {@link pv.min} and other array
+<span class='line'> 54</span>  * utility methods.
+<span class='line'> 55</span>  *
+<span class='line'> 56</span>  * @see pv.Scale
+<span class='line'> 57</span>  * @see pv.Mark#index
+<span class='line'> 58</span>  */</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="NAME">pv.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.index</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="COMM">/**
+<span class='line'> 62</span>  * Returns &lt;tt>this.childIndex&lt;/tt>. This method is provided for convenience for
+<span class='line'> 63</span>  * use with scales. For example, to color bars by their child index, say:
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  * &lt;pre>.fillStyle(pv.Colors.category10().by(pv.child))&lt;/pre>
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * This method is equivalent to &lt;tt>function() this.childIndex&lt;/tt>, but more
+<span class='line'> 68</span>  * succinct.
+<span class='line'> 69</span>  *
+<span class='line'> 70</span>  * @see pv.Scale
+<span class='line'> 71</span>  * @see pv.Mark#childIndex
+<span class='line'> 72</span>  */</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="NAME">pv.child</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.childIndex</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> </span><span class="COMM">/**
+<span class='line'> 76</span>  * Returns &lt;tt>this.parent.index&lt;/tt>. This method is provided for convenience
+<span class='line'> 77</span>  * for use with scales. This method is provided for convenience for use with
+<span class='line'> 78</span>  * scales. For example, to color bars by their parent index, say:
+<span class='line'> 79</span>  *
+<span class='line'> 80</span>  * &lt;pre>.fillStyle(pv.Colors.category10().by(pv.parent))&lt;/pre>
+<span class='line'> 81</span>  *
+<span class='line'> 82</span>  * Tthis method is equivalent to &lt;tt>function() this.parent.index&lt;/tt>, but more
+<span class='line'> 83</span>  * succinct.
+<span class='line'> 84</span>  *
+<span class='line'> 85</span>  * @see pv.Scale
+<span class='line'> 86</span>  * @see pv.Mark#index
+<span class='line'> 87</span>  */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="NAME">pv.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.parent.index</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> 
+<span class='line'> 90</span> </span><span class="COMM">/**
+<span class='line'> 91</span>  * Stores the current event. This field is only set within event handlers.
+<span class='line'> 92</span>  *
+<span class='line'> 93</span>  * @type Event
+<span class='line'> 94</span>  * @name pv.event
+<span class='line'> 95</span>  */</span><span class="WHIT">
+<span class='line'> 96</span> </span></pre></body></html>

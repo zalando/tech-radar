@@ -1,0 +1,606 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns the {@link pv.Color} for the specified color format string. Colors
+<span class='line'>  3</span>  * may have an associated opacity, or alpha channel. Color formats are specified
+<span class='line'>  4</span>  * by CSS Color Modular Level 3, using either in RGB or HSL color space. For
+<span class='line'>  5</span>  * example:&lt;ul>
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * &lt;li>#f00 // #rgb
+<span class='line'>  8</span>  * &lt;li>#ff0000 // #rrggbb
+<span class='line'>  9</span>  * &lt;li>rgb(255, 0, 0)
+<span class='line'> 10</span>  * &lt;li>rgb(100%, 0%, 0%)
+<span class='line'> 11</span>  * &lt;li>hsl(0, 100%, 50%)
+<span class='line'> 12</span>  * &lt;li>rgba(0, 0, 255, 0.5)
+<span class='line'> 13</span>  * &lt;li>hsla(120, 100%, 50%, 1)
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  * &lt;/ul>The SVG 1.0 color keywords names are also supported, such as "aliceblue"
+<span class='line'> 16</span>  * and "yellowgreen". The "transparent" keyword is supported for fully-
+<span class='line'> 17</span>  * transparent black.
+<span class='line'> 18</span>  *
+<span class='line'> 19</span>  * &lt;p>If the &lt;tt>format&lt;/tt> argument is already an instance of &lt;tt>Color&lt;/tt>,
+<span class='line'> 20</span>  * the argument is returned with no further processing.
+<span class='line'> 21</span>  *
+<span class='line'> 22</span>  * @param {string} format the color specification string, such as "#f00".
+<span class='line'> 23</span>  * @returns {pv.Color} the corresponding &lt;tt>Color&lt;/tt>.
+<span class='line'> 24</span>  * @see &lt;a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords">SVG color
+<span class='line'> 25</span>  * keywords&lt;/a>
+<span class='line'> 26</span>  * @see &lt;a href="http://www.w3.org/TR/css3-color/">CSS3 color module&lt;/a>
+<span class='line'> 27</span>  */</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="NAME">pv.color</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">format</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">format.rgb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">format.rgb</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="WHIT">  </span><span class="COMM">/* Handle hsl, rgb. */</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/([a-z]+)\((.*)\)/i</span><span class="PUNC">.</span><span class="NAME">exec</span><span class="PUNC">(</span><span class="NAME">format</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">","</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m1</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"hsla"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"rgba"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">        </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.Color.transparent</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">        </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m1</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"hsla"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"hsl"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// degrees</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">            </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// percentage</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">            </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// percentage</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Color.Hsl</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">rgb</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"rgba"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">      </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"rgb"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">parse</span><span class="PUNC">(</span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="COMM">// either integer or percentage</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">          </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseFloat</span><span class="PUNC">(</span><span class="NAME">c</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">c</span><span class="PUNC">[</span><span class="NAME">c.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'%'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">2.55</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">f</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parse</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parse</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parse</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 62</span> 
+<span class='line'> 63</span> </span><span class="WHIT">  </span><span class="COMM">/* Named colors. */</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">named</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Color.names</span><span class="PUNC">[</span><span class="NAME">format</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">named</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">named</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="WHIT">  </span><span class="COMM">/* Hexadecimal colors: #rgb and #rrggbb. */</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">format.charAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"#"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">format.length</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">      </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.charAt</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">r</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">      </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.charAt</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">      </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.charAt</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">format.length</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">      </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.substring</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">      </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.substring</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">      </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.substring</span><span class="PUNC">(</span><span class="NUMB">5</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="WHIT">  </span><span class="COMM">/* Otherwise, pass-through unsupported colors. */</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Color</span><span class="PUNC">(</span><span class="NAME">format</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> 
+<span class='line'> 86</span> </span><span class="COMM">/**
+<span class='line'> 87</span>  * Constructs a color with the specified color format string and opacity. This
+<span class='line'> 88</span>  * constructor should not be invoked directly; use {@link pv.color} instead.
+<span class='line'> 89</span>  *
+<span class='line'> 90</span>  * @class Represents an abstract (possibly translucent) color. The color is
+<span class='line'> 91</span>  * divided into two parts: the &lt;tt>color&lt;/tt> attribute, an opaque color format
+<span class='line'> 92</span>  * string, and the &lt;tt>opacity&lt;/tt> attribute, a float in [0, 1]. The color
+<span class='line'> 93</span>  * space is dependent on the implementing class; all colors support the
+<span class='line'> 94</span>  * {@link #rgb} method to convert to RGB color space for interpolation.
+<span class='line'> 95</span>  *
+<span class='line'> 96</span>  * &lt;p>See also the &lt;a href="../../api/Color.html">Color guide&lt;/a>.
+<span class='line'> 97</span>  *
+<span class='line'> 98</span>  * @param {string} color an opaque color format string, such as "#f00".
+<span class='line'> 99</span>  * @param {number} opacity the opacity, in [0,1].
+<span class='line'>100</span>  * @see pv.color
+<span class='line'>101</span>  */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="NAME">pv.Color</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">color</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">opacity</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>104</span>    * An opaque color format string, such as "#f00".
+<span class='line'>105</span>    *
+<span class='line'>106</span>    * @type string
+<span class='line'>107</span>    * @see &lt;a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords">SVG color
+<span class='line'>108</span>    * keywords&lt;/a>
+<span class='line'>109</span>    * @see &lt;a href="http://www.w3.org/TR/css3-color/">CSS3 color module&lt;/a>
+<span class='line'>110</span>    */</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">  </span><span class="NAME">this.color</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">color</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> 
+<span class='line'>113</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>114</span>    * The opacity, a float in [0, 1].
+<span class='line'>115</span>    *
+<span class='line'>116</span>    * @type number
+<span class='line'>117</span>    */</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">  </span><span class="NAME">this.opacity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">opacity</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> 
+<span class='line'>121</span> </span><span class="COMM">/**
+<span class='line'>122</span>  * Returns a new color that is a brighter version of this color. The behavior of
+<span class='line'>123</span>  * this method may vary slightly depending on the underlying color space.
+<span class='line'>124</span>  * Although brighter and darker are inverse operations, the results of a series
+<span class='line'>125</span>  * of invocations of these two methods might be inconsistent because of rounding
+<span class='line'>126</span>  * errors.
+<span class='line'>127</span>  *
+<span class='line'>128</span>  * @param [k] {number} an optional scale factor; defaults to 1.
+<span class='line'>129</span>  * @see #darker
+<span class='line'>130</span>  * @returns {pv.Color} a brighter color.
+<span class='line'>131</span>  */</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="NAME">pv.Color.prototype.brighter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rgb</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">brighter</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> 
+<span class='line'>136</span> </span><span class="COMM">/**
+<span class='line'>137</span>  * Returns a new color that is a brighter version of this color. The behavior of
+<span class='line'>138</span>  * this method may vary slightly depending on the underlying color space.
+<span class='line'>139</span>  * Although brighter and darker are inverse operations, the results of a series
+<span class='line'>140</span>  * of invocations of these two methods might be inconsistent because of rounding
+<span class='line'>141</span>  * errors.
+<span class='line'>142</span>  *
+<span class='line'>143</span>  * @param [k] {number} an optional scale factor; defaults to 1.
+<span class='line'>144</span>  * @see #brighter
+<span class='line'>145</span>  * @returns {pv.Color} a darker color.
+<span class='line'>146</span>  */</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="NAME">pv.Color.prototype.darker</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rgb</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">darker</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="COMM">/**
+<span class='line'>152</span>  * Constructs a new RGB color with the specified channel values.
+<span class='line'>153</span>  *
+<span class='line'>154</span>  * @param {number} r the red channel, an integer in [0,255].
+<span class='line'>155</span>  * @param {number} g the green channel, an integer in [0,255].
+<span class='line'>156</span>  * @param {number} b the blue channel, an integer in [0,255].
+<span class='line'>157</span>  * @param {number} [a] the alpha channel, a float in [0,1].
+<span class='line'>158</span>  * @returns pv.Color.Rgb
+<span class='line'>159</span>  */</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="NAME">pv.rgb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Color.Rgb</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>163</span> 
+<span class='line'>164</span> </span><span class="COMM">/**
+<span class='line'>165</span>  * Constructs a new RGB color with the specified channel values.
+<span class='line'>166</span>  *
+<span class='line'>167</span>  * @class Represents a color in RGB space.
+<span class='line'>168</span>  *
+<span class='line'>169</span>  * @param {number} r the red channel, an integer in [0,255].
+<span class='line'>170</span>  * @param {number} g the green channel, an integer in [0,255].
+<span class='line'>171</span>  * @param {number} b the blue channel, an integer in [0,255].
+<span class='line'>172</span>  * @param {number} a the alpha channel, a float in [0,1].
+<span class='line'>173</span>  * @extends pv.Color
+<span class='line'>174</span>  */</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="NAME">pv.Color.Rgb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">  </span><span class="NAME">pv.Color.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="STRN">"rgb("</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">","</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">","</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">")"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"none"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> 
+<span class='line'>178</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>179</span>    * The red channel, an integer in [0, 255].
+<span class='line'>180</span>    *
+<span class='line'>181</span>    * @type number
+<span class='line'>182</span>    */</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">  </span><span class="NAME">this.r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">r</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>186</span>    * The green channel, an integer in [0, 255].
+<span class='line'>187</span>    *
+<span class='line'>188</span>    * @type number
+<span class='line'>189</span>    */</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">  </span><span class="NAME">this.g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> 
+<span class='line'>192</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>193</span>    * The blue channel, an integer in [0, 255].
+<span class='line'>194</span>    *
+<span class='line'>195</span>    * @type number
+<span class='line'>196</span>    */</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">  </span><span class="NAME">this.b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>200</span>    * The alpha channel, a float in [0, 1].
+<span class='line'>201</span>    *
+<span class='line'>202</span>    * @type number
+<span class='line'>203</span>    */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">  </span><span class="NAME">this.a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="NAME">pv.Color.Rgb.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Color</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> 
+<span class='line'>208</span> </span><span class="COMM">/**
+<span class='line'>209</span>  * Constructs a new RGB color with the same green, blue and alpha channels as
+<span class='line'>210</span>  * this color, with the specified red channel.
+<span class='line'>211</span>  *
+<span class='line'>212</span>  * @param {number} r the red channel, an integer in [0,255].
+<span class='line'>213</span>  */</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="NAME">pv.Color.Rgb.prototype.red</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> 
+<span class='line'>218</span> </span><span class="COMM">/**
+<span class='line'>219</span>  * Constructs a new RGB color with the same red, blue and alpha channels as this
+<span class='line'>220</span>  * color, with the specified green channel.
+<span class='line'>221</span>  *
+<span class='line'>222</span>  * @param {number} g the green channel, an integer in [0,255].
+<span class='line'>223</span>  */</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="NAME">pv.Color.Rgb.prototype.green</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">g</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">this.r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> 
+<span class='line'>228</span> </span><span class="COMM">/**
+<span class='line'>229</span>  * Constructs a new RGB color with the same red, green and alpha channels as
+<span class='line'>230</span>  * this color, with the specified blue channel.
+<span class='line'>231</span>  *
+<span class='line'>232</span>  * @param {number} b the blue channel, an integer in [0,255].
+<span class='line'>233</span>  */</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="NAME">pv.Color.Rgb.prototype.blue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">this.r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> 
+<span class='line'>238</span> </span><span class="COMM">/**
+<span class='line'>239</span>  * Constructs a new RGB color with the same red, green and blue channels as this
+<span class='line'>240</span>  * color, with the specified alpha channel.
+<span class='line'>241</span>  *
+<span class='line'>242</span>  * @param {number} a the alpha channel, a float in [0,1].
+<span class='line'>243</span>  */</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="NAME">pv.Color.Rgb.prototype.alpha</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">this.r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="COMM">/**
+<span class='line'>249</span>  * Returns the RGB color equivalent to this color. This method is abstract and
+<span class='line'>250</span>  * must be implemented by subclasses.
+<span class='line'>251</span>  *
+<span class='line'>252</span>  * @returns {pv.Color.Rgb} an RGB color.
+<span class='line'>253</span>  * @function
+<span class='line'>254</span>  * @name pv.Color.prototype.rgb
+<span class='line'>255</span>  */</span><span class="WHIT">
+<span class='line'>256</span> 
+<span class='line'>257</span> </span><span class="COMM">/**
+<span class='line'>258</span>  * Returns this.
+<span class='line'>259</span>  *
+<span class='line'>260</span>  * @returns {pv.Color.Rgb} this.
+<span class='line'>261</span>  */</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="NAME">pv.Color.Rgb.prototype.rgb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> 
+<span class='line'>264</span> </span><span class="COMM">/**
+<span class='line'>265</span>  * Returns a new color that is a brighter version of this color. This method
+<span class='line'>266</span>  * applies an arbitrary scale factor to each of the three RGB components of this
+<span class='line'>267</span>  * color to create a brighter version of this color. Although brighter and
+<span class='line'>268</span>  * darker are inverse operations, the results of a series of invocations of
+<span class='line'>269</span>  * these two methods might be inconsistent because of rounding errors.
+<span class='line'>270</span>  *
+<span class='line'>271</span>  * @param [k] {number} an optional scale factor; defaults to 1.
+<span class='line'>272</span>  * @see #darker
+<span class='line'>273</span>  * @returns {pv.Color.Rgb} a brighter color.
+<span class='line'>274</span>  */</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="NAME">pv.Color.Rgb.prototype.brighter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">  </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NUMB">0.7</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">30</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">      </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NUMB">255</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">      </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NUMB">255</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">g</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">      </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NUMB">255</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">      </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> 
+<span class='line'>289</span> </span><span class="COMM">/**
+<span class='line'>290</span>  * Returns a new color that is a darker version of this color. This method
+<span class='line'>291</span>  * applies an arbitrary scale factor to each of the three RGB components of this
+<span class='line'>292</span>  * color to create a darker version of this color. Although brighter and darker
+<span class='line'>293</span>  * are inverse operations, the results of a series of invocations of these two
+<span class='line'>294</span>  * methods might be inconsistent because of rounding errors.
+<span class='line'>295</span>  *
+<span class='line'>296</span>  * @param [k] {number} an optional scale factor; defaults to 1.
+<span class='line'>297</span>  * @see #brighter
+<span class='line'>298</span>  * @returns {pv.Color.Rgb} a darker color.
+<span class='line'>299</span>  */</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="NAME">pv.Color.Rgb.prototype.darker</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">k</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">  </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NUMB">0.7</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">      </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">this.r</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">      </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">this.g</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">      </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">this.b</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">      </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> 
+<span class='line'>309</span> </span><span class="COMM">/**
+<span class='line'>310</span>  * Constructs a new HSL color with the specified values.
+<span class='line'>311</span>  *
+<span class='line'>312</span>  * @param {number} h the hue, an integer in [0, 360].
+<span class='line'>313</span>  * @param {number} s the saturation, a float in [0, 1].
+<span class='line'>314</span>  * @param {number} l the lightness, a float in [0, 1].
+<span class='line'>315</span>  * @param {number} [a] the opacity, a float in [0, 1].
+<span class='line'>316</span>  * @returns pv.Color.Hsl
+<span class='line'>317</span>  */</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="NAME">pv.hsl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Color.Hsl</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> 
+<span class='line'>322</span> </span><span class="COMM">/**
+<span class='line'>323</span>  * Constructs a new HSL color with the specified values.
+<span class='line'>324</span>  *
+<span class='line'>325</span>  * @class Represents a color in HSL space.
+<span class='line'>326</span>  *
+<span class='line'>327</span>  * @param {number} h the hue, an integer in [0, 360].
+<span class='line'>328</span>  * @param {number} s the saturation, a float in [0, 1].
+<span class='line'>329</span>  * @param {number} l the lightness, a float in [0, 1].
+<span class='line'>330</span>  * @param {number} a the opacity, a float in [0, 1].
+<span class='line'>331</span>  * @extends pv.Color
+<span class='line'>332</span>  */</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="NAME">pv.Color.Hsl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">  </span><span class="NAME">pv.Color.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"hsl("</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">","</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"%,"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"%)"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>335</span> 
+<span class='line'>336</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>337</span>    * The hue, an integer in [0, 360].
+<span class='line'>338</span>    *
+<span class='line'>339</span>    * @type number
+<span class='line'>340</span>    */</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">  </span><span class="NAME">this.h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">h</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> 
+<span class='line'>343</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>344</span>    * The saturation, a float in [0, 1].
+<span class='line'>345</span>    *
+<span class='line'>346</span>    * @type number
+<span class='line'>347</span>    */</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">  </span><span class="NAME">this.s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>349</span> 
+<span class='line'>350</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>351</span>    * The lightness, a float in [0, 1].
+<span class='line'>352</span>    *
+<span class='line'>353</span>    * @type number
+<span class='line'>354</span>    */</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">  </span><span class="NAME">this.l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> 
+<span class='line'>357</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>358</span>    * The opacity, a float in [0, 1].
+<span class='line'>359</span>    *
+<span class='line'>360</span>    * @type number
+<span class='line'>361</span>    */</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">  </span><span class="NAME">this.a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="NAME">pv.Color.Hsl.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Color</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="COMM">/**
+<span class='line'>367</span>  * Constructs a new HSL color with the same saturation, lightness and alpha as
+<span class='line'>368</span>  * this color, and the specified hue.
+<span class='line'>369</span>  *
+<span class='line'>370</span>  * @param {number} h the hue, an integer in [0, 360].
+<span class='line'>371</span>  */</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="NAME">pv.Color.Hsl.prototype.hue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.hsl</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>375</span> 
+<span class='line'>376</span> </span><span class="COMM">/**
+<span class='line'>377</span>  * Constructs a new HSL color with the same hue, lightness and alpha as this
+<span class='line'>378</span>  * color, and the specified saturation.
+<span class='line'>379</span>  *
+<span class='line'>380</span>  * @param {number} s the saturation, a float in [0, 1].
+<span class='line'>381</span>  */</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="NAME">pv.Color.Hsl.prototype.saturation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.hsl</span><span class="PUNC">(</span><span class="NAME">this.h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> 
+<span class='line'>386</span> </span><span class="COMM">/**
+<span class='line'>387</span>  * Constructs a new HSL color with the same hue, saturation and alpha as this
+<span class='line'>388</span>  * color, and the specified lightness.
+<span class='line'>389</span>  *
+<span class='line'>390</span>  * @param {number} l the lightness, a float in [0, 1].
+<span class='line'>391</span>  */</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="NAME">pv.Color.Hsl.prototype.lightness</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">l</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.hsl</span><span class="PUNC">(</span><span class="NAME">this.h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="COMM">/**
+<span class='line'>397</span>  * Constructs a new HSL color with the same hue, saturation and lightness as
+<span class='line'>398</span>  * this color, and the specified alpha.
+<span class='line'>399</span>  *
+<span class='line'>400</span>  * @param {number} a the opacity, a float in [0, 1].
+<span class='line'>401</span>  */</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="NAME">pv.Color.Hsl.prototype.alpha</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.hsl</span><span class="PUNC">(</span><span class="NAME">this.h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> 
+<span class='line'>406</span> </span><span class="COMM">/**
+<span class='line'>407</span>  * Returns the RGB color equivalent to this HSL color.
+<span class='line'>408</span>  *
+<span class='line'>409</span>  * @returns {pv.Color.Rgb} an RGB color.
+<span class='line'>410</span>  */</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="NAME">pv.Color.Hsl.prototype.rgb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.h</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.l</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> 
+<span class='line'>414</span> </span><span class="WHIT">  </span><span class="COMM">/* Some simple corrections for h, s and l. */</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">  </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">360</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">360</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">  </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">  </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Math.min</span><span class="PUNC">(</span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> 
+<span class='line'>419</span> </span><span class="WHIT">  </span><span class="COMM">/* From FvD 13.37, CSS Color Module Level 3 */</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="PUNC">.</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">v</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">360</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">360</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">    </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">360</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">180</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">240</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">240</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">m1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">vv</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">v</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">255</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>433</span> 
+<span class='line'>434</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NAME">vv</span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">120</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">vv</span><span class="PUNC">(</span><span class="NAME">h</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">vv</span><span class="PUNC">(</span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">120</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>436</span> 
+<span class='line'>437</span> </span><span class="COMM">/**
+<span class='line'>438</span>  * @private SVG color keywords, per CSS Color Module Level 3.
+<span class='line'>439</span>  *
+<span class='line'>440</span>  * @see &lt;a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords">SVG color
+<span class='line'>441</span>  * keywords&lt;/a>
+<span class='line'>442</span>  */</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="NAME">pv.Color.names</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">  </span><span class="NAME">aliceblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f0f8ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">  </span><span class="NAME">antiquewhite</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#faebd7"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">  </span><span class="NAME">aqua</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00ffff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">  </span><span class="NAME">aquamarine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#7fffd4"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">  </span><span class="NAME">azure</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f0ffff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="WHIT">  </span><span class="NAME">beige</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f5f5dc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="WHIT">  </span><span class="NAME">bisque</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffe4c4"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">  </span><span class="NAME">black</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#000000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">  </span><span class="NAME">blanchedalmond</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffebcd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">  </span><span class="NAME">blue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#0000ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">  </span><span class="NAME">blueviolet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#8a2be2"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">  </span><span class="NAME">brown</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#a52a2a"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">  </span><span class="NAME">burlywood</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#deb887"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">  </span><span class="NAME">cadetblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#5f9ea0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">  </span><span class="NAME">chartreuse</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#7fff00"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">  </span><span class="NAME">chocolate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#d2691e"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">  </span><span class="NAME">coral</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff7f50"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">  </span><span class="NAME">cornflowerblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#6495ed"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">  </span><span class="NAME">cornsilk</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fff8dc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">  </span><span class="NAME">crimson</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#dc143c"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">  </span><span class="NAME">cyan</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00ffff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">  </span><span class="NAME">darkblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00008b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">  </span><span class="NAME">darkcyan</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#008b8b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">  </span><span class="NAME">darkgoldenrod</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#b8860b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>468</span> </span><span class="WHIT">  </span><span class="NAME">darkgray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#a9a9a9"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">  </span><span class="NAME">darkgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#006400"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">  </span><span class="NAME">darkgrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#a9a9a9"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">  </span><span class="NAME">darkkhaki</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#bdb76b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">  </span><span class="NAME">darkmagenta</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#8b008b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">  </span><span class="NAME">darkolivegreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#556b2f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">  </span><span class="NAME">darkorange</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff8c00"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">  </span><span class="NAME">darkorchid</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#9932cc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">  </span><span class="NAME">darkred</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#8b0000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">  </span><span class="NAME">darksalmon</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#e9967a"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>478</span> </span><span class="WHIT">  </span><span class="NAME">darkseagreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#8fbc8f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="WHIT">  </span><span class="NAME">darkslateblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#483d8b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">  </span><span class="NAME">darkslategray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#2f4f4f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">  </span><span class="NAME">darkslategrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#2f4f4f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">  </span><span class="NAME">darkturquoise</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00ced1"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">  </span><span class="NAME">darkviolet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#9400d3"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">  </span><span class="NAME">deeppink</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff1493"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">  </span><span class="NAME">deepskyblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00bfff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">  </span><span class="NAME">dimgray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#696969"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">  </span><span class="NAME">dimgrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#696969"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">  </span><span class="NAME">dodgerblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#1e90ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">  </span><span class="NAME">firebrick</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#b22222"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">  </span><span class="NAME">floralwhite</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fffaf0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">  </span><span class="NAME">forestgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#228b22"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">  </span><span class="NAME">fuchsia</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff00ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">  </span><span class="NAME">gainsboro</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#dcdcdc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">  </span><span class="NAME">ghostwhite</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f8f8ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">  </span><span class="NAME">gold</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffd700"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">  </span><span class="NAME">goldenrod</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#daa520"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">  </span><span class="NAME">gray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#808080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">  </span><span class="NAME">green</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#008000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>499</span> </span><span class="WHIT">  </span><span class="NAME">greenyellow</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#adff2f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>500</span> </span><span class="WHIT">  </span><span class="NAME">grey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#808080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">  </span><span class="NAME">honeydew</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f0fff0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">  </span><span class="NAME">hotpink</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff69b4"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">  </span><span class="NAME">indianred</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#cd5c5c"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">  </span><span class="NAME">indigo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#4b0082"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="WHIT">  </span><span class="NAME">ivory</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fffff0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">  </span><span class="NAME">khaki</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f0e68c"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">  </span><span class="NAME">lavender</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#e6e6fa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">  </span><span class="NAME">lavenderblush</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fff0f5"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">  </span><span class="NAME">lawngreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#7cfc00"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">  </span><span class="NAME">lemonchiffon</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fffacd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">  </span><span class="NAME">lightblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#add8e6"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">  </span><span class="NAME">lightcoral</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f08080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">  </span><span class="NAME">lightcyan</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#e0ffff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">  </span><span class="NAME">lightgoldenrodyellow</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fafad2"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">  </span><span class="NAME">lightgray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#d3d3d3"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">  </span><span class="NAME">lightgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#90ee90"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">  </span><span class="NAME">lightgrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#d3d3d3"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">  </span><span class="NAME">lightpink</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffb6c1"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">  </span><span class="NAME">lightsalmon</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffa07a"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">  </span><span class="NAME">lightseagreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#20b2aa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">  </span><span class="NAME">lightskyblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#87cefa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">  </span><span class="NAME">lightslategray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#778899"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">  </span><span class="NAME">lightslategrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#778899"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">  </span><span class="NAME">lightsteelblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#b0c4de"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">  </span><span class="NAME">lightyellow</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffffe0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>526</span> </span><span class="WHIT">  </span><span class="NAME">lime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00ff00"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="WHIT">  </span><span class="NAME">limegreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#32cd32"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>528</span> </span><span class="WHIT">  </span><span class="NAME">linen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#faf0e6"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>529</span> </span><span class="WHIT">  </span><span class="NAME">magenta</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff00ff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="WHIT">  </span><span class="NAME">maroon</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#800000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">  </span><span class="NAME">mediumaquamarine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#66cdaa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">  </span><span class="NAME">mediumblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#0000cd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">  </span><span class="NAME">mediumorchid</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ba55d3"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">  </span><span class="NAME">mediumpurple</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#9370db"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">  </span><span class="NAME">mediumseagreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#3cb371"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">  </span><span class="NAME">mediumslateblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#7b68ee"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">  </span><span class="NAME">mediumspringgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00fa9a"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">  </span><span class="NAME">mediumturquoise</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#48d1cc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">  </span><span class="NAME">mediumvioletred</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#c71585"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">  </span><span class="NAME">midnightblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#191970"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">  </span><span class="NAME">mintcream</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f5fffa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">  </span><span class="NAME">mistyrose</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffe4e1"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">  </span><span class="NAME">moccasin</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffe4b5"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">  </span><span class="NAME">navajowhite</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffdead"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">  </span><span class="NAME">navy</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#000080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">  </span><span class="NAME">oldlace</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fdf5e6"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>547</span> </span><span class="WHIT">  </span><span class="NAME">olive</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#808000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">  </span><span class="NAME">olivedrab</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#6b8e23"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>549</span> </span><span class="WHIT">  </span><span class="NAME">orange</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffa500"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>550</span> </span><span class="WHIT">  </span><span class="NAME">orangered</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff4500"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">  </span><span class="NAME">orchid</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#da70d6"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">  </span><span class="NAME">palegoldenrod</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#eee8aa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">  </span><span class="NAME">palegreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#98fb98"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">  </span><span class="NAME">paleturquoise</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#afeeee"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">  </span><span class="NAME">palevioletred</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#db7093"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>556</span> </span><span class="WHIT">  </span><span class="NAME">papayawhip</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffefd5"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">  </span><span class="NAME">peachpuff</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffdab9"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">  </span><span class="NAME">peru</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#cd853f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">  </span><span class="NAME">pink</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffc0cb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">  </span><span class="NAME">plum</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#dda0dd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">  </span><span class="NAME">powderblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#b0e0e6"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">  </span><span class="NAME">purple</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#800080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>563</span> </span><span class="WHIT">  </span><span class="NAME">red</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff0000"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">  </span><span class="NAME">rosybrown</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#bc8f8f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">  </span><span class="NAME">royalblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#4169e1"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">  </span><span class="NAME">saddlebrown</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#8b4513"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">  </span><span class="NAME">salmon</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fa8072"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">  </span><span class="NAME">sandybrown</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f4a460"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>569</span> </span><span class="WHIT">  </span><span class="NAME">seagreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#2e8b57"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">  </span><span class="NAME">seashell</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fff5ee"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">  </span><span class="NAME">sienna</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#a0522d"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">  </span><span class="NAME">silver</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#c0c0c0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">  </span><span class="NAME">skyblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#87ceeb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>574</span> </span><span class="WHIT">  </span><span class="NAME">slateblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#6a5acd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">  </span><span class="NAME">slategray</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#708090"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">  </span><span class="NAME">slategrey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#708090"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">  </span><span class="NAME">snow</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#fffafa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">  </span><span class="NAME">springgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#00ff7f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">  </span><span class="NAME">steelblue</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#4682b4"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">  </span><span class="NAME">tan</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#d2b48c"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">  </span><span class="NAME">teal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#008080"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">  </span><span class="NAME">thistle</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#d8bfd8"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">  </span><span class="NAME">tomato</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ff6347"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">  </span><span class="NAME">turquoise</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#40e0d0"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">  </span><span class="NAME">violet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ee82ee"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">  </span><span class="NAME">wheat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f5deb3"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>587</span> </span><span class="WHIT">  </span><span class="NAME">white</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffffff"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>588</span> </span><span class="WHIT">  </span><span class="NAME">whitesmoke</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#f5f5f5"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>589</span> </span><span class="WHIT">  </span><span class="NAME">yellow</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#ffff00"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="WHIT">  </span><span class="NAME">yellowgreen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"#9acd32"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>591</span> </span><span class="WHIT">  </span><span class="NAME">transparent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">pv.Color.transparent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.rgb</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>593</span> 
+<span class='line'>594</span> </span><span class="COMM">/* Initialized named colors. */</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">names</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Color.names</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">names</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">names</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">(</span><span class="NAME">names</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>599</span> </span></pre></body></html>

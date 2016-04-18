@@ -1,0 +1,317 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Constructs a new, empty force-directed layout. Layouts are not typically
+<span class='line'>  3</span>  * constructed directly; instead, they are added to an existing panel via
+<span class='line'>  4</span>  * {@link pv.Mark#add}.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Implements force-directed network layout as a node-link diagram. This
+<span class='line'>  7</span>  * layout uses the Fruchterman-Reingold algorithm, which applies an attractive
+<span class='line'>  8</span>  * spring force between neighboring nodes, and a repulsive electrical charge
+<span class='line'>  9</span>  * force between all nodes. An additional drag force improves stability of the
+<span class='line'> 10</span>  * simulation. See {@link pv.Force.spring}, {@link pv.Force.drag} and {@link
+<span class='line'> 11</span>  * pv.Force.charge} for more details; note that the n-body charge force is
+<span class='line'> 12</span>  * approximated using the Barnes-Hut algorithm.
+<span class='line'> 13</span>  *
+<span class='line'> 14</span>  * &lt;p>This layout is implemented on top of {@link pv.Simulation}, which can be
+<span class='line'> 15</span>  * used directly for more control over simulation parameters. The simulation
+<span class='line'> 16</span>  * uses Position Verlet integration, which does not compute velocities
+<span class='line'> 17</span>  * explicitly, but allows for easy geometric constraints, such as bounding the
+<span class='line'> 18</span>  * nodes within the layout panel. Many of the configuration properties supported
+<span class='line'> 19</span>  * by this layout are simply passed through to the underlying forces and
+<span class='line'> 20</span>  * constraints of the simulation.
+<span class='line'> 21</span>  *
+<span class='line'> 22</span>  * &lt;p>Force layouts are typically interactive. The gradual movement of the nodes
+<span class='line'> 23</span>  * as they stabilize to a local stress minimum can help reveal the structure of
+<span class='line'> 24</span>  * the network, as can {@link pv.Behavior.drag}, which allows the user to pick
+<span class='line'> 25</span>  * up nodes and reposition them while the physics simulation continues. This
+<span class='line'> 26</span>  * layout can also be used with pan &amp; zoom behaviors for interaction.
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * &lt;p>To facilitate interaction, this layout by default automatically re-renders
+<span class='line'> 29</span>  * using a &lt;tt>setInterval&lt;/tt> every 42 milliseconds. This can be disabled via
+<span class='line'> 30</span>  * the &lt;tt>iterations&lt;/tt> property, which if non-null specifies the number of
+<span class='line'> 31</span>  * simulation iterations to run before the force-directed layout is finalized.
+<span class='line'> 32</span>  * Be careful not to use too high an iteration count, as this can lead to an
+<span class='line'> 33</span>  * annoying delay on page load.
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  * &lt;p>As with other network layouts, the network data can be updated
+<span class='line'> 36</span>  * dynamically, provided the property cache is reset. See
+<span class='line'> 37</span>  * {@link pv.Layout.Network} for details. New nodes are initialized with random
+<span class='line'> 38</span>  * positions near the center. Alternatively, positions can be specified manually
+<span class='line'> 39</span>  * by setting the &lt;tt>x&lt;/tt> and &lt;tt>y&lt;/tt> attributes on nodes.
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  * @extends pv.Layout.Network
+<span class='line'> 42</span>  * @see &lt;a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.13.8444&rep=rep1&type=pdf"
+<span class='line'> 43</span>  * >"Graph Drawing by Force-directed Placement"&lt;/a> by T. Fruchterman &amp;
+<span class='line'> 44</span>  * E. Reingold, Software--Practice &amp; Experience, November 1991.
+<span class='line'> 45</span>  */</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="NAME">pv.Layout.Force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">  </span><span class="NAME">pv.Layout.Network.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> 
+<span class='line'> 49</span> </span><span class="WHIT">  </span><span class="COMM">/* Force-directed graphs can be messy, so reduce the link width. */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">  </span><span class="NAME">this.link.lineWidth</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.sqrt</span><span class="PUNC">(</span><span class="NAME">p.linkValue</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">1.5</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="NAME">this.label.textAlign</span><span class="PUNC">(</span><span class="STRN">"center"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="NAME">pv.Layout.Force.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Layout.Network</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"bound"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Boolean</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"iterations"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"dragConstant"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"chargeConstant"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"chargeMinDistance"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"chargeMaxDistance"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"chargeTheta"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"springConstant"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"springDamping"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"springLength"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * The bound parameter; true if nodes should be constrained within the layout
+<span class='line'> 68</span>  * panel. Bounding is disabled by default. Currently the layout does not observe
+<span class='line'> 69</span>  * the radius of the nodes; strictly speaking, only the center of the node is
+<span class='line'> 70</span>  * constrained to be within the panel, with an additional 6-pixel offset for
+<span class='line'> 71</span>  * padding. A future enhancement could extend the bound constraint to observe
+<span class='line'> 72</span>  * the node's radius, which would also support bounding for variable-size nodes.
+<span class='line'> 73</span>  *
+<span class='line'> 74</span>  * &lt;p>Note that if this layout is used in conjunction with pan &amp; zoom
+<span class='line'> 75</span>  * behaviors, those behaviors should have their bound parameter set to the same
+<span class='line'> 76</span>  * value.
+<span class='line'> 77</span>  *
+<span class='line'> 78</span>  * @type boolean
+<span class='line'> 79</span>  * @name pv.Layout.Force.prototype.bound
+<span class='line'> 80</span>  */</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="COMM">/**
+<span class='line'> 83</span>  * The number of simulation iterations to run, or null if this layout is
+<span class='line'> 84</span>  * interactive. Force-directed layouts are interactive by default, using a
+<span class='line'> 85</span>  * &lt;tt>setInterval&lt;/tt> to advance the physics simulation and re-render
+<span class='line'> 86</span>  * automatically.
+<span class='line'> 87</span>  *
+<span class='line'> 88</span>  * @type number
+<span class='line'> 89</span>  * @name pv.Layout.Force.prototype.iterations
+<span class='line'> 90</span>  */</span><span class="WHIT">
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span><span class="COMM">/**
+<span class='line'> 93</span>  * The drag constant, in the range [0,1]. A value of 0 means no drag (a
+<span class='line'> 94</span>  * perfectly frictionless environment), while a value of 1 means friction
+<span class='line'> 95</span>  * immediately cancels all momentum. The default value is 0.1, which provides a
+<span class='line'> 96</span>  * minimum amount of drag that helps stabilize bouncy springs; lower values may
+<span class='line'> 97</span>  * result in excessive bounciness, while higher values cause the simulation to
+<span class='line'> 98</span>  * take longer to converge.
+<span class='line'> 99</span>  *
+<span class='line'>100</span>  * @type number
+<span class='line'>101</span>  * @name pv.Layout.Force.prototype.dragConstant
+<span class='line'>102</span>  * @see pv.Force.drag#constant
+<span class='line'>103</span>  */</span><span class="WHIT">
+<span class='line'>104</span> 
+<span class='line'>105</span> </span><span class="COMM">/**
+<span class='line'>106</span>  * The charge constant, which should be a negative number. The default value is
+<span class='line'>107</span>  * -40; more negative values will result in a stronger repulsive force, which
+<span class='line'>108</span>  * may lead to faster convergence at the risk of instability. Too strong
+<span class='line'>109</span>  * repulsive charge forces can cause comparatively weak springs to be stretched
+<span class='line'>110</span>  * well beyond their rest length, emphasizing global structure over local
+<span class='line'>111</span>  * structure. A nonnegative value will break the Fruchterman-Reingold algorithm,
+<span class='line'>112</span>  * and is for entertainment purposes only.
+<span class='line'>113</span>  *
+<span class='line'>114</span>  * @type number
+<span class='line'>115</span>  * @name pv.Layout.Force.prototype.chargeConstant
+<span class='line'>116</span>  * @see pv.Force.charge#constant
+<span class='line'>117</span>  */</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="COMM">/**
+<span class='line'>120</span>  * The minimum distance at which charge forces are applied. The default minimum
+<span class='line'>121</span>  * distance of 2 avoids applying forces that are two strong; because the physics
+<span class='line'>122</span>  * simulation is run at discrete time intervals, it is possible for two same-
+<span class='line'>123</span>  * charged particles to become very close or even a singularity! Since the
+<span class='line'>124</span>  * charge force is inversely proportional to the square of the distance, very
+<span class='line'>125</span>  * small distances can break the simulation.
+<span class='line'>126</span>  *
+<span class='line'>127</span>  * &lt;p>In rare cases, two particles can become stuck on top of each other, as a
+<span class='line'>128</span>  * minimum distance threshold will prevent the charge force from repelling them.
+<span class='line'>129</span>  * However, this occurs very rarely because other forces and momentum typically
+<span class='line'>130</span>  * cause the particles to become separated again, at which point the repulsive
+<span class='line'>131</span>  * charge force kicks in.
+<span class='line'>132</span>  *
+<span class='line'>133</span>  * @type number
+<span class='line'>134</span>  * @name pv.Layout.Force.prototype.chargeMinDistance
+<span class='line'>135</span>  * @see pv.Force.charge#domain
+<span class='line'>136</span>  */</span><span class="WHIT">
+<span class='line'>137</span> 
+<span class='line'>138</span> </span><span class="COMM">/**
+<span class='line'>139</span>  * The maximum distance at which charge forces are applied. This improves
+<span class='line'>140</span>  * performance by ignoring weak charge forces at great distances. Note that this
+<span class='line'>141</span>  * parameter is partly redundant, as the Barnes-Hut algorithm for n-body forces
+<span class='line'>142</span>  * already improves performance for far-away particles through approximation.
+<span class='line'>143</span>  *
+<span class='line'>144</span>  * @type number
+<span class='line'>145</span>  * @name pv.Layout.Force.prototype.chargeMaxDistance
+<span class='line'>146</span>  * @see pv.Force.charge#domain
+<span class='line'>147</span>  */</span><span class="WHIT">
+<span class='line'>148</span> 
+<span class='line'>149</span> </span><span class="COMM">/**
+<span class='line'>150</span>  * The Barnes-Hut approximation factor. The Barnes-Hut approximation criterion
+<span class='line'>151</span>  * is the ratio of the size of the quadtree node to the distance from the point
+<span class='line'>152</span>  * to the node's center of mass is beneath some threshold. The default value is
+<span class='line'>153</span>  * 0.9.
+<span class='line'>154</span>  *
+<span class='line'>155</span>  * @type number
+<span class='line'>156</span>  * @name pv.Layout.Force.prototype.chargeTheta
+<span class='line'>157</span>  * @see pv.Force.charge#theta
+<span class='line'>158</span>  */</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="COMM">/**
+<span class='line'>161</span>  * The spring constant, which should be a positive number. The default value is
+<span class='line'>162</span>  * 0.1; greater values will result in a stronger attractive force, which may
+<span class='line'>163</span>  * lead to faster convergence at the risk of instability. Too strong spring
+<span class='line'>164</span>  * forces can cause comparatively weak charge forces to be ignored, emphasizing
+<span class='line'>165</span>  * local structure over global structure. A nonpositive value will break the
+<span class='line'>166</span>  * Fruchterman-Reingold algorithm, and is for entertainment purposes only.
+<span class='line'>167</span>  *
+<span class='line'>168</span>  * &lt;p>The spring tension is automatically normalized using the inverse square
+<span class='line'>169</span>  * root of the maximum link degree of attached nodes.
+<span class='line'>170</span>  *
+<span class='line'>171</span>  * @type number
+<span class='line'>172</span>  * @name pv.Layout.Force.prototype.springConstant
+<span class='line'>173</span>  * @see pv.Force.spring#constant
+<span class='line'>174</span>  */</span><span class="WHIT">
+<span class='line'>175</span> 
+<span class='line'>176</span> </span><span class="COMM">/**
+<span class='line'>177</span>  * The spring damping factor, in the range [0,1]. Damping functions identically
+<span class='line'>178</span>  * to drag forces, damping spring bounciness by applying a force in the opposite
+<span class='line'>179</span>  * direction of attached nodes' velocities. The default value is 0.3.
+<span class='line'>180</span>  *
+<span class='line'>181</span>  * &lt;p>The spring damping is automatically normalized using the inverse square
+<span class='line'>182</span>  * root of the maximum link degree of attached nodes.
+<span class='line'>183</span>  *
+<span class='line'>184</span>  * @type number
+<span class='line'>185</span>  * @name pv.Layout.Force.prototype.springDamping
+<span class='line'>186</span>  * @see pv.Force.spring#damping
+<span class='line'>187</span>  */</span><span class="WHIT">
+<span class='line'>188</span> 
+<span class='line'>189</span> </span><span class="COMM">/**
+<span class='line'>190</span>  * The spring rest length. The default value is 20 pixels. Larger values may be
+<span class='line'>191</span>  * appropriate if the layout panel is larger, or if the nodes are rendered
+<span class='line'>192</span>  * larger than the default dot size of 20.
+<span class='line'>193</span>  *
+<span class='line'>194</span>  * @type number
+<span class='line'>195</span>  * @name pv.Layout.Force.prototype.springLength
+<span class='line'>196</span>  * @see pv.Force.spring#length
+<span class='line'>197</span>  */</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="COMM">/**
+<span class='line'>200</span>  * Default properties for force-directed layouts. The default drag constant is
+<span class='line'>201</span>  * 0.1, the default charge constant is -40 (with a domain of [2, 500] and theta
+<span class='line'>202</span>  * of 0.9), and the default spring constant is 0.1 (with a damping of 0.3 and a
+<span class='line'>203</span>  * rest length of 20).
+<span class='line'>204</span>  *
+<span class='line'>205</span>  * @type pv.Layout.Force
+<span class='line'>206</span>  */</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="NAME">pv.Layout.Force.prototype.defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Layout.Force</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="NAME">pv.Layout.Network.prototype.defaults</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">dragConstant</span><span class="PUNC">(</span><span class="PUNC">.</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">chargeConstant</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NUMB">40</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">chargeMinDistance</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">chargeMaxDistance</span><span class="PUNC">(</span><span class="NUMB">500</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">chargeTheta</span><span class="PUNC">(</span><span class="PUNC">.</span><span class="NUMB">9</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">springConstant</span><span class="PUNC">(</span><span class="PUNC">.</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">springDamping</span><span class="PUNC">(</span><span class="PUNC">.</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">springLength</span><span class="PUNC">(</span><span class="NUMB">20</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> 
+<span class='line'>218</span> </span><span class="COMM">/** @private Initialize the physics simulation. */</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="NAME">pv.Layout.Force.prototype.buildImplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>220</span> 
+<span class='line'>221</span> </span><span class="WHIT">  </span><span class="COMM">/* Any cached interactive layouts need to be rebound for the timer. */</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">pv.Layout.Network.prototype.buildImplied.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.$force</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">f</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">      </span><span class="NAME">f.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.binds.$force</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">      </span><span class="NAME">this.binds.$force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">f</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>230</span> 
+<span class='line'>231</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">that</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">      </span><span class="NAME">nodes</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.nodes</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">      </span><span class="NAME">links</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.links</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">      </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.iterations</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">      </span><span class="NAME">w</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.width</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">      </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> 
+<span class='line'>238</span> </span><span class="WHIT">  </span><span class="COMM">/* Initialize positions randomly near the center. */</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">  </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">n</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">nodes.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">    </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nodes</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">n.x</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">n.x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">w</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">40</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">n.y</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">n.y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">40</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>244</span> 
+<span class='line'>245</span> </span><span class="WHIT">  </span><span class="COMM">/* Initialize the simulation. */</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sim</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.simulation</span><span class="PUNC">(</span><span class="NAME">nodes</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="WHIT">  </span><span class="COMM">/* Drag force. */</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">  </span><span class="NAME">sim.force</span><span class="PUNC">(</span><span class="NAME">pv.Force.drag</span><span class="PUNC">(</span><span class="NAME">s.dragConstant</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>250</span> 
+<span class='line'>251</span> </span><span class="WHIT">  </span><span class="COMM">/* Charge (repelling) force. */</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">  </span><span class="NAME">sim.force</span><span class="PUNC">(</span><span class="NAME">pv.Force.charge</span><span class="PUNC">(</span><span class="NAME">s.chargeConstant</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">domain</span><span class="PUNC">(</span><span class="NAME">s.chargeMinDistance</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">s.chargeMaxDistance</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">theta</span><span class="PUNC">(</span><span class="NAME">s.chargeTheta</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>255</span> 
+<span class='line'>256</span> </span><span class="WHIT">  </span><span class="COMM">/* Spring (attracting) force. */</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">  </span><span class="NAME">sim.force</span><span class="PUNC">(</span><span class="NAME">pv.Force.spring</span><span class="PUNC">(</span><span class="NAME">s.springConstant</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">damping</span><span class="PUNC">(</span><span class="NAME">s.springDamping</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">(</span><span class="NAME">s.springLength</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">      </span><span class="PUNC">.</span><span class="NAME">links</span><span class="PUNC">(</span><span class="NAME">links</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> 
+<span class='line'>262</span> </span><span class="WHIT">  </span><span class="COMM">/* Position constraint (for interactive dragging). */</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">  </span><span class="NAME">sim.constraint</span><span class="PUNC">(</span><span class="NAME">pv.Constraint.position</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>264</span> 
+<span class='line'>265</span> </span><span class="WHIT">  </span><span class="COMM">/* Optionally add bound constraint. TODO: better padding. */</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s.bound</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">    </span><span class="NAME">sim.constraint</span><span class="PUNC">(</span><span class="NAME">pv.Constraint.bound</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">x</span><span class="PUNC">(</span><span class="NUMB">6</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">w</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">y</span><span class="PUNC">(</span><span class="NUMB">6</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">h</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>269</span> 
+<span class='line'>270</span> </span><span class="WHIT">  </span><span class="COMM">/** @private Returns the speed of the given node, to determine cooling. */</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">  </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">speed</span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">n.fix</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">n.vx</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">n.vx</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">n.vy</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">n.vy</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>274</span> 
+<span class='line'>275</span> </span><span class="WHIT">  </span><span class="COMM">/*
+<span class='line'>276</span>    * If the iterations property is null (the default), the layout is
+<span class='line'>277</span>    * interactive. The simulation is run until the fastest particle drops below
+<span class='line'>278</span>    * an arbitrary minimum speed. Although the timer keeps firing, this speed
+<span class='line'>279</span>    * calculation is fast so there is minimal CPU overhead. Note: if a particle
+<span class='line'>280</span>    * is fixed for interactivity, treat this as a high speed and resume
+<span class='line'>281</span>    * simulation.
+<span class='line'>282</span>    */</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="NAME">sim.step</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// compute initial previous velocities</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="NAME">sim.step</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// compute initial velocities</span><span class="WHIT">
+<span class='line'>286</span> 
+<span class='line'>287</span> </span><span class="WHIT">    </span><span class="COMM">/* Add the simulation state to the bound list. */</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">s.$force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.binds.$force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">      </span><span class="NAME">next</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.binds.$force</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">      </span><span class="NAME">nodes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">nodes</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">      </span><span class="NAME">min</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e</span><span class="PUNC">-</span><span class="NUMB">4</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">links.length</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">      </span><span class="NAME">sim</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sim</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>294</span> 
+<span class='line'>295</span> </span><span class="WHIT">    </span><span class="COMM">/* Start the timer, if not already started. */</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.$timer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this.$timer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">setInterval</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">      </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">render</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">that.binds.$force</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">f</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">f.next</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">pv.max</span><span class="PUNC">(</span><span class="NAME">f.nodes</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">speed</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">f.min</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">          </span><span class="NAME">f.sim.step</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">          </span><span class="NAME">render</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">render</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">that.render</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">42</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">    </span><span class="NAME">sim.step</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>310</span> </span></pre></body></html>

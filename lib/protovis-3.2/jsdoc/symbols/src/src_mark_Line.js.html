@@ -1,0 +1,203 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Constructs a new line mark with default properties. Lines are not typically
+<span class='line'>  3</span>  * constructed directly, but by adding to a panel or an existing mark via
+<span class='line'>  4</span>  * {@link pv.Mark#add}.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents a series of connected line segments, or &lt;i>polyline&lt;/i>,
+<span class='line'>  7</span>  * that can be stroked with a configurable color and thickness. Each
+<span class='line'>  8</span>  * articulation point in the line corresponds to a datum; for &lt;i>n&lt;/i> points,
+<span class='line'>  9</span>  * &lt;i>n&lt;/i>-1 connected line segments are drawn. The point is positioned using
+<span class='line'> 10</span>  * the box model. Arbitrary paths are also possible, allowing radar plots and
+<span class='line'> 11</span>  * other custom visualizations.
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * &lt;p>Like areas, lines can be stroked and filled with arbitrary colors. In most
+<span class='line'> 14</span>  * cases, lines are only stroked, but the fill style can be used to construct
+<span class='line'> 15</span>  * arbitrary polygons.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * &lt;p>See also the &lt;a href="../../api/Line.html">Line guide&lt;/a>.
+<span class='line'> 18</span>  *
+<span class='line'> 19</span>  * @extends pv.Mark
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="NAME">pv.Line</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">  </span><span class="NAME">pv.Mark.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="NAME">pv.Line.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Mark</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"lineWidth"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"lineJoin"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"strokeStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"fillStyle"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.color</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"segmented"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Boolean</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"interpolate"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"eccentricity"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"tension"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="NAME">pv.Line.prototype.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"line"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="COMM">/**
+<span class='line'> 38</span>  * The width of stroked lines, in pixels; used in conjunction with
+<span class='line'> 39</span>  * &lt;tt>strokeStyle&lt;/tt> to stroke the line.
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  * @type number
+<span class='line'> 42</span>  * @name pv.Line.prototype.lineWidth
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * The style of stroked lines; used in conjunction with &lt;tt>lineWidth&lt;/tt> to
+<span class='line'> 47</span>  * stroke the line. The default value of this property is a categorical color.
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * @type string
+<span class='line'> 50</span>  * @name pv.Line.prototype.strokeStyle
+<span class='line'> 51</span>  * @see pv.color
+<span class='line'> 52</span>  */</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="COMM">/**
+<span class='line'> 55</span>  * The type of corners where two lines meet. Accepted values are "bevel",
+<span class='line'> 56</span>  * "round" and "miter". The default value is "miter".
+<span class='line'> 57</span>  *
+<span class='line'> 58</span>  * &lt;p>For segmented lines, only "miter" joins and "linear" interpolation are
+<span class='line'> 59</span>  * currently supported. Any other value, including null, will disable joins,
+<span class='line'> 60</span>  * producing disjoint line segments. Note that the miter joins must be computed
+<span class='line'> 61</span>  * manually (at least in the current SVG renderer); since this calculation may
+<span class='line'> 62</span>  * be expensive and unnecessary for small lines, specifying null can improve
+<span class='line'> 63</span>  * performance significantly.
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  * &lt;p>This property is &lt;i>fixed&lt;/i>. See {@link pv.Mark}.
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * @type string
+<span class='line'> 68</span>  * @name pv.Line.prototype.lineJoin
+<span class='line'> 69</span>  */</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="COMM">/**
+<span class='line'> 72</span>  * The line fill style; if non-null, the interior of the line is closed and
+<span class='line'> 73</span>  * filled with the specified color. The default value of this property is a
+<span class='line'> 74</span>  * null, meaning that lines are not filled by default.
+<span class='line'> 75</span>  *
+<span class='line'> 76</span>  * &lt;p>This property is &lt;i>fixed&lt;/i>. See {@link pv.Mark}.
+<span class='line'> 77</span>  *
+<span class='line'> 78</span>  * @type string
+<span class='line'> 79</span>  * @name pv.Line.prototype.fillStyle
+<span class='line'> 80</span>  * @see pv.color
+<span class='line'> 81</span>  */</span><span class="WHIT">
+<span class='line'> 82</span> 
+<span class='line'> 83</span> </span><span class="COMM">/**
+<span class='line'> 84</span>  * Whether the line is segmented; whether variations in stroke style, line width
+<span class='line'> 85</span>  * and the other properties are treated as fixed. Rendering segmented lines is
+<span class='line'> 86</span>  * noticeably slower than non-segmented lines.
+<span class='line'> 87</span>  *
+<span class='line'> 88</span>  * &lt;p>This property is &lt;i>fixed&lt;/i>. See {@link pv.Mark}.
+<span class='line'> 89</span>  *
+<span class='line'> 90</span>  * @type boolean
+<span class='line'> 91</span>  * @name pv.Line.prototype.segmented
+<span class='line'> 92</span>  */</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * How to interpolate between values. Linear interpolation ("linear") is the
+<span class='line'> 96</span>  * default, producing a straight line between points. For piecewise constant
+<span class='line'> 97</span>  * functions (i.e., step functions), either "step-before" or "step-after" can be
+<span class='line'> 98</span>  * specified. To draw a clockwise circular arc between points, specify "polar";
+<span class='line'> 99</span>  * to draw a counterclockwise circular arc between points, specify
+<span class='line'>100</span>  * "polar-reverse". To draw open uniform b-splines, specify "basis". To draw
+<span class='line'>101</span>  * cardinal splines, specify "cardinal"; see also {@link #tension}.
+<span class='line'>102</span>  *
+<span class='line'>103</span>  * &lt;p>This property is &lt;i>fixed&lt;/i>. See {@link pv.Mark}.
+<span class='line'>104</span>  *
+<span class='line'>105</span>  * @type string
+<span class='line'>106</span>  * @name pv.Line.prototype.interpolate
+<span class='line'>107</span>  */</span><span class="WHIT">
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="COMM">/**
+<span class='line'>110</span>  * The eccentricity of polar line segments; used in conjunction with
+<span class='line'>111</span>  * interpolate("polar"). The default value of 0 means that line segments are
+<span class='line'>112</span>  * drawn as circular arcs. A value of 1 draws a straight line. A value between 0
+<span class='line'>113</span>  * and 1 draws an elliptical arc with the given eccentricity.
+<span class='line'>114</span>  *
+<span class='line'>115</span>  * @type number
+<span class='line'>116</span>  * @name pv.Line.prototype.eccentricity
+<span class='line'>117</span>  */</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="COMM">/**
+<span class='line'>120</span>  * The tension of cardinal splines; used in conjunction with
+<span class='line'>121</span>  * interpolate("cardinal"). A value between 0 and 1 draws cardinal splines with
+<span class='line'>122</span>  * the given tension. In some sense, the tension can be interpreted as the
+<span class='line'>123</span>  * "length" of the tangent; a tension of 1 will yield all zero tangents (i.e.,
+<span class='line'>124</span>  * linear interpolation), and a tension of 0 yields a Catmull-Rom spline. The
+<span class='line'>125</span>  * default value is 0.7.
+<span class='line'>126</span>  *
+<span class='line'>127</span>  * &lt;p>This property is &lt;i>fixed&lt;/i>. See {@link pv.Mark}.
+<span class='line'>128</span>  *
+<span class='line'>129</span>  * @type number
+<span class='line'>130</span>  * @name pv.Line.prototype.tension
+<span class='line'>131</span>  */</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="COMM">/**
+<span class='line'>134</span>  * Default properties for lines. By default, there is no fill and the stroke
+<span class='line'>135</span>  * style is a categorical color. The default interpolation is linear.
+<span class='line'>136</span>  *
+<span class='line'>137</span>  * @type pv.Line
+<span class='line'>138</span>  */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="NAME">pv.Line.prototype.defaults</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">pv.Line</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">extend</span><span class="PUNC">(</span><span class="NAME">pv.Mark.prototype.defaults</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">lineJoin</span><span class="PUNC">(</span><span class="STRN">"miter"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">lineWidth</span><span class="PUNC">(</span><span class="NUMB">1.5</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">strokeStyle</span><span class="PUNC">(</span><span class="NAME">pv.Colors.category10</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">by</span><span class="PUNC">(</span><span class="NAME">pv.parent</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">interpolate</span><span class="PUNC">(</span><span class="STRN">"linear"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">eccentricity</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">tension</span><span class="PUNC">(</span><span class="PUNC">.</span><span class="NUMB">7</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> 
+<span class='line'>148</span> </span><span class="COMM">/** @private Reuse Area's implementation for segmented bind & build. */</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="NAME">pv.Line.prototype.bind</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Area.prototype.bind</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="NAME">pv.Line.prototype.buildInstance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Area.prototype.buildInstance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> 
+<span class='line'>152</span> </span><span class="COMM">/**
+<span class='line'>153</span>  * Constructs a new line anchor with default properties. Lines support five
+<span class='line'>154</span>  * different anchors:&lt;ul>
+<span class='line'>155</span>  *
+<span class='line'>156</span>  * &lt;li>top
+<span class='line'>157</span>  * &lt;li>left
+<span class='line'>158</span>  * &lt;li>center
+<span class='line'>159</span>  * &lt;li>bottom
+<span class='line'>160</span>  * &lt;li>right
+<span class='line'>161</span>  *
+<span class='line'>162</span>  * &lt;/ul>In addition to positioning properties (left, right, top bottom), the
+<span class='line'>163</span>  * anchors support text rendering properties (text-align, text-baseline). Text is
+<span class='line'>164</span>  * rendered to appear outside the line. Note that this behavior is different
+<span class='line'>165</span>  * from other mark anchors, which default to rendering text &lt;i>inside&lt;/i> the
+<span class='line'>166</span>  * mark.
+<span class='line'>167</span>  *
+<span class='line'>168</span>  * &lt;p>For consistency with the other mark types, the anchor positions are
+<span class='line'>169</span>  * defined in terms of their opposite edge. For example, the top anchor defines
+<span class='line'>170</span>  * the bottom property, such that a bar added to the top anchor grows upward.
+<span class='line'>171</span>  *
+<span class='line'>172</span>  * @param {string} name the anchor name; either a string or a property function.
+<span class='line'>173</span>  * @returns {pv.Anchor}
+<span class='line'>174</span>  */</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="NAME">pv.Line.prototype.anchor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pv.Area.prototype.anchor.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">textAlign</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.name</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"left"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"right"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"bottom"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"top"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"center"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"center"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"right"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"left"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">textBaseline</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.name</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"right"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"left"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"center"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"middle"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"top"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"bottom"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">          </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"bottom"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"top"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span></pre></body></html>

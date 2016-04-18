@@ -1,0 +1,56 @@
+var h = 1000;
+var w = 1450;
+
+var radar_arcs = [
+  {'r': 100, 'name': 'ADOPT'},
+  {'r': 200, 'name': 'TRIAL'},
+  {'r': 300, 'name': 'ASSESS'},
+  {'r': 400, 'name': 'HOLD'}
+];
+
+// movement:
+//   t = moved (triangle)
+//   c = stayed put (circle)
+//
+// blipSize: 
+//  This is optional, if you omit this property, then blip size will be 70.
+//
+// url:
+//  This is optional, if you add it then blips will be clickable to some URL.
+//
+// pc: (polar coordinates)
+//  r = distance away from origin ("radial coordinate")
+//     - Each level is 100 points away from origin
+//  t = angle of the point from origin ("angular coordinate")
+//     - 0 degrees is due east
+//
+var radar_data = [
+  { 
+    "quadrant": "Techniques; Frameworks & Tools",
+    "left" : 45,
+    "top" : 188,
+    "color" : "#8FA227",
+    "items" : {{ techniques }}
+  },
+  { 
+    "quadrant": "Data Management",
+    "left": w-300+30,
+    "top" : 188,
+    "color" : "#587486",
+    "items" : {{ data }}
+  },
+  {   
+    "quadrant": "Platforms & Infrastructure",
+    "left" :45,
+    "top" : (h/2 + 38),
+    "color" : "#DC6F1D",
+    "items" : {{ platforms }}
+  },
+  { 
+    "quadrant": "Languages",
+    "color" : "#B70062",
+    "left"  : (w-300+30),
+    "top" :   (h/2 + 38),
+    "items" : {{ languages }}
+  }
+];

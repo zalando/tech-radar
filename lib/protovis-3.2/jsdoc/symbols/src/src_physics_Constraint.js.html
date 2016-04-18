@@ -1,0 +1,34 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Abstract; see an implementing class.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @class Represents a constraint that acts on particles. Note that this
+<span class='line'>  5</span>  * interface does not specify how to bind a constraint to specific particles; in
+<span class='line'>  6</span>  * general, constraints are applied globally to all particles. However, some
+<span class='line'>  7</span>  * constraints may be applied to specific particles or between particles, such
+<span class='line'>  8</span>  * as position constraints, through additional specialization.
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  * @see pv.Simulation
+<span class='line'> 11</span>  * @see pv.Particle
+<span class='line'> 12</span>  * @see pv.Constraint.bound
+<span class='line'> 13</span>  * @see pv.Constraint.collision
+<span class='line'> 14</span>  * @see pv.Constraint.position
+<span class='line'> 15</span>  */</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="NAME">pv.Constraint</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 17</span> 
+<span class='line'> 18</span> </span><span class="COMM">/**
+<span class='line'> 19</span>  * Applies this constraint to the specified particles.
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * @function
+<span class='line'> 22</span>  * @name pv.Constraint.prototype.apply
+<span class='line'> 23</span>  * @param {pv.Particle} particles particles to which to apply this constraint.
+<span class='line'> 24</span>  * @param {pv.Quadtree} q a quadtree for spatial acceleration.
+<span class='line'> 25</span>  * @returns {pv.Constraint} this.
+<span class='line'> 26</span>  */</span><span class="WHIT">
+<span class='line'> 27</span> </span></pre></body></html>

@@ -1,0 +1,64 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Constructs a new, empty layout with default properties. Layouts are not
+<span class='line'>  3</span>  * typically constructed directly; instead, a concrete subclass is added to an
+<span class='line'>  4</span>  * existing panel via {@link pv.Mark#add}.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents an abstract layout, encapsulating a visualization technique
+<span class='line'>  7</span>  * such as a streamgraph or treemap. Layouts are themselves containers,
+<span class='line'>  8</span>  * extending from {@link pv.Panel}, and defining a set of mark prototypes as
+<span class='line'>  9</span>  * children. These mark prototypes provide default properties that together
+<span class='line'> 10</span>  * implement the given visualization technique.
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * &lt;p>Layouts do not initially contain any marks; any exported marks (such as a
+<span class='line'> 13</span>  * network layout's &lt;tt>link&lt;/tt> and &lt;tt>node&lt;/tt>) are intended to be used as
+<span class='line'> 14</span>  * prototypes. By adding a concrete mark, such as a {@link pv.Bar}, to the
+<span class='line'> 15</span>  * appropriate mark prototype, the mark is added to the layout and inherits the
+<span class='line'> 16</span>  * given properties. This approach allows further customization of the layout,
+<span class='line'> 17</span>  * either by choosing a different mark type to add, or more simply by overriding
+<span class='line'> 18</span>  * some of the layout's defined properties.
+<span class='line'> 19</span>  *
+<span class='line'> 20</span>  * &lt;p>Each concrete layout, such as treemap or circle-packing, has different
+<span class='line'> 21</span>  * behavior and may export different mark prototypes, depending on what marks
+<span class='line'> 22</span>  * are typically needed to render the desired visualization. Therefore it is
+<span class='line'> 23</span>  * important to understand how each layout is structured, such that the provided
+<span class='line'> 24</span>  * mark prototypes are used appropriately.
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * &lt;p>In addition to the mark prototypes, layouts may define custom properties
+<span class='line'> 27</span>  * that affect the overall behavior of the layout. For example, a treemap layout
+<span class='line'> 28</span>  * might use a property to specify which layout algorithm to use. These
+<span class='line'> 29</span>  * properties are just like other mark properties, and can be defined as
+<span class='line'> 30</span>  * constants or as functions. As with panels, the data property can be used to
+<span class='line'> 31</span>  * replicate layouts, and properties can be defined to in terms of layout data.
+<span class='line'> 32</span>  *
+<span class='line'> 33</span>  * @extends pv.Panel
+<span class='line'> 34</span>  */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="NAME">pv.Layout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">  </span><span class="NAME">pv.Panel.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> 
+<span class='line'> 39</span> </span><span class="NAME">pv.Layout.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">pv.Panel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="COMM">/**
+<span class='line'> 42</span>  * @private Defines a local property with the specified name and cast. Note that
+<span class='line'> 43</span>  * although the property method is only defined locally, the cast function is
+<span class='line'> 44</span>  * global, which is necessary since properties are inherited!
+<span class='line'> 45</span>  *
+<span class='line'> 46</span>  * @param {string} name the property name.
+<span class='line'> 47</span>  * @param {function} [cast] the cast function for this property.
+<span class='line'> 48</span>  */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="NAME">pv.Layout.prototype.property</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cast</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.hasOwnProperty</span><span class="PUNC">(</span><span class="STRN">"properties"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="NAME">this.properties</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.extend</span><span class="PUNC">(</span><span class="NAME">this.properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="NAME">this.properties</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">  </span><span class="NAME">this.propertyMethod</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.Mark.cast</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cast</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span></pre></body></html>

@@ -1,0 +1,150 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a log scale for the specified domain. The arguments to this
+<span class='line'>  3</span>  * constructor are optional, and equivalent to calling {@link #domain}.
+<span class='line'>  4</span>  * The default domain is [1,10] and the default range is [0,1].
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents a log scale. &lt;style
+<span class='line'>  7</span>  * type="text/css">sub{line-height:0}&lt;/style> Most commonly, a log scale
+<span class='line'>  8</span>  * represents a 1-dimensional log transformation from a numeric domain of input
+<span class='line'>  9</span>  * data [&lt;i>d&lt;sub>0&lt;/sub>&lt;/i>, &lt;i>d&lt;sub>1&lt;/sub>&lt;/i>] to a numeric range of
+<span class='line'> 10</span>  * pixels [&lt;i>r&lt;sub>0&lt;/sub>&lt;/i>, &lt;i>r&lt;sub>1&lt;/sub>&lt;/i>]. The equation for such a
+<span class='line'> 11</span>  * scale is:
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * &lt;blockquote>&lt;i>f(x) = (log(x) - log(d&lt;sub>0&lt;/sub>)) / (log(d&lt;sub>1&lt;/sub>) -
+<span class='line'> 14</span>  * log(d&lt;sub>0&lt;/sub>)) * (r&lt;sub>1&lt;/sub> - r&lt;sub>0&lt;/sub>) +
+<span class='line'> 15</span>  * r&lt;sub>0&lt;/sub>&lt;/i>&lt;/blockquote>
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * where &lt;i>log(x)&lt;/i> represents the zero-symmetric logarthim of &lt;i>x&lt;/i> using
+<span class='line'> 18</span>  * the scale's associated base (default: 10, see {@link pv.logSymmetric}). For
+<span class='line'> 19</span>  * example, a log scale from the domain [1, 100] to range [0, 640]:
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * &lt;blockquote>&lt;i>f(x) = (log(x) - log(1)) / (log(100) - log(1)) * (640 - 0) + 0&lt;/i>&lt;br>
+<span class='line'> 22</span>  * &lt;i>f(x) = log(x) / 2 * 640&lt;/i>&lt;br>
+<span class='line'> 23</span>  * &lt;i>f(x) = log(x) * 320&lt;/i>&lt;br>
+<span class='line'> 24</span>  * &lt;/blockquote>
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * Thus, saying
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * &lt;pre>    .height(function(d) Math.log(d) * 138.974)&lt;/pre>
+<span class='line'> 29</span>  *
+<span class='line'> 30</span>  * is equivalent to
+<span class='line'> 31</span>  *
+<span class='line'> 32</span>  * &lt;pre>    .height(pv.Scale.log(1, 100).range(0, 640))&lt;/pre>
+<span class='line'> 33</span>  *
+<span class='line'> 34</span>  * Note that the scale is itself a function, and thus can be used as a property
+<span class='line'> 35</span>  * directly, assuming that the data associated with a mark is a number. While
+<span class='line'> 36</span>  * this is convenient for single-use scales, frequently it is desirable to
+<span class='line'> 37</span>  * define scales globally:
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * &lt;pre>var y = pv.Scale.log(1, 100).range(0, 640);&lt;/pre>
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  * The &lt;tt>y&lt;/tt> scale can now be equivalently referenced within a property:
+<span class='line'> 42</span>  *
+<span class='line'> 43</span>  * &lt;pre>    .height(function(d) y(d))&lt;/pre>
+<span class='line'> 44</span>  *
+<span class='line'> 45</span>  * Alternatively, if the data are not simple numbers, the appropriate value can
+<span class='line'> 46</span>  * be passed to the &lt;tt>y&lt;/tt> scale (e.g., &lt;tt>d.foo&lt;/tt>). The {@link #by}
+<span class='line'> 47</span>  * method similarly allows the data to be mapped to a numeric value before
+<span class='line'> 48</span>  * performing the log transformation.
+<span class='line'> 49</span>  *
+<span class='line'> 50</span>  * @param {number...} domain... optional domain values.
+<span class='line'> 51</span>  * @extends pv.Scale.quantitative
+<span class='line'> 52</span>  */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="NAME">pv.Scale.log</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Scale.quantitative</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">      </span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// logarithm base</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">      </span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// cached Math.log(b)</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">      </span><span class="COMM">/** @ignore */</span><span class="WHIT"> </span><span class="NAME">log</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.log</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">      </span><span class="COMM">/** @ignore */</span><span class="WHIT"> </span><span class="NAME">pow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">y</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> 
+<span class='line'> 60</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 61</span>    * Returns an array of evenly-spaced, suitably-rounded values in the input
+<span class='line'> 62</span>    * domain. These values are frequently used in conjunction with
+<span class='line'> 63</span>    * {@link pv.Rule} to display tick marks or grid lines.
+<span class='line'> 64</span>    *
+<span class='line'> 65</span>    * @function
+<span class='line'> 66</span>    * @name pv.Scale.log.prototype.ticks
+<span class='line'> 67</span>    * @returns {number[]} an array input domain values to use as ticks.
+<span class='line'> 68</span>    */</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">  </span><span class="NAME">scale.ticks</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="COMM">// TODO support non-uniform domains</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">scale.domain</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">        </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">        </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">log</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">log</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">        </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.ceil</span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">log</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">log</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="NAME">ticks</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">      </span><span class="NAME">ticks.push</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">pow</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">;</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">ticks.push</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">pow</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">ticks.push</span><span class="PUNC">(</span><span class="NAME">pow</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">      </span><span class="NAME">ticks.push</span><span class="PUNC">(</span><span class="NAME">pow</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">ticks</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// strip small values</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ticks.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">ticks</span><span class="PUNC">[</span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// strip big values</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ticks.slice</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 89</span>    * Formats the specified tick value using the appropriate precision, assuming
+<span class='line'> 90</span>    * base 10.
+<span class='line'> 91</span>    *
+<span class='line'> 92</span>    * @function
+<span class='line'> 93</span>    * @name pv.Scale.log.prototype.tickFormat
+<span class='line'> 94</span>    * @param {number} t a tick value.
+<span class='line'> 95</span>    * @returns {string} a formatted tick value.
+<span class='line'> 96</span>    */</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">  </span><span class="NAME">scale.tickFormat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">t</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">t.toPrecision</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> 
+<span class='line'>101</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>102</span>    * "Nices" this scale, extending the bounds of the input domain to
+<span class='line'>103</span>    * evenly-rounded values. This method uses {@link pv.logFloor} and
+<span class='line'>104</span>    * {@link pv.logCeil}. Nicing is useful if the domain is computed dynamically
+<span class='line'>105</span>    * from data, and may be irregular. For example, given a domain of
+<span class='line'>106</span>    * [0.20147987687960267, 0.996679553296417], a call to &lt;tt>nice()&lt;/tt> might
+<span class='line'>107</span>    * extend the domain to [0.1, 1].
+<span class='line'>108</span>    *
+<span class='line'>109</span>    * &lt;p>This method must be invoked each time after setting the domain (and
+<span class='line'>110</span>    * base).
+<span class='line'>111</span>    *
+<span class='line'>112</span>    * @function
+<span class='line'>113</span>    * @name pv.Scale.log.prototype.nice
+<span class='line'>114</span>    * @returns {pv.Scale.log} &lt;tt>this&lt;/tt>.
+<span class='line'>115</span>    */</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">  </span><span class="NAME">scale.nice</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="COMM">// TODO support non-uniform domains</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">scale.domain</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale.domain</span><span class="PUNC">(</span><span class="NAME">pv.logFloor</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pv.logCeil</span><span class="PUNC">(</span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> 
+<span class='line'>122</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'>123</span>    * Sets or gets the logarithm base. Defaults to 10.
+<span class='line'>124</span>    *
+<span class='line'>125</span>    * @function
+<span class='line'>126</span>    * @name pv.Scale.log.prototype.base
+<span class='line'>127</span>    * @param {number} [v] the new base.
+<span class='line'>128</span>    * @returns {pv.Scale.log} &lt;tt>this&lt;/tt>, or the current base.
+<span class='line'>129</span>    */</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">  </span><span class="NAME">scale.base</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">v</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">      </span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">v</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">      </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.log</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">      </span><span class="NAME">scale.transform</span><span class="PUNC">(</span><span class="NAME">log</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">pow</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// update transformed domain</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">      </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> 
+<span class='line'>140</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale.base</span><span class="PUNC">(</span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span></pre></body></html>

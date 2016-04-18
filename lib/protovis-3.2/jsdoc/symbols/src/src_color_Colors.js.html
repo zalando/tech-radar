@@ -1,0 +1,143 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a new categorical color encoding using the specified colors.  The
+<span class='line'>  3</span>  * arguments to this method are an array of colors; see {@link pv.color}. For
+<span class='line'>  4</span>  * example, to create a categorical color encoding using the &lt;tt>species&lt;/tt>
+<span class='line'>  5</span>  * attribute:
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * &lt;pre>pv.colors("red", "green", "blue").by(function(d) d.species)&lt;/pre>
+<span class='line'>  8</span>  *
+<span class='line'>  9</span>  * The result of this expression can be used as a fill- or stroke-style
+<span class='line'> 10</span>  * property. This assumes that the data's &lt;tt>species&lt;/tt> attribute is a
+<span class='line'> 11</span>  * string.
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * @param {string} colors... categorical colors.
+<span class='line'> 14</span>  * @see pv.Scale.ordinal
+<span class='line'> 15</span>  * @returns {pv.Scale.ordinal} an ordinal color scale.
+<span class='line'> 16</span>  */</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="NAME">pv.colors</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Scale.ordinal</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">  </span><span class="NAME">scale.range.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * A collection of standard color palettes for categorical encoding.
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * @namespace A collection of standard color palettes for categorical encoding.
+<span class='line'> 27</span>  */</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="NAME">pv.Colors</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * Returns a new 10-color scheme. The arguments to this constructor are
+<span class='line'> 32</span>  * optional, and equivalent to calling {@link pv.Scale.OrdinalScale#domain}. The
+<span class='line'> 33</span>  * following colors are used:
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  * &lt;div style="background:#1f77b4;">#1f77b4&lt;/div>
+<span class='line'> 36</span>  * &lt;div style="background:#ff7f0e;">#ff7f0e&lt;/div>
+<span class='line'> 37</span>  * &lt;div style="background:#2ca02c;">#2ca02c&lt;/div>
+<span class='line'> 38</span>  * &lt;div style="background:#d62728;">#d62728&lt;/div>
+<span class='line'> 39</span>  * &lt;div style="background:#9467bd;">#9467bd&lt;/div>
+<span class='line'> 40</span>  * &lt;div style="background:#8c564b;">#8c564b&lt;/div>
+<span class='line'> 41</span>  * &lt;div style="background:#e377c2;">#e377c2&lt;/div>
+<span class='line'> 42</span>  * &lt;div style="background:#7f7f7f;">#7f7f7f&lt;/div>
+<span class='line'> 43</span>  * &lt;div style="background:#bcbd22;">#bcbd22&lt;/div>
+<span class='line'> 44</span>  * &lt;div style="background:#17becf;">#17becf&lt;/div>
+<span class='line'> 45</span>  *
+<span class='line'> 46</span>  * @param {number...} domain... domain values.
+<span class='line'> 47</span>  * @returns {pv.Scale.ordinal} a new ordinal color scale.
+<span class='line'> 48</span>  * @see pv.color
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">pv.Colors.category10</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.colors</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">      </span><span class="STRN">"#1f77b4"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ff7f0e"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#2ca02c"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#d62728"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#9467bd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">      </span><span class="STRN">"#8c564b"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#e377c2"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#7f7f7f"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#bcbd22"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#17becf"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> 
+<span class='line'> 58</span> </span><span class="COMM">/**
+<span class='line'> 59</span>  * Returns a new 20-color scheme. The arguments to this constructor are
+<span class='line'> 60</span>  * optional, and equivalent to calling {@link pv.Scale.OrdinalScale#domain}. The
+<span class='line'> 61</span>  * following colors are used:
+<span class='line'> 62</span>  *
+<span class='line'> 63</span>  * &lt;div style="background:#1f77b4;">#1f77b4&lt;/div>
+<span class='line'> 64</span>  * &lt;div style="background:#aec7e8;">#aec7e8&lt;/div>
+<span class='line'> 65</span>  * &lt;div style="background:#ff7f0e;">#ff7f0e&lt;/div>
+<span class='line'> 66</span>  * &lt;div style="background:#ffbb78;">#ffbb78&lt;/div>
+<span class='line'> 67</span>  * &lt;div style="background:#2ca02c;">#2ca02c&lt;/div>
+<span class='line'> 68</span>  * &lt;div style="background:#98df8a;">#98df8a&lt;/div>
+<span class='line'> 69</span>  * &lt;div style="background:#d62728;">#d62728&lt;/div>
+<span class='line'> 70</span>  * &lt;div style="background:#ff9896;">#ff9896&lt;/div>
+<span class='line'> 71</span>  * &lt;div style="background:#9467bd;">#9467bd&lt;/div>
+<span class='line'> 72</span>  * &lt;div style="background:#c5b0d5;">#c5b0d5&lt;/div>
+<span class='line'> 73</span>  * &lt;div style="background:#8c564b;">#8c564b&lt;/div>
+<span class='line'> 74</span>  * &lt;div style="background:#c49c94;">#c49c94&lt;/div>
+<span class='line'> 75</span>  * &lt;div style="background:#e377c2;">#e377c2&lt;/div>
+<span class='line'> 76</span>  * &lt;div style="background:#f7b6d2;">#f7b6d2&lt;/div>
+<span class='line'> 77</span>  * &lt;div style="background:#7f7f7f;">#7f7f7f&lt;/div>
+<span class='line'> 78</span>  * &lt;div style="background:#c7c7c7;">#c7c7c7&lt;/div>
+<span class='line'> 79</span>  * &lt;div style="background:#bcbd22;">#bcbd22&lt;/div>
+<span class='line'> 80</span>  * &lt;div style="background:#dbdb8d;">#dbdb8d&lt;/div>
+<span class='line'> 81</span>  * &lt;div style="background:#17becf;">#17becf&lt;/div>
+<span class='line'> 82</span>  * &lt;div style="background:#9edae5;">#9edae5&lt;/div>
+<span class='line'> 83</span>  *
+<span class='line'> 84</span>  * @param {number...} domain... domain values.
+<span class='line'> 85</span>  * @returns {pv.Scale.ordinal} a new ordinal color scale.
+<span class='line'> 86</span>  * @see pv.color
+<span class='line'> 87</span> */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="NAME">pv.Colors.category20</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.colors</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">      </span><span class="STRN">"#1f77b4"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#aec7e8"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ff7f0e"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ffbb78"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#2ca02c"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">      </span><span class="STRN">"#98df8a"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#d62728"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ff9896"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#9467bd"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#c5b0d5"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">      </span><span class="STRN">"#8c564b"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#c49c94"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#e377c2"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#f7b6d2"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#7f7f7f"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">      </span><span class="STRN">"#c7c7c7"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#bcbd22"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#dbdb8d"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#17becf"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#9edae5"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> 
+<span class='line'> 98</span> </span><span class="COMM">/**
+<span class='line'> 99</span>  * Returns a new alternative 19-color scheme. The arguments to this constructor
+<span class='line'>100</span>  * are optional, and equivalent to calling
+<span class='line'>101</span>  * {@link pv.Scale.OrdinalScale#domain}. The following colors are used:
+<span class='line'>102</span>  *
+<span class='line'>103</span>  * &lt;div style="background:#9c9ede;">#9c9ede&lt;/div>
+<span class='line'>104</span>  * &lt;div style="background:#7375b5;">#7375b5&lt;/div>
+<span class='line'>105</span>  * &lt;div style="background:#4a5584;">#4a5584&lt;/div>
+<span class='line'>106</span>  * &lt;div style="background:#cedb9c;">#cedb9c&lt;/div>
+<span class='line'>107</span>  * &lt;div style="background:#b5cf6b;">#b5cf6b&lt;/div>
+<span class='line'>108</span>  * &lt;div style="background:#8ca252;">#8ca252&lt;/div>
+<span class='line'>109</span>  * &lt;div style="background:#637939;">#637939&lt;/div>
+<span class='line'>110</span>  * &lt;div style="background:#e7cb94;">#e7cb94&lt;/div>
+<span class='line'>111</span>  * &lt;div style="background:#e7ba52;">#e7ba52&lt;/div>
+<span class='line'>112</span>  * &lt;div style="background:#bd9e39;">#bd9e39&lt;/div>
+<span class='line'>113</span>  * &lt;div style="background:#8c6d31;">#8c6d31&lt;/div>
+<span class='line'>114</span>  * &lt;div style="background:#e7969c;">#e7969c&lt;/div>
+<span class='line'>115</span>  * &lt;div style="background:#d6616b;">#d6616b&lt;/div>
+<span class='line'>116</span>  * &lt;div style="background:#ad494a;">#ad494a&lt;/div>
+<span class='line'>117</span>  * &lt;div style="background:#843c39;">#843c39&lt;/div>
+<span class='line'>118</span>  * &lt;div style="background:#de9ed6;">#de9ed6&lt;/div>
+<span class='line'>119</span>  * &lt;div style="background:#ce6dbd;">#ce6dbd&lt;/div>
+<span class='line'>120</span>  * &lt;div style="background:#a55194;">#a55194&lt;/div>
+<span class='line'>121</span>  * &lt;div style="background:#7b4173;">#7b4173&lt;/div>
+<span class='line'>122</span>  *
+<span class='line'>123</span>  * @param {number...} domain... domain values.
+<span class='line'>124</span>  * @returns {pv.Scale.ordinal} a new ordinal color scale.
+<span class='line'>125</span>  * @see pv.color
+<span class='line'>126</span>  */</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="NAME">pv.Colors.category19</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.colors</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">      </span><span class="STRN">"#9c9ede"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#7375b5"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#4a5584"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#cedb9c"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#b5cf6b"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">      </span><span class="STRN">"#8ca252"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#637939"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#e7cb94"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#e7ba52"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#bd9e39"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">      </span><span class="STRN">"#8c6d31"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#e7969c"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#d6616b"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ad494a"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#843c39"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">      </span><span class="STRN">"#de9ed6"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#ce6dbd"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#a55194"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"#7b4173"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span></pre></body></html>

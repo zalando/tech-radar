@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Abstract; see an implementing class.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * @class Represents a force that acts on particles. Note that this interface
+<span class='line'>  5</span>  * does not specify how to bind a force to specific particles; in general,
+<span class='line'>  6</span>  * forces are applied globally to all particles. However, some forces may be
+<span class='line'>  7</span>  * applied to specific particles or between particles, such as spring forces,
+<span class='line'>  8</span>  * through additional specialization.
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  * @see pv.Simulation
+<span class='line'> 11</span>  * @see pv.Particle
+<span class='line'> 12</span>  * @see pv.Force.charge
+<span class='line'> 13</span>  * @see pv.Force.drag
+<span class='line'> 14</span>  * @see pv.Force.spring
+<span class='line'> 15</span>  */</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="NAME">pv.Force</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 17</span> 
+<span class='line'> 18</span> </span><span class="COMM">/**
+<span class='line'> 19</span>  * Applies this force to the specified particles.
+<span class='line'> 20</span>  *
+<span class='line'> 21</span>  * @function
+<span class='line'> 22</span>  * @name pv.Force.prototype.apply
+<span class='line'> 23</span>  * @param {pv.Particle} particles particles to which to apply this force.
+<span class='line'> 24</span>  * @param {pv.Quadtree} q a quadtree for spatial acceleration.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span></pre></body></html>

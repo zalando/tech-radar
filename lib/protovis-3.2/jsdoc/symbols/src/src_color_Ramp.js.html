@@ -1,0 +1,25 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a linear color ramp from the specified &lt;tt>start&lt;/tt> color to the
+<span class='line'>  3</span>  * specified &lt;tt>end&lt;/tt> color. The color arguments may be specified either as
+<span class='line'>  4</span>  * &lt;tt>string&lt;/tt>s or as {@link pv.Color}s. This is equivalent to:
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * &lt;pre>    pv.Scale.linear().domain(0, 1).range(...)&lt;/pre>
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * @param {string} start the start color; may be a &lt;tt>pv.Color&lt;/tt>.
+<span class='line'>  9</span>  * @param {string} end the end color; may be a &lt;tt>pv.Color&lt;/tt>.
+<span class='line'> 10</span>  * @returns {Function} a color ramp from &lt;tt>start&lt;/tt> to &lt;tt>end&lt;/tt>.
+<span class='line'> 11</span>  * @see pv.Scale.linear
+<span class='line'> 12</span>  */</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="NAME">pv.ramp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Scale.linear</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">  </span><span class="NAME">scale.range.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span></pre></body></html>

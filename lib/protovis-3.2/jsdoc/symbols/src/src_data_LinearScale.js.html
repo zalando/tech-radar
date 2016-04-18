@@ -1,0 +1,62 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Returns a linear scale for the specified domain. The arguments to this
+<span class='line'>  3</span>  * constructor are optional, and equivalent to calling {@link #domain}.
+<span class='line'>  4</span>  * The default domain and range are [0,1].
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * @class Represents a linear scale; a function that performs a linear
+<span class='line'>  7</span>  * transformation. &lt;style type="text/css">sub{line-height:0}&lt;/style> Most
+<span class='line'>  8</span>  * commonly, a linear scale represents a 1-dimensional linear transformation
+<span class='line'>  9</span>  * from a numeric domain of input data [&lt;i>d&lt;sub>0&lt;/sub>&lt;/i>,
+<span class='line'> 10</span>  * &lt;i>d&lt;sub>1&lt;/sub>&lt;/i>] to a numeric range of pixels [&lt;i>r&lt;sub>0&lt;/sub>&lt;/i>,
+<span class='line'> 11</span>  * &lt;i>r&lt;sub>1&lt;/sub>&lt;/i>]. The equation for such a scale is:
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * &lt;blockquote>&lt;i>f(x) = (x - d&lt;sub>0&lt;/sub>) / (d&lt;sub>1&lt;/sub> - d&lt;sub>0&lt;/sub>) *
+<span class='line'> 14</span>  * (r&lt;sub>1&lt;/sub> - r&lt;sub>0&lt;/sub>) + r&lt;sub>0&lt;/sub>&lt;/i>&lt;/blockquote>
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * For example, a linear scale from the domain [0, 100] to range [0, 640]:
+<span class='line'> 17</span>  *
+<span class='line'> 18</span>  * &lt;blockquote>&lt;i>f(x) = (x - 0) / (100 - 0) * (640 - 0) + 0&lt;/i>&lt;br>
+<span class='line'> 19</span>  * &lt;i>f(x) = x / 100 * 640&lt;/i>&lt;br>
+<span class='line'> 20</span>  * &lt;i>f(x) = x * 6.4&lt;/i>&lt;br>
+<span class='line'> 21</span>  * &lt;/blockquote>
+<span class='line'> 22</span>  *
+<span class='line'> 23</span>  * Thus, saying
+<span class='line'> 24</span>  *
+<span class='line'> 25</span>  * &lt;pre>    .height(function(d) d * 6.4)&lt;/pre>
+<span class='line'> 26</span>  *
+<span class='line'> 27</span>  * is identical to
+<span class='line'> 28</span>  *
+<span class='line'> 29</span>  * &lt;pre>    .height(pv.Scale.linear(0, 100).range(0, 640))&lt;/pre>
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * Note that the scale is itself a function, and thus can be used as a property
+<span class='line'> 32</span>  * directly, assuming that the data associated with a mark is a number. While
+<span class='line'> 33</span>  * this is convenient for single-use scales, frequently it is desirable to
+<span class='line'> 34</span>  * define scales globally:
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * &lt;pre>var y = pv.Scale.linear(0, 100).range(0, 640);&lt;/pre>
+<span class='line'> 37</span>  *
+<span class='line'> 38</span>  * The &lt;tt>y&lt;/tt> scale can now be equivalently referenced within a property:
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * &lt;pre>    .height(function(d) y(d))&lt;/pre>
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * Alternatively, if the data are not simple numbers, the appropriate value can
+<span class='line'> 43</span>  * be passed to the &lt;tt>y&lt;/tt> scale (e.g., &lt;tt>d.foo&lt;/tt>). The {@link #by}
+<span class='line'> 44</span>  * method similarly allows the data to be mapped to a numeric value before
+<span class='line'> 45</span>  * performing the linear transformation.
+<span class='line'> 46</span>  *
+<span class='line'> 47</span>  * @param {number...} domain... optional domain values.
+<span class='line'> 48</span>  * @extends pv.Scale.quantitative
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">pv.Scale.linear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pv.Scale.quantitative</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">  </span><span class="NAME">scale.domain.apply</span><span class="PUNC">(</span><span class="NAME">scale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> </span></pre></body></html>
