@@ -1,4 +1,4 @@
-![ZalandoTechRadar icon](ZalandoTechRadar-Logo-medium.jpg)   
+![ZalandoTechRadar icon](logo-medium.jpg)   
 
 .
 
