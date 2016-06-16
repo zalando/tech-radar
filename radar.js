@@ -12,6 +12,50 @@ radar.add(pv.Label)
   .text("Zalando Tech Radar — 2016.04")
   .font("40px sans-serif");
 
+// contact info
+radar.add(pv.Label)
+  .top(875)
+  .right(40)
+  .textAlign("right")
+  .text("Questions? Comments? Ideas?")
+  .font("28px sans-serif")
+  .add(pv.Label)
+    .top(910)
+    .text("tech-guild-technologists@zalando.de")
+    .textStyle("blue")
+    .font("22px monospace")
+  .add(pv.Label)
+    .top(940)
+    .text("#guild-technologists")
+    .textStyle("blue")
+    .font("22px monospace");
+
+// legend
+radar.add(pv.Dot)
+  .top(940)
+  .left(50)
+  .shape("circle")
+  .fillStyle("grey")
+  .strokeStyle("grey")
+  .size(16)
+  .anchor("right")
+  .add(pv.Label)
+    .text("unchanged")
+    .textStyle("black")
+radar.add(pv.Dot)
+  .top(940)
+  .left(126)
+  .shape("triangle")
+  .fillStyle("grey")
+  .strokeStyle("grey")
+  .size(16)
+  .angle(45)
+  .anchor("right")
+  .add(pv.Label)
+    .text("changed since last edition (2015.12)")
+    .textStyle("black");
+
+
 //quadrant lines -- vertical
 radar.add(pv.Line)
   .data([(h/2-radar_arcs[radar_arcs.length-1].r),h-(h/2-radar_arcs[radar_arcs.length-1].r)])
