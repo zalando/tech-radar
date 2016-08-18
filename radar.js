@@ -170,7 +170,9 @@ for (var i = 0; i < radar_data.length; i++) {
       .bottom(function(d) { return polar_to_raster(d.pc.r, d.pc.t)[1]; })                                
       .title(function(d) { return d.name; })		 
       .cursor(function(d) { return ( d.url !== undefined ? "pointer" : "auto" ); })                                                            
-      .event("click", function(d) { if ( d.url !== undefined ){self.location =  d.url}}) 
+      .event("click", function(d) { if ( d.url !== undefined ){self.location =  d.url}})
+      .event("mouseover", function(d) { self.status = d.name })
+      .event("mouseout", function(d) { self.status = "" })
       .angle(Math.PI)  // 180 degrees in radians
       .strokeStyle(radar_data[i].color)
       .fillStyle(radar_data[i].color)
