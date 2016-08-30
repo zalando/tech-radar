@@ -18,7 +18,7 @@ This repository shares:
 Create a Google doc with the following columns:
 
 * **Technology** (e.g. "Hystrix")
-* **Quadrant** (e.g. "Platforms & Infrastructure")
+* **Quadrant** (Needs to be exactly and at least one of each quadrants: "Platforms & Infrastructure", "Data Mgt", "Languages", "Techniques; Frameworks & Tools")
 * *[optional] Comments (e.g. "lib for fault tolerance")* 
 * **Score** as a float between 2.0 and -2.0 (e.g. "1.8")
 * *[optional] Number of votes, for internal bookkeeping*
