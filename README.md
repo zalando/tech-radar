@@ -35,9 +35,8 @@ Note: the score-to-ring mapping we use is not linear:
 ## How to generate a new chart
 
 1. run `gem install liquid` if necessary
-1. on the master google doc, select `File > Download as > Tab-separated values` and store as `data/year_month.tsv`
-1. open `data/year_month.tsv` and delete the first line (which contains the headers)
-1. run `./transform.rb` to generate a new `radar_data.js`
+1. set your (public) googleDoc URL in generateTechRadar.sh
+1. run `./generateTechRadar.sh` to generate a new `radar_data.js`
 1. open `index.html` in your browser to inspect the result
 1. repeat the last two steps until you're happy with the arrangement :)
 1. check everything in
