@@ -26,31 +26,31 @@ var radar_arcs = [
 //
 var radar_data = [
   { 
-    "quadrant": "Techniques; Frameworks & Tools",
+    "quadrant": "{{ quadrant_0_title }}",
     "left" : 45,
     "top" : 188,
     "color" : "#8FA227",
-    "items" : {{ techniques }}
+    "items" : {{ quadrant_0 }}
   },
   { 
-    "quadrant": "Data Management",
+    "quadrant": "{{ quadrant_1_title }}",
     "left": w-300+30,
     "top" : 188,
     "color" : "#587486",
-    "items" : {{ data }}
+    "items" : {{ quadrant_1 }}
   },
   {   
-    "quadrant": "Platforms & Infrastructure",
+    "quadrant": "{{ quadrant_2_title }}",
     "left" :45,
     "top" : (h/2 + 38),
     "color" : "#DC6F1D",
-    "items" : {{ platforms }}
+    "items" : {{ quadrant_2 }}
   },
   { 
-    "quadrant": "Languages",
+    "quadrant": "{{ quadrant_3_title }}",
     "color" : "#B70062",
     "left"  : (w-300+30),
     "top" :   (h/2 + 38),
-    "items" : {{ languages }}
+    "items" : {{ quadrant_3 }}
   }
 ];

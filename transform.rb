@@ -14,13 +14,6 @@ end
 
 class Layout
 
-  OFFSET = {
-    "Data Mgt" => 0,
-    "Techniques; Frameworks & Tools" => 95,
-    "Platforms & Infrastructure" => 180, 
-    "Languages" => 270,
-  }
-
   def self.angles(start, step)
     Proc.new do
       Range.new(start, 90-start).step(step).to_a.shuffle +
@@ -41,7 +34,7 @@ class Layout
   end
 
   def initialize(quadrant, ring)
-    @offset = OFFSET[quadrant]
+    @offset = $offset[quadrant]
     @angles = ANGLES[ring].call
   end
 
@@ -109,13 +102,26 @@ class Radar
 
   # render blips as json into js template
   def render
+  puts $offset
+    hash = Array.new
     snippets = @blips.values.group_by(&:quadrant).remap do |hash, key, value|
-      short_key = key.scan(/\w+/).first.downcase
-      hash[short_key] = JSON.pretty_generate(value.sort_by(&:score).reverse.map(&:as_json))
+      quadrant_key =  "quadrant_#{hash.length / 2}"
+      quadrant_title_key =  "quadrant_#{hash.length / 2}_title"
+      hash[quadrant_key] = JSON.pretty_generate(value.sort_by(&:score).reverse.map(&:as_json))
+      hash[quadrant_title_key] = key
     end
+    puts snippets.keys
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
     open("radar_data.js", "w") do |out|
       out.puts template.render(snippets)
+    end
+  end
+
+  def self.add_quadrant(quadrant)
+    if $offset.keys.include? quadrant || $offset.length >= 4
+      #ignore
+    else
+      $offset[quadrant] = $offset.length * 90
     end
   end
 
@@ -125,6 +131,7 @@ class Radar
     open(path).each do |line|
       cols = line.split("\t")
       name, quadrant, score, votes, skip = cols[0], cols[1], cols[3], cols[4], cols[6]
+      self.add_quadrant(quadrant)
       raise "PLEASE DELETE HEADER LINE: #{path}" if score == "AVG"
       next if skip == "TRUE"
       next if score.nil? || score.strip.empty?
@@ -135,6 +142,7 @@ class Radar
   end
 end
 
+$offset = {}
 files = Dir["data/*.tsv"]
 radar = Radar.new(files.pop)
 previous = files.pop
