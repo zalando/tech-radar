@@ -9,7 +9,7 @@ var radar = new pv.Panel()
 radar.add(pv.Label)
   .left(40)
   .top(78)
-  .text("Zalando Tech Radar — 2016.04")
+  .text("Zalando Tech Radar — 2016.10")
   .font("40px sans-serif");
 
 // contact info
@@ -52,7 +52,7 @@ radar.add(pv.Dot)
   .angle(45)
   .anchor("right")
   .add(pv.Label)
-    .text("changed since last edition (2015.12)")
+    .text("changed since last edition (2016.04)")
     .textStyle("black");
 
 
