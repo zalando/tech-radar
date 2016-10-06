@@ -103,7 +103,11 @@ class Radar
 
   def track_moves(previous)
     @blips.each do |name, blip|
-      blip.moved! if previous[name].nil? || previous[name].ring != blip.ring
+      prev_ring = previous[name].ring rescue "nil"
+      if prev_ring != blip.ring
+        puts "#{name}: #{prev_ring.upcase} --> #{blip.ring.upcase}"
+        blip.moved!
+      end
     end
   end
 
@@ -124,7 +128,7 @@ class Radar
     blips = {}
     open(path).each do |line|
       cols = line.split("\t")
-      name, quadrant, score, votes, skip = cols[0], cols[1], cols[3], cols[4], cols[6]
+      name, quadrant, score, skip = cols[0], cols[1], cols[3], cols[6]
       raise "PLEASE DELETE HEADER LINE: #{path}" if score == "AVG"
       next if skip == "TRUE"
       next if score.nil? || score.strip.empty?
