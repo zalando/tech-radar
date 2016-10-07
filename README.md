@@ -44,7 +44,11 @@ Note: the score-to-ring mapping we use is not linear:
 1. merge `master` branch into `gh-pages`
 1. push `gh-pages` to publish the new radar 
 
-Note: the last `.tsv` file (by lexical order) in `data/` is visualized. The next-to-last `.tsv` file (if it exists) is used to find out which blips have moved, relative to the previous radar.
+
+### Notes
+
+* if your google doc is public, you can use `./download.sh` to automate steps 2 and 3
+* the last `.tsv` file (by lexical order) in `data/` is visualized. The next-to-last `.tsv` file (if it exists) is used to find out which blips have moved, relative to the previous radar.
 
 ## License
 Apache 2.0 &mdash; same as [bdargan/techradar](https://github.com/bdargan/techradar)
