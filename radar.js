@@ -118,8 +118,8 @@ for (var i = 0; i < radar_data.length; i++) {
   var offsetIndex = 0;
   var midIndex = -1;
 
-  for (var stageIndex in _(itemsByStage).keys()) {
-    if (stageIndex > 0) {
+  for (var stageIndex in itemsByStage) {
+    if (stageIndex > 0  && _.has(itemsByStage, stageIndex-1)) {
       offsetIndex = offsetIndex + itemsByStage[stageIndex-1].length + 1; 
     }
     if ((stageIndex > 1) && (midIndex < 0)) {
