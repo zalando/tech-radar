@@ -16,7 +16,7 @@ class Layout
 
   OFFSET = {
     "Data Mgt" => 0,
-    "Techniques; Frameworks & Tools" => 95,
+    "Techniques; Frameworks & Tools" => 90,
     "Platforms & Infrastructure" => 180, 
     "Languages" => 270,
   }
@@ -35,6 +35,7 @@ class Layout
     hold: angles(4, 8), 
   }
 
+
   def self.instance(quadrant, ring)
     @instances ||= {}
     @instances["#{quadrant}:#{ring.to_s}"] ||= Layout.new(quadrant, ring)
@@ -43,6 +44,7 @@ class Layout
   def initialize(quadrant, ring)
     @offset = OFFSET[quadrant]
     @angles = ANGLES[ring].call
+    puts @angles, quadrant, ring
   end
 
   def next_angle
@@ -71,11 +73,11 @@ class Blip
   end
 
   def radius
-    return (30..90).to_a.sample if ring == :adopt
+    return (30..120).to_a.sample if ring == :adopt
     # return (40 + (2 - score) * (60 / 0.5)).to_i if ring == :adopt
-    return (110 + (1.5 - score) * (80 / 1.5)).to_i if ring == :trial
-    return (210 + (0 - score) * (80 / 1)).to_i if ring == :assess
-    return (310 + (-1 - score) * (80 / 1)).to_i
+    return (140 + (1.5 - score) * (70 / 1.5)).to_i if ring == :trial
+    return (230 + (0 - score) * (70 / 1)).to_i if ring == :assess
+    return (320 + (-1 - score) * (70 / 1)).to_i
   end
 
   def angle
