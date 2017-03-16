@@ -52,7 +52,7 @@ radar.add(pv.Dot)
   .angle(45)
   .anchor("right")
   .add(pv.Label)
-    .text("changed since last edition (2016.04)")
+    .text("changed since last edition (2016.10)")
     .textStyle("black");
 
 
@@ -114,7 +114,12 @@ for (var i = 0; i < radar_data.length; i++) {
   }
 
   // re-order the items by radius, in order to logically group by ring
-  var itemsByStage = _.groupBy(radar_data[i].items, function(item) { return Math.floor(item.pc.r / 100) });
+  var itemsByStage = _.groupBy(radar_data[i].items, function(item) { 
+    if (item.pc.r <= 130) return 0;
+    if (item.pc.r <= 220) return 1;
+    if (item.pc.r <= 310) return 2;
+    return 3;
+  });
   var offsetIndex = 0;
   var midIndex = -1;
 
