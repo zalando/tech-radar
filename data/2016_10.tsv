@@ -120,7 +120,7 @@ JRuby	Languages	impl. language	-1.9	HOLD			see 2nd Release
 Ruby	Languages	impl. language	-1.9	HOLD			see 2nd Release													
 MemCached	Data Mgt	caching	-2.0	HOLD			2016-09-26	ADOPT --> HOLD	YES					YES		YES	YES		YES	
 AngularJS 1.x	Techniques; Frameworks & Tools	JS framework	-2.0	HOLD			2016-07-04	ASSESS --> HOLD			YES	YES	YES		YES	YES			YES	
-.NET	Languages	impl. language	-2.0	HOLD			see 2nd Release													
+.NET / languages	Languages	impl. language	-2.0	HOLD			see 2nd Release													
 Mono	Languages	C# based, .NET compatible RTE	-2.0	HOLD			see 2nd Release													
 Puppet	Platforms & Infrastructure	config mgt	-2.0	HOLD			see 2nd Release													
 																				
