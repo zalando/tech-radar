@@ -29,7 +29,7 @@ class Layout
   end
 
   ANGLES = {
-    adopt: angles(10, 15),
+    adopt: angles(10, 13),
     trial: angles(8, 12), 
     assess: angles(6, 10), 
     hold: angles(4, 8), 
@@ -44,7 +44,6 @@ class Layout
   def initialize(quadrant, ring)
     @offset = OFFSET[quadrant]
     @angles = ANGLES[ring].call
-    puts @angles, quadrant, ring
   end
 
   def next_angle
