@@ -115,9 +115,9 @@ for (var i = 0; i < radar_data.length; i++) {
 
   // re-order the items by radius, in order to logically group by ring
   var itemsByStage = _.groupBy(radar_data[i].items, function(item) { 
-    if (item.pc.r <= 130) return 0;
-    if (item.pc.r <= 220) return 1;
-    if (item.pc.r <= 310) return 2;
+    if (item.pc.r <= radar_arcs[0].r) return 0;
+    if (item.pc.r <= radar_arcs[1].r) return 1;
+    if (item.pc.r <= radar_arcs[2].r) return 2;
     return 3;
   });
   var offsetIndex = 0;

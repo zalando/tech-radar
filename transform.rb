@@ -12,6 +12,13 @@ class Hash
 end
 
 
+ARCS = [
+  { name: "ADOPT", r: 145 },
+  { name: "TRIAL", r: 230 },
+  { name: "ASSESS", r: 315 },
+  { name: "HOLD", r: 400 }
+]
+
 class Layout
 
   OFFSET = {
@@ -34,7 +41,6 @@ class Layout
     assess: angles(6, 10), 
     hold: angles(4, 8), 
   }
-
 
   def self.instance(quadrant, ring)
     @instances ||= {}
@@ -72,11 +78,10 @@ class Blip
   end
 
   def radius
-    return (30..120).to_a.sample if ring == :adopt
-    # return (40 + (2 - score) * (60 / 0.5)).to_i if ring == :adopt
-    return (140 + (1.5 - score) * (70 / 1.5)).to_i if ring == :trial
-    return (230 + (0 - score) * (70 / 1)).to_i if ring == :assess
-    return (320 + (-1 - score) * (70 / 1)).to_i
+    return (50..ARCS[0][:r]-10).to_a.sample if ring == :adopt
+    return (ARCS[0][:r]+10..ARCS[1][:r]-10).to_a.sample if ring == :trial
+    return (ARCS[1][:r]+10..ARCS[2][:r]-10).to_a.sample if ring == :assess
+    return (ARCS[2][:r]+10..ARCS[3][:r]-10).to_a.sample
   end
 
   def angle
@@ -118,6 +123,7 @@ class Radar
       short_key = key.scan(/\w+/).first.downcase
       hash[short_key] = JSON.pretty_generate(value.sort_by(&:score).reverse.map(&:as_json))
     end
+    snippets["arcs"] = JSON.pretty_generate(ARCS)
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
     open("radar_data.js", "w") do |out|
       out.puts template.render(snippets)
