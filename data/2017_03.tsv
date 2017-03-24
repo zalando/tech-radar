@@ -40,7 +40,7 @@ Kafka	Data Mgt	message queues	1.5	ADOPT			see 2nd Release
 Play (Scala)	Techniques; Frameworks & Tools		1.5	ADOPT			see 2nd Release																										
 scikit-learn	Techniques; Frameworks & Tools	lib for machine learning	1.5	ADOPT			see 2nd Release																										
 Typescript	Languages	impl. language	1.4	TRIAL			2016-09-26	ASSESS --> TRIAL				YES	YES		YES		ABSTAIN			YES													
-AngularJS 2.x	Techniques; Frameworks & Tools	JS framework	1.4	TRIAL			2016-10-24	ASSESS --> TRIAL				YES		YES			YES					YES	ABSTAIN										
+Angular	Techniques; Frameworks & Tools	JS framework	1.4	TRIAL			2016-10-24	ASSESS --> TRIAL				YES		YES			YES					YES	ABSTAIN										
 Kubernetes	Platforms & Infrastructure	cluster resource manager	1.4	TRIAL			2017-03-13	ASSESS --> TRIAL		YES	YES	YES	YES		YES									YES	YES	YES	YES						
 OpenNLP	Techniques; Frameworks & Tools	Natural Language Processing	1.3	TRIAL			see 2nd Release																										
 Kairos	Data Mgt	TS DB	1.3	TRIAL			see 2nd Release																										

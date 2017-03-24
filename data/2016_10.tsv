@@ -79,7 +79,7 @@ Play (Java)	Techniques; Frameworks & Tools		-0.9	ASSESS			see 2nd Release
 Kotlin	Languages	language on the JVM	-0.9	ASSESS			see 2nd Release													
 Rust	Languages	impl. language	-0.9	ASSESS			see 2nd Release													
 Aurelia	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			2016-08-29	NIL --> ASSESS	YES			YES	NO		YES		YES		YES	
-AngularJS 2.x	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			see 2nd Release													
+Angular	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			see 2nd Release													
 Datomic	Data Mgt	NoSql DB	-1.0	ASSESS		TRUE	see 2nd Release													
 Hadoop/MR	Data Mgt	data processing frw	-1.0	ASSESS			see 2nd Release													
 Rocket (rkt)	Platforms & Infrastructure	Container/Deployment	-1.0	ASSESS			see 2nd Release													
