@@ -13,9 +13,9 @@ end
 
 
 ARCS = [
-  { name: "ADOPT", r: 145 },
-  { name: "TRIAL", r: 230 },
-  { name: "ASSESS", r: 315 },
+  { name: "ADOPT", r: 130 },
+  { name: "TRIAL", r: 220 },
+  { name: "ASSESS", r: 310 },
   { name: "HOLD", r: 400 }
 ]
 
