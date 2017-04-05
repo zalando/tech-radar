@@ -92,6 +92,10 @@ class Blip
     @moved ? "t" : "c"
   end
 
+  def sortkey
+    [ ring, name.downcase ]
+  end
+
   def as_json
     { name: name, pc: { r: radius, t: angle }, movement: movement }
   end
@@ -121,7 +125,7 @@ class Radar
   def render
     snippets = @blips.values.group_by(&:quadrant).remap do |hash, key, value|
       short_key = key.scan(/\w+/).first.downcase
-      hash[short_key] = JSON.pretty_generate(value.sort_by(&:score).reverse.map(&:as_json))
+      hash[short_key] = JSON.pretty_generate(value.sort_by(&:sortkey).map(&:as_json))
     end
     snippets["arcs"] = JSON.pretty_generate(ARCS)
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
