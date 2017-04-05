@@ -12,11 +12,18 @@ class Hash
 end
 
 
+ARCS = [
+  { name: "ADOPT", r: 130 },
+  { name: "TRIAL", r: 220 },
+  { name: "ASSESS", r: 310 },
+  { name: "HOLD", r: 400 }
+]
+
 class Layout
 
   OFFSET = {
     "Data Mgt" => 0,
-    "Techniques; Frameworks & Tools" => 95,
+    "Techniques; Frameworks & Tools" => 90,
     "Platforms & Infrastructure" => 180, 
     "Languages" => 270,
   }
@@ -29,7 +36,7 @@ class Layout
   end
 
   ANGLES = {
-    adopt: angles(10, 15),
+    adopt: angles(10, 13),
     trial: angles(8, 12), 
     assess: angles(6, 10), 
     hold: angles(4, 8), 
@@ -71,11 +78,10 @@ class Blip
   end
 
   def radius
-    return (30..90).to_a.sample if ring == :adopt
-    # return (40 + (2 - score) * (60 / 0.5)).to_i if ring == :adopt
-    return (110 + (1.5 - score) * (80 / 1.5)).to_i if ring == :trial
-    return (210 + (0 - score) * (80 / 1)).to_i if ring == :assess
-    return (310 + (-1 - score) * (80 / 1)).to_i
+    return (50..ARCS[0][:r]-10).to_a.sample if ring == :adopt
+    return (ARCS[0][:r]+10..ARCS[1][:r]-10).to_a.sample if ring == :trial
+    return (ARCS[1][:r]+10..ARCS[2][:r]-10).to_a.sample if ring == :assess
+    return (ARCS[2][:r]+10..ARCS[3][:r]-10).to_a.sample
   end
 
   def angle
@@ -84,6 +90,10 @@ class Blip
 
   def movement
     @moved ? "t" : "c"
+  end
+
+  def sortkey
+    [ ring, name.downcase ]
   end
 
   def as_json
@@ -115,8 +125,9 @@ class Radar
   def render
     snippets = @blips.values.group_by(&:quadrant).remap do |hash, key, value|
       short_key = key.scan(/\w+/).first.downcase
-      hash[short_key] = JSON.pretty_generate(value.sort_by(&:score).reverse.map(&:as_json))
+      hash[short_key] = JSON.pretty_generate(value.sort_by(&:sortkey).map(&:as_json))
     end
+    snippets["arcs"] = JSON.pretty_generate(ARCS)
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
     open("radar_data.js", "w") do |out|
       out.puts template.render(snippets)

@@ -1,0 +1,128 @@
+Akka (Scala)	Techniques; Frameworks & Tools		1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES		YES																	NO
+AWS EMR	Data Mgt	data processing frw	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES		YES																			
+AWS S3	Data Mgt	file object store 	2.0	ADOPT		TRUE	see 2nd Release																										
+AWS SNS	Data Mgt	messaging service	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES			YES																
+AWS SQS	Data Mgt	message queues	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES			YES																YES
+Cassandra	Data Mgt	NoSql DB	2.0	ADOPT			see 2nd Release																										
+Docker	Platforms & Infrastructure	Container/Deployment	2.0	ADOPT			see 2nd Release																										
+ElasticSearch	Data Mgt	NoSql Search DB	1.8	ADOPT			2016-08-29	TRIAL --> ADOPT	YES			YES			YES	YES	ABSTAIN																
+etcd	Platforms & Infrastructure	distributed key/value store	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES			YES		YES																
+Go	Languages	impl. language	1.8	ADOPT			2016-06-06	TRIAL --> ADOPT	YES				ABSTAIN		ABSTAIN	ABSTAIN	YES	YES	YES									ABSTAIN					
+Gradle	Techniques; Frameworks & Tools	Build Tool	1.8	ADOPT		TRUE	2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES																			
+Guava	Techniques; Frameworks & Tools	standard lib	2.0	ADOPT		TRUE	see 2nd Release																										
+HAProxy	Platforms & Infrastructure	loadbalancer	1.7	ADOPT			see 2nd Release																										
+Hystrix	Platforms & Infrastructure	lib for fault tolerance	1.8	ADOPT			see 2nd Release																										
+Java	Languages	impl. language	2.0	ADOPT			see 2nd Release																										
+Javascript	Languages	impl. language	2.0	ADOPT			see 2nd Release																										
+Jetty	Platforms & Infrastructure	webserver	2.0	ADOPT			see 2nd Release																										
+jQuery	Techniques; Frameworks & Tools	JS framework	1.8	ADOPT		TRUE	2017-02-13	ASSESS --> ADOPT	YES	YES	YES	YES	YES	YES																			
+Kafka	Data Mgt	message queues	1.5	ADOPT			see 2nd Release																										
+log4j2	Platforms & Infrastructure	Logging-Framework	1.9	ADOPT		TRUE	see 2nd Release																										
+Maven	Techniques; Frameworks & Tools	Build Tool	2.0	ADOPT		TRUE	see 2nd Release																										
+Nakadi	Data Mgt	event bus	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES	YES	YES	YES																
+Nginx	Platforms & Infrastructure	webserver / loadbalancer	1.9	ADOPT			see 2nd Release																										
+Node.js 	Techniques; Frameworks & Tools	server-side JS	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES		YES	YES																	YES
+OpenAPI (Swagger)	Techniques; Frameworks & Tools	rest api frw	1.8	ADOPT			see 2nd Release																										
+Play (Scala)	Techniques; Frameworks & Tools		1.5	ADOPT			see 2nd Release																										
+PostgreSQL	Data Mgt	RDBMS	2.0	ADOPT			see 2nd Release																										
+Python	Languages	impl. language	2.0	ADOPT			see 2nd Release																										
+ReactJS	Techniques; Frameworks & Tools	JS framework for SPA	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES		YES	YES																
+Redis	Data Mgt	NoSql DB/caching	2.0	ADOPT			see 2nd Release																										
+Sbt	Techniques; Frameworks & Tools	Build Tool	1.8	ADOPT		TRUE	see 2nd Release																										
+Scala	Languages	impl. language	1.8	ADOPT			see 2nd Release																										
+scikit-learn	Techniques; Frameworks & Tools	lib for machine learning	1.5	ADOPT			see 2nd Release																										
+slf4j	Platforms & Infrastructure	Logging-Facade, multiple implementations (Log4J,Logback)	2.0	ADOPT		TRUE	see 2nd Release																										
+Solr	Data Mgt	NoSql Search DB	2.0	ADOPT			see 2nd Release																										
+Spark	Data Mgt	event processing	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES		YES																			
+Spring	Techniques; Frameworks & Tools	impl. frw mixed	1.8	ADOPT			see 2nd Release																										
+STUPS	Platforms & Infrastructure	PaaS tool set	1.9	ADOPT			see 2nd Release																										
+Swift	Languages	impl. language	1.8	ADOPT			see 2nd Release																										
+Tomcat	Platforms & Infrastructure	webserver	1.8	ADOPT			see 2nd Release																										
+ZMON	Platforms & Infrastructure	Zalando Monitoring System	2.0	ADOPT			see 2nd Release																										
+Aurelia	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			2016-08-29	NIL --> ASSESS	YES			YES			YES	YES	YES																
+AWS Kinesis	Data Mgt	event processing	-0.3	ASSESS			see 2nd Release																										
+AWS Lambda	Platforms & Infrastructure	computing service	-0.8	ASSESS			see 2nd Release																										
+Consul	Platforms & Infrastructure	distributed computing	-0.5	ASSESS		TRUE	see 2nd Release																										
+Elm	Languages		-0.7	ASSESS			see 2nd Release																										
+Ember.js	Techniques; Frameworks & Tools	JS framework	-0.2	ASSESS			2017-01-16	NIL --> ASSESS				YES	YES		YES						YES												
+Flux	Techniques; Frameworks & Tools	JS methodology for usage with React	-0.7	ASSESS			see 2nd Release																										
+Google BigTable	Data Mgt	NoSql DB	-0.8	ASSESS			see 2nd Release																										
+gRPC	Techniques; Frameworks & Tools	RPC framework	-0.2	ASSESS			2016-10-24	NIL --> ASSESS				YES		YES			YES					YES	ABSTAIN										
+Hadoop/MR	Data Mgt	data processing frw	-1.0	ASSESS			see 2nd Release																										
+Hadoop/YARN	Data Mgt	cluster resource manager	-0.4	ASSESS			see 2nd Release																										
+Kotlin	Languages	language on the JVM	-0.9	ASSESS			see 2nd Release																										
+Play (Java)	Techniques; Frameworks & Tools		-0.9	ASSESS			see 2nd Release																										
+R	Languages	impl. language	-0.4	ASSESS			see 2nd Release																										
+Rust	Languages	impl. language	-0.9	ASSESS			see 2nd Release																										
+Spray	Techniques; Frameworks & Tools		-0.7	ASSESS		TRUE	see 2nd Release																										
+Vert.x	Techniques; Frameworks & Tools	async communication framework	-0.8	ASSESS			see 2nd Release																										
+.NET / languages	Languages	.NET software appl platform including .NET based programming languages like C#, F#	-2.0	HOLD			see 2nd Release																										
+ActiveMQ	Data Mgt	message queues	-1.9	HOLD			see 2nd Release																										
+Activiti	Techniques; Frameworks & Tools	workflow engine	-1.8	HOLD			see 2nd Release																										
+Aerospike	Data Mgt	NoSql DB/caching	-1.5	HOLD			see 2nd Release																										
+AngularJS 1.x	Techniques; Frameworks & Tools	JS framework	-2.0	HOLD			2016-07-04	ASSESS --> HOLD	YES			YES	YES			YES			YES														
+Apache Artemis	Data Mgt	message queues	-1.5	HOLD			see 2nd Release																										
+BackboneJS	Techniques; Frameworks & Tools	JS framework	-1.4	HOLD			see 2nd Release																										
+C/C++	Languages	impl. language	-1.5	HOLD			see 2nd Release																										
+Coffeescript	Languages	impl. language	-1.5	HOLD			see 2nd Release																										
+CouchBase	Data Mgt	NoSql DB	-1.3	HOLD			see 2nd Release																										
+Drools	Techniques; Frameworks & Tools	business rule engine	-1.8	HOLD			see 2nd Release																										
+Erlang	Languages	impl. language	-1.4	HOLD			see 2nd Release																										
+Esper CEP	Data Mgt	Complex Event Processor	-1.6	HOLD			see 2nd Release																										
+Graphite	Data Mgt	TS DB	-1.6	HOLD			see 2nd Release																										
+Grizzly	Platforms & Infrastructure	webserver	-1.1	HOLD			see 2nd Release																										
+Groovy	Languages	impl. language	-1.6	HOLD			see 2nd Release																										
+Hadoop/HBase	Data Mgt	NoSql DB	-1.2	HOLD			see 2nd Release																										
+Haskell	Languages	impl. language	-1.3	HOLD			see 2nd Release																										
+HornetQueue	Data Mgt	message queues	-1.4	HOLD			see 2nd Release																										NO
+InfluxDB	Data Mgt	TS DB	-1.1	HOLD			see 2nd Release																										
+JBoss	Platforms & Infrastructure	Application Server	-1.8	HOLD			see 2nd Release																										
+JRuby	Languages	impl. language	-1.9	HOLD			see 2nd Release																										
+Julia	Languages		-1.3	HOLD		TRUE	see 2nd Release																										
+Jython	Languages	impl. language	-1.7	HOLD			see 2nd Release																										
+log4j	Platforms & Infrastructure	Logging-Framework	-1.2	HOLD		TRUE	see 2nd Release																										
+MemCached	Data Mgt	caching	-2.0	HOLD			2016-09-26	ADOPT --> HOLD				YES	YES		YES		YES			YES													
+Mesos	Platforms & Infrastructure	resource manager	-1.5	HOLD			2017-02-13	ASSESS --> HOLD	YES	YES	YES	YES			YES		YES																
+MongoDB	Data Mgt	NoSql DB	-1.8	HOLD			2016-06-06	HOLD --> ASSESS	ABSTAIN				ABSTAIN		ABSTAIN	ABSTAIN	ABSTAIN	ABSTAIN	ABSTAIN									ABSTAIN					
+MySQL	Data Mgt	RDBMS	-1.5	HOLD			see 2nd Release																										
+Neo4j	Data Mgt	Graph DB	-1.1	HOLD			see 2nd Release																										
+Oracle DB	Data Mgt	RDBMS	-1.8	HOLD		TRUE	see 2nd Release																										
+Perl	Languages	impl. language	-1.9	HOLD			see 2nd Release																										
+PHP	Languages		-1.8	HOLD			see 2nd Release																										
+Puppet	Platforms & Infrastructure	config mgt	-2.0	HOLD			see 2nd Release																										
+RabbitMQ	Data Mgt	message queues	-1.1	HOLD			see 2nd Release																										
+Riak	Data Mgt	NoSql DB	-1.2	HOLD			see 2nd Release																										
+Ruby	Languages	impl. language	-1.9	HOLD			see 2nd Release																										
+saltstack	Platforms & Infrastructure	infrastructure management	-1.7	HOLD		TRUE	see 2nd Release																										
+Takipi	Platforms & Infrastructure	exception monitoring	-1.5	HOLD		TRUE	see 2nd Release																										
+Angular	Techniques; Frameworks & Tools	JS framework	1.4	TRIAL			2016-10-24	ASSESS --> TRIAL				YES		YES			YES					YES	ABSTAIN										
+Apache Camel	Techniques; Frameworks & Tools	enterprise integration framework	0.9	TRIAL			see 2nd Release																										
+AspectJ	Techniques; Frameworks & Tools	Aspect Oriented Language (JVM)	0.7	TRIAL			see 2nd Release																										
+AWS DynamoDB	Data Mgt	NoSql DB	0.5	TRIAL			2017-02-13	ASSESS --> TRIAL	YES	YES	YES	YES	YES			YES																	
+Camunda BPMN Engine	Techniques; Frameworks & Tools	workflow engine	0.8	TRIAL			see 2nd Release																										
+Clojure	Languages	impl. language	1.3	TRIAL			see 2nd Release																										
+Flink	Data Mgt	event processing	0.1	TRIAL			see 2nd Release																										
+Google BigQuery	Data Mgt	NoSql DB	0.3	TRIAL			see 2nd Release																										
+Hadoop/HDFS	Data Mgt	distributed storage	0.3	TRIAL			see 2nd Release																										
+Kairos	Data Mgt	TS DB	1.3	TRIAL			see 2nd Release																										
+Kubernetes	Platforms & Infrastructure	cluster resource manager	1.4	TRIAL			2017-03-13	ASSESS --> TRIAL		YES	YES	YES	YES		YES									YES	YES	YES	YES						
+OpenNLP	Techniques; Frameworks & Tools	Natural Language Processing	1.3	TRIAL			see 2nd Release																										
+Thymeleaf	Techniques; Frameworks & Tools	Templating Framework	1.1	TRIAL			see 2nd Release																										
+Typescript	Languages	impl. language	1.4	TRIAL			2016-09-26	ASSESS --> TRIAL				YES	YES		YES		ABSTAIN			YES													
+Undertow	Platforms & Infrastructure	webserver	0.4	TRIAL			see 2nd Release																										
+Zookeeper	Platforms & Infrastructure	distributed computing	0.1	TRIAL			see 2nd Release																										
+																																	
+																																	
+																																	
+	Data Mgt	37																															
+	Languages	24																															
+	Platforms & Infrastructure	23																															
+	Techniques; Frameworks & Tools	29																															
+		113																															
+																																	
+	ADOPT	41																															
+	TRIAL	16																															
+	ASSESS	17																															
+	HOLD	39																															
+	NIL	0																															
+		113																															

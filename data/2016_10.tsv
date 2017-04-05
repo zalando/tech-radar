@@ -79,7 +79,7 @@ Play (Java)	Techniques; Frameworks & Tools		-0.9	ASSESS			see 2nd Release
 Kotlin	Languages	language on the JVM	-0.9	ASSESS			see 2nd Release													
 Rust	Languages	impl. language	-0.9	ASSESS			see 2nd Release													
 Aurelia	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			2016-08-29	NIL --> ASSESS	YES			YES	NO		YES		YES		YES	
-AngularJS 2.x	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			see 2nd Release													
+Angular	Techniques; Frameworks & Tools	JS framework	-1.0	ASSESS			see 2nd Release													
 Datomic	Data Mgt	NoSql DB	-1.0	ASSESS		TRUE	see 2nd Release													
 Hadoop/MR	Data Mgt	data processing frw	-1.0	ASSESS			see 2nd Release													
 Rocket (rkt)	Platforms & Infrastructure	Container/Deployment	-1.0	ASSESS			see 2nd Release													
@@ -120,7 +120,7 @@ JRuby	Languages	impl. language	-1.9	HOLD			see 2nd Release
 Ruby	Languages	impl. language	-1.9	HOLD			see 2nd Release													
 MemCached	Data Mgt	caching	-2.0	HOLD			2016-09-26	ADOPT --> HOLD	YES					YES		YES	YES		YES	
 AngularJS 1.x	Techniques; Frameworks & Tools	JS framework	-2.0	HOLD			2016-07-04	ASSESS --> HOLD			YES	YES	YES		YES	YES			YES	
-.NET	Languages	impl. language	-2.0	HOLD			see 2nd Release													
+.NET / languages	Languages	impl. language	-2.0	HOLD			see 2nd Release													
 Mono	Languages	C# based, .NET compatible RTE	-2.0	HOLD			see 2nd Release													
 Puppet	Platforms & Infrastructure	config mgt	-2.0	HOLD			see 2nd Release													
 																				
