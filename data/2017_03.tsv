@@ -8,7 +8,7 @@ Docker	Platforms & Infrastructure	Container/Deployment	2.0	ADOPT			see 2nd Relea
 ElasticSearch	Data Mgt	NoSql Search DB	1.8	ADOPT			2016-08-29	TRIAL --> ADOPT	YES			YES			YES	YES	ABSTAIN																
 etcd	Platforms & Infrastructure	distributed key/value store	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES			YES		YES																
 Go	Languages	impl. language	1.8	ADOPT			2016-06-06	TRIAL --> ADOPT	YES				ABSTAIN		ABSTAIN	ABSTAIN	YES	YES	YES									ABSTAIN					
-Gradle	Techniques; Frameworks & Tools	Build Tool	1.8	ADOPT			2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES																			
+Gradle	Techniques; Frameworks & Tools	Build Tool	1.8	ADOPT		TRUE	2017-02-13	TRIAL --> ADOPT	YES	YES	YES	YES	YES	YES																			
 Guava	Techniques; Frameworks & Tools	standard lib	2.0	ADOPT		TRUE	see 2nd Release																										
 HAProxy	Platforms & Infrastructure	loadbalancer	1.7	ADOPT			see 2nd Release																										
 Hystrix	Platforms & Infrastructure	lib for fault tolerance	1.8	ADOPT			see 2nd Release																										

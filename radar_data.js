@@ -52,14 +52,6 @@ var radar_data = [
     "movement": "t"
   },
   {
-    "name": "Gradle",
-    "pc": {
-      "r": 108,
-      "t": 100
-    },
-    "movement": "t"
-  },
-  {
     "name": "Node.js ",
     "pc": {
       "r": 87,
