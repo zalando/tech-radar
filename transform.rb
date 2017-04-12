@@ -22,9 +22,9 @@ ARCS = [
 class Layout
 
   OFFSET = {
-    "Data Mgt" => 0,
-    "Techniques; Frameworks & Tools" => 90,
-    "Platforms & Infrastructure" => 180, 
+    "Frameworks & Libraries" => 0,
+    "Data Management" => 90,
+    "Platforms & Infrastructure" => 180,
     "Languages" => 270,
   }
 
@@ -131,10 +131,13 @@ class Radar
       short_key = key.scan(/\w+/).first.downcase
       hash[short_key] = JSON.pretty_generate(value.sort_by(&:sortkey).map(&:as_json))
     end
+
     snippets["arcs"] = JSON.pretty_generate(ARCS)
     snippets["last_update"] = "\"#{@update_date}\""
     snippets["second_last_update"] = "\"#{@last_update_date || ""}\""
+
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
+
     open("radar_data.js", "w") do |out|
       out.puts template.render(snippets)
     end
