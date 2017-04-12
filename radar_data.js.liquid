@@ -3,11 +3,14 @@ var w = 1450;
 
 var radar_arcs = {{ arcs }};
 
+var lastUpdate = {{ last_update }};
+var secondLastUpdate = {{ second_last_update }};
+
 // movement:
 //   t = moved (triangle)
 //   c = stayed put (circle)
 //
-// blipSize: 
+// blipSize:
 //  This is optional, if you omit this property, then blip size will be 70.
 //
 // url:
@@ -20,28 +23,28 @@ var radar_arcs = {{ arcs }};
 //     - 0 degrees is due east
 //
 var radar_data = [
-  { 
-    "quadrant": "Techniques; Frameworks & Tools",
+  {
+    "quadrant": "Frameworks & Libraries",
     "left" : 45,
     "top" : 188,
     "color" : "#8FA227",
-    "items" : {{ techniques }}
+    "items" : {{ frameworks }}
   },
-  { 
+  {
     "quadrant": "Data Management",
     "left": w-300+30,
     "top" : 188,
     "color" : "#587486",
     "items" : {{ data }}
   },
-  {   
+  {
     "quadrant": "Platforms & Infrastructure",
     "left" :45,
     "top" : (h/2 + 38),
     "color" : "#DC6F1D",
     "items" : {{ platforms }}
   },
-  { 
+  {
     "quadrant": "Languages",
     "color" : "#B70062",
     "left"  : (w-300+30),
