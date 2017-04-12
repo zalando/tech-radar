@@ -20,11 +20,14 @@ var radar_arcs = [
   }
 ];
 
+var lastUpdate = "12.04.2017";
+var secondLastUpdate = "";
+
 // movement:
 //   t = moved (triangle)
 //   c = stayed put (circle)
 //
-// blipSize: 
+// blipSize:
 //  This is optional, if you omit this property, then blip size will be 70.
 //
 // url:
