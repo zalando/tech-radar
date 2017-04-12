@@ -1,86 +1,63 @@
 <html>
-<head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Zalando Tech Radar</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon"/>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Mtech - Tech Radar</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/protovis-3.2/protovis-d3.2.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/utils.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/lodash.underscore.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="radar_data.js"></script>
-<script type="text/javascript" charset="utf-8" src="radar.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/protovis-3.2/protovis-d3.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/utils.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/lodash.underscore.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="radar_data.js"></script>
+    <script type="text/javascript" charset="utf-8" src="radar.js"></script>
 
-<style type="text/css">
-  body {
-    font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
-    padding-bottom: 50px;
-  }
-  h3 {
-    margin-top: 50px;
-  }
-  li {
-    margin: 25px 50px 0 0;
-  }
-  table {
-    width: 1400px;
-    margin: 0 50px 0 50px;
-  }
-  td {
-    width: 50%;
-    vertical-align: top;
-    padding-right: 60px;
-  }
+    <style type="text/css">
+      body {
+        font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
+        padding-bottom: 50px;
+      }
+      h3 {
+        margin-top: 50px;
+      }
+      li {
+        margin: 25px 50px 0 0;
+      }
+      table {
+        width: 1400px;
+        margin: 0 50px 0 50px;
+      }
+      td {
+        width: 50%;
+        vertical-align: top;
+        padding-right: 60px;
+      }
 
-</style>
-</head>
+    </style>
+  </head>
 
-<body onload="init(h,w);">
+  <body onload="init(h,w);">
+    <div id="radar"></div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h3>Purpose — Why Do We Create a Tech Radar?</h3>
 
-<div id="radar"></div>
+            <p>The Tech Radar is a tool to inspire and support teams to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on ideas of <a href="https://www.thoughtworks.com/radar">ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development; changes that we think our engineering teams should pay attention to and consider using in their projects.</p>
 
-<table>
-<tr>
-<td>
+            <h3>Scope — What Is the Tech Radar?</h3>
 
-<h3>Purpose &mdash; Why Do We Create a Tech Radar?</h3>
-
-<p>
-The Zalando Tech Radar is a tool to inspire and support teams to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on ideas of <a href="https://www.thoughtworks.com/radar">ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development; changes that we think our engineering teams should pay attention to and consider using in their projects.
-</p>
-
-<h3>Scope &mdash; What Is the Tech Radar?</h3>
-
-<p>
-The Zalando Tech Radar is a list of technologies, frameworks, tools and methods, complemented by an assessment result, called ring assignment; we use 4 rings with a slightly adapted semantics to fit our purpose:
-<ul>
-<li><b>Adopt</b> &mdash; Technologies we have high confidence to serve our purpose, also in large scale. Technologies with an usage culture in our Zalando production environment, low risk and recommend to be widely used.</li>
-<li><b>Trial</b> &mdash; Technologies that we have seen work with success in project work to solve a real problem; here we have first serious usage experience that confirm benefits and can uncover limitations. Trial technologies are slightly more risky; some engineers in our organization have gone this path and will share knowledge and experiences.</li>
-<li><b>Assess</b> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts to see if it has impact. Assess technologies have higher risks; they are often brand new and, while promising, highly unproven in our organisation. You will find some engineers that have knowledge on the technology and promote it; you may even find teams that already have started a serious prototyping project.</li>
-<li><b>Hold</b> &mdash; Technologies not favoured to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. Hold technologies should not be used for new projects, but usually can be continued for existing projects.</li>
-</ul>
-</p>
-
-<p>
-The Tech Radar is maintained by the <b>Zalando Technologist Guild</b> &mdash; an open group of +25 Zalando senior technologists committed to devote time to the Tech Radar purpose. The guild self organises to maintain the Tech-Radar documents, including the <i>quarterly Zalando Tech-Radar release</i> published here. The ring assignments result from average vote of its members &mdash; of course, based on preliminary discussions with the target to achieve high consensus.
-</p>
-
-</td><td>
-
-<h3>Internals &mdash; How Does It Work?</h3>
-
-<p>The <a href="https://techwiki.zalando.net/display/GUL/Technologists+Guild">Technology Guild [internal link]</a> maintains the Tech Radar and Compendium, provides a forum for conversations about technologies, shares knowledge on technologies and support the engineering teams with expert knowledge and peer review feedback on their technology selections. Guild members meet monthly to discuss the updates of the <a href="https://docs.google.com/a/zalando.de/spreadsheets/d/1RLsYpOHA3UmaiaCWPuE-vPqXCxkeHIQ7n7GxQqakCeE/edit?usp=sharing">Tech Radar assessments [internal link]</a>, and upcoming and ongoing issues around the technologies and architectural decisions.
-</p>
-
-<p>Together with the Tech Radar we also maintain the <a href="https://pages.github.bus.zalan.do/technologist-guild/tech-radar-compendium/index.html">Tech Radar Compendium [internal link]</a> &mdash; a collection of summaries of listed technologies, i.e. few sentence descriptions of what, why and risks of the technology supplemented with information which teams used it for what kind of problem. It continuously grows with any Tech Radar changes and hopefully evolves fast as a valuable place for us to share information and get teams connected.
-</p>
-
-<p>The <a href="https://docs.google.com/document/d/1XOqxifpLGq6M64q_bBRPgOaK5itfahdZiVLApQpNNV0">Zalando Tech Radar Principles [internal link]</a>, of course, will not work without Zalando engineering team contributions; so our <i>Technology Rules of Play</i> include obligations for the engineering teams: teams must use the Tech Radar as one input source for their technology decisions. Teams are encouraged to challenge the Tech Radar and provide feedback to the Technologist Guild. Depending on the current assessment status of the technology candidate, teams should align with their delivery leads, inform or ask the Technologist Guild for peer review feedback on the purpose and risks and share their knowledge and experience with other teams and the Guild.
-</p>
-
-</td></tr>
-</table>
-
-</body>
+            <p>The Tech Radar is a list of technologies, frameworks, tools and methods, complemented by an assessment result, called ring assignment; we use 4 rings with a slightly adapted semantics to fit our purpose:</p>
+            <ul>
+              <li><b>Adopt</b> — Technologies we have high confidence to serve our purpose, also in large scale. Technologies with an usage culture in our production environment, low risk and recommend to be widely used.</li>
+              <li><b>Trial</b> — Technologies that we have seen work with success in project work to solve a real problem; here we have first serious usage experience that confirm benefits and can uncover limitations. Trial technologies are slightly more risky; some engineers in our organization have gone this path and will share knowledge and experiences.</li>
+              <li><b>Assess</b> — Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts to see if it has impact. Assess technologies have higher risks; they are often brand new and, while promising, highly unproven in our organisation. You will find some engineers that have knowledge on the technology and promote it; you may even find teams that already have started a serious prototyping project.</li>
+              <li><b>Hold</b> — Technologies not favoured to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. Hold technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
 </html>
