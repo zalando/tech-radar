@@ -20,8 +20,8 @@ var radar_arcs = [
   }
 ];
 
-var lastUpdate = "12.04.2017";
-var secondLastUpdate = "";
+var lastUpdate = "20.06.2017";
+var secondLastUpdate = "12.04.2017";
 
 // movement:
 //   t = moved (triangle)
@@ -49,8 +49,8 @@ var radar_data = [
   {
     "name": "React",
     "pc": {
-      "r": 112,
-      "t": 36
+      "r": 52,
+      "t": 49
     },
     "movement": "c"
   }
@@ -65,8 +65,8 @@ var radar_data = [
   {
     "name": "Redis",
     "pc": {
-      "r": 89,
-      "t": 152
+      "r": 54,
+      "t": 139
     },
     "movement": "c"
   }
@@ -81,8 +81,8 @@ var radar_data = [
   {
     "name": "Terraform",
     "pc": {
-      "r": 50,
-      "t": 216
+      "r": 95,
+      "t": 190
     },
     "movement": "c"
   }
@@ -97,8 +97,8 @@ var radar_data = [
   {
     "name": "Javascript",
     "pc": {
-      "r": 71,
-      "t": 293
+      "r": 89,
+      "t": 280
     },
     "movement": "c"
   }
