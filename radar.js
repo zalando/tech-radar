@@ -9,7 +9,7 @@ var radar = new pv.Panel()
 radar.add(pv.Label)
   .left(40)
   .top(78)
-  .text("Mtech Tech Radar — " + lastUpdate)
+  .text("Babbel Tech Radar — " + lastUpdate)
   .font("40px sans-serif");
 
 // legend
