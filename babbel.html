@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Babbel - Tech Radar</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/protovis-3.2/protovis-d3.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/utils.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/lodash.underscore.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="radar_data.js"></script>
+    <script type="text/javascript" charset="utf-8" src="radar.js"></script>
+
+    <style type="text/css">
+      body {
+        font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
+        padding-bottom: 50px;
+      }
+      h3 {
+        margin-top: 50px;
+      }
+      li {
+        margin: 25px 50px 0 0;
+      }
+      table {
+        width: 1400px;
+        margin: 0 50px 0 50px;
+      }
+      td {
+        width: 50%;
+        vertical-align: top;
+        padding-right: 60px;
+      }
+
+    </style>
+  </head>
+
+  <body onload="init(h,w);">
+    <div id="radar"></div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h3>Purpose — Why Do We Create a Tech Radar?</h3>
+
+            <p>The Tech Radar is a tool to inspire and support teams to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on ideas of <a href="https://www.thoughtworks.com/radar">ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development; changes that we think our engineering teams should pay attention to and consider using in their projects.</p>
+
+            <h3>Scope — What Is the Tech Radar?</h3>
+
+            <p>The Tech Radar is a list of technologies, frameworks, tools and methods, complemented by an assessment result, called ring assignment; we use 4 rings with a slightly adapted semantics to fit our purpose:</p>
+            <ul>
+              <li><b>Adopt</b> — Technologies we have high confidence to serve our purpose, also in large scale. Technologies with an usage culture in our production environment, low risk and recommend to be widely used.</li>
+              <li><b>Trial</b> — Technologies that we have seen work with success in project work to solve a real problem; here we have first serious usage experience that confirm benefits and can uncover limitations. Trial technologies are slightly more risky; some engineers in our organization have gone this path and will share knowledge and experiences.</li>
+              <li><b>Assess</b> — Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts to see if it has impact. Assess technologies have higher risks; they are often brand new and, while promising, highly unproven in our organisation. You will find some engineers that have knowledge on the technology and promote it; you may even find teams that already have started a serious prototyping project.</li>
+              <li><b>Hold</b> — Technologies not favoured to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. Hold technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

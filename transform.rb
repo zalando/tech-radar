@@ -22,9 +22,9 @@ ARCS = [
 class Layout
 
   OFFSET = {
-    "Data Mgt" => 0,
-    "Techniques; Frameworks & Tools" => 90,
-    "Platforms & Infrastructure" => 180, 
+    "Frameworks & Libraries" => 0,
+    "Data Management" => 90,
+    "Platforms & Infrastructure" => 180,
     "Languages" => 270,
   }
 
@@ -37,9 +37,9 @@ class Layout
 
   ANGLES = {
     adopt: angles(10, 13),
-    trial: angles(8, 12), 
-    assess: angles(6, 10), 
-    hold: angles(4, 8), 
+    trial: angles(8, 12),
+    assess: angles(6, 10),
+    hold: angles(4, 8),
   }
 
   def self.instance(quadrant, ring)
@@ -103,7 +103,10 @@ end
 
 
 class Radar
+  attr_reader :update_date
+
   def initialize(path)
+    @update_date = Radar.parse_date(path)
     @blips = Radar.parse(path)
   end
 
@@ -112,6 +115,7 @@ class Radar
   end
 
   def track_moves(previous)
+    @last_update_date = previous.update_date
     @blips.each do |name, blip|
       prev_ring = previous[name].ring rescue "nil"
       if prev_ring != blip.ring
@@ -127,8 +131,13 @@ class Radar
       short_key = key.scan(/\w+/).first.downcase
       hash[short_key] = JSON.pretty_generate(value.sort_by(&:sortkey).map(&:as_json))
     end
+
     snippets["arcs"] = JSON.pretty_generate(ARCS)
+    snippets["last_update"] = "\"#{@update_date}\""
+    snippets["second_last_update"] = "\"#{@last_update_date || ""}\""
+
     template = Liquid::Template.parse(open("radar_data.js.liquid").read)
+
     open("radar_data.js", "w") do |out|
       out.puts template.render(snippets)
     end
@@ -148,6 +157,10 @@ class Radar
     end
     blips
   end
+
+  def self.parse_date(file_path)
+    file_path.match("data/(.+)\.tsv")[1].split('_').reverse.join('.')
+  end
 end
 
 files = Dir["data/*.tsv"]
@@ -155,4 +168,3 @@ radar = Radar.new(files.pop)
 previous = files.pop
 radar.track_moves(Radar.new(previous)) if previous
 radar.render
-
