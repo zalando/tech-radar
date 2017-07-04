@@ -139,9 +139,8 @@ class Radar
     blips = {}
     open(path).each do |line|
       cols = line.split("\t")
-      name, quadrant, score, skip = cols[0], cols[1], cols[3], cols[6]
+      name, quadrant, score = cols[0], cols[1], cols[3]
       raise "PLEASE DELETE HEADER LINE: #{path}" if score == "AVG"
-      next if skip == "TRUE"
       next if score.nil? || score.strip.empty?
       blip = Blip.new(name, quadrant, score.to_f)
       blips[blip.name] = blip

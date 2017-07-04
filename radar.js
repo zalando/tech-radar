@@ -52,7 +52,7 @@ radar.add(pv.Dot)
   .angle(45)
   .anchor("right")
   .add(pv.Label)
-    .text("changed since last edition (2016.10)")
+    .text("changed since last edition (2017.03)")
     .textStyle("black");
 
 
