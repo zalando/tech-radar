@@ -1,16 +1,12 @@
 <html>
+
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>Zalando Tech Radar</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon"/>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
-<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/protovis-3.2/protovis-d3.2.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/utils.js"></script>
-<script type="text/javascript" charset="utf-8" src="lib/lodash.underscore.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="radar_data.js"></script>
-<script type="text/javascript" charset="utf-8" src="radar.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="release/radar-0.1.js"></script>
 
 <style type="text/css">
   body {
@@ -32,13 +28,1753 @@
     vertical-align: top;
     padding-right: 60px;
   }
-
 </style>
 </head>
 
-<body onload="init(h,w);">
+<body>
 
-<div id="radar"></div>
+<svg id="radar"></svg>
+
+<script>
+radar_visualization({
+  svg_id: "radar",
+  width: 1450,
+  height: 1000,
+  colors: {
+    background: "#fff",
+    grid: "#bbb",
+    inactive: "#ddd"
+  },
+  title: "Zalando Tech Radar — 2017.11",
+  quadrants: [
+    { name: "Languages" },
+    { name: "Infrastructure" },
+    { name: "Frameworks" },
+    { name: "Data Management" }
+  ],
+  rings: [
+    { name: "ADOPT", color: "#93c47d" },
+    { name: "TRIAL", color: "#b7e1cd" },
+    { name: "ASSESS", color: "#fce8b2" },
+    { name: "HOLD", color: "#f4c7c3" }
+  ],
+  print_layout: true,
+  // zoomed_quadrant: 0,
+  entries: [
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "AWS EMR",
+        active: false,
+        link: "../data_processing/aws_emr.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Spark",
+        active: false,
+        link: "../data_processing/spark.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "AWS Data Pipeline",
+        active: false,
+        link: "../data_processing/aws_data_pipeline.html",
+        moved: 1
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "Flink",
+        active: false,
+        link: "../data_processing/flink.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "Google BigQuery",
+        active: false,
+        link: "../data_processing/google_bigquery.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "Presto",
+        active: false,
+        link: "../data_processing/presto.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 2,
+        label: "Hadoop/MR",
+        active: false,
+        link: "../data_processing/hadoop_mr.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 2,
+        label: "Hadoop/YARN",
+        active: false,
+        link: "../data_processing/hadoop_yarn.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Esper CEP",
+        active: false,
+        link: "../data_processing/esper_cep.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "AWS S3",
+        active: false,
+        link: "../datastores/aws_s3.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Cassandra",
+        active: false,
+        link: "../datastores/cassandra.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "ElasticSearch",
+        active: false,
+        link: "../datastores/elasticsearch.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "etcd",
+        active: false,
+        link: "../datastores/etcd.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "PostgreSQL",
+        active: false,
+        link: "../datastores/postgresql.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Redis",
+        active: false,
+        link: "../datastores/redis.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Solr",
+        active: false,
+        link: "../datastores/solr.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "AWS DynamoDB",
+        active: false,
+        link: "../datastores/aws_dynamodb.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "Hadoop/HDFS",
+        active: false,
+        link: "../datastores/hadoop_hdfs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "KairosDB",
+        active: false,
+        link: "../datastores/kairos.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 2,
+        label: "Consul",
+        active: false,
+        link: "../datastores/consul.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 2,
+        label: "Google Bigtable",
+        active: false,
+        link: "../datastores/google_bigtable.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Aerospike",
+        active: false,
+        link: "../datastores/aerospike.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "CouchBase",
+        active: false,
+        link: "../datastores/couchbase.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Graphite",
+        active: false,
+        link: "../datastores/graphite.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Hadoop/HBase",
+        active: false,
+        link: "../datastores/hadoop_hbase.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "InfluxDB",
+        active: false,
+        link: "../datastores/influxdb.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Memcached",
+        active: false,
+        link: "../datastores/memcached.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "MongoDB",
+        active: false,
+        link: "../datastores/mongodb.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "MySQL",
+        active: false,
+        link: "../datastores/mysql.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Neo4j",
+        active: false,
+        link: "../datastores/neo4j.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Oracle DB",
+        active: false,
+        link: "../datastores/oracle_db.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Riak",
+        active: false,
+        link: "../datastores/riak.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "ZooKeeper",
+        active: false,
+        link: "../datastores/zookeeper.html",
+        moved: -1
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Akka (Scala)",
+        active: false,
+        link: "../frameworks/akka_scala.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Node.js",
+        active: false,
+        link: "../frameworks/nodejs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "OpenAPI (Swagger)",
+        active: false,
+        link: "../frameworks/openapi_swagger.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Play (Scala)",
+        active: false,
+        link: "../frameworks/play_scala.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "ReactJS",
+        active: false,
+        link: "../frameworks/reactjs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "RxJava (Android)",
+        active: false,
+        link: "../frameworks/rxjava_android.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "scikit-learn",
+        active: false,
+        link: "../frameworks/scikit_learn.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Spring",
+        active: false,
+        link: "../frameworks/spring.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "Angular",
+        active: false,
+        link: "../frameworks/angular.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "AspectJ",
+        active: false,
+        link: "../frameworks/aspectj.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "Camel",
+        active: false,
+        link: "../frameworks/camel.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "Camunda",
+        active: false,
+        link: "../frameworks/camunda.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "OpenNLP",
+        active: false,
+        link: "../frameworks/opennlp.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "Thymeleaf",
+        active: false,
+        link: "../frameworks/thymeleaf.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Akka-Http",
+        active: false,
+        link: "../frameworks/akka_http.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Aurelia",
+        active: false,
+        link: "../frameworks/aurelia.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Ember.js",
+        active: false,
+        link: "../frameworks/emberjs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "gRPC",
+        active: false,
+        link: "../frameworks/grpc.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Http4s",
+        active: false,
+        link: "../frameworks/http4s.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Redux",
+        active: false,
+        link: "../frameworks/redux.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Vert.x",
+        active: false,
+        link: "../frameworks/vertx.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "Activiti",
+        active: false,
+        link: "../frameworks/activiti.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "AngularJS 1.x",
+        active: false,
+        link: "../frameworks/angularjs_1x.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "BackboneJS",
+        active: false,
+        link: "../frameworks/backbonejs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "Drools",
+        active: false,
+        link: "../frameworks/drools.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "Spray",
+        active: false,
+        link: "../frameworks/spray.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Docker",
+        active: true,
+        link: "docker.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "HAProxy",
+        active: true,
+        link: "haproxy.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Hystrix",
+        active: true,
+        link: "hystrix.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Jetty",
+        active: true,
+        link: "jetty.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Kubernetes",
+        active: true,
+        link: "kubernetes.html",
+        moved: 1
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Nginx",
+        active: true,
+        link: "nginx.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "STUPS",
+        active: true,
+        link: "stups.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "Tomcat",
+        active: true,
+        link: "tomcat.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "ZMON",
+        active: true,
+        link: "zmon.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 1,
+        label: "Undertow",
+        active: true,
+        link: "undertow.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 2,
+        label: "AWS Lambda",
+        active: true,
+        link: "aws_lambda.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "JBoss",
+        active: true,
+        link: "jboss.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "Mesos",
+        active: true,
+        link: "mesos.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "Puppet",
+        active: true,
+        link: "puppet.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "saltstack",
+        active: true,
+        link: "saltstack.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Go",
+        active: false,
+        link: "../languages/go.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Java",
+        active: false,
+        link: "../languages/java.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "JavaScript",
+        active: false,
+        link: "../languages/javascript.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Python",
+        active: false,
+        link: "../languages/python.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Scala",
+        active: false,
+        link: "../languages/scala.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Swift",
+        active: false,
+        link: "../languages/swift.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 1,
+        label: "Clojure",
+        active: false,
+        link: "../languages/clojure.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 1,
+        label: "TypeScript",
+        active: false,
+        link: "../languages/typescript.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 2,
+        label: "Elm",
+        active: false,
+        link: "../languages/elm.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 2,
+        label: "Haskell",
+        active: false,
+        link: "../languages/haskell.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 2,
+        label: "Kotlin",
+        active: false,
+        link: "../languages/kotlin.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 2,
+        label: "R",
+        active: false,
+        link: "../languages/r.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 2,
+        label: "Rust",
+        active: false,
+        link: "../languages/rust.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "C languages",
+        active: false,
+        link: "../languages/c_languages.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "CoffeeScript",
+        active: false,
+        link: "../languages/coffeescript.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Erlang",
+        active: false,
+        link: "../languages/erlang.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Groovy",
+        active: false,
+        link: "../languages/groovy.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "JRuby",
+        active: false,
+        link: "../languages/jruby.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Jython",
+        active: false,
+        link: "../languages/jython.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: ".NET languages",
+        active: false,
+        link: "../languages/net_languages.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Perl",
+        active: false,
+        link: "../languages/perl.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "PHP",
+        active: false,
+        link: "../languages/php.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Ruby",
+        active: false,
+        link: "../languages/ruby.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "AWS SNS",
+        active: false,
+        link: "../queues/aws_sns.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "AWS SQS",
+        active: false,
+        link: "../queues/aws_sqs.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Kafka",
+        active: false,
+        link: "../queues/kafka.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Nakadi",
+        active: false,
+        link: "../queues/nakadi.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 2,
+        label: "AWS Kinesis",
+        active: false,
+        link: "../queues/aws_kinesis.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "ActiveMQ",
+        active: false,
+        link: "../queues/activemq.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Artemis",
+        active: false,
+        link: "../queues/artemis.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "HornetQ",
+        active: false,
+        link: "../queues/hornetq.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "RabbitMQ",
+        active: false,
+        link: "../queues/rabbitmq.html",
+        moved: 0
+      },
+
+
+
+
+
+
+
+
+
+
+  ]
+});
+</script>
 
 <table>
 <tr>
