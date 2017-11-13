@@ -336,12 +336,14 @@ function radar_visualization(config) {
       .append("g")
         .attr("class", "blip")
         .on("mouseover", showBubble)
-        .on("mouseout", hideBubble)
-      .append("a")
-        .attr("xlink:href", function (d) { return d.active && d.hasOwnProperty("link") ? d.link : null; });
+        .on("mouseout", hideBubble);
 
   blips.each(function(d) {
     var blip = d3.select(this);
+    if (!config.print_layout && d.active && d.hasOwnProperty("link")) {
+      blip.append("a")
+        .attr("xlink:href", d.link);
+    }
     if (d.moved > 0) {
       blip.append("path")
         .attr("d", "M -10,5 10,5 0,-12 z") // triangle pointing up
