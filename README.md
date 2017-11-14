@@ -1,19 +1,70 @@
-# Tech Radar
+# Motivation
 
 At [Zalando](http://zalando.de), we maintain a public [Tech
-Radar](http://zalando.github.io/tech-radar/) to help our delivery teams
-align on technology choices. Is is based on the pioneering work
-by [ThoughtWorks](https://www.thoughtworks.com/radar).
+Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
+align on technology choices. Is is based on the [pioneering work
+by ThoughtWorks](https://www.thoughtworks.com/radar).
 
-This repository contains the [visualization code](radar.js)
-(js, based on [d3.js v4](https://d3js.org)). Feel free to adapt it
-to your own purposes.
-
+This repository contains the code to generate the visualization:
+[`radar.js`](/docs/release/radar.js) (based on [d3.js v4](https://d3js.org)).
+Feel free to use and adapt it for your own purposes.
 
 ## Usage
 
-See `docs/index.html` for sample usage. The current release version is
-[radar-0.1.js](http://zalando.github.io/tech-radar/release/radar-0.1.js)
+1. include `d3.js` and `radar.js`:
+
+```html
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="http://zalando.github.io/tech-radar/release/radar-0.1.js"></script>
+```
+
+2. insert an empty `svg` tag:
+
+```html
+<svg id="radar"></svg>
+```
+
+3. configure the radar visualization:
+
+```js
+radar_visualization({
+  svg_id: "radar",
+  width: 1450,
+  height: 1000,
+  colors: {
+    background: "#fff",
+    grid: "#bbb",
+    inactive: "#ddd"
+  },
+  title: "My Tech Radar",
+  quadrants: [
+    { name: "Languages" },
+    { name: "Infrastructure" },
+    { name: "Frameworks" },
+    { name: "Data Management" }
+  ],
+  rings: [
+    { name: "ADOPT",  color: "#93c47d" },
+    { name: "TRIAL",  color: "#b7e1cd" },
+    { name: "ASSESS", color: "#fce8b2" },
+    { name: "HOLD",   color: "#f4c7c3" }
+  ],
+  print_layout: true,
+  entries: [
+   {
+      label: "Some Entry",
+      quadrant: 3,          // 0,1,2,3 (starting from bottom right)
+      ring: 2,              // 0,1,2,3 (starting from inside)
+      moved: -1             // -1 = moved out (triangle pointing down)
+                            //  0 = not moved (circle)
+                            //  1 = moved in  (tringle pointing up)
+    },
+    ...
+  ]
+});
+```
+
+Entries are positioned automatically so that they don't overlap.
 
 
 ## License
