@@ -1,6 +1,6 @@
 # Motivation
 
-At [Zalando](http://zalando.de), we maintain a public [Tech
+At [Zalando](http://zalando.de), we maintain a [public Tech
 Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
 align on technology choices. Is is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
@@ -53,11 +53,11 @@ radar_visualization({
   entries: [
    {
       label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (starting from bottom right)
+      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
       ring: 2,              // 0,1,2,3 (starting from inside)
       moved: -1             // -1 = moved out (triangle pointing down)
                             //  0 = not moved (circle)
-                            //  1 = moved in  (tringle pointing up)
+                            //  1 = moved in  (triangle pointing up)
     },
     ...
   ]
@@ -66,6 +66,8 @@ radar_visualization({
 
 Entries are positioned automatically so that they don't overlap.
 
+As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
+Radar](http://zalando.github.io/tech-radar/).
 
 ## License
 
