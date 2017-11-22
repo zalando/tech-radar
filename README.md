@@ -6,7 +6,7 @@ align on technology choices. Is is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
 This repository contains the code to generate the visualization:
-[`radar.js`](/docs/release/radar.js) (based on [d3.js v4](https://d3js.org)).
+[`docs/radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
 Feel free to use and adapt it for your own purposes.
 
 ## Usage
