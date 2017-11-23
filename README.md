@@ -15,7 +15,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.3.js"></script>
+<script src="http://zalando.github.io/tech-radar/release/radar-0.4.js"></script>
 ```
 
 2. insert an empty `svg` tag:
