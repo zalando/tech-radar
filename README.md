@@ -6,7 +6,7 @@ align on technology choices. Is is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
 This repository contains the code to generate the visualization:
-[`docs/radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
+[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
 Feel free to use and adapt it for your own purposes.
 
 ## Usage
@@ -36,18 +36,18 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "My Tech Radar",
+  title: "My Radar",
   quadrants: [
-    { name: "Languages" },
-    { name: "Infrastructure" },
-    { name: "Frameworks" },
-    { name: "Data Management" }
+    { name: "Bottom Right" },
+    { name: "Bottom Left" },
+    { name: "Top Left" },
+    { name: "Top Right" }
   ],
   rings: [
-    { name: "ADOPT",  color: "#93c47d" },
-    { name: "TRIAL",  color: "#b7e1cd" },
-    { name: "ASSESS", color: "#fce8b2" },
-    { name: "HOLD",   color: "#f4c7c3" }
+    { name: "INNER",  color: "#93c47d" },
+    { name: "SECOND", color: "#b7e1cd" },
+    { name: "THIRD",  color: "#fce8b2" },
+    { name: "OUTER",  color: "#f4c7c3" }
   ],
   print_layout: true,
   entries: [
