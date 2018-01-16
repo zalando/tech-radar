@@ -45,7 +45,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Zalando Tech Radar — 2017.12",
+  title: "Zalando Tech Radar — 2018.01",
   quadrants: [
     { name: "Languages" },
     { name: "Infrastructure" },
@@ -84,7 +84,7 @@ radar_visualization({
         label: "AWS Data Pipeline",
         active: false,
         link: "../data_processing/aws_data_pipeline.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 3,
@@ -121,17 +121,17 @@ radar_visualization({
       {
         quadrant: 3,
         ring: 2,
-        label: "Hadoop/MR",
+        label: "Hadoop",
         active: false,
-        link: "../data_processing/hadoop_mr.html",
+        link: "../data_processing/hadoop.html",
         moved: 0
       },
       {
         quadrant: 3,
         ring: 2,
-        label: "Hadoop/YARN",
+        label: "YARN",
         active: false,
-        link: "../data_processing/hadoop_yarn.html",
+        link: "../data_processing/yarn.html",
         moved: 0
       },
       {
@@ -209,9 +209,9 @@ radar_visualization({
       {
         quadrant: 3,
         ring: 1,
-        label: "Hadoop/HDFS",
+        label: "HDFS",
         active: false,
-        link: "../datastores/hadoop_hdfs.html",
+        link: "../datastores/hdfs.html",
         moved: 0
       },
       {
@@ -265,25 +265,9 @@ radar_visualization({
       {
         quadrant: 3,
         ring: 3,
-        label: "Graphite",
-        active: false,
-        link: "../datastores/graphite.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
         label: "HBase",
         active: false,
         link: "../datastores/hbase.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "InfluxDB",
-        active: false,
-        link: "../datastores/influxdb.html",
         moved: 0
       },
       {
@@ -308,14 +292,6 @@ radar_visualization({
         label: "MySQL",
         active: false,
         link: "../datastores/mysql.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Neo4j",
-        active: false,
-        link: "../datastores/neo4j.html",
         moved: 0
       },
       {
@@ -512,6 +488,14 @@ radar_visualization({
       },
       {
         quadrant: 2,
+        ring: 2,
+        label: "Vue.js",
+        active: false,
+        link: "../frameworks/vuejs.html",
+        moved: 1
+      },
+      {
+        quadrant: 2,
         ring: 3,
         label: "Activiti",
         active: false,
@@ -636,38 +620,6 @@ radar_visualization({
         label: "AWS Lambda",
         active: false,
         link: "../infrastructure/aws_lambda.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "JBoss",
-        active: false,
-        link: "../infrastructure/jboss.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "Mesos",
-        active: false,
-        link: "../infrastructure/mesos.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "Puppet",
-        active: false,
-        link: "../infrastructure/puppet.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "saltstack",
-        active: false,
-        link: "../infrastructure/saltstack.html",
         moved: 0
       },
       {
@@ -809,22 +761,6 @@ radar_visualization({
       {
         quadrant: 0,
         ring: 3,
-        label: "JRuby",
-        active: true,
-        link: "jruby.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Jython",
-        active: true,
-        link: "jython.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
         label: ".NET languages",
         active: true,
         link: "net_languages.html",
@@ -900,14 +836,6 @@ radar_visualization({
         label: "ActiveMQ",
         active: false,
         link: "../queues/activemq.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Artemis",
-        active: false,
-        link: "../queues/artemis.html",
         moved: 0
       },
       {
