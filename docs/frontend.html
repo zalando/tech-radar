@@ -2,7 +2,7 @@
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>XXXL SOA Tech Radar</title>
+<title>XXXL Frontend Tech Radar</title>
 <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -15,18 +15,14 @@
   }
   h3 {
     margin-top: 50px;
+	background-size: 20px 20px;
+	padding-left:25px;
   }
-  li {
-    margin: 25px 50px 0 0;
-  }
-  table {
-    width: 1400px;
+  .content {
     margin: 0 50px 0 50px;
-  }
-  td {
-    width: 50%;
-    vertical-align: top;
-    padding-right: 60px;
+	.copyright {
+		font-size: 10px;
+	}
   }
 </style>
 </head>
@@ -45,7 +41,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "XXXL Tech Radar — 2018.04",
+  title: "XXXL Frontend Radar — 2018.04",
   quadrants: [
     { name: "Languages" },
     { name: "Infrastructure" },
