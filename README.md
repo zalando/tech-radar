@@ -1,9 +1,9 @@
 # Motivation
 
-At [Zalando](http://zalando.de), we maintain a [public Tech
-Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
+At [Neofonie](https://neofonie.de), we maintain a [public Tech
+Radar](https://neofonie.github.io/tech-radar/) to help our engineering teams
 align on technology choices. Is is based on the [pioneering work
-by ThoughtWorks](https://www.thoughtworks.com/radar).
+by ThoughtWorks](https://www.thoughtworks.com/radar) and [Zalando](https://zalando.github.io/tech-radar/).
 
 This repository contains the code to generate the visualization:
 [`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
@@ -15,7 +15,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.5.js"></script>
+<script src="https://neofonie.github.io/tech-radar/release/radar-0.5.js"></script>
 ```
 
 2. insert an empty `svg` tag:
@@ -67,14 +67,14 @@ radar_visualization({
 Entries are positioned automatically so that they don't overlap.
 
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://zalando.github.io/tech-radar/).
+Radar](https://neofonie.github.io/tech-radar/).
 
 ## License
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017 Zalando SE
+Copyright (c) 2017 Neoofnie SE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
