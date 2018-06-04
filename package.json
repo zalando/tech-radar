@@ -1,0 +1,25 @@
+{
+  "name": "neo-tech-radar",
+  "version": "1.0.0",
+  "description": "Visualizing our technology choices",
+  "author": "neofonie GmbH",
+  "license": "MIT",
+  "homepage": "https://github.com/Neofonie/tech-radar#readme",
+  "bugs": {
+    "url": "https://github.com/Neofonie/tech-radar/issues"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "browser-sync docs -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neofonie/tech-radar.git"
+  },
+  "dependencies": {
+    "browser-sync": "^2.24.4"
+  }
+}
