@@ -1,0 +1,17 @@
+{
+  "name": "zalando-tech-radar",
+  "version": "2018.5.0",
+  "description": "Visualizing our technology choices",
+  "homepage": "https://github.com/zalando/tech-radar#readme",
+  "repository": "https://github.com/zalando/tech-radar.git",
+  "license": "MIT",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.4"
+  },
+  "scripts": {
+    "start": "browser-sync docs -w"
+  }
+}
