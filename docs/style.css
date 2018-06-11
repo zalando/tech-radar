@@ -8,27 +8,14 @@ h3 {
 li {
     margin: 25px 50px 0 0;
 }
-table {
-    width: 1400px;
-    margin: 0 50px 0 50px;
-}
-td {
-    width: 50%;
-    vertical-align: top;
-    padding-right: 60px;
-}
 /*
 CSS-Grid
 */
 .container {
-    margin-left:50px;
+    margin-left: 50px;
     margin-right: 50px;
     display: grid;
-    grid-gap: 5px;
+    grid-gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(900px);
-}
-
-.textLeft {
-    padding-right:10px;
 }
