@@ -17,3 +17,18 @@ td {
     vertical-align: top;
     padding-right: 60px;
 }
+/*
+CSS-Grid
+*/
+.container {
+    margin-left:50px;
+    margin-right: 50px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(900px);
+}
+
+.textLeft {
+    padding-right:10px;
+}
