@@ -48,10 +48,10 @@ function radar_visualization(config) {
   ];
 
   const rings = [
-    { radius: 130 },
-    { radius: 220 },
-    { radius: 310 },
-    { radius: 400 }
+    { radius: 140 },
+    { radius: 210 },
+    { radius: 280 },
+    { radius: 350 }
   ];
 
   const title_offset =
@@ -201,20 +201,20 @@ function radar_visualization(config) {
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
   } else {
-    radar.attr("transform", translate(config.width / 2, config.height / 2));
+    radar.attr("transform", translate(config.width / 2.25, config.height / 2));
   }
 
   var grid = radar.append("g");
 
   // draw grid lines
   grid.append("line")
-    .attr("x1", 0).attr("y1", -400)
-    .attr("x2", 0).attr("y2", 400)
+    .attr("x1", 0).attr("y1", -350)
+    .attr("x2", 0).attr("y2", 350)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
   grid.append("line")
-    .attr("x1", -400).attr("y1", 0)
-    .attr("x2", 400).attr("y2", 0)
+    .attr("x1", -350).attr("y1", 0)
+    .attr("x2", 350).attr("y2", 0)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
 
@@ -230,11 +230,11 @@ function radar_visualization(config) {
     if (config.print_layout) {
       grid.append("text")
         .text(config.rings[i].name)
-        .attr("y", -rings[i].radius + 62)
+        .attr("y", -rings[i].radius + 45)
         .attr("text-anchor", "middle")
-        .style("fill", "#e5e5e5")
-        .style("font-family", "Arial, Helvetica")
-        .style("font-size", 42)
+        .style("fill", "#97a3b4")
+        .style("font-family", "'Roboto', Arial, Helvetica")
+        .style("font-size", 32)
         .style("font-weight", "bold")
         .style("pointer-events", "none")
         .style("user-select", "none");
@@ -242,10 +242,10 @@ function radar_visualization(config) {
   }
 
   function legend_transform(quadrant, ring, index=null) {
-    var dx = ring < 2 ? 0 : 120;
-    var dy = (index == null ? -16 : index * 12);
+    var dx = ring < 2 ? 0 : 200;
+    var dy = (index == null ? -16 : index * 14);
     if (ring % 2 == 1) {
-      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+      dy = dy + 36 + segmented[quadrant][ring-1].length * 14;
     }
     return translate(
       legend_offset[quadrant].x + dx,
@@ -260,16 +260,9 @@ function radar_visualization(config) {
     radar.append("text")
       .attr("transform", translate(title_offset.x, title_offset.y))
       .text(config.title)
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "34");
-
-    // footer
-    radar.append("text")
-      .attr("transform", translate(footer_offset.x, footer_offset.y))
-      .text("▲ moved up     ▼ moved down")
-      .attr("xml:space", "preserve")
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "10");
+      .style("font-family", "'Roboto', Arial, Helvetica")
+      .style("font-size", "34")
+      .style("fill", "#002257");
 
     // legend
     var legend = radar.append("g");
@@ -280,15 +273,17 @@ function radar_visualization(config) {
           legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
-        .style("font-family", "Arial, Helvetica")
-        .style("font-size", "18");
+        .style("font-family", "'Roboto', Arial, Helvetica")
+        .style("font-size", "18")
+        .style("fill", "#002257");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
-          .style("font-family", "Arial, Helvetica")
+          .style("font-family", "'Roboto', Arial, Helvetica")
           .style("font-size", "12")
-          .style("font-weight", "bold");
+          .style("font-weight", "bold")
+          .style("fill", "#002257");
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
@@ -296,8 +291,9 @@ function radar_visualization(config) {
               .attr("class", "legend" + quadrant + ring)
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .text(function(d, i) { return d.id + ". " + d.label; })
-              .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11");
+              .style("font-family", "'Roboto', Arial, Helvetica")
+              .style("font-size", "11")
+              .style("fill", "#002257");
       }
     }
   }
@@ -380,7 +376,7 @@ function radar_visualization(config) {
         .style("fill", d.color);
     } else {
       blip.append("circle")
-        .attr("r", 9)
+        .attr("r", 12)
         .attr("fill", d.color);
     }
 
@@ -392,7 +388,7 @@ function radar_visualization(config) {
         .attr("y", 3)
         .attr("text-anchor", "middle")
         .style("fill", "#fff")
-        .style("font-family", "Arial, Helvetica")
+        .style("font-family", "'Roboto', Arial, Helvetica")
         .style("font-size", function(d) { return blip_text.length > 2 ? "8" : "9"; })
         .style("pointer-events", "none")
         .style("user-select", "none");
