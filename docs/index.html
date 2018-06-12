@@ -1,938 +1,350 @@
 <html>
 
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Zalando Tech Radar</title>
-<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Vermietet.de Tech Radar</title>
+    <link rel="icon" type="image/png" href="img/favicon-32px.png" sizes="32x32">
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=latin-ext">
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="radar.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="radar.js"></script>
 
-<style type="text/css">
-  body {
-    font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
-    padding-bottom: 50px;
-  }
-  h3 {
-    margin-top: 50px;
-  }
-  li {
-    margin: 25px 50px 0 0;
-  }
-  table {
-    width: 1400px;
-    margin: 0 50px 0 50px;
-  }
-  td {
-    width: 50%;
-    vertical-align: top;
-    padding-right: 60px;
-  }
-</style>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', arial, helvetica, sans-serif;
+            padding-bottom: 50px;
+            color: #002257;
+        }
+
+        h3 {
+            margin-top: 50px;
+            color: #002257;
+        }
+
+        li {
+            margin: 25px 50px 0 0;
+        }
+
+        table {
+            width: 1400px;
+            margin: 0 50px 0 50px;
+        }
+
+        td {
+            width: 50%;
+            vertical-align: top;
+            padding-right: 60px;
+        }
+
+        img {
+            width: 200px;
+            display: block;
+            padding-left: 3.5rem; 
+        }
+    </style>
 </head>
 
 <body>
+    <img src="img/logo.png"/>
+    <svg id="radar"></svg>
 
-<svg id="radar"></svg>
+    <script>
+        radar_visualization({
+            svg_id: "radar",
+            width: 1650,
+            height: 1000,
+            colors: {
+                background: "#fff",
+                grid: "#002257",
+                inactive: "#ddd"
+            },
+            title: "Vermietet.de Tech Radar — 2018.06",
+            quadrants: [
+                { name: "Techniques" },
+                { name: "Tools" },
+                { name: "Languages & Frameworks" },
+                { name: "Infrastructure & Platforms" }
+            ],
+            rings: [
+                { name: "ADOPT", color: "#00ce7d" },
+                { name: "TRIAL", color: "#0077ff" },
+                { name: "ASSESS", color: "#ff9b00" },
+                { name: "HOLD", color: "#e55541" }
+            ],
+            print_layout: true,
+            // zoomed_quadrant: 0,
+            //ENTRIES
+            entries: [
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Google Cloud Kubernetes",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Google Cloud Logging",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Google BigQuery",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Instana",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "MongoDB",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Kafka",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 3,
+                    ring: 0,
+                    label: "Tomcat & Jetty",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 0,
+                    label: "Java 9",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 0,
+                    label: "Spring 2",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 0,
+                    label: "TypeScript",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 0,
+                    label: "Angular 6",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 0,
+                    label: "React.js Native",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 2,
+                    label: "Closure",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 3,
+                    label: "Activiti",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 3,
+                    label: "Kotlin",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 3,
+                    label: "Groovy",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 2,
+                    ring: 3,
+                    label: "Node.js",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "GitHub",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Wercker",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Sentry",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "JFrog maven and js repositories",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Browserstack",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Headless Chrome for front-end test",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Npm as a package manager",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Google Cloud container repository",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 0,
+                    label: "Segment.com",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 1,
+                    ring: 3,
+                    label: "Npm as a repository",
+                    active: false,
+                    moved: 0
+                },
+                {
+                    quadrant: 0,
+                    ring: 0,
+                    label: "Domain Driven Design",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 0,
+                    ring: 0,
+                    label: "Pipelines for infrastructure as code",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 0,
+                    ring: 0,
+                    label: "Hosted identity management as a service",
+                    active: true,
+                    moved: 0
+                },
+                {
+                    quadrant: 0,
+                    ring: 2,
+                    label: "Event streaming as the source of truth",
+                    active: true,
+                    moved: 0
+                }
+            ]
+            //ENTRIES
+        });
+    </script>
 
-<script>
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "Zalando Tech Radar — 2018.05",
-  quadrants: [
-    { name: "Languages" },
-    { name: "Infrastructure" },
-    { name: "Frameworks" },
-    { name: "Data Management" }
-  ],
-  rings: [
-    { name: "ADOPT", color: "#93c47d" },
-    { name: "TRIAL", color: "#93d2c2" },
-    { name: "ASSESS", color: "#fbdb84" },
-    { name: "HOLD", color: "#efafa9" }
-  ],
-  print_layout: true,
-  // zoomed_quadrant: 0,
-  //ENTRIES
-  entries: [
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "AWS EMR",
-        active: false,
-        link: "../data_processing/aws_emr.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Spark",
-        active: false,
-        link: "../data_processing/spark.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "AWS Data Pipeline",
-        active: false,
-        link: "../data_processing/aws_data_pipeline.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "Flink",
-        active: false,
-        link: "../data_processing/flink.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "Google BigQuery",
-        active: false,
-        link: "../data_processing/google_bigquery.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "Presto",
-        active: false,
-        link: "../data_processing/presto.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "Airflow",
-        active: false,
-        link: "../data_processing/airflow.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "Hadoop",
-        active: false,
-        link: "../data_processing/hadoop.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "YARN",
-        active: false,
-        link: "../data_processing/yarn.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Esper",
-        active: false,
-        link: "../data_processing/esper.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "AWS S3",
-        active: false,
-        link: "../datastores/aws_s3.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Cassandra",
-        active: false,
-        link: "../datastores/cassandra.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Elasticsearch",
-        active: false,
-        link: "../datastores/elasticsearch.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "etcd",
-        active: false,
-        link: "../datastores/etcd.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "PostgreSQL",
-        active: false,
-        link: "../datastores/postgresql.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Redis",
-        active: false,
-        link: "../datastores/redis.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Solr",
-        active: false,
-        link: "../datastores/solr.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "AWS DynamoDB",
-        active: false,
-        link: "../datastores/aws_dynamodb.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "HDFS",
-        active: false,
-        link: "../datastores/hdfs.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "KairosDB",
-        active: false,
-        link: "../datastores/kairos.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "Consul",
-        active: false,
-        link: "../datastores/consul.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "Google Bigtable",
-        active: false,
-        link: "../datastores/google_bigtable.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "RocksDB",
-        active: false,
-        link: "../datastores/rocksdb.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Aerospike",
-        active: false,
-        link: "../datastores/aerospike.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "CouchBase",
-        active: false,
-        link: "../datastores/couchbase.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "HBase",
-        active: false,
-        link: "../datastores/hbase.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Memcached",
-        active: false,
-        link: "../datastores/memcached.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "MongoDB",
-        active: false,
-        link: "../datastores/mongodb.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "MySQL",
-        active: false,
-        link: "../datastores/mysql.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Oracle DB",
-        active: false,
-        link: "../datastores/oracle_db.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Riak",
-        active: false,
-        link: "../datastores/riak.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "ZooKeeper",
-        active: false,
-        link: "../datastores/zookeeper.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Akka (Scala)",
-        active: false,
-        link: "../frameworks/akka_scala.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Node.js",
-        active: false,
-        link: "../frameworks/nodejs.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "OpenAPI (Swagger)",
-        active: false,
-        link: "../frameworks/openapi_swagger.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Play (Scala)",
-        active: false,
-        link: "../frameworks/play_scala.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "ReactJS",
-        active: false,
-        link: "../frameworks/reactjs.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "RxJava (Android)",
-        active: false,
-        link: "../frameworks/rxjava_android.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "scikit-learn",
-        active: false,
-        link: "../frameworks/scikit_learn.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Spring",
-        active: false,
-        link: "../frameworks/spring.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Angular",
-        active: false,
-        link: "../frameworks/angular.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "AspectJ",
-        active: false,
-        link: "../frameworks/aspectj.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Camel",
-        active: false,
-        link: "../frameworks/camel.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Camunda",
-        active: false,
-        link: "../frameworks/camunda.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "OpenNLP",
-        active: false,
-        link: "../frameworks/opennlp.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Thymeleaf",
-        active: false,
-        link: "../frameworks/thymeleaf.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Akka-Http",
-        active: false,
-        link: "../frameworks/akka_http.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Aurelia",
-        active: false,
-        link: "../frameworks/aurelia.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Ember.js",
-        active: false,
-        link: "../frameworks/emberjs.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "gRPC",
-        active: false,
-        link: "../frameworks/grpc.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Http4s",
-        active: false,
-        link: "../frameworks/http4s.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "jOOQ",
-        active: false,
-        link: "../frameworks/jooq.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Redux",
-        active: false,
-        link: "../frameworks/redux.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Vert.x",
-        active: false,
-        link: "../frameworks/vertx.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Vue.js",
-        active: false,
-        link: "../frameworks/vuejs.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Activiti",
-        active: false,
-        link: "../frameworks/activiti.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "AngularJS 1.x",
-        active: false,
-        link: "../frameworks/angularjs_1x.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "BackboneJS",
-        active: false,
-        link: "../frameworks/backbonejs.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Drools",
-        active: false,
-        link: "../frameworks/drools.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Spray",
-        active: false,
-        link: "../frameworks/spray.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Docker",
-        active: false,
-        link: "../infrastructure/docker.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "HAProxy",
-        active: false,
-        link: "../infrastructure/haproxy.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Hystrix",
-        active: false,
-        link: "../infrastructure/hystrix.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Jetty",
-        active: false,
-        link: "../infrastructure/jetty.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Kubernetes",
-        active: false,
-        link: "../infrastructure/kubernetes.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Nginx",
-        active: false,
-        link: "../infrastructure/nginx.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "STUPS",
-        active: false,
-        link: "../infrastructure/stups.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Tomcat",
-        active: false,
-        link: "../infrastructure/tomcat.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "ZMON",
-        active: false,
-        link: "../infrastructure/zmon.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "Failsafe",
-        active: false,
-        link: "../infrastructure/failsafe.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "Undertow",
-        active: false,
-        link: "../infrastructure/undertow.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 2,
-        label: "AWS Lambda",
-        active: false,
-        link: "../infrastructure/aws_lambda.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 2,
-        label: "OpenTracing",
-        active: false,
-        link: "../infrastructure/opentracing.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Go",
-        active: true,
-        link: "go.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Java",
-        active: true,
-        link: "java.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "JavaScript",
-        active: true,
-        link: "javascript.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Python",
-        active: true,
-        link: "python.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Scala",
-        active: true,
-        link: "scala.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Swift",
-        active: true,
-        link: "swift.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 1,
-        label: "Clojure",
-        active: true,
-        link: "clojure.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 1,
-        label: "Haskell",
-        active: true,
-        link: "haskell.html",
-        moved: 1
-      },
-      {
-        quadrant: 0,
-        ring: 1,
-        label: "Kotlin",
-        active: true,
-        link: "kotlin.html",
-        moved: 1
-      },
-      {
-        quadrant: 0,
-        ring: 1,
-        label: "TypeScript",
-        active: true,
-        link: "typescript.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 2,
-        label: "Elm",
-        active: true,
-        link: "elm.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 2,
-        label: "R",
-        active: true,
-        link: "r.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 2,
-        label: "Rust",
-        active: true,
-        link: "rust.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "C languages",
-        active: true,
-        link: "c_languages.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "CoffeeScript",
-        active: true,
-        link: "coffeescript.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Erlang",
-        active: true,
-        link: "erlang.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Groovy",
-        active: true,
-        link: "groovy.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: ".NET languages",
-        active: true,
-        link: "net_languages.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Perl",
-        active: true,
-        link: "perl.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "PHP",
-        active: true,
-        link: "php.html",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Ruby",
-        active: true,
-        link: "ruby.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "AWS SNS",
-        active: false,
-        link: "../queues/aws_sns.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "AWS SQS",
-        active: false,
-        link: "../queues/aws_sqs.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Kafka",
-        active: false,
-        link: "../queues/kafka.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Nakadi",
-        active: false,
-        link: "../queues/nakadi.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "RabbitMQ",
-        active: false,
-        link: "../queues/rabbitmq.html",
-        moved: 1
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "AWS Kinesis",
-        active: false,
-        link: "../queues/aws_kinesis.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "ActiveMQ",
-        active: false,
-        link: "../queues/activemq.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "HornetQ",
-        active: false,
-        link: "../queues/hornetq.html",
-        moved: 0
-      },
-  ]
-  //ENTRIES
-});
-</script>
+    <table>
+        <tr>
+            <td>
 
-<table>
-<tr>
-<td>
+                <h3>What is the Tech Radar?</h3>
 
-<h3>What is the Tech Radar?</h3>
+                <p>
+                    The Vermietet.de Tech Radar is a list of technologies, complemented by an assessment result, called
+                    <i>ring assignment</i>. We use four rings with the following semantics:
+                </p>
 
-<p>
-The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <i>ring assignment</i>. We use four rings with the following semantics:
-</p>
+                <ul>
+                    <li>
+                        <b>ADOPT</b> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale.
+                        Technologies with a usage culture in our Vermietet.de production environment, low risk and recommended
+                        to be widely used.</li>
+                    <li>
+                        <b>TRIAL</b> &mdash; Technologies that we have seen work with success in project work to solve a real
+                        problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL
+                        technologies are slightly more risky; some engineers in our organization walked this path and will
+                        share knowledge and experiences.</li>
+                    <li>
+                        <b>ASSESS</b> &mdash; Technologies that are promising and have clear potential value-add for us; technologies
+                        worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies
+                        have higher risks; they are often brand new and highly unproven in our organisation. You will find
+                        some engineers that have knowledge in the technology and promote it, you may even find teams that
+                        have started a prototyping effort.</li>
+                    <li>
+                        <b>HOLD</b> &mdash; Technologies not recommended to be used for new projects. Technologies that we think
+                        are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects,
+                        but usually can be continued for existing projects.</li>
+                </ul>
 
-<ul>
-<li><b>ADOPT</b> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Zalando production environment, low risk and recommended to be widely used.</li>
-<li><b>TRIAL</b> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><b>ASSESS</b> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><b>HOLD</b> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
-</ul>
+            </td>
+        </tr>
+    </table>
 
-</td><td>
-
-<h3>What is the purpose?</h3>
-
-<p>
-The Tech Radar is a tool to inspire and support engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and consider using in their projects.
-</p>
-
-<h3>How do we maintain it?</h3>
-
-<p>
-The Tech Radar is maintained by the <i>Zalando Technologists Guild</i> &mdash; an open group of  senior Zalando technologists committed to devote time to the Tech Radar purpose. The guild self organises to maintain the Tech Radar documents, including this public version. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on in guild meetings. The Tech Radar depends on active participation and input from all engineering teams at Zalando.
-</p>
-
-<p>
-There is also an <a href="https://techradar.zalando.net/">internal version of the Tech Radar</a> that contains background information about each technology &mdash; when to use it, pros and cons, main risks, which teams at Zalando are using it, and for what purpose.
-</p>
-
-<p>
-<i>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/zalando/tech-radar">open sourced the code</a> to generate this visualization.</i>
-</p>
-
-</td></tr>
-</table>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-105375141-2', 'auto');
-  ga('send', 'pageview');
-</script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-105375141-2', 'auto');
+        ga('send', 'pageview');
+    </script>
 
 </body>
+
 </html>
