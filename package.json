@@ -13,13 +13,15 @@
   },
   "scripts": {
     "start": "browser-sync docs -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint docs/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Neofonie/tech-radar.git"
   },
-  "dependencies": {
+  "devDependencies": {
+    "eslint": "^4.19.1",
     "browser-sync": "^2.24.4"
   }
 }
