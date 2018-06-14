@@ -2,7 +2,7 @@
 
 At [Neofonie](https://neofonie.de), we maintain a [public Tech
 Radar](https://neofonie.github.io/tech-radar/) to help our engineering teams
-align on technology choices. Is is based on the [pioneering work
+align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar) and [Zalando](https://zalando.github.io/tech-radar/).
 
 This repository contains the code to generate the visualization:
