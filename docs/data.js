@@ -61,10 +61,10 @@ export default {
     },
     {
         quadrant: 3,
-        ring: 2,
+        ring: 1,
         label: "PostgreSQL",
         active: false,
-        moved: 0
+        moved: 1
     }
   ]
 }
