@@ -5,23 +5,19 @@
   "author": "neofonie GmbH",
   "license": "MIT",
   "homepage": "https://github.com/Neofonie/tech-radar#readme",
-  "bugs": {
-    "url": "https://github.com/Neofonie/tech-radar/issues"
-  },
+  "repository": "https://github.com/Neofonie/tech-radar.git",
+  "bugs": "https://github.com/Neofonie/tech-radar/issues",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "start": "browser-sync docs -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint docs/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Neofonie/tech-radar.git"
+    "lint": "eslint docs/*.js --fix"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "browser-sync": "^2.24.4"
+    "browser-sync": "^2.24.5",
+    "eslint": "^5.0.1",
+    "eslint-config-neofonie": "^1.0.2"
   }
 }
