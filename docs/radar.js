@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+/* global d3 */
 function radar_visualization(config) {
     // custom random number generator, to make random sequence reproducible
     // source: https://stackoverflow.com/questions/521295
@@ -104,7 +105,7 @@ function radar_visualization(config) {
     function segment(quadrant, ring) {
         const polar_min = {
             t: quadrants[quadrant].radial_min * Math.PI,
-            r: ring == 0 ? 30 : rings[ring - 1].radius
+            r: ring === 0 ? 30 : rings[ring - 1].radius
         };
         const polar_max = {
             t: quadrants[quadrant].radial_max * Math.PI,
@@ -141,8 +142,8 @@ function radar_visualization(config) {
     }
 
     // position each entry randomly in its segment
-    for (var i = 0; i < config.entries.length; i++) {
-        var entry = config.entries[i];
+    for (let i = 0; i < config.entries.length; i++) {
+        let entry = config.entries[i];
         entry.segment = segment(entry.quadrant, entry.ring);
         const point = entry.segment.random();
         entry.x = point.x;
@@ -153,25 +154,25 @@ function radar_visualization(config) {
 
     // partition entries according to segments
     const segmented = new Array(4);
-    for (var quadrant = 0; quadrant < 4; quadrant++) {
+    for (let quadrant = 0; quadrant < 4; quadrant++) {
         segmented[quadrant] = new Array(4);
-        for (var ring = 0; ring < 4; ring++) {
+        for (let ring = 0; ring < 4; ring++) {
             segmented[quadrant][ring] = [];
         }
     }
-    for (var i = 0; i < config.entries.length; i++) {
-        var entry = config.entries[i];
+    for (let j = 0; j < config.entries.length; j++) {
+        let entry = config.entries[j];
         segmented[entry.quadrant][entry.ring].push(entry);
     }
 
     // assign unique sequential id to each entry
     let id = 1;
-    for (var quadrant of [2, 3, 1, 0]) {
-        for (var ring = 0; ring < 4; ring++) {
+    for (let quadrant of [2, 3, 1, 0]) {
+        for (let ring = 0; ring < 4; ring++) {
             const entries = segmented[quadrant][ring];
             entries.sort((a, b) => a.label.localeCompare(b.label));
-            for (var i = 0; i < entries.length; i++) {
-                entries[i].id = `${ id++}`;
+            for (let k = 0; k < entries.length; k++) {
+                entries[k].id = `${id++}`;
             }
         }
     }

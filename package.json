@@ -13,7 +13,7 @@
   "scripts": {
     "start": "browser-sync docs -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint docs/*.js --fix"
+    "lint": "eslint docs/*.js"
   },
   "devDependencies": {
     "browser-sync": "^2.24.5",
