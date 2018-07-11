@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.24.5",
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "eslint-config-neofonie": "^1.0.2"
   }
 }
