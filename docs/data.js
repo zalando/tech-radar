@@ -1,5 +1,5 @@
 export default {
-    title: 'Neofonie Tech Radar — 2018.07 !!! WorkInProgress !!!',
+    title: 'Neofonie Tech Radar — 2018.07',
     width: 1450,
     height: 1000,
     colors: {
@@ -26,9 +26,9 @@ export default {
     // ENTRIES
     //
     entries: [
-        //
-        // Platforms
-        //
+//////////////////////////////////////////////////////
+//      Platforms
+//////////////////////////////////////////////////////
         {
             quadrant: 0,
             ring: 0,
@@ -74,7 +74,7 @@ export default {
         {
             quadrant: 0,
             ring: 0,
-            label: 'Adobe Experiance Manager',
+            label: 'AEM',
             active: false,
             moved: 0
         },
@@ -103,6 +103,13 @@ export default {
             quadrant: 0,
             ring: 1,
             label: 'FirstSpirit CMS',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'phpunit',
             active: false,
             moved: 0
         },
@@ -141,9 +148,9 @@ export default {
             active: false,
             moved: 0
         },
-        //
-        // Infrastructure
-        //
+//////////////////////////////////////////////////////
+//      Infrastructure
+//////////////////////////////////////////////////////
         {
             quadrant: 1,
             ring: 0,
@@ -151,9 +158,16 @@ export default {
             active: false,
             moved: 0
         },
-        //
-        // Frameworks
-        //
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'nginx / fpm',
+            active: false,
+            moved: 0
+        },
+//////////////////////////////////////////////////////
+//      Frameworks
+//////////////////////////////////////////////////////
         {
             quadrant: 2,
             ring: 0,
@@ -164,7 +178,35 @@ export default {
         {
             quadrant: 2,
             ring: 0,
+            label: 'Symfony 2',
+            active: false,
+            moved: -1
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'composer',
+            active: false,
+            moved: 1
+        },
+        {
+            quadrant: 2,
+            ring: 0,
             label: 'Gulp',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'smarty',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'doctrine',
             active: false,
             moved: 0
         },
@@ -275,6 +317,20 @@ export default {
         },
         {
             quadrant: 2,
+            ring: 2,
+            label: 'Symfony 4',
+            active: false,
+            moved: 1
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'twig',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
             ring: 3,
             label: 'Backbone',
             active: false,
@@ -315,15 +371,43 @@ export default {
             active: false,
             moved: -1
         },
-        //
-        // Data Management
-        //
+        {
+            quadrant: 2,
+            ring: 3,
+            label: 'Laravel',
+            active: false,
+            moved: 1
+        },
+        {
+            quadrant: 2,
+            ring: 3,
+            label: 'Zend',
+            active: false,
+            moved: -1
+        },
+//////////////////////////////////////////////////////
+//      Data Management
+//////////////////////////////////////////////////////
         {
             quadrant: 3,
             ring: 1,
             label: 'PostgreSQL',
             active: false,
-            moved: 1
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'MySQL',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'ElasticSearch',
+            active: false,
+            moved: 0
         }
     ]
 };
