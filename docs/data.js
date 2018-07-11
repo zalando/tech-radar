@@ -43,6 +43,104 @@ export default {
             active: false,
             moved: 1
         },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'PHP',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Javascript',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Python',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Magnolia CMS',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Adobe Experiance Manager',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Shopware',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'Go',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'Typo3',
+            active: false,
+            moved: -1
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'FirstSpirit CMS',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 2,
+            label: 'Kotlin',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 3,
+            label: 'Groovy',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 3,
+            label: 'Grails',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 3,
+            label: 'C languages',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 3,
+            label: 'Perl',
+            active: false,
+            moved: 0
+        },
         //
         // Infrastructure
         //
@@ -73,7 +171,7 @@ export default {
         {
             quadrant: 2,
             ring: 0,
-            label: 'Flexbox',
+            label: 'CSS Flexbox',
             active: false,
             moved: 0
         },
