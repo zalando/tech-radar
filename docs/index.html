@@ -45,7 +45,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Zalando Tech Radar — 2018.05",
+  title: "Zalando Tech Radar — 2018.09",
   quadrants: [
     { name: "Languages" },
     { name: "Infrastructure" },
@@ -116,7 +116,7 @@ radar_visualization({
         label: "Airflow",
         active: false,
         link: "../data_processing/airflow.html",
-        moved: 0
+        moved: 1
       },
       {
         quadrant: 3,
@@ -337,14 +337,6 @@ radar_visualization({
       {
         quadrant: 2,
         ring: 0,
-        label: "OpenAPI (Swagger)",
-        active: false,
-        link: "../frameworks/openapi_swagger.html",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
         label: "Play (Scala)",
         active: false,
         link: "../frameworks/play_scala.html",
@@ -381,6 +373,14 @@ radar_visualization({
         active: false,
         link: "../frameworks/spring.html",
         moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 1,
+        label: "Akka-Http",
+        active: false,
+        link: "../frameworks/akka_http.html",
+        moved: 1
       },
       {
         quadrant: 2,
@@ -425,17 +425,17 @@ radar_visualization({
       {
         quadrant: 2,
         ring: 1,
-        label: "Thymeleaf",
+        label: "TensorFlow",
         active: false,
-        link: "../frameworks/thymeleaf.html",
-        moved: 0
+        link: "../frameworks/tensorflow.html",
+        moved: 1
       },
       {
         quadrant: 2,
-        ring: 2,
-        label: "Akka-Http",
+        ring: 1,
+        label: "Thymeleaf",
         active: false,
-        link: "../frameworks/akka_http.html",
+        link: "../frameworks/thymeleaf.html",
         moved: 0
       },
       {
@@ -625,6 +625,14 @@ radar_visualization({
       {
         quadrant: 1,
         ring: 1,
+        label: "OpenTracing",
+        active: false,
+        link: "../infrastructure/opentracing.html",
+        moved: 0
+      },
+      {
+        quadrant: 1,
+        ring: 1,
         label: "Undertow",
         active: false,
         link: "../infrastructure/undertow.html",
@@ -636,14 +644,6 @@ radar_visualization({
         label: "AWS Lambda",
         active: false,
         link: "../infrastructure/aws_lambda.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 2,
-        label: "OpenTracing",
-        active: false,
-        link: "../infrastructure/opentracing.html",
         moved: 0
       },
       {
@@ -668,6 +668,14 @@ radar_visualization({
         label: "JavaScript",
         active: true,
         link: "javascript.html",
+        moved: 0
+      },
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "OpenAPI (Swagger)",
+        active: true,
+        link: "openapi_swagger.html",
         moved: 0
       },
       {
@@ -708,7 +716,7 @@ radar_visualization({
         label: "Haskell",
         active: true,
         link: "haskell.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 0,
@@ -716,7 +724,7 @@ radar_visualization({
         label: "Kotlin",
         active: true,
         link: "kotlin.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 0,
@@ -852,7 +860,7 @@ radar_visualization({
         label: "RabbitMQ",
         active: false,
         link: "../queues/rabbitmq.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 3,
