@@ -17,8 +17,8 @@
     "htmllint": "htmllint  docs/*.html"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "eslint": "^5.2.0",
+    "browser-sync": "^2.24.7",
+    "eslint": "^5.5.0",
     "eslint-config-neofonie": "^1.0.2",
     "htmllint": "^0.7.2"
   }
