@@ -69,6 +69,26 @@ Entries are positioned automatically so that they don't overlap.
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
 Radar](https://neofonie.github.io/tech-radar/).
 
+## Local Development
+
+1. install dependencies with yarn (or npm):
+
+```
+yarn 
+```
+
+2. start local dev server:
+
+```
+yarn start
+```
+
+3. your default browser should automatically open and show the url
+ 
+```
+http://localhost:3000/
+```
+
 ## License
 
 ```
