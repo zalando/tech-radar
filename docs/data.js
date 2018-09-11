@@ -39,6 +39,55 @@ export default {
         {
             quadrant: 0,
             ring: 0,
+            label: 'Python',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Go',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Scala',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
+            label: 'Amazon Sagemaker',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'Ruby',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'AngularJS',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 1,
+            label: 'R',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 0,
+            ring: 0,
             label: 'node.js',
             active: false,
             moved: 1
@@ -148,6 +197,13 @@ export default {
             active: false,
             moved: 0
         },
+        {
+            quadrant: 0,
+            ring: 3,
+            label: 'Clojure',
+            active: false,
+            moved: 0
+        },
         //////////////////////////////////////////////////////
         //      Infrastructure
         //////////////////////////////////////////////////////
@@ -168,6 +224,48 @@ export default {
         //////////////////////////////////////////////////////
         //      Frameworks
         //////////////////////////////////////////////////////
+        {
+            quadrant: 1,
+            ring: 0,
+            label: 'Docker-Swarm',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'Kubernetes',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'AWS ML / Lambda',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'Microsoft Azure',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'Google Cloud',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 2,
+            label: 'Jupyter',
+            active: false,
+            moved: 0
+        },
         {
             quadrant: 2,
             ring: 0,
@@ -385,6 +483,128 @@ export default {
             active: false,
             moved: -1
         },
+        //
+        // Research
+        //
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'MXNet',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'OpenNLP',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Spring Boot',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Word2Vec',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Keras',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Mallet',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'TensorFlow',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Theano',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Scrapy',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Tesseract',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Deeplearning4j',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'AllenNLP',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Fast.AI',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'PyTorch',
+            active: false,
+            moved: 1
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Spacy',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 3,
+            label: 'RASA NLU',
+            active: false,
+            moved: 1
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'txtwerk',
+            active: false,
+            moved: 1
+        },
         //////////////////////////////////////////////////////
         //      Data Management
         //////////////////////////////////////////////////////
@@ -393,7 +613,7 @@ export default {
             ring: 1,
             label: 'PostgreSQL',
             active: false,
-            moved: 0
+            moved: 1
         },
         {
             quadrant: 3,
@@ -405,7 +625,98 @@ export default {
         {
             quadrant: 3,
             ring: 0,
-            label: 'ElasticSearch',
+            label: 'Elasticsearch',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'Apache Kafka',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'Apache SOLR',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'Tableau',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Apache Cassandra',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Apache Spark',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Apache Beam',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Redis',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Apache Zeppelin',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 2,
+            label: 'Apache Flink',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Ontotext GraphDB',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Apache Flume',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Virtuoso',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Apache Pig',
             active: false,
             moved: 0
         }
