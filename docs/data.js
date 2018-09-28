@@ -8,7 +8,7 @@ export default {
         inactive:   '#ddd'
     },
     quadrants: [
-        { name: 'Research / KI' },              // 0
+        { name: 'A.I.' },                       // 0
         { name: 'Frontend / Web' },             // 1
         { name: 'DevOps / Infrastructure' },    // 2
         { name: 'Platforms / Backend' }         // 3
@@ -27,7 +27,7 @@ export default {
     //
     entries: [
         //////////////////////////////////////////////////////
-        //      Research
+        //      Artifical Intelligence
         //////////////////////////////////////////////////////
         {
             quadrant: 0,
@@ -74,21 +74,7 @@ export default {
         {
             quadrant: 0,
             ring: 1,
-            label: 'Redis',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 1,
             label: 'Apache Zeppelin',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 2,
-            label: 'Apache Flink',
             active: false,
             moved: 0
         },
@@ -130,13 +116,6 @@ export default {
         {
             quadrant: 0,
             ring: 1,
-            label: 'Ruby',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 1,
             label: 'R',
             active: false,
             moved: 0
@@ -152,20 +131,6 @@ export default {
             quadrant: 0,
             ring: 0,
             label: 'Scala',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 0,
-            label: 'Docker-Swarm',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 2,
-            label: 'Kubernetes',
             active: false,
             moved: 0
         },
@@ -208,20 +173,6 @@ export default {
             quadrant: 0,
             ring: 0,
             label: 'OpenNLP',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 0,
-            label: 'Spring Boot',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 0,
-            label: 'Word2Vec',
             active: false,
             moved: 0
         },
@@ -301,13 +252,6 @@ export default {
             label: 'Spacy',
             active: false,
             moved: 0
-        },
-        {
-            quadrant: 0,
-            ring: 3,
-            label: 'RASA NLU',
-            active: false,
-            moved: 1
         },
         {
             quadrant: 0,
@@ -405,7 +349,7 @@ export default {
         },
         {
             quadrant: 1,
-            ring: 2,
+            ring: 1,
             label: 'CSS Grid',
             active: false,
             moved: 1
@@ -492,8 +436,29 @@ export default {
         },
         {
             quadrant: 2,
+            ring: 0,
+            label: 'Docker-Swarm',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Kubernetes',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
             ring: 2,
             label: 'nginx / fpm',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Redis',
             active: false,
             moved: 0
         },
@@ -518,13 +483,6 @@ export default {
             quadrant: 3,
             ring: 0,
             label: 'PHP',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 3,
-            ring: 0,
-            label: 'Javascript',
             active: false,
             moved: 0
         },
@@ -608,7 +566,7 @@ export default {
         {
             quadrant: 3,
             ring: 0,
-            label: 'Symfony 2',
+            label: 'Symfony',
             active: false,
             moved: -1
         },
@@ -656,22 +614,15 @@ export default {
         },
         {
             quadrant: 3,
-            ring: 1,
-            label: 'phpunit',
+            ring: 2,
+            label: 'twig',
             active: false,
             moved: 0
         },
         {
             quadrant: 3,
-            ring: 2,
-            label: 'Symfony 4',
-            active: false,
-            moved: 1
-        },
-        {
-            quadrant: 3,
-            ring: 2,
-            label: 'twig',
+            ring: 0,
+            label: 'Spring Boot',
             active: false,
             moved: 0
         },
