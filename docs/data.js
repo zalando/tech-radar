@@ -144,14 +144,14 @@ export default {
         {
             quadrant: 0,
             ring: 2,
-            label: 'Microsoft Azure',
+            label: 'Microsoft Azure AI',
             active: false,
             moved: 0
         },
         {
             quadrant: 0,
             ring: 2,
-            label: 'Google Cloud',
+            label: 'Google Cloud AI&ML',
             active: false,
             moved: 0
         },
