@@ -293,8 +293,8 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("text")
-              .attr("class", "legend" + quadrant + ring)
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
+              .attr("class", function(d, i) { return "legend" + quadrant + ring + " id" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; })
               .style("font-family", "Arial, Helvetica")
               .style("font-size", "11");
