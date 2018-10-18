@@ -312,7 +312,9 @@ function radar_visualization(config) {
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; })
               .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11");
+              .style("font-size", "11")
+              .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
       }
     }
   }
