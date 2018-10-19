@@ -218,6 +218,20 @@ function radar_visualization(config) {
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
 
+  // background color. Usage `.attr("filter", "url(#solid)")`
+  // SOURCE: https://stackoverflow.com/a/31013492/2609980
+  var defs = grid.append("defs");
+  var filter = defs.append("filter")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 1)
+    .attr("height", 1)
+    .attr("id", "solid");
+  filter.append("feFlood")
+    .attr("flood-color", "rgb(0, 0, 0, 0.8)");
+  filter.append("feComposite")
+    .attr("in", "SourceGraphic");
+
   // draw rings
   for (var i = 0; i < rings.length; i++) {
     grid.append("circle")
@@ -293,11 +307,14 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("text")
-              .attr("class", "legend" + quadrant + ring)
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
+              .attr("class", "legend" + quadrant + ring)
+              .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; })
               .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11");
+              .style("font-size", "11")
+              .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
       }
     }
   }
@@ -350,14 +367,27 @@ function radar_visualization(config) {
       .style("opacity", 0);
   }
 
+  function highlightLegendItem(d) {
+    var legendItem = document.getElementById("legendItem" + d.id);
+    legendItem.setAttribute("filter", "url(#solid)");
+    legendItem.setAttribute("fill", "white");
+  }
+
+  function unhighlightLegendItem(d) {
+    var legendItem = document.getElementById("legendItem" + d.id);
+    legendItem.removeAttribute("filter");
+    legendItem.removeAttribute("fill");
+  }
+
   // draw blips on radar
   var blips = rink.selectAll(".blip")
     .data(config.entries)
     .enter()
       .append("g")
         .attr("class", "blip")
-        .on("mouseover", showBubble)
-        .on("mouseout", hideBubble);
+        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
+        .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
   // configure each blip
   blips.each(function(d) {
