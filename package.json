@@ -18,9 +18,8 @@
     "lint:html": "htmllint docs/*.html"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.7",
-    "eslint": "^5.6.1",
-    "eslint-config-neofonie": "^1.0.2",
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.7.0",
     "htmllint": "^0.7.2"
   }
 }
