@@ -9,9 +9,11 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.4"
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.7.0"
   },
   "scripts": {
-    "start": "browser-sync docs -w"
+    "start": "browser-sync docs -w",
+    "lint:js": "eslint docs/*.js",
   }
 }

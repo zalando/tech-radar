@@ -89,7 +89,6 @@ function radar_visualization(config) {
     return Math.min(Math.max(value, low), high);
   }
 
-
   function bounded_ring(polar, r_min, r_max) {
     return {
       t: polar.t,
@@ -107,7 +106,7 @@ function radar_visualization(config) {
   function segment(quadrant, ring) {
     var polar_min = {
       t: quadrants[quadrant].radial_min * Math.PI,
-      r: ring == 0 ? 30 : rings[ring - 1].radius
+      r: ring === 0 ? 30 : rings[ring - 1].radius
     };
     var polar_max = {
       t: quadrants[quadrant].radial_max * Math.PI,
@@ -258,7 +257,7 @@ function radar_visualization(config) {
   function legend_transform(quadrant, ring, index=null) {
     var dx = ring < 2 ? 0 : 120;
     var dy = (index == null ? -16 : index * 12);
-    if (ring % 2 == 1) {
+    if (ring % 2 === 1) {
       dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
     }
     return translate(
