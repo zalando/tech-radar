@@ -1,10 +1,10 @@
 export default {
-    title: 'Neofonie Tech Radar — 2018.09',
+    title: 'Neofonie Tech Radar — 2018.11 WorkInProgress',
     width: 1440,
     height: 960,
     colors: {
         background: '#fff',
-        grid:       '#bbb',
+        grid:       '#e60023',
         inactive:   '#ddd'
     },
     quadrants: [
