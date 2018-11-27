@@ -430,38 +430,80 @@ export default {
         {
             quadrant: 2,
             ring: 0,
-            label: 'Docker',
+            label: 'Docker Swarm',
             active: false,
             moved: 0
         },
-        {
-            quadrant: 2,
-            ring: 0,
-            label: 'Docker-Swarm',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 2,
-            ring: 2,
-            label: 'Kubernetes',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 2,
-            ring: 2,
-            label: 'nginx / fpm',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 2,
-            ring: 1,
-            label: 'Redis',
-            active: false,
-            moved: 0
-        },
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Icinga',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Ha-Proxy',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Let\'s Encrypt / certbot',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Apache / mod_proxy',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Puppet',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Debian',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 0,
+			label: 'Ubuntu',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 1,
+			label: 'Zabbix',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 1,
+			label: 'Prometheus',
+			active: false,
+			moved: 0
+		},
+		{
+			quadrant: 2,
+			ring: 2,
+			label: 'Kubernetes',
+			active: false,
+			moved: 0
+		},
         //////////////////////////////////////////////////////
         //      Platforms / Backend
         //////////////////////////////////////////////////////
