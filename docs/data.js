@@ -266,6 +266,13 @@ export default {
         {
             quadrant: 1,
             ring: 0,
+            label: 'Greensock GSAP',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 1,
+            ring: 0,
             label: 'React',
             active: false,
             moved: 0
