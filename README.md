@@ -58,8 +58,8 @@ radar_visualization({
       moved: -1             // -1 = moved out (triangle pointing down)
                             //  0 = not moved (circle)
                             //  1 = moved in  (triangle pointing up)
-    },
-    ...
+   },
+    // ...
   ]
 });
 ```
