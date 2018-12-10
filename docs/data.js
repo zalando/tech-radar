@@ -593,20 +593,6 @@ export default {
         },
         {
             quadrant: 3,
-            ring: 0,
-            label: 'Magnolia CMS',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 3,
-            ring: 0,
-            label: 'AEM',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 3,
             ring: 1,
             label: 'Go',
             active: false,
@@ -614,22 +600,8 @@ export default {
         },
         {
             quadrant: 3,
-            ring: 1,
-            label: 'Typo3',
-            active: false,
-            moved: -1
-        },
-        {
-            quadrant: 3,
             ring: 0,
             label: 'Python',
-            active: false,
-            moved: 0
-        },
-        {
-            quadrant: 3,
-            ring: 1,
-            label: 'FirstSpirit CMS',
             active: false,
             moved: 0
         },
@@ -674,13 +646,6 @@ export default {
             label: 'Symfony',
             active: false,
             moved: -1
-        },
-        {
-            quadrant: 3,
-            ring: 0,
-            label: 'Shopware',
-            active: false,
-            moved: 0
         },
         {
             quadrant: 3,
