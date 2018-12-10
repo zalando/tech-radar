@@ -490,6 +490,34 @@ export default {
 			active: false,
 			moved: 0
 		},
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Bitbucket',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Jenkins',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Maven',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 0,
+            label: 'Tomcat',
+            active: false,
+            moved: 0
+        },
 		{
 			quadrant: 2,
 			ring: 1,
@@ -504,13 +532,41 @@ export default {
 			active: false,
 			moved: 0
 		},
-		{
-			quadrant: 2,
-			ring: 2,
-			label: 'Kubernetes',
-			active: false,
-			moved: 0
-		},
+        {
+            quadrant: 2,
+            ring: 1,
+            label: 'Jetty',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Kubernetes',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Gradle',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 2,
+            label: 'Undertow',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 2,
+            ring: 3,
+            label: 'Consul',
+            active: false,
+            moved: 0
+        },
         //////////////////////////////////////////////////////
         //      Platforms / Backend
         //////////////////////////////////////////////////////
@@ -579,7 +635,7 @@ export default {
         },
         {
             quadrant: 3,
-            ring: 2,
+            ring: 1,
             label: 'Kotlin',
             active: false,
             moved: 0
@@ -695,6 +751,69 @@ export default {
             label: 'PostgreSQL',
             active: false,
             moved: 1
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'Freemarker',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'Keycloak',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'MongoDB',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 0,
+            label: 'RabbitMQ',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 1,
+            label: 'Rx.Java',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 2,
+            label: 'GraphQL',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'ActiveMQ',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Thymeleaf',
+            active: false,
+            moved: 0
+        },
+        {
+            quadrant: 3,
+            ring: 3,
+            label: 'Vert.X',
+            active: false,
+            moved: 0
         },
     ]
 };
