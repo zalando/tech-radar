@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
-    "eslint": "^5.10.0",
+    "eslint": "^5.11.1",
     "htmllint-cli": "^0.0.7"
   }
 }
