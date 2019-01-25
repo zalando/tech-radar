@@ -1,5 +1,5 @@
 body {
-  font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
+  font-family: "Source Sans Pro", arial, helvetica, sans-serif;
   padding-bottom: 50px;
 }
 h3 {
@@ -16,4 +16,9 @@ td {
   width: 50%;
   vertical-align: top;
   padding-right: 60px;
+}
+
+#description {
+  padding: 5px;
+  overflow-y: auto;
 }
