@@ -19,6 +19,11 @@ td {
 }
 
 #description {
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
   overflow-y: auto;
+}
+
+#close {
+  padding: 2px 0;
+  background-color: white;
 }

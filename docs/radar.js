@@ -445,19 +445,37 @@ function radar_visualization(config) {
             left
         );
         description.innerHTML = d.description;
+        var close = document.querySelector("#close");
+        close.setAttribute(
+          "style",
+          `display: block; position: absolute; cursor: pointer; top: ${top}; left: ${left +
+            300}; padding: 2px; background-color: white; border: 1px solid gray;`
+        );
+        close.addEventListener(
+          "click",
+          function(e) {
+            document
+              .querySelector("#description")
+              .setAttribute("style", "display: none;");
+            e.target.setAttribute("style", "display: none;");
+          },
+          { once: true }
+        );
+        close.innerHTML = "x";
+        // description.appendChild(close);
       },
       { once: true }
     );
 
-    document.querySelector("#description").addEventListener(
-      "mouseout",
-      function(e) {
-        document
-          .querySelector("#description")
-          .setAttribute("style", "display: none;");
-      },
-      { once: true }
-    );
+    // document.querySelector("#description").addEventListener(
+    //   "mouseout",
+    //   function(e) {
+    //     document
+    //       .querySelector("#description")
+    //       .setAttribute("style", "display: none;");
+    //   },
+    //   { once: true }
+    // );
   }
 
   function unhighlightLegendItem(d) {
