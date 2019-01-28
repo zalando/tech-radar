@@ -19,11 +19,25 @@ td {
 }
 
 #description {
+  position: absolute;
   padding: 5px 10px 5px 5px;
   overflow-y: auto;
+  background-color: white;
+  overflow-y: auto;
+  border: 1px solid black;
+  font-size: 0.8em;
 }
 
 #close {
-  padding: 2px 0;
+  position: absolute;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  font-size: 16px;
+  text-align: center;
+  padding: 0;
   background-color: white;
+  color: gray;
+  border: 1px solid gray;
 }

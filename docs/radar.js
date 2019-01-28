@@ -197,6 +197,8 @@ function radar_visualization(config) {
     .attr("width", config.width)
     .attr("height", config.height);
 
+  const svgDom = document.querySelector("svg#" + config.svg_id);
+  svgDom.addEventListener("click", hideDescription);
   var radar = svg.append("g");
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
@@ -424,64 +426,68 @@ function radar_visualization(config) {
 
     legendItem.addEventListener(
       "click",
-      function(e) {
-        var legendItemRect = legendItem.getBoundingClientRect();
-        var description = document.querySelector("#description");
-        // description.setAttribute("transform", legendItem.getAttribute("transform"));
-        var top =
-          legendItemRect.top +
-          legendItemRect.height +
-          window.pageYOffset -
-          document.documentElement.clientTop;
-        var left =
-          legendItemRect.left +
-          window.pageXOffset -
-          document.documentElement.clientLeft;
-        description.setAttribute(
-          "style",
-          "display: block; position: absolute; background-color: white; width: 300px; height: 300px; border: 1px solid black; top: " +
-            top +
-            "; left: " +
-            left
-        );
-        description.innerHTML = d.description;
-        var close = document.querySelector("#close");
-        close.setAttribute(
-          "style",
-          `display: block; position: absolute; cursor: pointer; top: ${top}; left: ${left +
-            300}; padding: 2px; background-color: white; border: 1px solid gray;`
-        );
-        close.addEventListener(
-          "click",
-          function(e) {
-            document
-              .querySelector("#description")
-              .setAttribute("style", "display: none;");
-            e.target.setAttribute("style", "display: none;");
-          },
-          { once: true }
-        );
-        close.innerHTML = "x";
-        // description.appendChild(close);
+      e => {
+        showDescription(d);
+        e.stopPropagation();
       },
       { once: true }
     );
-
-    // document.querySelector("#description").addEventListener(
-    //   "mouseout",
-    //   function(e) {
-    //     document
-    //       .querySelector("#description")
-    //       .setAttribute("style", "display: none;");
-    //   },
-    //   { once: true }
-    // );
   }
 
   function unhighlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
     legendItem.removeAttribute("filter");
     legendItem.removeAttribute("fill");
+  }
+
+  function showDescription(d) {
+    let description = document.querySelector("#description");
+    let close = document.querySelector("#close");
+    if (!description) {
+      description = document.createElement("div");
+      description.setAttribute("id", "description");
+      document.body.appendChild(description);
+    }
+    if (!close) {
+      close = document.createElement("div");
+      close.setAttribute("id", "close");
+      document.body.appendChild(close);
+    }
+    const descriptionDimenstions = {
+      height: 300,
+      width: 200
+    };
+    const legendItem = document.getElementById("legendItem" + d.id);
+    const legendItemRect = legendItem.getBoundingClientRect();
+    const top =
+      legendItemRect.top +
+      legendItemRect.height +
+      window.pageYOffset -
+      document.documentElement.clientTop;
+    const left =
+      legendItemRect.left +
+      window.pageXOffset -
+      document.documentElement.clientLeft;
+
+    description.style.width = `${descriptionDimenstions.width}px`;
+    description.style.height = `${descriptionDimenstions.height}px`;
+    description.style.top = top;
+    description.style.left = left;
+    description.style.display = "block";
+    description.innerHTML = d.description;
+
+    close.style.top = top;
+    close.style.left = left + descriptionDimenstions.width - 1;
+    close.style.display = "block";
+    close.addEventListener("click", hideDescription, { once: true });
+    close.innerHTML = "x";
+  }
+
+  function hideDescription() {
+    document
+      .querySelector("#description")
+      .setAttribute("style", "display: none;");
+    document.querySelector("#close").setAttribute("style", "display: none;");
   }
 
   // draw blips on radar
