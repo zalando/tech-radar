@@ -371,27 +371,6 @@ function radar_visualization(config) {
     .attr("d", "M 0,0 10,0 5,8 z")
     .style("fill", "#333");
 
-  var descriptionTooltip = radar
-    .append("g")
-    .attr("id", "descriptionToolTip")
-    .attr("x", 0)
-    .attr("y", 0)
-    .style("padding", "5px")
-    .style("opacity", 0)
-    .style("pointer-events", "none")
-    .style("user-select", "none");
-  descriptionTooltip
-    .append("rect")
-    .attr("rx", 4)
-    .attr("ry", 4)
-    .style("fill", "#fff")
-    .style("stroke", "#000");
-  descriptionTooltip
-    .append("text")
-    .style("font-family", "sans-serif")
-    .style("font-size", "10px")
-    .style("fill", "#000");
-
   function showBubble(d) {
     if (d.active || config.print_layout) {
       var tooltip = d3.select("#bubble text").text(d.label);
