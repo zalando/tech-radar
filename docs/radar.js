@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2017 Zalando SE
+// Copyright (c) 2019 Procore Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -293,7 +293,7 @@ function radar_visualization(config) {
       .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
       .style("font-family", "Arial, Helvetica")
-      .style("font-size", "10");
+      .style("font-size", "16");
 
     // legend
     var legend = radar.append("g");
@@ -432,8 +432,9 @@ function radar_visualization(config) {
       close.setAttribute("id", "close");
       document.body.appendChild(close);
     }
-    const legendItem = document.getElementById("legendItem" + d.id);
-    const legendItemRect = legendItem.getBoundingClientRect();
+    const legendItemRect = document
+      .getElementById("legendItem" + d.id)
+      .legendItem.getBoundingClientRect();
     const top =
       legendItemRect.top +
       legendItemRect.height +
