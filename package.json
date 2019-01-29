@@ -17,6 +17,11 @@
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
-    "lint:html": "htmllint docs/*.html"
+    "lint:html": "htmllint docs/*.html",
+    "build": "node ./scripts/build.js",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
+  "dependencies": {
+    "terser": "^3.14.1"
   }
 }

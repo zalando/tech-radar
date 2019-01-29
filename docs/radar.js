@@ -434,7 +434,7 @@ function radar_visualization(config) {
     }
     const legendItemRect = document
       .getElementById("legendItem" + d.id)
-      .legendItem.getBoundingClientRect();
+      .getBoundingClientRect();
     const top =
       legendItemRect.top +
       legendItemRect.height +
@@ -445,18 +445,18 @@ function radar_visualization(config) {
       window.pageXOffset -
       document.documentElement.clientLeft;
 
-    description.style.width = `${config.description.width}px`;
-    description.style.height = `${config.description.height}px`;
     description.style.top = top;
     description.style.left = left;
-    description.style.display = "block";
+    description.style.width = `${config.description.width}px`;
+    description.style.height = `${config.description.height}px`;
     description.innerHTML = DOMPurify.sanitize(d.description);
+    description.style.display = "block";
 
     close.style.top = top;
     close.style.left = left + config.description.width - 1;
-    close.style.display = "block";
-    close.addEventListener("click", hideDescription, { once: true });
     close.innerHTML = "x";
+    close.addEventListener("click", hideDescription, { once: true });
+    close.style.display = "block";
   }
 
   function hideDescription() {
