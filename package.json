@@ -14,8 +14,8 @@
     "terser": "^3.14.1"
   },
   "scripts": {
-    "start": "browser-sync docs -w",
-    "lint": "eslint docs/*.js",
+    "start": "browser-sync src -w",
+    "lint": "eslint src/**/*.js",
     "build": "node ./scripts/build.js",
     "publish:pages": "git subtree push --prefix dist origin gh-pages"
   }

@@ -1,16 +1,4 @@
-const QUADRANTS = {
-  LANGUAGES: 0,
-  INFRASTRUCTURE: 1,
-  FRAMEWORKS: 2,
-  DATA_MANAGEMENT: 3
-};
-
-const RINGS = {
-  ADOPT: 0,
-  TRIAL: 1,
-  ASSESS: 2,
-  HOLD: 3
-};
+import { QUADRANTS, RINGS } from "./constants.js";
 
 const config = {
   svg_id: "radar",
@@ -44,8 +32,8 @@ const config = {
   entries: [
     // Languages and Frameworks
     {
-      quadrant: 0,
-      ring: 0,
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
       label: "JavaScript",
       active: true,
       link: null,
@@ -59,8 +47,8 @@ const config = {
       moved: 0
     },
     {
-      quadrant: 0,
-      ring: 0,
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
       label: "React",
       active: true,
       link: null,
@@ -73,8 +61,8 @@ const config = {
       moved: 0
     },
     {
-      quadrant: 0,
-      ring: 0,
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
       label: "Redux",
       active: true,
       link: null,
@@ -96,8 +84,26 @@ const config = {
       moved: 0
     },
     {
-      quadrant: 0,
-      ring: 3,
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
+      label: "Ruby",
+      active: true,
+      link: null,
+      description: ``,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
+      label: "Rails",
+      active: true,
+      link: null,
+      description: ``,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.HOLD,
       label: "jQuery",
       active: true,
       link: null,
@@ -107,45 +113,85 @@ const config = {
       `,
       moved: 0
     },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ASSESS,
+      label: "TypeScript",
+      active: true,
+      link: null,
+      description: ``
+    },
     // Infrastructure
     {
-      quadrant: 1,
-      ring: 0,
+      quadrant: QUADRANTS.INFRASTRUCTURE,
+      ring: RINGS.ADOPT,
       label: "Docker",
       active: true,
       link: null,
-      description: "",
+      description: ``,
       moved: 0
     },
     // Tools
     {
-      quadrant: 2,
-      ring: 0,
+      quadrant: QUADRANTS.TOOLS,
+      ring: RINGS.ADOPT,
       label: "Webpack",
       active: true,
       link: null,
-      description:
-        "Webpack is the dominant tool for bundling various module formats into a format compatible with browsers. Webpack's paradigm is to treat everything as a module, using purpose-built loaders to transform non-module files into modules. It is further extensible via its plugin system.",
+      description: `
+        Webpack is the dominant tool for bundling various module formats into a format compatible with browsers. Webpack's paradigm is to treat everything as a module, using purpose-built loaders to transform non-module files into modules. It is further extensible via its plugin system.
+      `,
       moved: 0
     },
     {
-      quadrant: 2,
-      ring: 0,
+      quadrant: QUADRANTS.TOOLS,
+      ring: RINGS.ADOPT,
       label: "Babel",
       active: true,
       link: null,
-      description:
-        "Babel.js has become the default compiler for writing next-generation JavaScript. Its ecosystem is huge, thanks to its plugin system. It allows developers to write ES6+ code that runs in the browser or on the server without sacrificing backward compatibility for older browsers, and with very little configuration. It has first-class support for different build-and-test systems, which makes integration with any current workflow simple. It is a great piece of software that has become the main driver of new language feature adoption and innovation.",
+      description: `
+        Babel.js has become the default compiler for writing next-generation JavaScript. Its ecosystem is huge, thanks to its plugin system. It allows developers to write ES6+ code that runs in the browser or on the server without sacrificing backward compatibility for older browsers, and with very little configuration. It has first-class support for different build-and-test systems, which makes integration with any current workflow simple. It is a great piece of software that has become the main driver of new language feature adoption and innovation.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.TOOLS,
+      ring: RINGS.ADOPT,
+      label: "Prettier",
+      active: true,
+      link: null,
+      description: ``,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.TOOLS,
+      ring: RINGS.ADOPT,
+      label: "Jest",
+      active: true,
+      link: null,
+      description: ``,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.TOOLS,
+      ring: RINGS.HOLD,
+      label: "Mocha",
+      active: true,
+      link: null,
+      description: `
+        Mocha is a capable and well-adopted test runner, but we have found that Jest provides a superior feature set and developer experience.
+      `,
       moved: 0
     },
     // Data Management
+    // Data Management
     {
-      quadrant: 3,
-      ring: 0,
+      quadrant: QUADRANTS.DATA_MANAGEMENT,
+      ring: RINGS.ADOPT,
       label: "Postgresql",
       active: true,
       link: null,
-      description: "",
+      description: ``,
       moved: 0
     }
   ]

@@ -1,7 +1,6 @@
 const Terser = require("terser");
 const fs = require("fs");
 
-// TODO set options for terser
 const options = {
   output: {
     comments: "some"
@@ -9,7 +8,7 @@ const options = {
 };
 const version = process.env.npm_package_version;
 const result = Terser.minify(
-  fs.readFileSync("./docs/radar.js", "utf8"),
+  fs.readFileSync("./src/radar.js", "utf8"),
   options
 );
 
