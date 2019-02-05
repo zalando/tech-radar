@@ -6,6 +6,7 @@ const Auth0Strategy = require("passport-auth0");
 const dotenv = require("dotenv");
 const flash = require("connect-flash");
 const logger = require("morgan");
+const cookieParser = require("cookie-parser");
 
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
