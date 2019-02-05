@@ -43,6 +43,8 @@ passport.deserializeUser(function(user, done) {
 const app = express();
 
 app.use(logger("dev"));
+app.use(cookieParser());
+
 const sess = {
   secret: "foobarbaz",
   cookie: {},
