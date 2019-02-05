@@ -45,7 +45,7 @@ const app = express();
 app.use(logger("dev"));
 const sess = {
   secret: "foobarbaz",
-  cookies: {},
+  cookie: {},
   resave: false,
   saveUninitialized: true
 };
