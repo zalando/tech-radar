@@ -16,6 +16,7 @@ router.get(
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 router.get("/callback", function(req, res, next) {
   passport.authenticate("auth0", function(err, user, info) {
+    console.log({ err, user, info });
     if (err) {
       return next(err);
     }
@@ -23,13 +24,11 @@ router.get("/callback", function(req, res, next) {
       return res.redirect("/login");
     }
     req.logIn(user, function(err) {
-      console.log({ err });
       if (err) {
         return next(err);
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
-      console.log({ returnTo });
       res.redirect(returnTo || "/");
     });
   })(req, res, next);
