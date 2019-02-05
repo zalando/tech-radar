@@ -1,9 +1,9 @@
 {
-  "name": "zalando-tech-radar",
-  "version": "2018.5.0",
+  "name": "procore-tech-radar",
+  "version": "0.0.1",
   "description": "Visualizing our technology choices",
-  "homepage": "https://github.com/zalando/tech-radar#readme",
-  "repository": "https://github.com/zalando/tech-radar.git",
+  "homepage": "https://procore.com",
+  "repository": "https://github.com/procore/tech-radar.git",
   "license": "MIT",
   "directories": {
     "doc": "docs"
@@ -11,12 +11,12 @@
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "eslint": "^5.7.0",
-    "htmllint": "^0.7.2"
+    "terser": "^3.14.1"
   },
   "scripts": {
-    "start": "browser-sync docs -w",
-    "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint docs/*.js",
-    "lint:html": "htmllint docs/*.html"
+    "start": "browser-sync src -w",
+    "lint": "eslint src/**/*.js",
+    "build": "node ./scripts/build.js",
+    "publish:pages": "git subtree push --prefix dist origin gh-pages"
   }
 }

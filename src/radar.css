@@ -1,0 +1,43 @@
+body {
+  font-family: "Source Sans Pro", arial, helvetica, sans-serif;
+  padding-bottom: 50px;
+}
+h3 {
+  margin-top: 50px;
+}
+li {
+  margin: 25px 50px 0 0;
+}
+table {
+  width: 1400px;
+  margin: 0 50px 0 50px;
+}
+td {
+  width: 50%;
+  vertical-align: top;
+  padding-right: 60px;
+}
+
+#description {
+  position: absolute;
+  padding: 5px 10px 5px 5px;
+  overflow-y: auto;
+  background-color: white;
+  overflow-y: auto;
+  border: 1px solid black;
+  font-size: 0.8em;
+}
+
+#close {
+  position: absolute;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  font-size: 16px;
+  text-align: center;
+  padding: 0;
+  background-color: white;
+  color: gray;
+  border: 1px solid gray;
+}
