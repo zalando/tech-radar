@@ -14,9 +14,21 @@
     "terser": "^3.14.1"
   },
   "scripts": {
-    "start": "browser-sync src -w",
+    "start": "node ./bin/www",
+    "dev": "browser-sync src -w",
     "lint": "eslint src/**/*.js",
     "build": "node ./scripts/build.js",
     "publish:pages": "git subtree push --prefix dist origin gh-pages"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "debug": "^4.1.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "http-errors": "^1.7.1",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-auth0": "^1.1.0"
   }
 }
