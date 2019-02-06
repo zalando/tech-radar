@@ -8,6 +8,7 @@ const flash = require("connect-flash");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const helmet = require("helmet");
 
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
@@ -43,7 +44,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 const app = express();
-
+app.user(helmet());
 app.use(logger("dev"));
 app.use(cookieParser());
 
