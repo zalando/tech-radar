@@ -50,7 +50,7 @@ app.use(cookieParser());
 const sess = {
   secret: "foobarbaz",
   cookie: {
-    sameSite: true,
+    // sameSite: true,
     httpOnly: true
   },
   resave: false,
