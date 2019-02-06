@@ -44,7 +44,9 @@ passport.deserializeUser(function(user, done) {
 });
 
 const app = express();
-app.user(helmet());
+if (app.get("env") === "production") {
+  app.use(helmet());
+}
 app.use(logger("dev"));
 app.use(cookieParser());
 
