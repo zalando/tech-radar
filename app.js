@@ -52,12 +52,13 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  sameSite: false
+  sameSite: restrict,
+  httpOnly: true
 };
 
-if (app.get("env") === "production") {
-  sess.cookie.secure = true;
-}
+// if (app.get("env") === "production") {
+//   sess.cookie.secure = true;
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
