@@ -52,7 +52,7 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  sameSite: strict,
+  sameSite: "strict",
   httpOnly: true
 };
 
