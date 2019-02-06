@@ -50,7 +50,8 @@ const sess = {
   secret: "foobarbaz",
   cookie: {},
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  sameSite: false
 };
 
 if (app.get("env") === "production") {
