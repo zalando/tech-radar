@@ -26,7 +26,7 @@ router.get(
 //     res.redirect(returnTo || "/");
 //   }
 // );
-router.get("/callback", function(req, res, next) {
+router.get("/callback", { state: "foobar" }, function(req, res, next) {
   passport.authenticate("auth0", function(err, user, info) {
     console.log({ err, user, info });
     if (err) {
