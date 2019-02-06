@@ -49,11 +49,12 @@ app.use(cookieParser());
 
 const sess = {
   secret: "foobarbaz",
-  cookie: {},
+  cookie: {
+    sameSite: true,
+    httpOnly: true
+  },
   resave: false,
-  saveUninitialized: true,
-  // sameSite: false,
-  httpOnly: true
+  saveUninitialized: true
 };
 
 if (app.get("env") === "production") {
