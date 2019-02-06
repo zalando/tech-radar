@@ -57,9 +57,9 @@ const sess = {
   saveUninitialized: true
 };
 
-if (app.get("env") === "production") {
-  sess.cookie.secure = true;
-}
+// if (app.get("env") === "production") {
+//   sess.cookie.secure = true;
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
