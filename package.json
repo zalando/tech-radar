@@ -15,12 +15,13 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "browser-sync src -w",
+    "dev": "browser-sync public -w",
     "lint": "eslint src/**/*.js",
     "build": "node ./scripts/build.js",
     "publish:pages": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.1",

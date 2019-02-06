@@ -47,17 +47,19 @@ app.use(logger("dev"));
 app.use(cookieParser());
 
 const sess = {
-  secret: "foobarbaz",
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  sameSite: false
+  secret: "foobarbaz"
+  // cookie: {},
+  // resave: false,
+  // saveUninitialized: true,
+  // sameSite: false
 };
 
-if (app.get("env") === "production") {
-  sess.cookie.secure = true;
-}
+// if (app.get("env") === "production") {
+//   sess.cookie.secure = true;
+// }
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
