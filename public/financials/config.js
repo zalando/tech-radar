@@ -95,6 +95,23 @@ const config = {
     {
       quadrant: QUADRANTS.LANGUAGES,
       ring: RINGS.ADOPT,
+      label: "Redux Loop",
+      active: true,
+      link: null,
+      description: `
+        <a href="http://redux-loop.js.org">Redux Loop</a> is our recommended library for managing
+        side effects in Redux applications. Redux Loop is a port of the
+        <a href="https://github.com/evancz/elm-architecture-tutorial">Elm Architecture</a> to Redux
+        that allows you to sequence your effects naturally and purely by returning them from your
+        reducers. Redux Loop has the best testing story of the side effects libraries currently in
+        use at Procore, and for reasons outlined <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        it is our recommended choice over thunks and sagas.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
       label: "Rails",
       active: true,
       link: null,
@@ -110,6 +127,35 @@ const config = {
       description: `
         jQuery was extremely important when introduced, and instrumental in pushing the client-side
         web forward, but its role has since been filled by more robust alternatives.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.HOLD,
+      label: "Redux Thunk",
+      active: true,
+      link: null,
+      description: `
+        Redux Thunk is the canonical side effects middleware described in the official
+        <a href="https://redux.js.org/advanced/async-actions">Redux docs</a> and while it is the
+        simplest of the side effects middlewares, for reasons outlined
+        <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        we feel that Redux Loop is a better option.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.HOLD,
+      label: "Redux Saga",
+      active: true,
+      link: null,
+      description: `
+        Redux Saga is another side effects middleware currently in use at Procore. It has a powerful
+        asychronous toolkit built around ES6 generators, but for reasons outlined
+        <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        we feel that Redux Loop is a better option.
       `,
       moved: 0
     },

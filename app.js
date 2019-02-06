@@ -49,15 +49,9 @@ app.use(cookieParser());
 
 const sess = {
   secret: "foobarbaz",
-  // cookie: {},
   resave: false,
   saveUninitialized: true
-  // sameSite: false
 };
-
-// if (app.get("env") === "production") {
-//   sess.cookie.secure = true;
-// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -79,7 +73,6 @@ app.use(function(req, res, next) {
 });
 
 app.use("/", authRouter);
-// app.use("/", indexRouter);
 app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
 
