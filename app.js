@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const flash = require("connect-flash");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
@@ -47,10 +48,10 @@ app.use(logger("dev"));
 app.use(cookieParser());
 
 const sess = {
-  secret: "foobarbaz"
+  secret: "foobarbaz",
   // cookie: {},
-  // resave: false,
-  // saveUninitialized: true,
+  resave: false,
+  saveUninitialized: true
   // sameSite: false
 };
 

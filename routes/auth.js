@@ -21,6 +21,8 @@ router.get(
     if (!req.user) {
       return res.redirect("/login");
     }
+    const returnTo = req.session.returnTo;
+    delete req.session.returnTo;
     res.redirect(returnTo || "/");
   }
 );
