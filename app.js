@@ -9,6 +9,7 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
+const MemcachedStore = require("connect-memcached")(session);
 
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
@@ -24,7 +25,14 @@ const strategy = new Auth0Strategy(
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:
       process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback",
-    state: true
+    state: true,
+    store:
+      process.env.NODE_ENV === "production"
+        ? new MemcachedStore({
+            hosts: [process.env.MEMCACHIER_SERVERS],
+            secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+          })
+        : undefined
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -49,7 +57,7 @@ if (app.get("env") === "production") {
   app.use(helmet());
 }
 app.use(logger("dev"));
-app.use(cookieParser());
+// app.use(cookieParser());
 
 const sess = {
   secret: "foobarbaz",
