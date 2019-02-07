@@ -30,9 +30,8 @@ router.get(
 //   }
 // );
 router.get("/callback", function(req, res, next) {
-  req.session.foo = "BAR";
-  console.log(req.session);
   passport.authenticate("auth0", function(err, user, info) {
+    console.log(req.session);
     console.log({ err, user, info });
     if (err) {
       return next(err);
