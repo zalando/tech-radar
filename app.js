@@ -24,8 +24,8 @@ const strategy = new Auth0Strategy(
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback",
-    state: true
+      process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback"
+    // state: true
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -67,13 +67,13 @@ const sess = {
   saveUninitialized: true
 };
 
-if (app.get("env") === "production") {
-  sess.cookie.secure = true;
-  sess.store = new MemcachedStore({
-    hosts: [process.env.MEMCACHIER_SERVERS],
-    secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  });
-}
+// if (app.get("env") === "production") {
+//   sess.cookie.secure = true;
+//   sess.store = new MemcachedStore({
+//     hosts: [process.env.MEMCACHIER_SERVERS],
+//     secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+//   });
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
