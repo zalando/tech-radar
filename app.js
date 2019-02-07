@@ -71,7 +71,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(flash());
 
 // Handle auth failure error messages
@@ -85,6 +84,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use("/", function(req, res, next) {
+  req.session.foo = "BARBAZ";
+  next();
+});
 app.use("/", authRouter);
 app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
