@@ -50,7 +50,7 @@ if (app.get("env") === "production") {
   app.use(helmet());
 }
 app.use(logger("dev"));
-// app.use(cookieParser());
+app.use(cookieParser());
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
