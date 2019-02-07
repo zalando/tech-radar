@@ -55,14 +55,15 @@ const sess = {
   secret: "foobarbaz",
   cookie: {
     sameSite: false,
-    httpOnly: true
+    httpOnly: true,
+    maxAge: 1800000 // 30 min
   },
   resave: false,
   saveUninitialized: true
 };
 
 if (app.get("env") === "production") {
-  // sess.cookie.secure = true;
+  sess.cookie.secure = true;
 }
 
 app.use(bodyParser.json());
