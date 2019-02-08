@@ -70,6 +70,7 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
+  console.log(`memchaced: ${process.env.MEMCACHEDCLOUD_SERVERS}`);
   sess.store = new MemcachedStore({
     hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
     // hosts: [process.env.MEMCACHIER_SERVERS],
