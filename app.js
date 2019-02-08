@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const MemcachedStore = require("connect-memcached")(session);
-const RedisStore = reuire("connect-redis")(session);
+const RedisStore = require("connect-redis")(session);
 
 const authRouter = require("./routes/auth");
 const secured = require("./middleware/secured");
