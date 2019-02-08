@@ -46,15 +46,13 @@ passport.deserializeUser(function(user, done) {
 });
 
 const app = express();
-if (app.get("env") === "production") {
-  app.use(helmet());
-}
-app.use(logger("dev"));
-app.use(cookieParser());
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+
+app.use(logger("dev"));
+app.use(cookieParser());
 
 const sess = {
   secret: "foobarbaz",
@@ -78,6 +76,7 @@ if (app.get("env") === "production") {
   //   hosts: [process.env.MEMCACHIER_SERVERS],
   //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
   // });
+  app.use(helmet());
 }
 
 app.use(bodyParser.json());
@@ -98,10 +97,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", function(req, res, next) {
-  req.session.foo = "BARBAZ";
-  next();
-});
+// app.use("/", function(req, res, next) {
+//   req.session.foo = "BARBAZ";
+//   next();
+// });
 app.use("/", authRouter);
 app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
