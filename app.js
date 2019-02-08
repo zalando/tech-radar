@@ -77,7 +77,6 @@ if (app.get("env") === "production") {
   });
 }
 
-app.use("/", authRouter);
 app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
 
@@ -88,6 +87,8 @@ app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.use("/", authRouter);
 
 // Handle auth failure error messages
 app.use(function(req, res, next) {
