@@ -1990,6 +1990,10 @@ memcached@2.2.x:
     hashring "3.2.x"
     jackpot ">=0.0.6"
 
+memjs@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/memjs/-/memjs-1.2.0.tgz#3c2a28d9105f26ff37d69254bef35c804b3c6f5b"
+
 merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
