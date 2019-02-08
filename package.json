@@ -23,7 +23,6 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
-    "connect-memcached": "^1.0.0",
     "connect-redis": "^3.4.0",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.1",
@@ -32,7 +31,6 @@
     "express-session": "^1.15.6",
     "helmet": "^3.15.0",
     "http-errors": "^1.7.1",
-    "memjs": "^1.2.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-auth0": "^1.1.0",

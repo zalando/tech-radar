@@ -9,7 +9,6 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-const MemcachedStore = require("connect-memcached")(session);
 const RedisStore = require("connect-redis")(session);
 
 const authRouter = require("./routes/auth");
@@ -17,35 +16,6 @@ const secured = require("./middleware/secured");
 
 dotenv.load();
 
-var memjs = require("memjs");
-
-var mc = memjs.Client.create(process.env.MEMCACHIER_SERVERS, {
-  failover: true, // default: false
-  timeout: 1, // default: 0.5 (seconds)
-  keepAlive: true // default: false
-});
-
-mc.set("hello", "memcachier", { expires: 0 }, function(err, val) {
-  if (err != null) {
-    console.log("Error setting value: " + err);
-  }
-});
-
-mc.get("hello", function(err, val) {
-  if (err != null) {
-    console.log("Error getting value: " + err);
-  } else {
-    console.log(val.toString("utf8"));
-  }
-});
-
-const store = new MemcachedStore({
-  // hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-  hosts: [process.env.MEMCACHIER_SERVERS],
-  secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-});
-
-console.log({ store });
 // Configure Passport to use Auth0
 const strategy = new Auth0Strategy(
   {
@@ -100,20 +70,12 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
-  // sess.store = store;
-  // console.log(`memchaced: ${process.env.MEMCACHEDCLOUD_SERVERS}`);
-  // sess.store = new MemcachedStore({
-  //   // hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-  //   hosts: [process.env.MEMCACHIER_SERVERS],
-  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  // });
   sess.store = new RedisStore({
     url: process.env.REDISCLOUD_URL,
     secret: "Fear is the mind killer"
   });
 }
 
-// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session(sess));
@@ -145,24 +107,24 @@ app.use(function(req, res, next) {
 
 // Development error handler
 // Will print stacktrace
-// if (app.get("env") === "development") {
+if (app.get("env") === "development") {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render("error", {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// Production error handler
+// No stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error", {
     message: err.message,
-    error: err
+    error: {}
   });
 });
-// }
-
-// Production error handler
-// No stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render("error", {
-//     message: err.message,
-//     error: {}
-//   });
-// });
 
 module.exports = app;
