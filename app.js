@@ -46,13 +46,12 @@ passport.deserializeUser(function(user, done) {
 });
 
 const app = express();
+app.use(logger("dev"));
+app.use(cookieParser());
 
 // View engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "pug");
-
-app.use(logger("dev"));
-// app.use(cookieParser());
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
 
 const sess = {
   secret: "foobarbaz",
@@ -68,10 +67,10 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
-  sess.store = new MemcachedStore({
-    hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-    secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  });
+  // sess.store = new MemcachedStore({
+  //   hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
+  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+  // });
   // sess.store = new MemcachedStore({
   //   hosts: [process.env.MEMCACHIER_SERVERS],
   //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
@@ -79,30 +78,30 @@ if (app.get("env") === "production") {
   app.use(helmet());
 }
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sess));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // Handle auth failure error messages
-// app.use(function(req, res, next) {
-//   if (req && req.query && req.query.error) {
-//     req.flash("error", req.query.error);
-//   }
-//   if (req && req.query && req.query.error_description) {
-//     req.flash("error_description", req.query.error_description);
-//   }
-//   next();
-// });
+app.use(function(req, res, next) {
+  if (req && req.query && req.query.error) {
+    req.flash("error", req.query.error);
+  }
+  if (req && req.query && req.query.error_description) {
+    req.flash("error_description", req.query.error_description);
+  }
+  next();
+});
 
 // app.use("/", function(req, res, next) {
 //   req.session.foo = "BARBAZ";
 //   next();
 // });
-// app.use("/", authRouter);
-// app.use("/", secured());
+app.use("/", authRouter);
+app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 // Catch 404 and forward to error handler
