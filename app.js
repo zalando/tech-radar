@@ -80,7 +80,7 @@ if (app.get("env") === "production") {
 
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
