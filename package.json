@@ -24,6 +24,7 @@
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "connect-memcached": "^1.0.0",
+    "connect-redis": "^3.4.0",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.1",
     "dotenv": "^6.2.0",
