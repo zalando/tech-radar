@@ -67,13 +67,14 @@ const sess = {
   saveUninitialized: true
 };
 
-// if (app.get("env") === "production") {
-//   sess.cookie.secure = true;
-//   sess.store = new MemcachedStore({
-//     hosts: [process.env.MEMCACHIER_SERVERS],
-//     secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-//   });
-// }
+if (app.get("env") === "production") {
+  app.set("trust proxy", 1); // trust first proxy
+  sess.cookie.secure = true;
+  // sess.store = new MemcachedStore({
+  //   hosts: [process.env.MEMCACHIER_SERVERS],
+  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+  // });
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
