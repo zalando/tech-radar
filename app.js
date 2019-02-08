@@ -12,7 +12,6 @@ const helmet = require("helmet");
 const MemcachedStore = require("connect-memcached")(session);
 
 const authRouter = require("./routes/auth");
-const indexRouter = require("./routes/index");
 const secured = require("./middleware/secured");
 
 dotenv.load();
@@ -36,6 +35,7 @@ const strategy = new Auth0Strategy(
 );
 
 passport.use(strategy);
+
 // You can use this section to keep a smaller payload
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -46,11 +46,11 @@ passport.deserializeUser(function(user, done) {
 });
 
 const app = express();
+
 if (app.get("env") === "production") {
-  // app.use(helmet());
+  app.use(helmet());
 }
 app.use(logger("dev"));
-app.use(cookieParser());
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -70,22 +70,24 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
-  // sess.store = new MemcachedStore({
-  //   hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  // });
-  // sess.store = new MemcachedStore({
-  //   hosts: [process.env.MEMCACHIER_SERVERS],
-  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  // });
+  sess.store = new MemcachedStore({
+    hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
+    // hosts: [process.env.MEMCACHIER_SERVERS],
+    secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+  });
 }
 
+app.use("/", authRouter);
+app.use("/", secured());
+app.use("/", express.static(path.join(__dirname, "public")));
+
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // Handle auth failure error messages
 app.use(function(req, res, next) {
@@ -97,10 +99,6 @@ app.use(function(req, res, next) {
   }
   next();
 });
-
-app.use("/", authRouter);
-app.use("/", secured());
-app.use("/", express.static(path.join(__dirname, "public")));
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -123,12 +121,12 @@ if (app.get("env") === "development") {
 
 // Production error handler
 // No stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render("error", {
-//     message: err.message,
-//     error: {}
-//   });
-// });
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render("error", {
+    message: err.message,
+    error: {}
+  });
+});
 
 module.exports = app;
