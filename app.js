@@ -52,7 +52,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
-app.use(cookieParser());
+// app.use(cookieParser());
 
 const sess = {
   secret: "foobarbaz",
@@ -79,11 +79,11 @@ if (app.get("env") === "production") {
   app.use(helmet());
 }
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sess));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 // app.use(flash());
 
 // Handle auth failure error messages
@@ -101,7 +101,7 @@ app.use(passport.session());
 //   req.session.foo = "BARBAZ";
 //   next();
 // });
-app.use("/", authRouter);
+// app.use("/", authRouter);
 // app.use("/", secured());
 app.use("/", express.static(path.join(__dirname, "public")));
 
