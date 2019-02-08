@@ -84,7 +84,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+// app.use(flash());
 
 // Handle auth failure error messages
 // app.use(function(req, res, next) {
