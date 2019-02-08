@@ -47,7 +47,7 @@ passport.deserializeUser(function(user, done) {
 
 const app = express();
 if (app.get("env") === "production") {
-  app.use(helmet());
+  // app.use(helmet());
 }
 app.use(logger("dev"));
 app.use(cookieParser());
