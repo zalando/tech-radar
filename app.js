@@ -48,9 +48,6 @@ passport.deserializeUser(function(user, done) {
 
 const app = express();
 
-if (app.get("env") === "production") {
-  app.use(helmet());
-}
 app.use(logger("dev"));
 
 // View engine setup
@@ -69,6 +66,7 @@ const sess = {
 };
 
 if (app.get("env") === "production") {
+  app.use(helmet());
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
   sess.store = new RedisStore({
