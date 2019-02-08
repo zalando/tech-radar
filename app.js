@@ -68,10 +68,10 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
-  sess.store = new MemcachedStore({
-    hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-    secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  });
+  // sess.store = new MemcachedStore({
+  //   hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
+  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+  // });
   // sess.store = new MemcachedStore({
   //   hosts: [process.env.MEMCACHIER_SERVERS],
   //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
