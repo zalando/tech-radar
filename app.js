@@ -43,6 +43,8 @@ const store = new MemcachedStore({
   hosts: [process.env.MEMCACHIER_SERVERS],
   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
 });
+
+console.log({ store });
 // Configure Passport to use Auth0
 const strategy = new Auth0Strategy(
   {
