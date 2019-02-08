@@ -38,6 +38,11 @@ mc.get("hello", function(err, val) {
   }
 });
 
+const store = new MemcachedStore({
+  // hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
+  hosts: [process.env.MEMCACHIER_SERVERS],
+  secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+});
 // Configure Passport to use Auth0
 const strategy = new Auth0Strategy(
   {
@@ -102,7 +107,7 @@ if (app.get("env") === "production") {
 
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
