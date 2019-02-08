@@ -70,11 +70,11 @@ const sess = {
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
-  // sess.store = new MemcachedStore({
-  //   hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
-  //   // hosts: [process.env.MEMCACHIER_SERVERS],
-  //   secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
-  // });
+  sess.store = new MemcachedStore({
+    hosts: [process.env.MEMCACHEDCLOUD_SERVERS],
+    // hosts: [process.env.MEMCACHIER_SERVERS],
+    secret: "Fear is the mind killer" // Optionally use transparent encryption for memcache session data
+  });
 }
 
 // app.use(bodyParser.json());
@@ -109,24 +109,24 @@ app.use(function(req, res, next) {
 
 // Development error handler
 // Will print stacktrace
-if (app.get("env") === "development") {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render("error", {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// Production error handler
-// No stacktraces leaked to user
+// if (app.get("env") === "development") {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error", {
     message: err.message,
-    error: {}
+    error: err
   });
 });
+// }
+
+// Production error handler
+// No stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.render("error", {
+//     message: err.message,
+//     error: {}
+//   });
+// });
 
 module.exports = app;
