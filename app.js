@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const RedisStore = require("connect-redis")(session);
+const uuidv4 = require("uuid/v4");
 
 const authRouter = require("./routes/auth");
 const secured = require("./middleware/secured");
@@ -57,7 +58,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 const sess = {
-  secret: "foobarbaz",
+  secret: uuidv4(),
   cookie: {
     sameSite: false,
     httpOnly: true,
@@ -72,7 +73,7 @@ if (app.get("env") === "production") {
   sess.cookie.secure = true;
   sess.store = new RedisStore({
     url: process.env.REDISCLOUD_URL,
-    secret: "Fear is the mind killer"
+    secret: uuidv4()
   });
 }
 
