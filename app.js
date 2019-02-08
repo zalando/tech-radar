@@ -77,9 +77,6 @@ if (app.get("env") === "production") {
   });
 }
 
-app.use("/", secured());
-app.use("/", express.static(path.join(__dirname, "public")));
-
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -89,6 +86,8 @@ app.use(passport.session());
 app.use(flash());
 
 app.use("/", authRouter);
+app.use("/", secured());
+app.use("/", express.static(path.join(__dirname, "public")));
 
 // Handle auth failure error messages
 app.use(function(req, res, next) {
