@@ -13,7 +13,7 @@ const config = {
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Procore Tech Radar",
+  title: "Construction Financials Tech Radar",
   quadrants: [
     { name: "Languages and Frameworks" },
     { name: "Infrastructure" },
