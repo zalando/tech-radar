@@ -77,15 +77,39 @@ yarn
 
 2. start local dev server:
 
+### Client-side radar code
+```
+yarn dev
+```
+
+### Server-side Express code
 ```
 yarn start
 ```
-
 3. your default browser should automatically open and show the url
 
 ```
 http://localhost:3000/
 ```
+
+## Publishing
+
+Prior to merging to master or publishing the radar.js visualization code, bump the version number:
+
+```
+yarn version [--major|--minor|--patch] [--new-version <version>]
+```
+
+A corresponding tag will be created and pushed to the remote.
+
+### Radar Script
+Changes to the radar.js visualization file can be published to gh-pages for use in other projects:
+```
+yarn publish:pages
+```
+
+### Radar Application
+The radar application will be auto-deployed to Heroku when on push/merge to the remote master branch
 
 ## License
 
