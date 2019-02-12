@@ -1,6 +1,6 @@
 {
   "name": "procore-tech-radar",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Visualizing our technology choices",
   "homepage": "https://procore.com",
   "repository": "https://github.com/procore/tech-radar.git",
@@ -18,7 +18,8 @@
     "dev": "browser-sync public -w",
     "lint": "eslint src/**/*.js",
     "build": "node ./scripts/build.js",
-    "publish:pages": "git subtree push --prefix dist origin gh-pages"
+    "publish:pages": "yarn build && git subtree push --prefix dist origin gh-pages",
+    "postversion": "git push --tags"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
