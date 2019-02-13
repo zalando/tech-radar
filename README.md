@@ -67,6 +67,14 @@ radar_visualization({
 
 Entries are positioned automatically so that they don't overlap.
 
+## Create Your Own Radar in This Repository
+
+This repository is hosted as a [Heroku application](https://procore-tech-radar.herokuapp.com)
+
+To add a new radar, simply copy the `public/template` folder to `public/<your radar name>` and edit
+the configuratio as described above. Once your changes are merged back into `master` your new radar
+will be available at https://procore-tech-radar.herokuapp.com/<your radar name>
+
 ## Local Development
 
 1. install dependencies with yarn (or npm):
