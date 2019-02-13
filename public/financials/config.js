@@ -165,7 +165,15 @@ const config = {
       label: "TypeScript",
       active: true,
       link: null,
-      description: ``
+      description: `
+        <a href="https://www.typescriptlang.org/">TypeScript</a> is a typed superset of JavaScript,
+        it does not represent an either-or proposition and it does not relegate JavaScript to an
+        intermediate execution platform. Many of the language features are based on planned future
+        extensions of JavaScript. A <a href="https://definitelytyped.org/">good repository</a> of
+        TypeScript-type definitions lets us benefit from the rich JavaScript package ecosystem while
+        gaining type safety. TypeScript lets you use IDEs and other tools to provide deeper context
+        into your code, and provides additional self-documentation.
+      `
     },
     // Infrastructure
     {
@@ -206,7 +214,19 @@ const config = {
       label: "Prettier",
       active: true,
       link: null,
-      description: ``,
+      description: `
+        <a href="https://prettier.io/">Prettier</a> is an opinionated, automated code formatter for
+        JavaScript (with growing support for other languages). By enforcing its own opinionated
+        formatting style it increases consistency and readability and reduces developer effort both
+        on formatting and engaging in wasteful team debates about code style. Even though you may
+        disagree with the stylistic choices enforced by Prettier, we find that the benefits to the
+        team generally outweigh small style issues. Prettier can be used with a precommit hook or an
+        IDE plugin. As with any formatter, a one-time reformatting of your codebase can confuse your
+        version control history, but we feel that's a minor drawback. We particularly like the way
+        Prettier flips the linter-based approach and, borrowing from
+        <a href="https://golang.org/cmd/gofmt/">gofmt</a>, instead of validating your code, it
+        ensures that your code will always be valid.
+      `,
       moved: 0
     },
     {
@@ -215,7 +235,14 @@ const config = {
       label: "Jest",
       active: true,
       link: null,
-      description: ``,
+      description: `
+        Jest has emerged as our recommended option for frontend testing frameworks. It provides a
+        ‘zero-configuration’ experience and has out-of-the-box features such as mocking and code
+        coverage. One of Jest's often hyped features is UI snapshot testing. Snapshot testing would
+        be a good addition to the upper layer of the
+        <a href="http://martinfowler.com/bliki/TestPyramid.html">test pyramid</a>, but remember,
+        unit testing is still the solid foundation.
+      `,
       moved: 0
     },
     {
