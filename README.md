@@ -73,7 +73,7 @@ This repository is hosted as a [Heroku application](https://procore-tech-radar.h
 
 To add a new radar, simply copy the `public/template` folder to `public/<your radar name>` and edit
 the configuration as described above. Once your changes are merged back into `master` your new radar
-will be available at https://procore-tech-radar.herokuapp.com/&lt;your radar name&gt;
+will be available at https://procore-tech-radar.herokuapp.com/{your radar name}
 
 ## Local Development
 
