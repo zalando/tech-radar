@@ -1,8 +1,8 @@
 export const QUADRANTS = {
-  LANGUAGES: 0,
-  INFRASTRUCTURE: 1,
-  TOOLS: 2,
-  DATA_MANAGEMENT: 3
+  PARTICLES: 0,
+  WRENCH: 1,
+  CORE: 2,
+  CORE_LABS: 3
 };
 
 export const RINGS = {

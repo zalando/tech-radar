@@ -13,26 +13,26 @@ const config = {
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Procore Tech Radar",
+  title: "Frontend Components Radar",
   quadrants: [
-    { name: "Languages and Frameworks" },
-    { name: "Infrastructure" },
-    { name: "Tools" },
-    { name: "Data Management" }
+    { name: "Particles" },
+    { name: "Wrench" },
+    { name: "CORE" },
+    { name: "CORE Labs" }
   ],
   rings: [
-    { name: "ADOPT", color: "#93c47d" },
-    { name: "TRIAL", color: "#93d2c2" },
-    { name: "ASSESS", color: "#fbdb84" },
-    { name: "HOLD", color: "#efafa9" }
+    { name: "STABLE", color: "#93c47d" },
+    { name: "BETA", color: "#93d2c2" },
+    { name: "ALPHA", color: "#fbdb84" },
+    { name: "ABANDONED", color: "#efafa9" }
   ],
   print_layout: true,
   // zoomed_quadrant: 0,
   //ENTRIES
   entries: [
-    // Languages and Frameworks
+    // PARTICLES and Frameworks
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ADOPT,
       label: "JavaScript",
       active: true,
@@ -47,7 +47,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ADOPT,
       label: "React",
       active: true,
@@ -61,7 +61,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ADOPT,
       label: "Redux",
       active: true,
@@ -75,7 +75,7 @@ const config = {
         <a href="https://egghead.io/courses/getting-started-with-redux">Getting Started with Redux</a>
         and <a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux">idiomatic Redux</a>
         tutorials are a good starting point for new and experienced users.
-        Its minimal library design has spawned a rich set of tools, and we encourage you to check
+        Its minimal library design has spawned a rich set of CORE, and we encourage you to check
         out the <a href="https://github.com/markerikson/redux-ecosystem-links">redux-ecosystem-links</a>
         project for examples, middleware and utility libraries. We also particularly like the
         testability story: Dispatching actions, state transitions and rendering can be unit-tested
@@ -84,7 +84,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ADOPT,
       label: "Ruby",
       active: true,
@@ -93,7 +93,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ADOPT,
       label: "Rails",
       active: true,
@@ -102,7 +102,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.HOLD,
       label: "jQuery",
       active: true,
@@ -114,7 +114,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.LANGUAGES,
+      quadrant: QUADRANTS.PARTICLES,
       ring: RINGS.ASSESS,
       label: "TypeScript",
       active: true,
@@ -123,7 +123,7 @@ const config = {
     },
     // Infrastructure
     {
-      quadrant: QUADRANTS.INFRASTRUCTURE,
+      quadrant: QUADRANTS.WRENCH,
       ring: RINGS.ADOPT,
       label: "Docker",
       active: true,
@@ -131,9 +131,9 @@ const config = {
       description: ``,
       moved: 0
     },
-    // Tools
+    // CORE
     {
-      quadrant: QUADRANTS.TOOLS,
+      quadrant: QUADRANTS.CORE,
       ring: RINGS.ADOPT,
       label: "Webpack",
       active: true,
@@ -144,7 +144,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.TOOLS,
+      quadrant: QUADRANTS.CORE,
       ring: RINGS.ADOPT,
       label: "Babel",
       active: true,
@@ -155,7 +155,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.TOOLS,
+      quadrant: QUADRANTS.CORE,
       ring: RINGS.ADOPT,
       label: "Prettier",
       active: true,
@@ -164,7 +164,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.TOOLS,
+      quadrant: QUADRANTS.CORE,
       ring: RINGS.ADOPT,
       label: "Jest",
       active: true,
@@ -173,7 +173,7 @@ const config = {
       moved: 0
     },
     {
-      quadrant: QUADRANTS.TOOLS,
+      quadrant: QUADRANTS.CORE,
       ring: RINGS.HOLD,
       label: "Mocha",
       active: true,
@@ -184,9 +184,8 @@ const config = {
       moved: 0
     },
     // Data Management
-    // Data Management
     {
-      quadrant: QUADRANTS.DATA_MANAGEMENT,
+      quadrant: QUADRANTS.CORE_LABS,
       ring: RINGS.ADOPT,
       label: "Postgresql",
       active: true,
@@ -195,7 +194,6 @@ const config = {
       moved: 0
     }
   ]
-  //ENTRIES
 };
 
 radar_visualization(config);
