@@ -30,111 +30,381 @@ const config = {
   // zoomed_quadrant: 0,
   //ENTRIES
   entries: [
-    // PARTICLES and Frameworks
+    // PARTICLES
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ADOPT,
-      label: "JavaScript",
+      ring: RINGS.ABANDONED,
+      label: "Breadcrumb",
       active: true,
       link: null,
-      description: `
-        JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language
-        with first-class functions, and is best known as the scripting language for Web pages, but
-        it's used in many non-browser environments as well. It is a prototype-based, multi-paradigm
-        scripting language that is dynamic, and supports object-oriented, imperative, and functional
-        programming styles. It is the only programming language that runs natively in browsers.
-      `,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ADOPT,
-      label: "React",
+      ring: RINGS.ALPHA,
+      label: "Bulk Editor",
       active: true,
       link: null,
-      description: `
-        <a href="http://reactjs.org">React.js</a> stands out due to its design around a reactive
-        data flow. Allowing only one-way data binding greatly simplifies the rendering logic and
-        avoids many of the issues that commonly plague applications written with other frameworks.
-        It has become our library of choice for building user interfaces on the web.
-      `,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ADOPT,
-      label: "Redux",
+      ring: RINGS.STABLE,
+      label: "Calendar",
       active: true,
       link: null,
-      description: `
-        With the increasing complexity of single-page JavaScript applications, we have seen a more
-        pressing need to make client-side state management predictable.
-        <a href="http://redux.js.org/"><strong>Redux</strong></a>, with its
-        <a href="http://redux.js.org/docs/introduction/ThreePrinciples.html">three principles</a>
-        of restrictions for updating state, has proven to be invaluable in our applications.
-        <a href="https://egghead.io/courses/getting-started-with-redux">Getting Started with Redux</a>
-        and <a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux">idiomatic Redux</a>
-        tutorials are a good starting point for new and experienced users.
-        Its minimal library design has spawned a rich set of CORE, and we encourage you to check
-        out the <a href="https://github.com/markerikson/redux-ecosystem-links">redux-ecosystem-links</a>
-        project for examples, middleware and utility libraries. We also particularly like the
-        testability story: Dispatching actions, state transitions and rendering can be unit-tested
-        separately from one another and with minimal amounts of mocking.
-      `,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ADOPT,
-      label: "Ruby",
+      ring: RINGS.ABANDONED,
+      label: "Checkbox",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ADOPT,
-      label: "Rails",
+      ring: RINGS.BETA,
+      label: "Coach Marks",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.HOLD,
-      label: "jQuery",
+      ring: RINGS.ABANDONED,
+      label: "CollapsibleTabHeader",
       active: true,
       link: null,
-      description: `
-        jQuery was extremely important when introduced, and instrumental in pushing the client-side
-        web forward, but its role has since been filled by more robust alternatives.
-      `,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.PARTICLES,
-      ring: RINGS.ASSESS,
-      label: "TypeScript",
+      ring: RINGS.STABLE,
+      label: "Configurable Field Set",
       active: true,
       link: null,
-      description: ``
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "CRUD Permissions Table",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Dashboard",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Date Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Dialog",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Feedback Banner",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "File Explorer",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Filters",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Info Grid",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "List Adder",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "List Partial",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Modal",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.BETA,
+      label: "Navigation Tiers",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Notification Bar",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.BETA,
+      label: "Overflow Menu",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Paginator",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.BETA,
+      label: "Phone Input",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Radio",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ALPHA,
+      label: "Scoped Scroll",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ALPHA,
+      label: "Search Bar",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Sidebar List",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Spinner",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.BETA,
+      label: "Sticky Footer",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Table Row Adder",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Table View Control",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Table",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Tabs",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Text Input",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.STABLE,
+      label: "Tiered Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.BETA,
+      label: "Tiny MCE",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Token",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Tooltip",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.PARTICLES,
+      ring: RINGS.ABANDONED,
+      label: "Uploader",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
     },
     // Infrastructure
     {
       quadrant: QUADRANTS.WRENCH,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Docker",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     },
     // CORE
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Webpack",
       active: true,
       link: null,
@@ -145,52 +415,52 @@ const config = {
     },
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Babel",
       active: true,
       link: null,
       description: `
-        Babel.js has become the default compiler for writing next-generation JavaScript. Its ecosystem is huge, thanks to its plugin system. It allows developers to write ES6+ code that runs in the browser or on the server without sacrificing backward compatibility for older browsers, and with very little configuration. It has first-class support for different build-and-test systems, which makes integration with any current workflow simple. It is a great piece of software that has become the main driver of new language feature adoption and innovation.
+        Babel.js has become the default compiler for writing next-generation JavaScript. Its ecosystem is huge, thanks to its plugin system. It allows developers to write ES6+ code that runs in the browser or on the server without sacrificing backward compatibility for older browsers, and with very little configuration. It has first-class support for different build-and-test systems, which makes integration with any current workflow simple. It is a great piece of software that has become the main driver of new language feature STABLEion and innovation.
       `,
       moved: 0
     },
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Prettier",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Jest",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     },
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.HOLD,
+      ring: RINGS.ABANDONED,
       label: "Mocha",
       active: true,
       link: null,
       description: `
-        Mocha is a capable and well-adopted test runner, but we have found that Jest provides a superior feature set and developer experience.
+        Mocha is a capable and well-STABLEed test runner, but we have found that Jest provides a superior feature set and developer experience.
       `,
       moved: 0
     },
     // Data Management
     {
       quadrant: QUADRANTS.CORE_LABS,
-      ring: RINGS.ADOPT,
+      ring: RINGS.STABLE,
       label: "Postgresql",
       active: true,
       link: null,
-      description: ``,
+      description: '',
       moved: 0
     }
   ]

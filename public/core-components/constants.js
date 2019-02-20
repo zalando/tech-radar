@@ -6,8 +6,8 @@ export const QUADRANTS = {
 };
 
 export const RINGS = {
-  ADOPT: 0,
-  TRIAL: 1,
-  ASSESS: 2,
-  HOLD: 3
+  STABLE: 0,
+  BETA: 1,
+  ALPHA: 2,
+  ABANDONED: 3
 };
