@@ -6,9 +6,13 @@ const Auth0Strategy = require("passport-auth0");
 const dotenv = require("dotenv");
 const flash = require("connect-flash");
 const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const helmet = require("helmet");
+const RedisStore = require("connect-redis")(session);
+const uuidv4 = require("uuid/v4");
 
 const authRouter = require("./routes/auth");
-const indexRouter = require("./routes/index");
 const secured = require("./middleware/secured");
 
 dotenv.load();
@@ -20,7 +24,8 @@ const strategy = new Auth0Strategy(
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback"
+      process.env.AUTH0_CALLBACK_URL || "http://localhost:3000/callback",
+    state: true
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -31,6 +36,7 @@ const strategy = new Auth0Strategy(
 );
 
 passport.use(strategy);
+
 // You can use this section to keep a smaller payload
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -43,22 +49,42 @@ passport.deserializeUser(function(user, done) {
 const app = express();
 
 app.use(logger("dev"));
+
+// View engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
 const sess = {
-  secret: "foobarbaz",
-  cookies: {},
+  secret: uuidv4(),
+  cookie: {
+    sameSite: false,
+    httpOnly: true,
+    maxAge: 1800000 // 30 min
+  },
   resave: false,
   saveUninitialized: true
 };
 
 if (app.get("env") === "production") {
+  app.use(helmet());
+  app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true;
+  sess.store = new RedisStore({
+    url: process.env.REDISCLOUD_URL,
+    secret: uuidv4()
+  });
 }
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(flash());
+
+app.use("/", authRouter);
+app.use("/", secured());
+app.use("/", express.static(path.join(__dirname, "public")));
 
 // Handle auth failure error messages
 app.use(function(req, res, next) {
@@ -70,11 +96,6 @@ app.use(function(req, res, next) {
   }
   next();
 });
-
-app.use("/", authRouter);
-// app.use("/", indexRouter);
-app.use("/", secured());
-app.use("/", express.static(path.join(__dirname, "public")));
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

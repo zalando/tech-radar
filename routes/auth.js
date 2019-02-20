@@ -23,13 +23,11 @@ router.get("/callback", function(req, res, next) {
       return res.redirect("/login");
     }
     req.logIn(user, function(err) {
-      console.log({ err });
       if (err) {
         return next(err);
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
-      console.log({ returnTo });
       res.redirect(returnTo || "/");
     });
   })(req, res, next);

@@ -13,7 +13,7 @@ const config = {
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Procore Tech Radar",
+  title: "Construction Financials Tech Radar",
   quadrants: [
     { name: "Languages and Frameworks" },
     { name: "Infrastructure" },
@@ -95,6 +95,23 @@ const config = {
     {
       quadrant: QUADRANTS.LANGUAGES,
       ring: RINGS.ADOPT,
+      label: "Redux Loop",
+      active: true,
+      link: null,
+      description: `
+        <a href="http://redux-loop.js.org">Redux Loop</a> is our recommended library for managing
+        side effects in Redux applications. Redux Loop is a port of the
+        <a href="https://github.com/evancz/elm-architecture-tutorial">Elm Architecture</a> to Redux
+        that allows you to sequence your effects naturally and purely by returning them from your
+        reducers. Redux Loop has the best testing story of the side effects libraries currently in
+        use at Procore, and for reasons outlined <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        it is our recommended choice over thunks and sagas.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.ADOPT,
       label: "Rails",
       active: true,
       link: null,
@@ -115,11 +132,48 @@ const config = {
     },
     {
       quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.HOLD,
+      label: "Redux Thunk",
+      active: true,
+      link: null,
+      description: `
+        Redux Thunk is the canonical side effects middleware described in the official
+        <a href="https://redux.js.org/advanced/async-actions">Redux docs</a> and while it is the
+        simplest of the side effects middlewares, for reasons outlined
+        <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        we feel that Redux Loop is a better option.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
+      ring: RINGS.HOLD,
+      label: "Redux Saga",
+      active: true,
+      link: null,
+      description: `
+        Redux Saga is another side effects middleware currently in use at Procore. It has a powerful
+        asychronous toolkit built around ES6 generators, but for reasons outlined
+        <a href="https://procoretech.atlassian.net/wiki/spaces/DEV/pages/238125264/Redux+Side+Effects">here</a>
+        we feel that Redux Loop is a better option.
+      `,
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.LANGUAGES,
       ring: RINGS.ASSESS,
       label: "TypeScript",
       active: true,
       link: null,
-      description: ``
+      description: `
+        <a href="https://www.typescriptlang.org/">TypeScript</a> is a typed superset of JavaScript,
+        it does not represent an either-or proposition and it does not relegate JavaScript to an
+        intermediate execution platform. Many of the language features are based on planned future
+        extensions of JavaScript. A <a href="https://definitelytyped.org/">good repository</a> of
+        TypeScript-type definitions lets us benefit from the rich JavaScript package ecosystem while
+        gaining type safety. TypeScript lets you use IDEs and other tools to provide deeper context
+        into your code, and provides additional self-documentation.
+      `
     },
     // Infrastructure
     {
@@ -160,7 +214,19 @@ const config = {
       label: "Prettier",
       active: true,
       link: null,
-      description: ``,
+      description: `
+        <a href="https://prettier.io/">Prettier</a> is an opinionated, automated code formatter for
+        JavaScript (with growing support for other languages). By enforcing its own opinionated
+        formatting style it increases consistency and readability and reduces developer effort both
+        on formatting and engaging in wasteful team debates about code style. Even though you may
+        disagree with the stylistic choices enforced by Prettier, we find that the benefits to the
+        team generally outweigh small style issues. Prettier can be used with a precommit hook or an
+        IDE plugin. As with any formatter, a one-time reformatting of your codebase can confuse your
+        version control history, but we feel that's a minor drawback. We particularly like the way
+        Prettier flips the linter-based approach and, borrowing from
+        <a href="https://golang.org/cmd/gofmt/">gofmt</a>, instead of validating your code, it
+        ensures that your code will always be valid.
+      `,
       moved: 0
     },
     {
@@ -169,7 +235,14 @@ const config = {
       label: "Jest",
       active: true,
       link: null,
-      description: ``,
+      description: `
+        Jest has emerged as our recommended option for frontend testing frameworks. It provides a
+        ‘zero-configuration’ experience and has out-of-the-box features such as mocking and code
+        coverage. One of Jest's often hyped features is UI snapshot testing. Snapshot testing would
+        be a good addition to the upper layer of the
+        <a href="http://martinfowler.com/bliki/TestPyramid.html">test pyramid</a>, but remember,
+        unit testing is still the solid foundation.
+      `,
       moved: 0
     },
     {
