@@ -391,16 +391,314 @@ const config = {
       description: '',
       moved: 0
     },
-    // Infrastructure
+    // Wrench
     {
       quadrant: QUADRANTS.WRENCH,
-      ring: RINGS.STABLE,
-      label: "Docker",
+      ring: RINGS.ABANDONED,
+      label: "ActionButton",
       active: true,
       link: null,
       description: '',
       moved: 0
     },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "AssigneePicker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "AttachmentManager",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Batch Editor",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Bluebeam Modal Form",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Breadcrumbs",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "Bulk Attacher",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Button",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Callout List",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Charting",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Checkbox",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Checkbox Dropdown",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Date Picker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.BETA,
+      label: "Date Range Picker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Dropdown Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Empty State",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "Feedback Button",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "File Tokens",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "Filters",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ALPHA,
+      label: "Flip Card",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "FormSelect",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "Location Picker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Modal",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "MultiToken Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "PayApp Table",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Quick Adder",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Paginator",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Panel",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Scrim",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Search Box",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Scroll Bar",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Token Picker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.ABANDONED,
+      label: "Sub Tabs",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.WRENCH,
+      ring: RINGS.STABLE,
+      label: "Wrench Indicator",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+
     // CORE
     {
       quadrant: QUADRANTS.CORE,
