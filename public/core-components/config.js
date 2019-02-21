@@ -751,16 +751,232 @@ const config = {
       `,
       moved: 0
     },
-    // Data Management
+    // CORE Labs
     {
       quadrant: QUADRANTS.CORE_LABS,
-      ring: RINGS.STABLE,
-      label: "Postgresql",
+      ring: RINGS.ALPHA,
+      label: "Accordion",
       active: true,
       link: null,
       description: '',
       moved: 0
-    }
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "Activity Feed",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Bugsnag Provider",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ABANDONED,
+      label: "Card Board",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "Content Placeholder",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Date Picker",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ALPHA,
+      label: "Dropdown Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "File Attacher",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ABANDONED,
+      label: "File Explorer",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "File Browser",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "File Viewer",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Financials Utils",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Highcharts Visuals",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "List Viewer",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Markup Toolbars",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "Master Detail",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Mentions",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.BETA,
+      label: "MultiStep Manager",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Pakaukau",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "PhraseApp Editor",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ALPHA,
+      label: "Signature Slider",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ALPHA,
+      label: "Star Rating",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Toast Alert",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.ALPHA,
+      label: "Tree",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE_LABS,
+      ring: RINGS.STABLE,
+      label: "Virtualized",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
   ]
 };
 
