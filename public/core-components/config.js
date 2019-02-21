@@ -703,29 +703,16 @@ const config = {
     {
       quadrant: QUADRANTS.CORE,
       ring: RINGS.STABLE,
-      label: "Webpack",
+      label: "Avatar",
       active: true,
       link: null,
-      description: `
-        Webpack is the dominant tool for bundling various module formats into a format compatible with browsers. Webpack's paradigm is to treat everything as a module, using purpose-built loaders to transform non-module files into modules. It is further extensible via its plugin system.
-      `,
+      description: ``,
       moved: 0
     },
     {
       quadrant: QUADRANTS.CORE,
       ring: RINGS.STABLE,
-      label: "Babel",
-      active: true,
-      link: null,
-      description: `
-        Babel.js has become the default compiler for writing next-generation JavaScript. Its ecosystem is huge, thanks to its plugin system. It allows developers to write ES6+ code that runs in the browser or on the server without sacrificing backward compatibility for older browsers, and with very little configuration. It has first-class support for different build-and-test systems, which makes integration with any current workflow simple. It is a great piece of software that has become the main driver of new language feature STABLEion and innovation.
-      `,
-      moved: 0
-    },
-    {
-      quadrant: QUADRANTS.CORE,
-      ring: RINGS.STABLE,
-      label: "Prettier",
+      label: "Badge",
       active: true,
       link: null,
       description: '',
@@ -734,7 +721,7 @@ const config = {
     {
       quadrant: QUADRANTS.CORE,
       ring: RINGS.STABLE,
-      label: "Jest",
+      label: "Banner",
       active: true,
       link: null,
       description: '',
@@ -742,13 +729,290 @@ const config = {
     },
     {
       quadrant: QUADRANTS.CORE,
-      ring: RINGS.ABANDONED,
-      label: "Mocha",
+      ring: RINGS.STABLE,
+      label: "Breadcrumbs",
       active: true,
       link: null,
-      description: `
-        Mocha is a capable and well-STABLEed test runner, but we have found that Jest provides a superior feature set and developer experience.
-      `,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Button",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Calendar",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Card",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Checkbox",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Dropdown",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Empty State",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Field",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Font",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Header",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Icon",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Input",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Link",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Menu",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Modal",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Notation",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Overlay Trigger",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Pagination",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Popover",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Portal",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "RadioButton",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Search",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Segmented Controller",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Select",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Spinner",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Switch",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Table",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Tabs",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "TextArea",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Toast",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Token",
+      active: true,
+      link: null,
+      description: '',
+      moved: 0
+    },
+    {
+      quadrant: QUADRANTS.CORE,
+      ring: RINGS.STABLE,
+      label: "Tooltip",
+      active: true,
+      link: null,
+      description: '',
       moved: 0
     },
     // CORE Labs
