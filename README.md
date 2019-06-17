@@ -9,6 +9,15 @@ This repository contains the code to generate the visualization:
 [`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
 Feel free to use and adapt it for your own purposes.
 
+## Quick usage
+1. have csv file delimited appropriately
+QUADRANT, RING, LABEL
+2. cd scripts
+3. ./publishit.sh LOCATION_OF_CS_FILE
+
+QUADRANT:{DATA, FRAMEWORK, INFRASTRUCTURE, LANGUAGE}
+RING:{ADOPT, ASSESS, TRIAL, HOLD}
+
 ## Usage
 
 1. include `d3.js` and `radar.js`:
