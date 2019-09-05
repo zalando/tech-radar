@@ -25,7 +25,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Zalando Tech Radar — 2018.10",
+  title: "Zalando Tech Radar — 2019.09",
   quadrants: [
     { name: "Languages" },
     { name: "Infrastructure" },
@@ -64,7 +64,7 @@ radar_visualization({
         label: "Airflow",
         active: false,
         link: "../data_processing/airflow.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 3,
@@ -285,14 +285,6 @@ radar_visualization({
       {
         quadrant: 3,
         ring: 3,
-        label: "Riak",
-        active: false,
-        link: "../datastores/riak.html",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
         label: "ZooKeeper",
         active: false,
         link: "../datastores/zookeeper.html",
@@ -360,7 +352,7 @@ radar_visualization({
         label: "Akka-Http",
         active: false,
         link: "../frameworks/akka_http.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 2,
@@ -408,7 +400,7 @@ radar_visualization({
         label: "TensorFlow",
         active: false,
         link: "../frameworks/tensorflow.html",
-        moved: 1
+        moved: 0
       },
       {
         quadrant: 2,
@@ -533,25 +525,9 @@ radar_visualization({
       {
         quadrant: 1,
         ring: 0,
-        label: "HAProxy",
-        active: false,
-        link: "../infrastructure/haproxy.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
         label: "Hystrix",
         active: false,
         link: "../infrastructure/hystrix.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Jetty",
-        active: false,
-        link: "../infrastructure/jetty.html",
         moved: 0
       },
       {
@@ -573,10 +549,10 @@ radar_visualization({
       {
         quadrant: 1,
         ring: 0,
-        label: "STUPS",
+        label: "OpenTracing",
         active: false,
-        link: "../infrastructure/stups.html",
-        moved: 0
+        link: "../infrastructure/opentracing.html",
+        moved: 1
       },
       {
         quadrant: 1,
@@ -605,14 +581,6 @@ radar_visualization({
       {
         quadrant: 1,
         ring: 1,
-        label: "OpenTracing",
-        active: false,
-        link: "../infrastructure/opentracing.html",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
         label: "Undertow",
         active: false,
         link: "../infrastructure/undertow.html",
@@ -625,6 +593,14 @@ radar_visualization({
         active: false,
         link: "../infrastructure/aws_lambda.html",
         moved: 0
+      },
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "STUPS",
+        active: false,
+        link: "../infrastructure/stups.html",
+        moved: -1
       },
       {
         quadrant: 0,
@@ -689,6 +665,14 @@ radar_visualization({
         active: true,
         link: "clojure.html",
         moved: 0
+      },
+      {
+        quadrant: 0,
+        ring: 1,
+        label: "GraphQL",
+        active: true,
+        link: "graphql.html",
+        moved: 1
       },
       {
         quadrant: 0,
