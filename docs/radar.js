@@ -305,15 +305,15 @@ function radar_visualization(config) {
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
-            .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
-              .attr("class", "legend" + quadrant + ring)
-              .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; })
-              .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11")
-              .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+          .append("text")
+          .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
+          .attr("class", "legend" + quadrant + ring)
+          .attr("id", function(d, i) { return "legendItem" + d.id; })
+          .text(function(d, i) { return d.id + ". " + d.label; })
+          .style("font-family", "Arial, Helvetica")
+          .style("font-size", "11")
+          .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+          .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
       }
     }
   }
@@ -382,11 +382,11 @@ function radar_visualization(config) {
   var blips = rink.selectAll(".blip")
     .data(config.entries)
     .enter()
-      .append("g")
-        .attr("class", "blip")
-        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
-        .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+    .append("g")
+    .attr("class", "blip")
+    .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
+    .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+    .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
   // configure each blip
   blips.each(function(d) {
