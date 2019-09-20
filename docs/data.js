@@ -1,5 +1,5 @@
 export default {
-    title: 'Neofonie Tech Radar — 2018.12',
+    title: 'Neofonie Tech Radar — 2019.09',
     width: 1440,
     height: 960,
     colors: {
