@@ -276,7 +276,8 @@ export default [
         ring: 0,
         label: 'Webpack',
         active: false,
-        moved: 1
+        moved: 1,
+        boost:1.2
     },
     {
         quadrant: 1,
@@ -535,10 +536,11 @@ export default [
     },
     {
         quadrant: 2,
-        ring: 2,
+        ring: 0,
         label: 'Kubernetes',
         active: false,
-        moved: 0
+        moved: 0,
+        boost:1.3
     },
     {
         quadrant: 2,
@@ -576,7 +578,8 @@ export default [
         ring: 0,
         label: 'node.js',
         active: false,
-        moved: 0
+        moved: 0,
+        boost: 1.5
     },
     {
         quadrant: 3,

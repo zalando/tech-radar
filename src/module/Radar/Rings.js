@@ -18,7 +18,7 @@ export default class extends Module {
 
         this.items = [];
         this.data = [
-            {radius: radius * 0.35}, // inner, means 40 % size
+            {radius: radius * 0.35}, // inner, means % size
             {radius: radius * 0.55},
             {radius: radius * 0.75},
             {radius: radius * 0.9} // outer

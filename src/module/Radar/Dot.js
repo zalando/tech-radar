@@ -17,6 +17,7 @@ export default class extends Module {
         this.x = this.options.x;
         this.y = this.options.y;
         this.hot = this.options.hot;
+        this.boost = this.options.boost || 0;
 
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
@@ -36,6 +37,8 @@ export default class extends Module {
         this.target.style.backgroundColor = this.color;
         this.target.style.top = `${this.y}px`;
         this.target.style.left = `${this.x}px`;
+        if(this.boost)
+            this.target.style.transform = `scale(${this.boost})`;
 
         this.target.onmouseover = () => {
             this.target.innerHTML = this.label;
