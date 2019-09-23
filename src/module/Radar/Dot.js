@@ -26,6 +26,9 @@ export default class extends Module {
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
+        this.elementWidth = 10; // needed for centering offset @TODO get it
+        this.elementHeight = 10;
+
         this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
 
         this.segment = this.segmentObj(this.quadrant, this.ring);
@@ -158,7 +161,7 @@ export default class extends Module {
     set x(value){
         this._x = value;
         if(this.target)
-            this.target.style.left = `${this.x + this.offset.x}px`;
+            this.target.style.left = `${this.x + this.offset.x - this.elementWidth}px`;
     }
     get y() {
         return this._y;
@@ -166,7 +169,7 @@ export default class extends Module {
     set y(value){
         this._y = value;
         if(this.target)
-            this.target.style.top = `${this.y + this.offset.y}px`;
+            this.target.style.top = `${this.y + this.offset.y- this.elementHeight}px`;
     }
 
 };

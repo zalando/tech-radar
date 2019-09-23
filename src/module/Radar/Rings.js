@@ -13,12 +13,13 @@ export default class extends Module {
         if (height > width) {
             shortestSide = width;
         }
+        const radius = shortestSide / 2;
 
         this.items = [
-            {radius: shortestSide / 6}, // inner
-            {radius: shortestSide / 4},
-            {radius: shortestSide / 3},
-            {radius: shortestSide / 2.3} // outer
+            {radius: radius * 0.4}, // inner, means 40 % size
+            {radius: radius * 0.6},
+            {radius: radius * 0.8},
+            {radius: radius}        // outer
         ];
     }
 
@@ -32,8 +33,8 @@ export default class extends Module {
             ring.style.width = `${r.radius * 2}px`;
             ring.style.height = `${r.radius * 2}px`;
             ring.style.borderRadius = `${r.radius}px`;
-            ring.style.left = `${(width / 2)-(r.radius-10)}px`;
-            ring.style.top = `${(height / 2)-(r.radius-10)}px`;
+            ring.style.left = `${(width / 2)-(r.radius)}px`;
+            ring.style.top = `${(height / 2)-(r.radius)}px`;
             this.radar.target.append(ring);
         });
     }
