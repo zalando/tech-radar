@@ -26,6 +26,7 @@ export default class extends Module {
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
+        this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
 
         this.segment = this.segmentObj(this.quadrant, this.ring);
         const point = this.segment.random();
@@ -42,7 +43,7 @@ export default class extends Module {
             this.target.innerHTML = this.label;
         };
         this.target.onmouseleave = () => {
-            this.target.innerHTML = this.index;
+            this.target.innerHTML = this.index+1;
         };
     }
 
@@ -90,7 +91,7 @@ export default class extends Module {
     }
 
     random() {
-        const x = Math.sin(this.radar.config.seed++) * 10000;
+        const x = Math.sin(this.seed) * 10000;
         return x - Math.floor(x);
     }
 

@@ -60,20 +60,18 @@ export default class extends Module {
     }
 
     draw() {
-        let i = 1;
         this.items.forEach(dot => {
-            dot.index = i;
             this.radar.target.append(dot.target);
-            i++;
         });
 
-        const what = d3.forceSimulation(this.items)
+        d3.forceSimulation(this.items)
             .velocityDecay(0.19) // magic number (found by experimentation)
-            .force("collision", d3.forceCollide().radius(20).strength(1))
+            .force("collision", d3.forceCollide().radius(16).strength(1))
             .on("tick", () => {
                 this.ticked();
-            });
+            }).on('end', function() {
+             console.log('>>> SIMULATION COMPLETE');
+         });
 
-        //console.log('>>>', what);
     }
 };

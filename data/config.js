@@ -1,6 +1,9 @@
 export default {
     title: 'Neofonie Tech Radar — 2019.09',
-    seed: 42,
+    seed: {
+        from: 30,
+        to: 40
+    },
     colors: {
         background: '#fff',
         grid: '#e60023',
@@ -20,8 +23,8 @@ export default {
     ],
     dot: {
         offset: {
-            x : 100,
-            y : 100
+            x: 100,
+            y: 100
         }
     },
     svg_id: 'radar',
