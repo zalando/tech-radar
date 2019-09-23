@@ -33,7 +33,7 @@ export default class extends Module {
     }
 
     draw() {
-        this.maxDimensions = this.radar.rings.items[3].getBoundingClientRect();
+        this.maxDimensions = this.radar.rings.items[3].target.getBoundingClientRect();
         this.width = this.maxDimensions.width / 2;
         this.height = this.maxDimensions.height / 2;
 

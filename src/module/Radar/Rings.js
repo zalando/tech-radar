@@ -1,4 +1,5 @@
 import Module from "../../Module";
+import Ring from './Ring.js';
 
 export default class extends Module {
     constructor(radar) {
@@ -17,26 +18,26 @@ export default class extends Module {
 
         this.items = [];
         this.data = [
-            {radius: radius * 0.4}, // inner, means 40 % size
-            {radius: radius * 0.58},
-            {radius: radius * 0.7},
-            {radius: radius * 0.8} // outer
+            {radius: radius * 0.35}, // inner, means 40 % size
+            {radius: radius * 0.55},
+            {radius: radius * 0.75},
+            {radius: radius * 0.9} // outer
         ];
     }
 
     draw() {
-        const width = this.radar.target.getBoundingClientRect().width;
-        const height = this.radar.target.getBoundingClientRect().height;
+        let i = 0;
         this.data.forEach(r => {
-            const ring = document.createElement('div');
-            ring.className = 'ring';
-            ring.style.width = `${r.radius * 2}px`;
-            ring.style.height = `${r.radius * 2}px`;
-            ring.style.borderRadius = `${r.radius}px`;
-            ring.style.left = `${(width / 2)-(r.radius)}px`;
-            ring.style.top = `${(height / 2)-(r.radius)}px`;
+            const ring = new Ring({
+                radar : this.radar,
+                options : {
+                    ...this.radar.config.rings[i],
+                    radius: r.radius
+                }
+            });
             this.items.push(ring);
-            this.radar.target.append(ring);
+            this.radar.target.append(ring.target);
+            i++;
         });
     }
 };

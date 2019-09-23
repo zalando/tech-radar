@@ -50,7 +50,19 @@ body, html {
   .ring {
     position: absolute;
     border: 1px solid #999999;
-    background-color:rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &:before {
+      position: absolute;
+      content: attr(data-name);
+      text-align: center;
+      width: 100%;
+      font-size: 40px;
+      font-weight: 700;
+      z-index: 10;
+      opacity: 0.2;
+      top: 5px;
+    }
   }
 
   .quadrants {
@@ -60,9 +72,9 @@ body, html {
 
     .quadrant {
       position: absolute;
-      z-index:10;
-      background:rgba(0,0,0,0);
-      border: 0 solid rgba(0,0,0,0.2);
+      z-index: 10;
+      background: rgba(0, 0, 0, 0);
+      border: 0 solid rgba(0, 0, 0, 0.2);
 
       &.active {
 
@@ -71,9 +83,11 @@ body, html {
       &:nth-child(1) {
 
       }
+
       &:nth-child(2) {
 
       }
+
       &:nth-child(3) {
 
       }
