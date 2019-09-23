@@ -6,14 +6,7 @@ const
 module.exports = class {
     constructor() {
         this.appPath = path.resolve(process.env.PWD);
-
-        this.defaults = {
-            entry: [
-                './src/app.js',
-                './src/scss/index.scss'
-            ],
-            target: 'web'
-        };
+        this.defaults = {};
     };
 
     mergeConfig() {

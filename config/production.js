@@ -8,7 +8,7 @@ module.exports = class extends ConfigClass {
 
         this.config = {
             mode: 'production',
-
+            target: 'web',
             entry: [
                 './src/app.js',
                 './src/scss/index.scss'
@@ -16,7 +16,7 @@ module.exports = class extends ConfigClass {
 
             output: {
                 filename: 'js/bundle.js',
-                path: `${this.appPath}/dist`,
+                path: `${this.appPath}/dist/prod/`,
             },
 
             module: {
@@ -24,7 +24,8 @@ module.exports = class extends ConfigClass {
                     {
                         test: /\.html?$/,
                         loader: "template-literals-loader"
-                    }, {
+                    },
+                    {
                         test: /.scss$/,
                         use: [
                             'style-loader',
@@ -32,7 +33,7 @@ module.exports = class extends ConfigClass {
                                 loader: 'file-loader',
                                 options: {
                                     name: 'bundle.css',
-                                    outputPath: '../../dist/css/'
+                                    outputPath: '../../dist/prod/css/'
                                 }
                             },
                             'extract-loader',
@@ -58,8 +59,8 @@ module.exports = class extends ConfigClass {
                     apply: (compiler) => {
                         compiler.hooks.afterEmit.tap('Complete', (compilation) => {
                             console.log('>>> HOOKED');
-                            fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/`);
-                            fs.copySync(`${this.appPath}/dist`, `${this.appPath}/docs`);
+                            fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
+                            fs.copySync(`${this.appPath}/dist/prod`, `${this.appPath}/docs`);
                         });
                     }
                 }

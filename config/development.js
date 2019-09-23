@@ -7,6 +7,11 @@ module.exports = class extends ConfigClass {
 
         this.config = {
             mode: 'development',
+            target: 'web',
+            entry: [
+                './src/app.js',
+                './src/scss/index.scss'
+            ],
 
             output: {
                 filename: 'js/bundle.js',
