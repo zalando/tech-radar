@@ -42,6 +42,8 @@ export default class extends Module {
 
         this.target.onmouseover = () => {
             this.target.innerHTML = this.label;
+            this.target.setAttribute('data-quadrant',this.radar.quadrants.items[this.quadrant].name);
+            this.target.setAttribute('data-ring',this.radar.rings.items[this.ring].name);
         };
         this.target.onmouseleave = () => {
             this.target.innerHTML = this.index + 1;

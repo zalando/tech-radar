@@ -14,7 +14,12 @@ export default class extends Module {
 
             this.config = Config;
             this.data = Items;
-            this.target = false;
+
+            const target = document.createElement('div');
+            target.id = 'radar';
+            target.className = 'radar';
+            document.querySelector('body').append(target);
+            this.target = document.getElementById('radar');
 
             this.draw();
 
@@ -36,12 +41,6 @@ export default class extends Module {
     }
 
     draw() {
-        const target = document.createElement('div');
-        target.id = 'radar';
-        target.className = 'radar';
-        document.querySelector('body').append(target);
-        this.target = document.getElementById('radar');
-
         this.offset = {
             x: this.target.getBoundingClientRect().width / 2,
             y: this.target.getBoundingClientRect().height / 2

@@ -30,10 +30,23 @@ body, html {
     line-height: 15px;
     font-weight: 700;
     border: 2px solid #f1f1f1;
+    overflow:inherit;
+
+    &:before {
+      position: absolute;
+      content: attr(data-quadrant);
+      left:0px;
+      top:50px;
+      text-transform: uppercase;
+      width:200px;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
 
     &:hover {
       font-size: 20px;
-      line-height: 50px;
+      line-height:43px;
       cursor: pointer;
       width: 200px;
       height: 50px;
@@ -44,6 +57,13 @@ body, html {
       z-index: 1000;
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
       border-radius: 30px;
+
+      &:before {
+        position: absolute;
+        top:15px;
+        font-size:10px;
+        transition: all 0.2s;
+      }
     }
   }
 
