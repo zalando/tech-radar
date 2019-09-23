@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Miriam+Libre:400,700');
+
+* {
+  font-family: 'Miriam Libre', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color:#efefef;
+}
+
+.radar {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    font-size: 8px;
+    line-height: 15px;
+    font-weight:700;
+    border:2px solid #f1f1f1;
+
+    &:hover {
+      font-size: 20px;
+      line-height: 50px;
+      cursor: pointer;
+      width: 200px;
+      height: 50px;
+      margin-left: -100px;
+      margin-top: -25px;
+      vertical-align: middle;
+      transition: all 0.05s ease-out;
+      z-index: 1000;
+      box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 30px;
+    }
+  }
+
+  .ring {
+    position: absolute;
+  }
+}
+
