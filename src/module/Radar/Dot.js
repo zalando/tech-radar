@@ -6,12 +6,7 @@ export default class extends Module {
         this.radar = args.radar;
         this.options = args.options;
 
-        this.quadrants = [
-            {radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1},
-            {radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1},
-            {radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1},
-            {radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1}
-        ];
+        this.quadrants = this.radar.quadrants.items;
 
         this.active = this.options.active;
         this.quadrant = this.options.quadrant;
@@ -26,8 +21,8 @@ export default class extends Module {
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
-        this.elementWidth = 10; // needed for centering offset @TODO get it
-        this.elementHeight = 10;
+        this.elementWidth = 15; // needed for centering offset @TODO get it
+        this.elementHeight = 15;
 
         this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
 
@@ -46,26 +41,26 @@ export default class extends Module {
             this.target.innerHTML = this.label;
         };
         this.target.onmouseleave = () => {
-            this.target.innerHTML = this.index+1;
+            this.target.innerHTML = this.index + 1;
         };
     }
 
     segmentObj(quadrant, ring) {
         const polar_min = {
             t: this.quadrants[quadrant].radial_min * Math.PI,
-            r: ring === 0 ? 30 : this.radar.rings.items[ring - 1].radius
+            r: ring === 0 ? 30 : this.radar.rings.data[ring - 1].radius
         };
         const polar_max = {
             t: this.quadrants[quadrant].radial_max * Math.PI,
-            r: this.radar.rings.items[ring].radius
+            r: this.radar.rings.data[ring].radius
         };
         const cartesian_min = {
             x: 15 * this.quadrants[quadrant].factor_x,
             y: 15 * this.quadrants[quadrant].factor_y
         };
         const cartesian_max = {
-            x: this.radar.rings.items[3].radius * this.quadrants[quadrant].factor_x,
-            y: this.radar.rings.items[3].radius * this.quadrants[quadrant].factor_y
+            x: this.radar.rings.data[3].radius * this.quadrants[quadrant].factor_x,
+            y: this.radar.rings.data[3].radius * this.quadrants[quadrant].factor_y
         };
         return {
             clipx: d => {
@@ -152,7 +147,7 @@ export default class extends Module {
 
     set index(value){
         this._index = value;
-        this.target.innerHTML = this.index;
+        this.target.innerHTML = this.index + 1;
     }
 
     get x() {
@@ -161,7 +156,7 @@ export default class extends Module {
     set x(value){
         this._x = value;
         if(this.target)
-            this.target.style.left = `${this.x + this.offset.x - this.elementWidth}px`;
+            this.target.style.left = `${this.x + this.offset.x - (this.elementWidth/2)}px`;
     }
     get y() {
         return this._y;
@@ -169,7 +164,7 @@ export default class extends Module {
     set y(value){
         this._y = value;
         if(this.target)
-            this.target.style.top = `${this.y + this.offset.y- this.elementHeight}px`;
+            this.target.style.top = `${this.y + this.offset.y - (this.elementHeight/2)}px`;
     }
 
 };

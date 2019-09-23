@@ -1,9 +1,9 @@
 import Module from "../../Module";
-import * as d3 from '../../../node_modules/d3/index.js';
 import Config from '../../../data/config.js';
 import Items from '../../../data/items.js';
 import Dots from './Dots.js';
 import Rings from './Rings.js';
+import Quadrants from './Quadrants.js';
 
 export default class extends Module {
     constructor() {
@@ -20,6 +20,9 @@ export default class extends Module {
 
             this.rings = new Rings(this);
             this.rings.draw();
+
+            this.quadrants = new Quadrants(this);
+            this.quadrants.draw();
 
             this.dots = new Dots(this);
             this.dots.draw();

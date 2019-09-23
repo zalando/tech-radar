@@ -11,6 +11,7 @@ export default class extends Module {
         this.radar = radar;
         this.items = [];
         this.segmented = [];
+        this.velocityDecay = 0.05;
 
         this.radar.data.forEach(options => {
             const dot = new Dot({
@@ -21,7 +22,6 @@ export default class extends Module {
             this.radar.target.append(dot.target);
         });
         this.segment();
-        console.log('>>>', this.segmented);
     }
 
     segment() {
@@ -65,7 +65,7 @@ export default class extends Module {
         });
 
         d3.forceSimulation(this.items)
-            .velocityDecay(0.19) // magic number (found by experimentation)
+            .velocityDecay(this.velocityDecay) // magic number (found by experimentation)
             .force("collision", d3.forceCollide().radius(16).strength(1))
             .on("tick", () => {
                 this.ticked();
