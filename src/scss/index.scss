@@ -22,7 +22,6 @@ body, html {
     height: 15px;
     overflow: hidden;
     border-radius: 10px;
-    transition: all 0.5s ease-out;
     text-align: center;
     color: rgba(0, 0, 0, 0.6);
     z-index: 100;
@@ -30,15 +29,19 @@ body, html {
     line-height: 15px;
     font-weight: 700;
     border: 2px solid #f1f1f1;
-    overflow:inherit;
+    overflow: inherit;
+
+    transition-property: font-size, line-height, width, height, margin-left, margin-top, border-radius;
+    transition-duration: .1s;
+    transition-timing-function: ease-in-out;
 
     &:before {
       position: absolute;
       content: attr(data-quadrant);
-      left:0px;
-      top:50px;
+      left: 0;
+      top: 50px;
       text-transform: uppercase;
-      width:200px;
+      width: 200px;
       transition: all 0.2s;
       text-align: center;
     }
@@ -46,23 +49,24 @@ body, html {
 
     &:hover {
       font-size: 20px;
-      line-height:43px;
+      line-height: 43px;
       cursor: pointer;
       width: 200px;
       height: 50px;
       margin-left: -100px;
       margin-top: -25px;
       vertical-align: middle;
-      transition: all 0.05s ease-out;
       z-index: 1000;
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
       border-radius: 30px;
 
       &:before {
         position: absolute;
-        top:15px;
-        font-size:10px;
+        top: 15px;
+        font-size: 10px;
         transition: all 0.2s;
+        transition-delay: 0.1s;
+        width: 200px;
       }
     }
   }
