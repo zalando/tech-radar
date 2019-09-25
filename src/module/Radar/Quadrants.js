@@ -28,7 +28,10 @@ export default class extends Module {
             const quadrant = new Quadrant({
                 index : i,
                 radar : this.radar,
-                options: {...this.data[i],name: this.radar.config.quadrants[i].name}
+                options: {
+                    ...this.data[i],
+                    name: this.radar.config.quadrants[i].name
+                }
             });
             this.items.push(quadrant);
             this.target.append(quadrant.target)

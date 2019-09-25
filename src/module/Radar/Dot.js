@@ -5,9 +5,8 @@ export default class extends Module {
         super();
         this.radar = args.radar;
         this.options = args.options;
-
+        this.index = this.options.index;
         this.quadrants = this.radar.quadrants.items;
-
         this.active = this.options.active;
         this.quadrant = this.options.quadrant;
         this.ring = this.options.ring;
@@ -18,27 +17,27 @@ export default class extends Module {
         this.y = this.options.y;
         this.hot = this.options.hot;
         this.boost = this.options.boost || 0;
-
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
-        this.elementWidth = 15; // needed for centering offset @TODO get it
-        this.elementHeight = 15;
+        this.elementWidth = 20; // needed for centering offset @TODO get it
+        this.elementHeight = 20;
 
         this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
-
         this.segment = this.segmentObj(this.quadrant, this.ring);
         const point = this.segment.random();
         this.x = point.x;
-        this.y = point.y;
 
+        this.y = point.y;
         this.target = document.createElement('div');
+        this.target.innerHTML = this.index + 1;
         this.target.classList.add(this.class);
         this.target.style.backgroundColor = this.color;
         this.target.style.top = `${this.y}px`;
         this.target.style.left = `${this.x}px`;
-        if(this.boost)
+        if(this.boost) {
             this.target.style.transform = `scale(${this.boost})`;
+        }
 
         this.target.onmouseover = () => {
             this.target.innerHTML = this.label;
@@ -48,6 +47,8 @@ export default class extends Module {
         this.target.onmouseleave = () => {
             this.target.innerHTML = this.index + 1;
         };
+
+
     }
 
     segmentObj(quadrant, ring) {
@@ -152,7 +153,7 @@ export default class extends Module {
 
     set index(value){
         this._index = value;
-        this.target.innerHTML = this.index + 1;
+        //this.target.innerHTML = this.index + 1;
     }
 
     get x() {

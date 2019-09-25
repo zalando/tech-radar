@@ -13,11 +13,13 @@ export default class extends Module {
         this.segmented = [];
         this.velocityDecay = 0.05;
 
-        this.radar.data.forEach(options => {
+        this.radar.data.forEach((options, index) => {
             const dot = new Dot({
+                index: index,
                 radar: this.radar,
                 options: options
             });
+            dot.index = index;
             this.items.push(dot);
             this.radar.target.append(dot.target);
         });
@@ -69,9 +71,9 @@ export default class extends Module {
             .force("collision", d3.forceCollide().radius(16).strength(1))
             .on("tick", () => {
                 this.ticked();
-            }).on('end', function() {
-             console.log('>>> SIMULATION COMPLETE');
-         });
+            }).on('end', function () {
+            console.log('>>> SIMULATION COMPLETE');
+        });
 
     }
 };

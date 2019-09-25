@@ -31,6 +31,7 @@ export default class extends Module {
             const ring = new Ring({
                 radar : this.radar,
                 options : {
+                    index: i,
                     ...this.radar.config.rings[i],
                     radius: r.radius
                 }

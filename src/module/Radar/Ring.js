@@ -10,6 +10,7 @@ export default class extends Module {
         this.radius = args.options.radius;
         this.name = args.options.name;
         this.color = args.options.color;
+        this.index = this.options.index;
 
         this.target = document.createElement('div');
         this.target.className = 'ring';

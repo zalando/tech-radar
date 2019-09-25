@@ -4,6 +4,7 @@ import Items from '../../../data/items.js';
 import Dots from './Dots.js';
 import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
+import Legends from './Legends.js';
 
 export default class extends Module {
     constructor() {
@@ -13,7 +14,12 @@ export default class extends Module {
             console.log(this.label, 'INIT');
 
             this.config = Config;
-            this.data = Items;
+            this.data = Items.map((dot, index) => {
+                return {
+                    index: index,
+                    ...dot
+                }
+            });
 
             const target = document.createElement('div');
             target.id = 'radar';
@@ -31,6 +37,9 @@ export default class extends Module {
 
             this.dots = new Dots(this);
             this.dots.draw();
+
+            this.legends = new Legends(this);
+            this.legends.draw();
 
             this.on('ready', () => {
                 resolve(this);
