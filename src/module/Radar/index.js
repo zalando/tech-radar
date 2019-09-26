@@ -5,6 +5,7 @@ import Dots from './Dots.js';
 import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
 import Legends from './Legends.js';
+import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
     constructor() {
@@ -21,11 +22,27 @@ export default class extends Module {
                 }
             });
 
+            const splash = document.createElement('div');
+            splash.id = 'splash';
+            splash.className = 'splash';
+            document.querySelector('body').append(splash);
+
             const target = document.createElement('div');
             target.id = 'radar';
             target.className = 'radar';
             document.querySelector('body').append(target);
             this.target = document.getElementById('radar');
+
+            const pageTemplate = PageTemplate({
+                scope : {
+
+                }
+            });
+            const page = document.createElement('div');
+            page.id = 'page';
+            page.className = 'page';
+            page.innerHTML = pageTemplate;
+            document.querySelector('body').append(page);
 
             this.draw();
 

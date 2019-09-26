@@ -40,15 +40,30 @@ export default class extends Module {
         }
 
         this.target.onmouseover = () => {
-            this.target.innerHTML = this.label;
-            this.target.setAttribute('data-quadrant',this.radar.quadrants.items[this.quadrant].name);
-            this.target.setAttribute('data-ring',this.radar.rings.items[this.ring].name);
+            this.select();
         };
         this.target.onmouseleave = () => {
-            this.target.innerHTML = this.index + 1;
+            this.deselect();
         };
 
 
+    }
+
+    select(){
+        this.target.innerHTML = this.label;
+        this.target.setAttribute('data-quadrant',this.radar.quadrants.items[this.quadrant].name);
+        this.target.setAttribute('data-ring',this.radar.rings.items[this.ring].name);
+        this.target.classList.add('active');
+
+        const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
+        legendButton.select();
+    }
+
+    deselect() {
+        this.target.innerHTML = this.index + 1;
+        this.target.classList.remove('active');
+        const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
+        legendButton.deselect();
     }
 
     segmentObj(quadrant, ring) {

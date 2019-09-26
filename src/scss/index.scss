@@ -41,11 +41,24 @@ body, html {
   background-color: #e0e0e0;
 }
 
+.splash {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+
+}
+
 .radar {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  min-height: 800px;
+  max-height: 800px;
   box-shadow: inset 0px 0px 200px rgba(0, 0, 0, 0.3);
+  border-bottom: 100px solid #bcbcbc;
+  z-index:2;
 
   .dot {
     position: absolute;
@@ -55,7 +68,7 @@ body, html {
     border-radius: 20px;
     text-align: center;
     color: rgba(0, 0, 0, 0.6);
-    z-index: 100;
+    z-index: 500;
     font-size: 10px;
     line-height: 20px;
     font-weight: 500;
@@ -78,7 +91,7 @@ body, html {
     }
 
 
-    &:hover {
+    &:hover, &.active {
       font-size: 20px;
       line-height: 43px;
       cursor: pointer;
@@ -155,6 +168,7 @@ body, html {
     left: 0;
     height: 100%;
     width: 100%;
+    z-index:100;
 
     .legend {
       position: absolute;
@@ -182,7 +196,7 @@ body, html {
           line-height: 14px;
 
           a {
-
+            padding:2px 4px 2px 4px;
             span {
               width: 15px;
               overflow: hidden;
@@ -195,17 +209,22 @@ body, html {
 
             color: #000000;
             text-decoration: none;
+
+            &.active {
+              font-weight:900;
+              transition:all 0.2s;
+            }
           }
         }
       }
 
       .label-container {
+
         .ring-column {
           width: 50%;
           float: left;
 
           .ring-block {
-
           }
         }
 
@@ -214,15 +233,14 @@ body, html {
       &[data-ring] {
         width: 300px;
         height: 400px;
-        margin-top: 100px;
       }
 
-      &[data-ring="1"], &[data-ring="3"] {
-        left: 30px;
+      &[data-ring="1"], &[data-ring="2"] {
+        margin-left: -700px;
       }
 
-      &[data-ring="0"], &[data-ring="2"] {
-        right: 30px;
+      &[data-ring="0"], &[data-ring="3"] {
+        margin-left: 450px;
       }
 
     }

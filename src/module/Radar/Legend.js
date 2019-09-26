@@ -19,30 +19,71 @@ export default class extends Module {
         let html = `<h1>${this.name}</h1>`;
         html += '<div class="label-container">';
         for (let i = 0; i < this.dots.length; i++) {
-            if(i===0 || i ===2)
+            if (i === 0 || i === 2)
                 html += '<div class="ring-column">';
 
             html += '<div class="ring-block">';
             html += `<h2>${this.radar.rings.items[i].name}</h2>`;
             html += '<ul>';
             this.dots[i].forEach(dot => {
-                html += `<li><a href="" data-index="${dot.index}}"><span class="">${dot.index+1}</span>${dot.label}</a></li>`;
+                html += `<li><a href="" data-index="${dot.index}"><span class="">${dot.index + 1}</span>${dot.label}</a></li>`;
             });
             html += '</ul>';
             html += '</div>';
-            if(i===1 || i ===3)
+            if (i === 1 || i === 3)
                 html += '</div>';
-
 
         }
         html += '</div>';
         this.target.innerHTML = html;
+        this.buttons = this.target.querySelectorAll('a');
+
+        this.buttons.forEach(button => {
+            button.onclick = e => {
+                e.preventDefault();
+            };
+
+            button.select = e => {
+                button.classList.add('active');
+                if (e) {
+                    const index = e.target.getAttribute('data-index');
+                    const dot = this.radar.dots.items[index];
+                    if (dot) {
+                        dot.select();
+                        button.style.backgroundColor = dot.color;
+                    }
+                } else {
+
+                }
+            };
+
+            button.deselect = e => {
+                button.classList.remove('active');
+
+                if (!e)
+                    return;
+
+                const index = e.target.getAttribute('data-index');
+                const dot = this.radar.dots.items[index];
+                if (dot) {
+                    dot.deselect();
+                    button.style.backgroundColor = 'inherit';
+                }
+            };
+
+            button.onmouseover = button.select;
+            button.onmouseout = button.deselect;
+        });
         this.draw();
     }
 
+
     draw() {
-        const quadrant = this.radar.quadrants.items[this.index];
-        this.target.style.top = quadrant.target.style.top;
+        const quadrant = this.radar.quadrants.items[this.index].target;
+        const ring = this.radar.quadrants.items[3].target;
+        this.target.style.top = quadrant.style.top;
+        this.target.style.left = `${ring.getBoundingClientRect().left}px`;
+        this.target.setAttribute('data-rings-width', ring.getBoundingClientRect().width);
     }
 
     get index() {
