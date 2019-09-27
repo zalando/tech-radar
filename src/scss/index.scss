@@ -213,7 +213,10 @@ body, html {
             &.active {
               font-weight:900;
               transition:all 0.2s;
+              cursor:none;
             }
+
+
           }
         }
       }
