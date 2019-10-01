@@ -18,10 +18,10 @@ export default class extends Module {
 
         this.items = [];
         this.data = [
-            {radius: radius * 0.35}, // inner, means % size
-            {radius: radius * 0.55},
-            {radius: radius * 0.75},
-            {radius: radius * 0.9} // outer
+            {radius: radius * getComputedStyle(document.documentElement).getPropertyValue('--radar-ring-0')},    // inner, means % size
+            {radius: radius * getComputedStyle(document.documentElement).getPropertyValue('--radar-ring-1')},
+            {radius: radius * getComputedStyle(document.documentElement).getPropertyValue('--radar-ring-2')},
+            {radius: radius * getComputedStyle(document.documentElement).getPropertyValue('--radar-ring-3')}      // outer
         ];
 
         let i = 0;

@@ -10,7 +10,8 @@
 </head>
 <body>
 <div class="header">
-    <div class="company"><a href="https://neofonie.de" target="_blank">neofonie<span class="claim">tech-radar</span></a></div>
+    <div class="company"><a href="https://neofonie.de" target="_blank">neofonie<span class="claim">tech-radar</span></a>
+    </div>
 </div>
 <script src="js/radar.js"></script>
 <script type="module">
@@ -34,6 +35,10 @@
         // add events
         RADAR.on('simulation-complete', () => {
             console.log('>>> SIMULATION COMPLETE');
+        });
+
+        RADAR.on('mouseover', (e, dot) => {
+            console.log('>>> HOVERING DOT', dot.label);
         });
     });
 </script>

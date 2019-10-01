@@ -39,8 +39,14 @@ export default class extends Module {
             this.target.style.transform = `scale(${this.boost})`;
         }
 
-        this.target.onmouseover = e => this.select(e);
-        this.target.onmouseleave = e => this.deselect(e);
+        this.target.onmouseover = e => {
+            this.radar.emit('mouseover', e, this);
+            this.select(e);
+        };
+        this.target.onmouseleave = e => {
+            this.radar.emit('mouseleave', e, this);
+            this.deselect(e);
+        };
 
     }
 

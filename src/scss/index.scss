@@ -1,6 +1,16 @@
 @import "./mixins/responsive.scss";
 @import "./mixins/typo.scss";
 
+/**
+change the ring size here, means percent
+ */
+:root {
+  --radar-ring-0: 0.37;
+  --radar-ring-1: 0.55;
+  --radar-ring-2: 0.68;
+  --radar-ring-3: 0.82;
+}
+
 * {
   font-family: 'Exo', 'Arial';
   font-weight: 400;
@@ -189,7 +199,7 @@ body, html {
 
     .legend {
       position: absolute;
-      margin-top: 50px;
+      margin-top: 10px;
 
       h1, h2, ul, li {
         margin: 0;
