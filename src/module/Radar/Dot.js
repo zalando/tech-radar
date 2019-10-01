@@ -35,33 +35,33 @@ export default class extends Module {
         this.target.style.backgroundColor = this.color;
         this.target.style.top = `${this.y}px`;
         this.target.style.left = `${this.x}px`;
-        if(this.boost) {
+        if (this.boost) {
             this.target.style.transform = `scale(${this.boost})`;
         }
 
-        this.target.onmouseover = () => {
-            this.select();
-        };
-        this.target.onmouseleave = () => {
-            this.deselect();
-        };
+        this.target.onmouseover = e => this.select(e);
+        this.target.onmouseleave = e => this.deselect(e);
+
     }
 
-    select(){
+    select(e) {
         this.target.innerHTML = this.label;
-        this.target.setAttribute('data-quadrant',this.radar.quadrants.items[this.quadrant].name);
-        this.target.setAttribute('data-ring',this.radar.rings.items[this.ring].name);
+        this.target.setAttribute('data-quadrant', this.radar.quadrants.items[this.quadrant].name);
+        this.target.setAttribute('data-ring', this.radar.rings.items[this.ring].name);
         this.target.classList.add('active');
-
-        const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
-        legendButton.select();
+        if (e) {
+            const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
+            legendButton.select();
+        }
     }
 
-    deselect() {
+    deselect(e) {
         this.target.innerHTML = this.index + 1;
         this.target.classList.remove('active');
-        const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
-        legendButton.deselect();
+        if (e) {
+            const legendButton = this.radar.target.querySelector(`[data-index="${this.index}"]`);
+            legendButton.deselect();
+        }
     }
 
     segmentObj(quadrant, ring) {
@@ -160,11 +160,11 @@ export default class extends Module {
         return "translate(" + x + "," + y + ")";
     }
 
-    get index(){
+    get index() {
         return this._index;
     }
 
-    set index(value){
+    set index(value) {
         this._index = value;
         //this.target.innerHTML = this.index + 1;
     }
@@ -172,18 +172,21 @@ export default class extends Module {
     get x() {
         return this._x;
     }
-    set x(value){
+
+    set x(value) {
         this._x = value;
-        if(this.target)
-            this.target.style.left = `${this.x + this.offset.x - (this.elementWidth/2)}px`;
+        if (this.target)
+            this.target.style.left = `${this.x + this.offset.x - (this.elementWidth / 2)}px`;
     }
+
     get y() {
         return this._y;
     }
-    set y(value){
+
+    set y(value) {
         this._y = value;
-        if(this.target)
-            this.target.style.top = `${this.y + this.offset.y - (this.elementWidth/2)}px`;
+        if (this.target)
+            this.target.style.top = `${this.y + this.offset.y - (this.elementWidth / 2)}px`;
     }
 
 };

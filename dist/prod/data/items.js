@@ -330,6 +330,13 @@ export default [
     },
     {
         quadrant: 1,
+        ring: 1,
+        label: 'StencilJS',
+        active: false,
+        moved: 1
+    },
+    {
+        quadrant: 1,
         ring: 2,
         label: 'Svelte',
         active: false,

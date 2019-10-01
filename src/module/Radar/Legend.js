@@ -45,25 +45,28 @@ export default class extends Module {
 
             button.select = e => {
                 button.classList.add('active');
+                let index = false;
                 if (e) {
-                    const index = e.target.getAttribute('data-index');
-                    const dot = this.radar.dots.items[index];
-                    if (dot) {
-                        dot.select();
-                        button.style.backgroundColor = dot.color;
-                    }
+                    index = e.target.getAttribute('data-index');
                 } else {
-
+                    index = button.getAttribute('data-index');
+                }
+                const dot = this.radar.dots.items[index];
+                if (dot) {
+                    dot.select();
+                    button.style.backgroundColor = dot.color;
                 }
             };
 
             button.deselect = e => {
                 button.classList.remove('active');
 
-                if (!e)
-                    return;
-
-                const index = e.target.getAttribute('data-index');
+                let index = false;
+                if (e) {
+                    index = e.target.getAttribute('data-index');
+                } else {
+                    index = button.getAttribute('data-index');
+                }
                 const dot = this.radar.dots.items[index];
                 if (dot) {
                     dot.deselect();
@@ -71,8 +74,8 @@ export default class extends Module {
                 }
             };
 
-            button.onmouseover = button.select;
-            button.onmouseout = button.deselect;
+            button.onmouseover = e => button.select(e);
+            button.onmouseout = e => button.deselect(e);
         });
         this.draw();
     }

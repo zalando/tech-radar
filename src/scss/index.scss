@@ -44,6 +44,7 @@ body, html {
     font-style: italic;
     text-shadow: 0 0 20px white;
     display: inline-block;
+    box-shadow:0 -20px 50px rgba(255,0,0,0.6);
 
     .claim {
       margin-left: 5px;
@@ -64,15 +65,16 @@ body, html {
   .dot {
     position: absolute;
     display: block;
-    width: 18px;
-    height: 18px;
+    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
     overflow: hidden;
     border-radius: 20px;
     text-align: center;
     color: rgba(0, 0, 0, 0.6);
     z-index: 500;
-    font-size: 10px;
-    line-height: 18px;
+
     font-weight: 500;
     border: 2px solid #f1f1f1;
     overflow: inherit;
