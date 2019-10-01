@@ -1,0 +1,114 @@
+$screen-xxs-min: 320px;
+$screen-xs-min: 640px;
+$screen-sm-min: 768px;
+$screen-md-min: 1024px;
+$screen-lg-min: 1280px;
+$screen-xl-min: 1440px;
+
+$screen-xxs-max: ($screen-xs-min - 1);
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+$screen-lg-max: ($screen-xl-min - 1);
+
+$media-tv: "only screen and (max-width: #{$screen-xl-min})";
+$media-tv-min: "only screen and (min-width: #{$screen-xl-min})";
+$media-desktop: "only screen and (max-width: #{$screen-lg-min})";
+$media-desktop-min: "only screen and (min-width: #{$screen-lg-min})";
+$media-tablet: "only screen and (max-width: #{$screen-md-min})";
+$media-tablet-min: "only screen and (min-width: #{$screen-md-min})";
+$media-tablet-min-max: "only screen and (max-width: #{$screen-md-min}) and (min-width: #{$screen-sm-min})";
+$media-tablet-landscape: "only screen and (max-width: #{$screen-md-min}) and (min-width: #{$screen-sm-min}) and (orientation: landscape)";
+$media-tablet-max: "only screen and (max-width: #{$screen-md-max})";
+$media-smartphone: "only screen and (max-width: #{$screen-sm-min})";
+$media-smartphone-min: "only screen and (min-width: #{$screen-sm-min})";
+$media-phone: "only screen and (max-width: #{$screen-xs-min})";
+$media-phone-min: "only screen and (min-width: #{$screen-xs-min})";
+$media-watch: "only screen and (max-width: #{$screen-xxs-min})";
+
+$landscape: "and (orientation: landscape)";
+$portrait: "and (orientation: portrait)";
+
+@mixin media-tv() {
+  @media #{$media-tv}{
+    @content;
+  }
+}
+
+@mixin media-tv-min() {
+  @media #{$media-tv-min}{
+    @content;
+  }
+}
+
+@mixin media-desktop() {
+  @media #{$media-desktop} {
+    @content;
+  }
+}
+
+@mixin media-desktop-min() {
+  @media #{$media-desktop-min} {
+    @content;
+  }
+}
+
+@mixin media-tablet() {
+  @media #{$media-tablet} {
+    @content;
+  }
+}
+@mixin media-tablet-min() {
+  @media #{$media-tablet-min} {
+    @content;
+  }
+}
+
+@mixin media-tablet-min-max() {
+  @media #{$media-tablet-min-max} {
+    @content;
+  }
+}
+
+@mixin media-tablet-max() {
+  @media #{$media-tablet-max} {
+    @content;
+  }
+}
+
+@mixin media-tablet-landscape() {
+  @media #{$media-tablet-landscape} {
+    @content;
+  }
+}
+
+@mixin media-smartphone() {
+  @media #{$media-smartphone} {
+    @content;
+  }
+}
+
+@mixin media-smartphone-min() {
+  @media #{$media-smartphone-min} {
+    @content;
+  }
+}
+
+@mixin media-phone() {
+  @media #{$media-phone} {
+    @content;
+  }
+}
+
+@mixin media-phone-min() {
+  @media #{$media-phone-min} {
+    @content;
+  }
+}
+
+@mixin media-watch() {
+  @media #{$media-watch} {
+    @content;
+  }
+}
+

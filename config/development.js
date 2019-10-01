@@ -14,7 +14,7 @@ module.exports = class extends ConfigClass {
             ],
 
             output: {
-                filename: 'js/bundle.js',
+                filename: 'js/radar.js',
                 path: `${this.appPath}/dist/dev`,
                 hotUpdateChunkFilename: `../../.hot/hot-update.js`,
                 hotUpdateMainFilename: `../../.hot/hot-update.json`
@@ -33,7 +33,7 @@ module.exports = class extends ConfigClass {
                             {
                                 loader: 'file-loader',
                                 options: {
-                                    name: 'bundle.css',
+                                    name: 'radar.css',
                                     outputPath: '../../dist/dev/css/'
                                 }
                             },

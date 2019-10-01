@@ -1,8 +1,8 @@
 export default {
     title: 'Neofonie Tech Radar — 2019.09',
     seed: {
-        from: 30,
-        to: 40
+        from: 20,
+        to: 50
     },
     colors: {
         background: '#fff',

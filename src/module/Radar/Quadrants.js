@@ -15,9 +15,7 @@ export default class extends Module {
             {radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1},
             {radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1}
         ];
-    }
 
-    draw() {
         const target = document.createElement('div');
         target.id = 'quadrants';
         target.className = 'quadrants';
@@ -35,6 +33,12 @@ export default class extends Module {
             });
             this.items.push(quadrant);
             this.target.append(quadrant.target)
+        });
+    }
+
+    draw() {
+        this.items.forEach(quad => {
+            quad.draw();
         });
     }
 }

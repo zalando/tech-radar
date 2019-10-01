@@ -2,14 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>tech radar</title>
+    <title>neofonie tech radar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preload" href="css/bundle.css" as="style">
-    <link rel="preload" href="js/bundle.js" as="script">
-
-    <link rel="stylesheet" href="css/bundle.css">
+    <link rel="preload" href="css/radar.css" as="style">
+    <link rel="preload" href="js/radar.js" as="script">
+    <link rel="stylesheet" href="css/radar.css">
 </head>
 <body>
-    <script src="js/bundle.js"></script>
+<div class="header">
+    <div class="company"><a href="https://neofonie.de" target="_blank">neofonie<span class="claim">tech-radar</span></a></div>
+</div>
+<script src="js/radar.js"></script>
+<script type="module">
+    /**
+     * after reading the js/radar.js, it exists a
+     * global object, called "RADAR".
+     * this object will be overwritten
+     * with the created radar object.
+     * accessible at "window.RADAR"
+     */
+    import Data from './data/items.js';
+    import Config from './data/config.js';
+
+    new RADAR({
+        data: Data,
+        config: Config
+    }).then(radar => {
+        window.RADAR = radar;
+        console.log('>>> FEDDICH. RADAR ACCESSIBLE', 'window.RADAR or RADAR');
+
+        // add events
+        RADAR.on('simulation-complete', () => {
+            console.log('>>> SIMULATION COMPLETE');
+        });
+    });
+</script>
 </body>
 </html>

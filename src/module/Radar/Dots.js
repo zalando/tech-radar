@@ -24,6 +24,12 @@ export default class extends Module {
             this.radar.target.append(dot.target);
         });
         this.segment();
+
+        this.items.forEach(dot => {
+            this.radar.target.append(dot.target);
+            dot.elementWidth = dot.target.clientWidth;
+            dot.elementHeight = dot.target.clientHeight;
+        });
     }
 
     segment() {
@@ -62,18 +68,15 @@ export default class extends Module {
     }
 
     draw() {
-        this.items.forEach(dot => {
-            this.radar.target.append(dot.target);
-        });
-
         d3.forceSimulation(this.items)
             .velocityDecay(this.velocityDecay) // magic number (found by experimentation)
             .force("collision", d3.forceCollide().radius(16).strength(1))
             .on("tick", () => {
                 this.ticked();
-            }).on('end', function () {
-            console.log('>>> SIMULATION COMPLETE');
-        });
+            })
+            .on('end', () => {
+                this.emit('simulation-complete', this);
+            });
 
     }
 };

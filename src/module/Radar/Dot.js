@@ -20,8 +20,8 @@ export default class extends Module {
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
-        this.elementWidth = 20; // needed for centering offset @TODO get it
-        this.elementHeight = 20;
+        this.elementWidth = false; // needed for centering offset @TODO get it
+        this.elementHeight = false;
 
         this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
         this.segment = this.segmentObj(this.quadrant, this.ring);
@@ -45,8 +45,6 @@ export default class extends Module {
         this.target.onmouseleave = () => {
             this.deselect();
         };
-
-
     }
 
     select(){
@@ -185,7 +183,7 @@ export default class extends Module {
     set y(value){
         this._y = value;
         if(this.target)
-            this.target.style.top = `${this.y + this.offset.y - (this.elementHeight/2)}px`;
+            this.target.style.top = `${this.y + this.offset.y - (this.elementWidth/2)}px`;
     }
 
 };

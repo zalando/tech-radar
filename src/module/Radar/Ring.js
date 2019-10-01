@@ -19,6 +19,8 @@ export default class extends Module {
     }
 
     draw(){
+
+
         const width = this.radar.target.getBoundingClientRect().width;
         const height = this.radar.target.getBoundingClientRect().height;
         this.target.style.width = `${this.radius * 2}px`;

@@ -16,7 +16,7 @@ module.exports = class extends ConfigClass {
             ],
 
             output: {
-                filename: 'js/bundle.js',
+                filename: 'js/radar.js',
                 path: `${this.appPath}/dist/prod/`,
             },
 
@@ -33,7 +33,7 @@ module.exports = class extends ConfigClass {
                             {
                                 loader: 'file-loader',
                                 options: {
-                                    name: 'bundle.css',
+                                    name: 'radar.css',
                                     outputPath: '../../dist/prod/css/'
                                 }
                             },
@@ -70,7 +70,7 @@ module.exports = class extends ConfigClass {
                             const spawnOptions = [
                                 '-i',
                                 replaceCommand,
-                                `${this.appPath}/docs/css/bundle.css`
+                                `${this.appPath}/docs/css/radar.css`
                             ];
                             console.log('>>> sed', spawnOptions);
                             setTimeout(() => {

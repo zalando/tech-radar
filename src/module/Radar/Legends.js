@@ -7,9 +7,7 @@ export default class extends Module {
         this.label = 'LEGENDS';
         console.log(this.label, 'INIT');
         this.radar = radar;
-    }
 
-    draw() {
         const target = document.createElement('div');
         target.id = 'legends';
         target.className = 'legends';
@@ -28,5 +26,11 @@ export default class extends Module {
             this.items.push(legend);
             this.target.append(legend.target)
         });
+    }
+
+    draw() {
+        this.items.forEach(legend => {
+            legend.draw();
+        })
     }
 }

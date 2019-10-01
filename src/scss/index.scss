@@ -1,33 +1,5 @@
-@font-face {
-  font-family: 'Exo';
-  font-weight: 200;
-  src: url('/css/fonts/Exo-Thin.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Exo';
-  font-weight: 300;
-  src: url('/css/fonts/Exo-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Exo';
-  font-weight: 400;
-  src: url('/css/fonts/Exo-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Exo';
-  font-weight: 500;
-  src: url('/css/fonts/Exo-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Exo';
-  font-weight: 800;
-  src: url('/css/fonts/Exo-Black.ttf') format('truetype');
-}
-
+@import "./mixins/responsive.scss";
+@import "./mixins/typo.scss";
 
 * {
   font-family: 'Exo', 'Arial';
@@ -50,34 +22,73 @@ body, html {
 
 }
 
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index:20000;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .company {
+    color: white;
+    background-color: #E60023;
+    font-weight: 500;
+    padding: 5px 20px;
+    font-size: 16px;
+    font-style: italic;
+    text-shadow: 0 0 20px white;
+    display: inline-block;
+
+    .claim {
+      margin-left: 5px;
+      color: #dddddd;
+    }
+  }
+}
+
 .radar {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  min-height: 800px;
-  max-height: 800px;
-  box-shadow: inset 0px 0px 200px rgba(0, 0, 0, 0.3);
-  border-bottom: 100px solid #bcbcbc;
-  z-index:2;
+  //min-height: 800px;
+  //max-height: 800px;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 
   .dot {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    display: block;
+    width: 18px;
+    height: 18px;
     overflow: hidden;
     border-radius: 20px;
     text-align: center;
     color: rgba(0, 0, 0, 0.6);
     z-index: 500;
     font-size: 10px;
-    line-height: 20px;
+    line-height: 18px;
     font-weight: 500;
     border: 2px solid #f1f1f1;
     overflow: inherit;
+    transform-origin: center center;
 
     transition-property: font-size, line-height, width, height, margin-left, margin-top, border-radius;
     transition-duration: .1s;
     transition-timing-function: ease-in-out;
+
+    @include media-tablet {
+      width: 15px;
+      height: 15px;
+      border-width: 1px;
+      line-height: 15px;
+      font-size: 9px;
+    }
 
     &:before {
       position: absolute;
@@ -91,7 +102,7 @@ body, html {
     }
 
 
-    &:hover, &.active {
+    &.active {
       font-size: 20px;
       line-height: 43px;
       cursor: pointer;
@@ -100,7 +111,7 @@ body, html {
       margin-left: -100px;
       margin-top: -25px;
       vertical-align: middle;
-      z-index: 1000;
+      z-index: 2000;
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
       border-radius: 30px;
 
@@ -137,7 +148,6 @@ body, html {
     height: 100%;
     width: 100%;
 
-
     .quadrant {
       position: absolute;
       z-index: 10;
@@ -168,10 +178,16 @@ body, html {
     left: 0;
     height: 100%;
     width: 100%;
-    z-index:100;
+    z-index: 100;
+
+    @include media-tablet {
+      display: none;
+    }
+
 
     .legend {
       position: absolute;
+      margin-top: 50px;
 
       h1, h2, ul, li {
         margin: 0;
@@ -181,6 +197,7 @@ body, html {
 
       h1 {
         font-size: 20px;
+        font-weight: 600;
       }
 
       h2 {
@@ -196,7 +213,8 @@ body, html {
           line-height: 14px;
 
           a {
-            padding:2px 4px 2px 4px;
+            padding: 2px 4px 2px 4px;
+
             span {
               width: 15px;
               overflow: hidden;
@@ -211,9 +229,9 @@ body, html {
             text-decoration: none;
 
             &.active {
-              font-weight:900;
-              transition:all 0.2s;
-              cursor:none;
+              font-weight: 900;
+              transition: all 0.2s;
+              cursor: none;
             }
 
 

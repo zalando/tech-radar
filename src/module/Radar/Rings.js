@@ -23,14 +23,12 @@ export default class extends Module {
             {radius: radius * 0.75},
             {radius: radius * 0.9} // outer
         ];
-    }
 
-    draw() {
         let i = 0;
         this.data.forEach(r => {
             const ring = new Ring({
-                radar : this.radar,
-                options : {
+                radar: this.radar,
+                options: {
                     index: i,
                     ...this.radar.config.rings[i],
                     radius: r.radius
@@ -39,6 +37,12 @@ export default class extends Module {
             this.items.push(ring);
             this.radar.target.append(ring.target);
             i++;
+        });
+    }
+
+    draw() {
+        this.items.forEach(ring => {
+            ring.draw();
         });
     }
 };
