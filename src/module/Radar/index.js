@@ -3,6 +3,7 @@ import Dots from './Dots.js';
 import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
 import Legends from './Legends.js';
+import Lines from './Lines.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
@@ -80,6 +81,9 @@ export default class extends Module {
 
         this.legends = new Legends(this);
         this.legends.draw();
+
+        this.lines = new Lines(this);
+        this.lines.draw();
 
         this.emit('ready');
     }
