@@ -20,15 +20,15 @@ export default class extends Module {
         this.class = 'dot';
         this.color = this.active || this.radar.config.print_layout ? this.radar.config.rings[this.ring].color : this.radar.config.colors.inactive;
         this.offset = this.radar.offset;
-        this.elementWidth = false; // needed for centering offset @TODO get it
+        this.elementWidth = false;
         this.elementHeight = false;
 
         this.seed = Math.floor(Math.random() * this.radar.config.seed.to) + this.radar.config.seed.from;
         this.segment = this.segmentObj(this.quadrant, this.ring);
         const point = this.segment.random();
         this.x = point.x;
-
         this.y = point.y;
+
         this.target = document.createElement('div');
         this.target.innerHTML = this.index + 1;
         this.target.classList.add(this.class);
@@ -90,13 +90,13 @@ export default class extends Module {
         return {
             clipx: d => {
                 const c = this.bounded_box(d, cartesian_min, cartesian_max);
-                const p = this.bounded_ring(this.polar(c), polar_min.r + 15, polar_max.r - 15);
+                const p = this.bounded_ring(this.polar(c), polar_min.r + this.elementWidth , polar_max.r - this.elementWidth );
                 d.x = this.cartesian(p).x; // adjust data too!
                 return d.x;
             },
             clipy: d => {
                 const c = this.bounded_box(d, cartesian_min, cartesian_max);
-                const p = this.bounded_ring(this.polar(c), polar_min.r + 15, polar_max.r - 15);
+                const p = this.bounded_ring(this.polar(c), polar_min.r + this.elementWidth , polar_max.r - this.elementWidth );
                 d.y = this.cartesian(p).y; // adjust data too!
                 return d.y;
             },
