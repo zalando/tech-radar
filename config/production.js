@@ -1,7 +1,7 @@
 const
     fs = require('fs-extra'),
     ConfigClass = require('./config.js');
-    spawn = require('child_process').spawn;
+spawn = require('child_process').spawn;
 
 module.exports = class extends ConfigClass {
     constructor() {
@@ -72,7 +72,18 @@ module.exports = class extends ConfigClass {
                     apply: (compiler) => {
                         compiler.hooks.afterEmit.tap('Complete', (compilation) => {
                             console.log('>>> HOOKED');
-                            const replaceFrom = '/css';
+
+                            fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
+                            fs.copySync(`${this.appPath}/dist/prod`, `${this.appPath}/docs`);
+
+                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/radar.css`);
+                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/radar.css`);
+                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/dark.css`);
+                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/dark.css`);
+                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/forest.css`);
+                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/forest.css`);
+
+                            /*const replaceFrom = '/css';
                             const replaceTo = '/tech-radar/css';
                             const replaceCommand = `s#${replaceFrom}#${replaceTo}#g`;
                             fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
@@ -97,7 +108,7 @@ module.exports = class extends ConfigClass {
                                     console.log(data.toString());
                                 });
                             },2000);
-
+*/
                         });
                     }
                 }
@@ -105,4 +116,26 @@ module.exports = class extends ConfigClass {
         };
         return this.mergeConfig();
     };
+};
+
+const pathReplace = (replaceFrom, replaceTo, replaceFile) => {
+    const replaceCommand = `s#${replaceFrom}#${replaceTo}#g`;
+    const spawnOptions = [
+        '-i',
+        replaceCommand,
+        replaceFile
+    ];
+    console.log('>>> sed', spawnOptions);
+    setTimeout(() => {
+        const proc = spawn('sed', spawnOptions); // pffft
+        proc.on('error', (err) => {
+            console.error('>>> ERROR', err);
+        });
+        proc.stdout.on('data', (data) => {
+            console.log(data.toString());
+        });
+        proc.stderr.on('data', (data) => {
+            console.log(data.toString());
+        });
+    }, 2000);
 };
