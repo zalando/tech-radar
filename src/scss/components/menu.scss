@@ -33,7 +33,7 @@
 
     a {
       text-decoration: none;
-      color: #333333;
+      color: $color-foreground;
       line-height: 25px;
       padding: 0 10px;
       cursor: pointer;
@@ -47,8 +47,8 @@
       font-weight: 600;
       display: block;
       text-align: left;
-      background-color: #E60023;
-      color:#ffffff;
+      background-color: $color-primary;
+      color: $color-high;
       text-shadow:1px 1px rgba(0,0,0,0.4);
 
       &:before {
@@ -61,7 +61,7 @@
     .version {
       font-weight: 600;
       &:hover {
-        color:#E60023;
+        color: $color-primary;
       }
     }
 

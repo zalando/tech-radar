@@ -1,0 +1,10 @@
+$color-primary: #E60023;
+$color-primary-dark: darken(desaturate($color-primary, 20%), 20%);
+$color-primary-light: lighten(desaturate($color-primary, 20%), 20%);
+
+$color-foreground: #dddddd;
+$color-high: rgba(0,0,0,0.7);
+$color-deep: #000000;
+$color-chalk: #222222;
+$color-dark: #555555;
+

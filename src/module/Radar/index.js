@@ -87,8 +87,6 @@ export default class extends Module {
             });
 
 
-
-
             this.on('ready', () => {
                 resolve(this);
             });
@@ -100,8 +98,8 @@ export default class extends Module {
     }
 
     build() {
-        document.scrollTop = '0px';
         document.querySelector('body').classList.remove('loading');
+        this.setTheme();
         this.draw(true);
 
         this.rings = new Rings(this);
@@ -122,8 +120,6 @@ export default class extends Module {
 
         this.lines = new Lines(this);
         this.lines.draw();
-
-
 
         this.emit('ready');
     }
@@ -161,6 +157,23 @@ export default class extends Module {
         this.resizing = false;
         this.redraw();
         console.log('>>> RESIZE ENDED');
+    }
+
+    setTheme() {
+        if(!this.config.theme)
+            if(this.themeStyle)
+                this.themeStyle.href = '';
+
+        if(!this.themeStyle) {
+            this.themeStyle = document.createElement('link');
+            this.themeStyle.rel = 'stylesheet';
+            this.themeStyle.href = `css/${this.config.theme}.css`;
+            document.querySelector('head').append(this.themeStyle);
+        } else {
+            this.themeStyle.href = `css/${this.config.theme}.css`;
+        }
+
+        console.log('>>> THEME',this.config.theme);
     }
 
     get resizing() {

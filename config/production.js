@@ -10,30 +10,41 @@ module.exports = class extends ConfigClass {
         this.config = {
             mode: 'production',
             target: 'web',
-            entry: [
-                './src/app.js',
-                './src/scss/index.scss'
-            ],
+            entry: {
+                radar: './src/app.js',
+                default: './src/scss/radar.scss',
+                dark: './src/scss/dark.scss'
+            },
 
             output: {
-                filename: 'js/radar.js',
+                filename: './js/[name].js',
                 path: `${this.appPath}/dist/prod/`,
             },
 
             module: {
                 rules: [
                     {
+                        test: /\.js$/,
+                        exclude: /(node_modules|bower_components)/,
+                        use: {
+                            loader: "babel-loader",
+                            options: {
+                                presets: ["@babel/preset-env"]
+                            }
+                        }
+                    },
+                    {
                         test: /\.html?$/,
                         loader: "template-literals-loader"
                     },
                     {
-                        test: /.scss$/,
+                        test: /\.scss$/,
                         use: [
                             'style-loader',
                             {
                                 loader: 'file-loader',
                                 options: {
-                                    name: 'radar.css',
+                                    name: '[name].css',
                                     outputPath: '../../dist/prod/css/'
                                 }
                             },

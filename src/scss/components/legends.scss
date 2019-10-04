@@ -12,9 +12,6 @@
     display: block;
   }
 
-
-
-
   .legend {
     position: absolute;
     margin-top: 10px;
@@ -23,7 +20,7 @@
       margin: 0;
       padding: 0;
       display: block;
-      color: #444444;
+      color: $color-foreground;
     }
 
     h1 {
@@ -52,12 +49,12 @@
             overflow: hidden;
             display: block;
             float: left;
-            color: #aaaaaa;
+            color: $color-dark;
             margin-right: 5px;
             font-weight: 700;
           }
 
-          color: #333333;
+          color: $color-foreground;
           text-decoration: none;
 
           &.active {

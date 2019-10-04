@@ -12,14 +12,14 @@
 
   a {
     text-decoration: none;
-    color: white;
+    color: $color-high;
   }
 
   .company {
     width: 180px;
     height: 25px;
-    color: white;
-    background-color: #E60023;
+    color: $color-high;
+    background-color: $color-primary;
     line-height: 25px;
     font-weight: 500;
     font-size: 16px;
@@ -35,7 +35,7 @@
 
     .claim {
       margin-left: 5px;
-      color: #dddddd;
+      color: $color-chalk;
     }
   }
 }

@@ -1,7 +1,7 @@
 .page {
   line-height: 30px;
   border-top: 1px solid #E60023;
-  color: #444444;
+  color: $color-foreground;
 
   .inner {
     width: 50%;
@@ -12,12 +12,12 @@
     text-decoration: none;
     padding: 2px 6px;
     background-color: rgba(0, 0, 0, 0.05);
-    color: #000000;
+    color: $color-deep;
     position: relative;
 
     &:hover {
-      background-color: #E60023;
-      color: #ffffff;
+      background-color: $color-primary;
+      color: $color-high;
     }
 
     &:before {
@@ -26,7 +26,7 @@
       bottom: 0;
       left: 0;
       height: 1px;
-      background-color: #999999;
+      background-color: $color-foreground;
       z-index: 10000;
       width: 100%;
     }
@@ -36,7 +36,7 @@
     font-weight: 200;
     font-size: 40px;
     margin: 80px 0 30px 0;
-    color: #000000;
+    color: $color-deep;
   }
 
   ul, li {
@@ -62,9 +62,9 @@
   footer {
     margin-top: 100px;
     line-height: 30px;
-    background-color: #E60023;
+    background-color: $color-primary;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-    color: #ffffff;
+    color: $color-high;
     font-size: 10px;
     font-weight: 500;
     padding: 0 10px;
