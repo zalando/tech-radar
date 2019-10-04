@@ -11,7 +11,8 @@ module.exports = class extends ConfigClass {
             entry: {
                 radar: './src/app.js',
                 default: './src/scss/radar.scss',
-                dark: './src/scss/dark.scss'
+                dark: './src/scss/dark.scss',
+                forest: './src/scss/forest.scss'
             },
 
             output: {

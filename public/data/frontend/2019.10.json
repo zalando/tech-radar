@@ -83,6 +83,27 @@
     "active": false,
     "moved": 0
   },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "IntelliJ",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "VS Code",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 1,
+    "label": "Portainer",
+    "active": false,
+    "moved": 0
+  },
 
 
 
@@ -249,6 +270,20 @@
     "quadrant": 2,
     "ring": 0,
     "label": "Babel",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Passport.js",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Keykloak",
     "active": false,
     "moved": 0
   },
