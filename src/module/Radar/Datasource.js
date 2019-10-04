@@ -46,6 +46,8 @@ export default class extends Module {
         if(!this.dataSet)
             return false;
 
+        document.querySelector('body').classList.add('loading');
+
         return new Promise((resolve,reject) => {
             this.getConfig()
                 .then(config => {
@@ -55,6 +57,7 @@ export default class extends Module {
                 })
                 .then(data => {
                     this.data = data;
+                    document.querySelector('body').classList.remove('loading');
                     resolve(this);
                 });
         });

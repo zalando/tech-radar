@@ -29,6 +29,24 @@ export default class extends Module {
                             ...dot
                         }
                     });
+
+                    this.menu = new Menu(this);
+                    this.menu.draw();
+
+                    this.menu.on('version-selected', (id, version) => {
+                        this.emit('version-selected', id, version);
+                        this.dataSource.selectDataSet(id, version).then(() => {
+                            this.config = this.dataSource.config;
+                            this.data = this.dataSource.data.map((dot, index) => {
+                                return {
+                                    index: index,
+                                    ...dot
+                                }
+                            });
+                            this.redraw();
+                        });
+                    });
+
                     this.build();
                 });
 
@@ -69,6 +87,8 @@ export default class extends Module {
             });
 
 
+
+
             this.on('ready', () => {
                 resolve(this);
             });
@@ -103,22 +123,7 @@ export default class extends Module {
         this.lines = new Lines(this);
         this.lines.draw();
 
-        this.menu = new Menu(this);
-        this.menu.draw();
 
-        this.menu.on('version-selected', (id, version) => {
-            this.emit('version-selected', id, version);
-            this.dataSource.selectDataSet(id, version).then(() => {
-                this.config = this.dataSource.config;
-                this.data = this.dataSource.data.map((dot, index) => {
-                    return {
-                        index: index,
-                        ...dot
-                    }
-                });
-                this.redraw();
-            });
-        });
 
         this.emit('ready');
     }

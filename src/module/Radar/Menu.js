@@ -16,7 +16,7 @@ export default class extends Module {
         const target = document.createElement('div');
         target.id = 'menu';
         target.className = 'menu';
-        this.radar.target.append(target);
+        document.querySelector('body').append(target);
         this.target = document.getElementById('menu');
 
         const inner = document.createElement('div');
