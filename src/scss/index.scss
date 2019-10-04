@@ -13,6 +13,7 @@
 @import "./components/splash.scss";
 @import "./components/header.scss";
 @import "./components/menu.scss";
+@import "./components/page.scss";
 
 .radar {
   width: 100%;
@@ -27,5 +28,6 @@
   @import "./components/ring.scss";
   @import "./components/quadrants.scss";
   @import "./components/legends.scss";
+
 }
 

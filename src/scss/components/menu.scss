@@ -27,6 +27,8 @@
     background-color: rgba(255, 255, 255, 1);
     margin: auto;
     transition: all 0.2s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-bottom:1px solid #E60023;
 
 
     a {
@@ -47,6 +49,7 @@
       text-align: left;
       background-color: #E60023;
       color:#ffffff;
+      text-shadow:1px 1px rgba(0,0,0,0.4);
 
       &:before {
         content: attr(data-version);
