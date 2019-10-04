@@ -23,6 +23,7 @@
       margin: 0;
       padding: 0;
       display: block;
+      color: #444444;
     }
 
     h1 {
@@ -56,7 +57,7 @@
             font-weight: 700;
           }
 
-          color: #000000;
+          color: #333333;
           text-decoration: none;
 
           &.active {
@@ -87,12 +88,30 @@
       height: 400px;
     }
 
+    &[data-ring="0"] {
+      transform-origin:left top;
+      transform: translate(450px, 0);
+    }
+    &[data-ring="1"] {
+      transform-origin:right top;
+      transform: translate(-700px, 0);
+    }
+    &[data-ring="2"] {
+      transform-origin:right bottom;
+      transform: translate(-700px, 0);
+    }
+    &[data-ring="3"] {
+      transform-origin:left bottom;
+      transform: translate(450px, 0);
+    }
+
+
     &[data-ring="1"], &[data-ring="2"] {
-      margin-left: -600px;
+
     }
 
     &[data-ring="0"], &[data-ring="3"] {
-      margin-left: 350px;
+
     }
 
     &[data-ring="2"], &[data-ring="3"] {

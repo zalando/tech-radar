@@ -1,0 +1,73 @@
+.menu {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10000;
+  transition: all 0.5s ease-in-out;
+
+  &.opened {
+    height: 300px;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+
+    .inner {
+      width: 600px;
+      transition: all 0.2s ease-in-out;
+    }
+
+
+  }
+
+  .inner {
+    position:relative;
+    width: 300px;
+    display: block;
+    background-color: rgba(255, 255, 255, 1);
+    margin: auto;
+    transition: all 0.2s ease-in-out;
+
+
+    a {
+      text-decoration: none;
+      color: #333333;
+      line-height: 25px;
+      padding: 0 10px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .open {
+      font-size: 16px;
+      line-height: 40px;
+      height: 40px;
+      font-weight: 600;
+      display: block;
+      text-align: left;
+      background-color: #E60023;
+      color:#ffffff;
+
+      &:before {
+        content: attr(data-version);
+        position: absolute;
+        right: 10px;
+      }
+    }
+
+    .version {
+      font-weight: 600;
+      &:hover {
+        color:#E60023;
+      }
+    }
+
+
+    .dataset {
+      display: block;
+
+
+    }
+  }
+
+}

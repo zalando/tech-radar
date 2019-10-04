@@ -28,6 +28,11 @@ body {
       transition: opacity 1s ease-in-out;
 
     }
+    .radar {
+      opacity: 0;
+      box-shadow: inset 0 0 200px rgba(0, 0, 0, 0);
+      transition: all .2s ease-in-out;
+    }
   }
 
   &.resizing {
@@ -35,14 +40,12 @@ body {
       content: 'resizing...';
       opacity: 1;
       transition: opacity 1s ease-in-out;
-
     }
 
     .radar {
       opacity: 0;
       box-shadow: inset 0 0 200px rgba(0, 0, 0, 0);
       transition: all .2s ease-in-out;
-
     }
   }
 

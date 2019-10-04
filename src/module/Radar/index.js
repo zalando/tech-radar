@@ -5,6 +5,7 @@ import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
 import Legends from './Legends.js';
 import Lines from './Lines.js';
+import Menu from './Menu.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
@@ -63,6 +64,12 @@ export default class extends Module {
                 }, 500);
             });
 
+            window.addEventListener('scroll', () => {
+                this.legends.draw();
+            });
+
+
+
             this.on('ready', () => {
                 resolve(this);
             });
@@ -96,6 +103,9 @@ export default class extends Module {
 
         this.lines = new Lines(this);
         this.lines.draw();
+
+        this.menu = new Menu(this);
+        this.menu.draw();
 
         this.emit('ready');
     }
