@@ -14,9 +14,9 @@ export default class extends Module {
             this.storage = localStorage;
             this.cache_age = 0; //60 * 60; // seconds * minutes = (one) hour(s)
 
-            this.baseUrl = document.location.origin;
-            this.configUrl = `${this.baseUrl}/data/config.json`;
-            this.dataIndexUrl = `${this.baseUrl}/data/index.json`;
+            this.baseUrl = `${document.location.origin}${document.location.pathname}`;
+            this.dataIndexUrl = `${this.baseUrl}data/index.json`;
+            this.configUrl = false;
             this.dataSet = false;
             this.dataVersion = false;
 
@@ -54,7 +54,7 @@ export default class extends Module {
     };
 
     getConfig() {
-        this.configUrl = `${this.baseUrl}/data/${this.dataSet.id}/config.json`;
+        this.configUrl = `${this.baseUrl}data/${this.dataSet.id}/config.json`;
         return this.fetch(this.configUrl)
             .then(data => {
                 return data;
@@ -62,7 +62,7 @@ export default class extends Module {
     };
 
     getData() {
-        this.dataUrl = `${this.baseUrl}/data/${this.dataSet.id}/${this.dataVersion}.json`;
+        this.dataUrl = `${this.baseUrl}data/${this.dataSet.id}/${this.dataVersion}.json`;
         return this.fetch(this.dataUrl)
             .then(data => {
                 return data;
