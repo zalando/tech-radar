@@ -1,5 +1,5 @@
 export default {
-    title: 'Neofonie Tech Radar — 2019.09',
+    title: 'Frontend',
     seed: {
         from: 20,
         to: 50
@@ -10,10 +10,10 @@ export default {
         inactive: '#ddd'
     },
     quadrants: [
-        {name: 'A.I.'},                       // 0
-        {name: 'Frontend / Web'},             // 1
-        {name: 'DevOps / Infrastructure'},    // 2
-        {name: 'Platforms / Backend'}         // 3
+        {name: 'Frameworks'},                   // 0
+        {name: 'Modules'},                      // 1
+        {name: 'Techniques'},                   // 2
+        {name: 'Environments'}                  // 3
     ],
     rings: [
         {name: 'ADOPT', color: '#93c47d'},    // 0

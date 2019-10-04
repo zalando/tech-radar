@@ -22,15 +22,9 @@
      * with the created radar object.
      * accessible at "window.RADAR"
      */
-    import Data from './data/items.js';
-    import Config from './data/config.js';
-
-    new RADAR({
-        data: Data,
-        config: Config
-    }).then(radar => {
+    new RADAR().then(radar => {
         window.RADAR = radar;
-        console.log('>>> FEDDICH. RADAR ACCESSIBLE', 'window.RADAR or RADAR');
+        console.log('>>> ZACK FEDDICH. RADAR ACCESSIBLE', 'window.RADAR or RADAR');
 
         // add events
         RADAR.on('simulation-complete', () => {

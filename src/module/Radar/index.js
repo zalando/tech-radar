@@ -1,4 +1,5 @@
 import Module from "../../Module";
+import Datasource from "./Datasource";
 import Dots from './Dots.js';
 import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
@@ -13,13 +14,22 @@ export default class extends Module {
             this.label = 'RADAR';
             console.log(this.label, 'INIT');
 
-            this.config = args.config;
-            this.data = args.data.map((dot, index) => {
-                return {
-                    index: index,
-                    ...dot
-                }
-            });
+            // init the datasource
+            // AND get the data index
+            // AND get the config
+            // AND get the data - by the data index
+            new Datasource()
+                .then(datasource => {
+                    this.dataSource = datasource;
+                    this.config = this.dataSource.config;
+                    this.data = this.dataSource.data.map((dot, index) => {
+                        return {
+                            index: index,
+                            ...dot
+                        }
+                    });
+                    this.build();
+                });
 
             this.resizeTimeout = false;
             this.resizing = false;
@@ -27,43 +37,42 @@ export default class extends Module {
                 clearTimeout(this.resizeTimeout);
                 this.resizeTimeout = setTimeout(() => {
                     this.resizeEnd();
-                },500);
+                }, 500);
             });
 
             this.on('ready', () => {
                 resolve(this);
             });
-
-            const splash = document.createElement('div');
-            splash.id = 'splash';
-            splash.className = 'splash';
-            document.querySelector('body').append(splash);
-
-            const target = document.createElement('div');
-            target.id = 'radar';
-            target.className = 'radar';
-            document.querySelector('body').append(target);
-            this.target = document.getElementById('radar');
-
-            const pageTemplate = PageTemplate({
-                scope: {}
-            });
-            const page = document.createElement('div');
-            page.id = 'page';
-            page.className = 'page';
-            page.innerHTML = pageTemplate;
-            document.querySelector('body').append(page);
-
-            this.build();
         });
     }
 
-    destroy(){
+    destroy() {
         this.target.innerHTML = '';
     }
 
     build() {
         document.scrollTop = '0px';
+
+        const splash = document.createElement('div');
+        splash.id = 'splash';
+        splash.className = 'splash';
+        document.querySelector('body').append(splash);
+
+        const target = document.createElement('div');
+        target.id = 'radar';
+        target.className = 'radar';
+        document.querySelector('body').append(target);
+        this.target = document.getElementById('radar');
+
+        const pageTemplate = PageTemplate({
+            scope: {}
+        });
+        const page = document.createElement('div');
+        page.id = 'page';
+        page.className = 'page';
+        page.innerHTML = pageTemplate;
+        document.querySelector('body').append(page);
+
         this.draw(true);
 
         this.rings = new Rings(this);
@@ -101,14 +110,14 @@ export default class extends Module {
         //this.legends.draw();
     }
 
-    redraw(){
+    redraw() {
         console.log('>>> REDRAWING');
         this.destroy();
         this.build();
     }
 
-    resizeStart(){
-        if(this.resizing === true)
+    resizeStart() {
+        if (this.resizing === true)
             return;
 
         this.resizing = true;

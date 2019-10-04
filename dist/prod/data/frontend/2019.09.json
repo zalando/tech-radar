@@ -1,0 +1,199 @@
+[
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "CSS Flexbox",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Greensock GSAP",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "React",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Sass",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Vue.js",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Webpack",
+    "active": false,
+    "moved": 1,
+    boost: 1.2
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "CSS-in-JS",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "CSS Grid",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Gulp",
+    "active": false,
+    "moved": -1
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Jest",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Redux",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "TestCafe",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "CSSnext",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "StencilJS",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Svelte",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Typescript",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Express",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Flow",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Gatsby JS",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Yarn",
+    "active": false,
+    "moved": -1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Progressive Web Apps",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Next.js",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Backbone",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Bower",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Grunt",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Angular",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Less",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Coffeescript",
+    "active": false,
+    "moved": 0
+  }
+]
