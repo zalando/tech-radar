@@ -10,10 +10,10 @@
         "inactive": "#ddd"
     },
     "quadrants": [
-        {"name": "A.I."},
-        {"name": "Frontend / Web"},
-        {"name": "DevOps / Infrastructure"},
-        {"name": "Platforms / Backend"}
+        {"name": "Environments"},
+        {"name": "Build"},
+        {"name": "Modules"},
+        {"name": "Frameworks"}
     ],
     "rings": [
         {"name": "ADOPT", "color": "#93c47d"},

@@ -69,7 +69,6 @@ export default class extends Module {
             });
 
 
-
             this.on('ready', () => {
                 resolve(this);
             });
@@ -106,6 +105,20 @@ export default class extends Module {
 
         this.menu = new Menu(this);
         this.menu.draw();
+
+        this.menu.on('version-selected', (id, version) => {
+            this.emit('version-selected', id, version);
+            this.dataSource.selectDataSet(id, version).then(() => {
+                this.config = this.dataSource.config;
+                this.data = this.dataSource.data.map((dot, index) => {
+                    return {
+                        index: index,
+                        ...dot
+                    }
+                });
+                this.redraw();
+            });
+        });
 
         this.emit('ready');
     }
@@ -145,10 +158,11 @@ export default class extends Module {
         console.log('>>> RESIZE ENDED');
     }
 
-    get resizing(){
+    get resizing() {
         return this._resizing;
     }
-    set resizing(val){
+
+    set resizing(val) {
         this._resizing = val;
         this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
     }

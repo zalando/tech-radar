@@ -10,7 +10,6 @@ export default class extends Module {
         this.items = [];
 
         this.on('version-selected', (id, version) => {
-            console.log('>>> VERSION SELECTED', id, version);
             //...
         });
 
@@ -83,11 +82,10 @@ export default class extends Module {
             console.log('>>> SELECT', e.target);
         }
         this.openButton.innerHTML = dataSet.label;
-        this.openButton.setAttribute('data-version', dataSet.version);
-        this.dataSetButtons[dataSet.id].classList.add('active');
     }
 
     selectVersion(dataSet, version, e) {
+        this.openButton.setAttribute('data-version', version);
         this.select(dataSet);
         this.close();
         this.emit('version-selected', dataSet.id, version);

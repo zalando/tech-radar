@@ -23,20 +23,15 @@ export default class extends Module {
             this.config = false;
             this.data = false;
 
+
             this
                 .getDataIndex()
                 .then(dataIndex => {
                     this.dataIndex = dataIndex;
-                    this.dataSet = this.dataIndex.filter(i => i.default)[0];
-                    return this.getConfig();
+                    const defaultData = this.dataIndex.filter(i => i.default)[0];
+                    return this.selectDataSet(defaultData.id, defaultData.version);
                 })
-                .then(config => {
-                    this.config = config;
-                    this.dataVersion = this.dataSet.version;
-                    return this.getData();
-                })
-                .then(data => {
-                    this.data = data;
+                .then(() => {
                     this.emit('ready');
                 });
 
@@ -46,6 +41,28 @@ export default class extends Module {
         });
     };
 
+    selectDataSet(id, version) {
+        this.dataSet = this.dataIndex.filter(i => i.id === id)[0];
+        if(!this.dataSet)
+            return false;
+
+        return new Promise((resolve,reject) => {
+            this.getConfig()
+                .then(config => {
+                    this.config = config;
+                    this.dataVersion = version;
+                    return this.getData();
+                })
+                .then(data => {
+                    this.data = data;
+                    resolve(this);
+                });
+        });
+
+
+
+    }
+
     getDataIndex() {
         return this.fetch(this.dataIndexUrl)
             .then(data => {
@@ -53,16 +70,25 @@ export default class extends Module {
             });
     };
 
-    getConfig() {
-        this.configUrl = `${this.baseUrl}data/${this.dataSet.id}/config.json`;
+    getConfig(id) {
+        if (!id)
+            id = this.dataSet.id;
+
+        this.configUrl = `${this.baseUrl}data/${id}/config.json`;
         return this.fetch(this.configUrl)
             .then(data => {
                 return data;
             });
     };
 
-    getData() {
-        this.dataUrl = `${this.baseUrl}data/${this.dataSet.id}/${this.dataVersion}.json`;
+    getData(id, version) {
+        if (!id)
+            id = this.dataSet.id;
+
+        if (!version)
+            version = this.dataVersion;
+
+        this.dataUrl = `${this.baseUrl}data/${id}/${version}.json`;
         return this.fetch(this.dataUrl)
             .then(data => {
                 return data;

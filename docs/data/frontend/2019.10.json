@@ -40,7 +40,7 @@
     "label": "Webpack",
     "active": false,
     "moved": 1,
-    boost: 1.2
+    "boost": 1.2
   },
   {
     "quadrant": 1,
