@@ -31,6 +31,7 @@ export default class extends Module {
                     this.build();
                 });
 
+            // create some elements while datasource is am rumrödeln
             const splash = document.createElement('div');
             splash.id = 'splash';
             splash.className = 'splash';
@@ -51,10 +52,12 @@ export default class extends Module {
             page.innerHTML = pageTemplate;
             document.querySelector('body').append(page);
 
+            // this is the window resize end behavior
             this.resizeTimeout = false;
             this.resizing = false;
             window.addEventListener('resize', () => {
                 clearTimeout(this.resizeTimeout);
+                this.resizeStart();
                 this.resizeTimeout = setTimeout(() => {
                     this.resizeEnd();
                 }, 500);
@@ -126,8 +129,17 @@ export default class extends Module {
     }
 
     resizeEnd() {
+        this.emit('resize-end', this);
         this.resizing = false;
         this.redraw();
         console.log('>>> RESIZE ENDED');
+    }
+
+    get resizing(){
+        return this._resizing;
+    }
+    set resizing(val){
+        this._resizing = val;
+        this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
     }
 }

@@ -1,4 +1,6 @@
 .legends {
+
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -6,9 +8,11 @@
   width: 100%;
   z-index: 100;
 
-  @include media-tablet {
-    display: none;
+  @include media-desktop-min {
+    display: block;
   }
+
+
 
 
   .legend {
@@ -84,12 +88,17 @@
     }
 
     &[data-ring="1"], &[data-ring="2"] {
-      margin-left: -700px;
+      margin-left: -600px;
     }
 
     &[data-ring="0"], &[data-ring="3"] {
-      margin-left: 450px;
+      margin-left: 350px;
     }
+
+    &[data-ring="2"], &[data-ring="3"] {
+      margin-top: -40px;
+    }
+
 
   }
 }

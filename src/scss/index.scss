@@ -19,6 +19,8 @@
   overflow: hidden;
   box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.3);
   z-index: 2;
+  opacity: 1;
+  transition: all .5s ease-in-out;
 
   @import "./components/dot.scss";
   @import "./components/ring.scss";
