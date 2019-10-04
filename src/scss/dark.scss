@@ -22,6 +22,15 @@ body {
 }
 
 .radar {
+  .dot {
+    border: none;
+    &.active {
+      border-radius: 0;
+
+    }
+
+  }
+
   .legends {
     .legend {
       ul {
@@ -48,7 +57,7 @@ body {
 
 .menu {
   .inner {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
 
     .open {
       color: $color-foreground;
@@ -64,11 +73,11 @@ body {
 
 .page {
   h3 {
-    color:$color-foreground;
+    color: $color-foreground;
   }
 
   a {
-    color:$color-foreground;
+    color: $color-foreground;
   }
 }
 

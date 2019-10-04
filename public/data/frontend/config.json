@@ -11,8 +11,8 @@
         "inactive": "#ddd"
     },
     "quadrants": [
-        {"name": "Environments"},
-        {"name": "Build"},
+        {"name": "Tools"},
+        {"name": "Techniques"},
         {"name": "Modules"},
         {"name": "Frameworks"}
     ],
