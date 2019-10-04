@@ -70,6 +70,7 @@ export default class extends Module {
     open(e) {
         console.log('>>> OPEN', e);
         this.target.classList.add('opened');
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
 
     close(e) {
