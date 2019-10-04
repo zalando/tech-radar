@@ -1,0 +1,95 @@
+.legends {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+
+  @include media-tablet {
+    display: none;
+  }
+
+
+  .legend {
+    position: absolute;
+    margin-top: 10px;
+
+    h1, h2, ul, li {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    ul {
+      li {
+        font-size: 10px;
+        list-style: none;
+        display: block;
+        line-height: 14px;
+
+        a {
+          padding: 2px 4px 2px 4px;
+          font-weight: 500;
+
+          span {
+            width: 15px;
+            overflow: hidden;
+            display: block;
+            float: left;
+            color: #aaaaaa;
+            margin-right: 5px;
+            font-weight: 700;
+          }
+
+          color: #000000;
+          text-decoration: none;
+
+          &.active {
+            font-weight: 900;
+            transition: all 0.2s;
+            cursor: none;
+          }
+
+
+        }
+      }
+    }
+
+    .label-container {
+
+      .ring-column {
+        width: 50%;
+        float: left;
+
+        .ring-block {
+        }
+      }
+
+    }
+
+    &[data-ring] {
+      width: 300px;
+      height: 400px;
+    }
+
+    &[data-ring="1"], &[data-ring="2"] {
+      margin-left: -700px;
+    }
+
+    &[data-ring="0"], &[data-ring="3"] {
+      margin-left: 450px;
+    }
+
+  }
+}

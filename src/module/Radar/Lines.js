@@ -1,5 +1,4 @@
 import Module from "../../Module";
-import Ring from './Ring.js';
 
 export default class extends Module {
     constructor(radar) {

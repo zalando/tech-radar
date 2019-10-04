@@ -1,0 +1,30 @@
+* {
+  font-family: 'Exo', 'Arial';
+  font-weight: 400;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #e0e0e0;
+}
+
+body {
+  &:before {
+    content: 'loading...';
+    position: absolute;
+    opacity:0;
+    top: 50%;
+    left: calc(50% - 30px);
+    transition:opacity 1s ease-in-out;
+    z-index:10000;
+  }
+  &.loading {
+    &:before {
+      opacity:1;
+      transition:opacity 1s ease-in-out;
+
+    }
+  }
+}

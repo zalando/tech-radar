@@ -31,6 +31,26 @@ export default class extends Module {
                     this.build();
                 });
 
+            const splash = document.createElement('div');
+            splash.id = 'splash';
+            splash.className = 'splash';
+            document.querySelector('body').append(splash);
+
+            const target = document.createElement('div');
+            target.id = 'radar';
+            target.className = 'radar';
+            document.querySelector('body').append(target);
+            this.target = document.getElementById('radar');
+
+            const pageTemplate = PageTemplate({
+                scope: {}
+            });
+            const page = document.createElement('div');
+            page.id = 'page';
+            page.className = 'page';
+            page.innerHTML = pageTemplate;
+            document.querySelector('body').append(page);
+
             this.resizeTimeout = false;
             this.resizing = false;
             window.addEventListener('resize', () => {
@@ -52,27 +72,7 @@ export default class extends Module {
 
     build() {
         document.scrollTop = '0px';
-
-        const splash = document.createElement('div');
-        splash.id = 'splash';
-        splash.className = 'splash';
-        document.querySelector('body').append(splash);
-
-        const target = document.createElement('div');
-        target.id = 'radar';
-        target.className = 'radar';
-        document.querySelector('body').append(target);
-        this.target = document.getElementById('radar');
-
-        const pageTemplate = PageTemplate({
-            scope: {}
-        });
-        const page = document.createElement('div');
-        page.id = 'page';
-        page.className = 'page';
-        page.innerHTML = pageTemplate;
-        document.querySelector('body').append(page);
-
+        document.querySelector('body').classList.remove('loading');
         this.draw(true);
 
         this.rings = new Rings(this);
