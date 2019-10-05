@@ -5,89 +5,53 @@ Radar](https://neofonie.github.io/tech-radar/) to help our engineering teams
 align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar) and [Zalando](https://zalando.github.io/tech-radar/).
 
-This repository contains the code to generate the visualization:
-[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
-Feel free to use and adapt it for your own purposes.
+This repository is a ES6 refactoring.
 
 ## Usage
 
-1. include `d3.js` and `radar.js`:
-
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://neofonie.github.io/tech-radar/release/radar-0.5.js"></script>
-```
-
-2. insert an empty `svg` tag:
-
-```html
-<svg id="radar"></svg>
-```
-
-3. configure the radar visualization:
-
-```js
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
-  ],
-  print_layout: true,
-  entries: [
-   {
-      label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
-      ring: 2,              // 0,1,2,3 (starting from inside)
-      moved: -1             // -1 = moved out (triangle pointing down)
-                            //  0 = not moved (circle)
-                            //  1 = moved in  (triangle pointing up)
-   },
-    // ...
-  ]
-});
-```
-
-Entries are positioned automatically so that they don't overlap.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](https://neofonie.github.io/tech-radar/).
-
-## Local Development
-
-1. install dependencies with yarn (or npm):
+#### 1. install
 
 ```
-yarn 
+git clone https://github.com/Neofonie/tech-radar.git
+cd tech-radar
+npm install
 ```
 
-2. start local dev server:
+#### 2. start local dev server
+
+Open the url: **[http://localhost:9000](http://localhost:9000)**
 
 ```
-yarn start
+npm run dev
 ```
 
-3. your default browser should automatically open and show the url
- 
+#### 3. make build
+
+Create some distribution files in: `/dist` and copy it to `/docs`
+
 ```
-http://localhost:3000/
+npm run build
 ```
+
+The Difference between the `/dist` and the `/docs` folder are the different url paths in the css files.
+The `/docs` folder is only for github pages.
+
+## The Data
+- must be served by a server
+- will be loaded as fetch request
+- is mainly located in `public/data/` - edit these files
+- `public/data/` will be copied to the `dist/` and `docs/` folder on a `npm run build`
+- the all over data index is `public/data/index.json`
+- any data group is represented by a folder like `public/data/neofonie/`
+- in this folder there is a config file for the group `public/data/neofonie/config.json`
+- any group can have unlimited datasets.
+- the dataset filename without the file extension must be an entry in `public/data/index.json` in `"versions": ["2019.09", "2019.05"]`
+
+## The Theme
+- take a look in the webpack config, there are multiple entry points for the css
+- a theme override the default css. it is a second css file that will be injected
+- any theme css has a root scss file like `src/scss/dark.scss` or `src/scss/forest.scss`
+
 
 ## License
 

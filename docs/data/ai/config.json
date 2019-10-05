@@ -1,0 +1,33 @@
+{
+    "title": "Neofonie Tech Radar — 2019.09",
+    "theme": "forest",
+    "seed": {
+        "from": 20,
+        "to": 50
+    },
+    "colors": {
+        "background": "#fff",
+        "grid": "#e60023",
+        "inactive": "#ddd"
+    },
+    "quadrants": [
+        {"name": "A.I."},
+        {"name": "Frontend / Web"},
+        {"name": "DevOps / Infrastructure"},
+        {"name": "Platforms / Backend"}
+    ],
+    "rings": [
+        {"name": "ADOPT", "color": "#93c47d"},
+        {"name": "TRIAL", "color": "#93d2c2"},
+        {"name": "ASSESS", "color": "#fbdb84"},
+        {"name": "HOLD", "color": "#efafa9"}
+    ],
+    "dot": {
+        "offset": {
+            "x": 100,
+            "y": 100
+        }
+    },
+    "svg_id": "radar",
+    "print_layout": true
+}

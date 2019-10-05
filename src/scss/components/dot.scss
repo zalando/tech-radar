@@ -1,0 +1,65 @@
+.dot {
+  position: absolute;
+  display: block;
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  overflow: hidden;
+  border-radius: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  z-index: 500;
+
+  font-weight: 500;
+  border: 2px solid $color-high;
+  overflow: inherit;
+  transform-origin: center center;
+
+  transition-property: font-size, line-height, width, height, margin-left, margin-top, border-radius;
+  transition-duration: .1s;
+  transition-timing-function: ease-in-out;
+
+  @include media-tablet {
+    width: 15px;
+    height: 15px;
+    border-width: 1px;
+    line-height: 15px;
+    font-size: 9px;
+  }
+
+  &:before {
+    position: absolute;
+    content: attr(data-quadrant);
+    left: 0;
+    top: 50px;
+    text-transform: uppercase;
+    width: 200px;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+
+  &.active {
+    font-size: 20px;
+    line-height: 43px;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin-left: -100px;
+    margin-top: -25px;
+    vertical-align: middle;
+    z-index: 2000;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+
+    &:before {
+      position: absolute;
+      top: 15px;
+      font-size: 10px;
+      transition: all 0.2s;
+      transition-delay: 0.1s;
+      width: 200px;
+    }
+  }
+}

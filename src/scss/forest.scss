@@ -1,0 +1,141 @@
+// change the ring size here. 0 = 0% , 1 = 100%
+:root {
+  --radar-ring-0: 0.45;
+  --radar-ring-1: 0.55;
+  --radar-ring-2: 0.68;
+  --radar-ring-3: 0.82;
+}
+
+@import "./mixins/responsive.scss";
+@import "./mixins/typo.scss";
+@import "./mixins/colors-dark.scss";
+
+@import "./components/base.scss";
+@import "./components/splash.scss";
+@import "./components/header.scss";
+@import "./components/menu.scss";
+@import "./components/radar.scss";
+@import "./components/page.scss";
+
+body {
+  color: $color-foreground;
+}
+
+.header {
+  .company {
+    a {
+      color: $color-foreground;
+
+      .claim {
+        color: $color-foreground;
+      }
+    }
+  }
+}
+
+.radar {
+  background-image: url("/images/bg_forest.jpg");
+  background-size: cover;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 1);
+
+  .dot {
+    border: none;
+
+    &.active {
+      border-radius: 0;
+
+    }
+
+  }
+  .line {
+    background-color: rgba(0,0,0,0.2);
+  }
+  .legends {
+    .legend {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+      &[data-ring="0"] {
+        transform-origin: left top;
+        transform: translate(450px, 0);
+      }
+
+      &[data-ring="1"] {
+        transform-origin: right top;
+        transform: translate(-800px, 0);
+      }
+
+      &[data-ring="2"] {
+        transform-origin: right bottom;
+        transform: translate(-800px, 0);
+      }
+
+      &[data-ring="3"] {
+        transform-origin: left bottom;
+        transform: translate(450px, 0);
+      }
+
+      ul {
+        li {
+          a {
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+            &.active {
+              color: $color-chalk;
+              text-shadow: none;
+              transform:scale(3);
+
+              span {
+
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+                transform-origin: right;
+              }
+
+            }
+
+            span {
+              color: $color-foreground;
+              font-weight:800;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ring {
+    background-color: rgba(100, 80, 20, 0.2);
+    border: 1px solid $color-dark;
+
+    &:before {
+      color: $color-deep;
+    }
+  }
+}
+
+.menu {
+  .inner {
+    background-color: rgba(0, 0, 0, 0.9);
+
+    .open {
+      color: $color-foreground;
+    }
+
+    .dataset {
+      a {
+        color: $color-foreground;
+      }
+    }
+  }
+}
+
+.page {
+  h3 {
+    color: $color-foreground;
+  }
+
+  a {
+    color: $color-foreground;
+  }
+}

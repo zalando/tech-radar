@@ -1,0 +1,414 @@
+[
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "stackoverflow.com",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "caniuse.com",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Github",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Sourcetree",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Gitkraken",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "WSL",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Windows HyperV",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Docker",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 3,
+    "label": "Vagrant",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Gitlab",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Travis CI",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "Jenkins CI",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "IntelliJ",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 0,
+    "label": "VS Code",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 0,
+    "ring": 1,
+    "label": "Portainer",
+    "active": false,
+    "moved": 0
+  },
+
+
+
+
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "ES6 Module",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "CSS Flexbox",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Sass",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 0,
+    "label": "Webpack",
+    "active": false,
+    "moved": 1,
+    "boost": 1.2
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "CSS-in-JS",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "CSS Grid",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Gulp",
+    "active": false,
+    "moved": -1
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Jest",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "Redux",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "TestCafe",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "CSSnext",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 1,
+    "label": "StencilJS",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Typescript",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Flow",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Yarn",
+    "active": false,
+    "moved": -1
+  },
+  {
+    "quadrant": 1,
+    "ring": 2,
+    "label": "Progressive Web Apps",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Bower",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Grunt",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Less",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 1,
+    "ring": 3,
+    "label": "Coffeescript",
+    "active": false,
+    "moved": 0
+  },
+
+
+
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Express",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 3,
+    "label": "Browsersync",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Babel",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Passport.js",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 2,
+    "ring": 0,
+    "label": "Keykloak",
+    "active": false,
+    "moved": 0
+  },
+
+
+
+
+
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "jQuery",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "Google Closure (Soy)",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "Grails UI",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "Freemarker",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "Backbone",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "Angular",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 0,
+    "label": "Greensock GSAP",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 0,
+    "label": "React",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 2,
+    "label": "Next.js",
+    "active": false,
+    "moved": 0
+  },
+  {
+    "quadrant": 3,
+    "ring": 1,
+    "label": "Gatsby JS",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 2,
+    "label": "Svelte",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 0,
+    "label": "Vue.js",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 2,
+    "label": "three.js",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 2,
+    "label": "d3.js",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 1,
+    "label": "Electron",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 1,
+    "label": "Quasar.js",
+    "active": false,
+    "moved": 1
+  },
+  {
+    "quadrant": 3,
+    "ring": 3,
+    "label": "KendoUI",
+    "active": false,
+    "moved": 1
+  }
+]

@@ -1,0 +1,74 @@
+.menu {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10001;
+  transition: all 0.5s ease-in-out;
+
+  &.opened {
+    height: 300px;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+
+    .inner {
+      width: 600px;
+      transition: all 0.2s ease-in-out;
+    }
+
+
+  }
+
+  .inner {
+    position:relative;
+    width: 300px;
+    display: block;
+    background-color: rgba(255, 255, 255, 1);
+    margin: auto;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-bottom:1px solid #E60023;
+
+
+    a {
+      text-decoration: none;
+      color: $color-foreground;
+      line-height: 25px;
+      padding: 0 10px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .open {
+      font-size: 16px;
+      line-height: 40px;
+      height: 40px;
+      font-weight: 600;
+      display: block;
+      text-align: left;
+      background-color: $color-primary;
+      color: $color-high;
+      text-shadow:1px 1px rgba(0,0,0,0.4);
+
+      &:before {
+        content: attr(data-version);
+        position: absolute;
+        right: 10px;
+      }
+    }
+
+    .version {
+      font-weight: 600;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .dataset {
+      display: block;
+
+
+    }
+  }
+}

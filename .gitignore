@@ -1,4 +1,5 @@
-docs/archive/
-node_modules/
+node_modules
+.idea
 .DS_Store
-.idea/
+.hot
+dist/dev

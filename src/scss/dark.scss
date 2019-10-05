@@ -1,0 +1,117 @@
+// change the ring size here. 0 = 0% , 1 = 100%
+:root {
+  --radar-ring-0: 0.45;
+  --radar-ring-1: 0.55;
+  --radar-ring-2: 0.68;
+  --radar-ring-3: 0.82;
+}
+
+@import "./mixins/responsive.scss";
+@import "./mixins/typo.scss";
+@import "./mixins/colors-dark.scss";
+
+@import "./components/base.scss";
+@import "./components/splash.scss";
+@import "./components/header.scss";
+@import "./components/menu.scss";
+@import "./components/radar.scss";
+@import "./components/page.scss";
+
+body {
+  color: $color-foreground;
+}
+
+.header {
+  .company {
+    a {
+      color: $color-foreground;
+
+      .claim {
+        color: $color-foreground;
+      }
+    }
+  }
+}
+
+.radar {
+  background-image: url("/images/bg_dark_1.jpg");
+  background-size: cover;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 1);
+
+  .dot {
+    border: none;
+
+    &.active {
+      border-radius: 0;
+
+    }
+
+  }
+
+  .line {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .legends {
+    .legend {
+      ul {
+        li {
+          a {
+            &.active {
+              color: $color-chalk;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ring {
+    background-color: rgba(0, 20, 60, 0.25);
+    border: 1px solid $color-dark;
+
+    &:before {
+      color: $color-foreground;
+      opacity: 0.5;
+    }
+  }
+}
+
+.menu {
+  .inner {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom-color: $color-secondary;
+
+    .open {
+      color: $color-foreground;
+      background-color: $color-secondary;
+    }
+
+    .dataset {
+      a {
+        color: $color-foreground;
+
+        &:hover {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+}
+
+.page {
+  border-top-color: $color-secondary;
+
+  footer {
+    background-color: $color-secondary;
+    color: $color-foreground;
+  }
+
+  h3 {
+    color: $color-foreground;
+  }
+
+  a {
+    color: $color-foreground;
+  }
+}

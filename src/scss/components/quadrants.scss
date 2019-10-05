@@ -1,0 +1,27 @@
+.quadrants {
+  height: 100%;
+  width: 100%;
+
+  .quadrant {
+    position: absolute;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0);
+    border: 0 solid rgba(0, 0, 0, 0.2);
+
+    &.active {
+
+    }
+
+    &:nth-child(1) {
+
+    }
+
+    &:nth-child(2) {
+
+    }
+
+    &:nth-child(3) {
+
+    }
+  }
+}
