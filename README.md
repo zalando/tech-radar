@@ -5,7 +5,7 @@ Radar](https://neofonie.github.io/tech-radar/) to help our engineering teams
 align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar) and [Zalando](https://zalando.github.io/tech-radar/).
 
-This repository is es ES6 refactoring. 
+This repository is a ES6 refactoring.
 
 ## Usage
 
@@ -33,7 +33,27 @@ Create some distribution files in: `/dist` and copy it to `/docs`
 npm run build
 ```
 
-## Licence
+The Difference between the `/dist` and the `/docs` folder are the different url paths in the css files.
+The `/docs` folder is only for github pages.
+
+## The Data
+- must be served by a server
+- will be loaded as fetch request
+- is mainly located in `public/data/` - edit these files
+- `public/data/` will be copied to the `dist/` and `docs/` folder on a `npm run build`
+- the all over data index is `public/data/index.json`
+- any data group is represented by a folder like `public/data/neofonie/`
+- in this folder there is a config file for the group `public/data/neofonie/config.json`
+- any group can have unlimited datasets.
+- the dataset filename without the file extension must be an entry in `public/data/index.json` in `"versions": ["2019.09", "2019.05"]`
+
+## The Theme
+- take a look in the webpack config, there are multiple entry points for the css
+- a theme override the default css. it is a second css file that will be injected
+- any theme css has a root scss file like `src/scss/dark.scss` or `src/scss/forest.scss`
+
+
+## License
 
 ```
 The MIT License (MIT)

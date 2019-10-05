@@ -84,6 +84,14 @@ body {
             &.active {
               color: $color-chalk;
               text-shadow: none;
+              transform:scale(3);
+
+              span {
+
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+                transform-origin: right;
+              }
+
             }
 
             span {
@@ -131,6 +139,3 @@ body {
     color: $color-foreground;
   }
 }
-
-
-
