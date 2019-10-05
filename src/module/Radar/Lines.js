@@ -7,15 +7,20 @@ export default class extends Module {
         console.log(this.label, 'INIT');
 
         this.radar = radar;
-        const width = this.radar.target.getBoundingClientRect().width;
-        const height = this.radar.target.getBoundingClientRect().height;
-        let shortestSide = height;
-        if (height > width) {
-            shortestSide = width;
-        }
-        const radius = shortestSide / 2;
+        const reference = this.radar.rings.items[3].target.getBoundingClientRect();
+        const horizontal = document.createElement('div');
+        horizontal.classList.add('line', 'horizontal');
+        horizontal.style.top = `${reference.top + (reference.height / 2)}px`;
+        horizontal.style.left = `${reference.left}px`;
+        horizontal.style.width = `${reference.width}px`;
+        this.radar.target.append(horizontal);
 
-        this.items = [];
+        const vertical = document.createElement('div');
+        vertical.classList.add('line', 'vertical');
+        vertical.style.top = `${reference.top}px`;
+        vertical.style.left = `${reference.left + (reference.width / 2)}px`;
+        vertical.style.height = `${reference.height}px`;
+        this.radar.target.append(vertical);
     }
 
     draw() {

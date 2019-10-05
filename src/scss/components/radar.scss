@@ -7,6 +7,20 @@
   opacity: 1;
   transition: all .5s ease-in-out;
 
+  .line {
+    position:absolute;
+    display:block;
+    overflow:hidden;
+    background-color: $color-beton;
+    &.horizontal {
+      height:1px;
+    }
+
+    &.vertical{
+      width:1px;
+    }
+  }
+
   @import "./components/dot.scss";
   @import "./components/ring.scss";
   @import "./components/quadrants.scss";

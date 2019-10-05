@@ -82,33 +82,6 @@ module.exports = class extends ConfigClass {
                             pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/dark.css`);
                             pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/forest.css`);
                             pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/forest.css`);
-
-                            /*const replaceFrom = '/css';
-                            const replaceTo = '/tech-radar/css';
-                            const replaceCommand = `s#${replaceFrom}#${replaceTo}#g`;
-                            fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
-                            fs.copySync(`${this.appPath}/dist/prod`, `${this.appPath}/docs`);
-
-                            // for github, with fonts
-                            const spawnOptions = [
-                                '-i',
-                                replaceCommand,
-                                `${this.appPath}/docs/css/radar.css`
-                            ];
-                            console.log('>>> sed', spawnOptions);
-                            setTimeout(() => {
-                                const proc = spawn('sed', spawnOptions); // pffft
-                                proc.on('error', (err) => {
-                                    console.error('>>> ERROR', err);
-                                });
-                                proc.stdout.on('data', (data) => {
-                                    console.log(data.toString());
-                                });
-                                proc.stderr.on('data', (data) => {
-                                    console.log(data.toString());
-                                });
-                            },2000);
-*/
                         });
                     }
                 }
