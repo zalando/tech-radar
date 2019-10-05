@@ -23,26 +23,18 @@ export default class extends Module {
                 .then(datasource => {
                     this.dataSource = datasource;
                     this.config = this.dataSource.config;
-                    this.data = this.dataSource.data.map((dot, index) => {
-                        return {
-                            index: index,
-                            ...dot
-                        }
-                    });
+                    this.data = this.dataSource.data;
 
+                    // we need the data index
                     this.menu = new Menu(this);
                     this.menu.draw();
 
+                    // the dataset change
                     this.menu.on('version-selected', (id, version) => {
                         this.emit('version-selected', id, version);
                         this.dataSource.selectDataSet(id, version).then(() => {
                             this.config = this.dataSource.config;
-                            this.data = this.dataSource.data.map((dot, index) => {
-                                return {
-                                    index: index,
-                                    ...dot
-                                }
-                            });
+                            this.data = this.dataSource.data;
                             this.redraw();
                         });
                     });
@@ -51,17 +43,20 @@ export default class extends Module {
                 });
 
             // create some elements while datasource is am rumrödeln
+            // a splash screen?!
             const splash = document.createElement('div');
             splash.id = 'splash';
             splash.className = 'splash';
             document.querySelector('body').append(splash);
 
+            // the radar target element
             const target = document.createElement('div');
             target.id = 'radar';
             target.className = 'radar';
             document.querySelector('body').append(target);
             this.target = document.getElementById('radar');
 
+            // the page content after the radar
             const pageTemplate = PageTemplate({
                 scope: {}
             });
@@ -71,7 +66,19 @@ export default class extends Module {
             page.innerHTML = pageTemplate;
             document.querySelector('body').append(page);
 
-            // this is the window resize end behavior
+            // the theme style element
+            this.themeStyle = document.createElement('link');
+            this.themeStyle.rel = 'stylesheet';
+            document.querySelector('head').append(this.themeStyle);
+            this.themeStyle.onload = () => this.emit('style-loaded');
+            this.themeStyle.onerror = () => this.emit('style-error');
+
+            this.on('style-loaded', () => {
+                console.log('>>>>>>> THEME LOADED');
+                this.create();
+            });
+
+            // window resize end behavior
             this.resizeTimeout = false;
             this.resizing = false;
             window.addEventListener('resize', () => {
@@ -100,6 +107,10 @@ export default class extends Module {
     build() {
         document.querySelector('body').classList.remove('loading');
         this.setTheme();
+        // continue here withe the event "style-loaded"
+    }
+
+    create() {
         this.draw(true);
 
         this.rings = new Rings(this);
@@ -120,6 +131,8 @@ export default class extends Module {
 
         this.lines = new Lines(this);
         this.lines.draw();
+
+        console.log('>>>>>>>>>>>> WTF');
 
         this.emit('ready');
     }
@@ -160,20 +173,19 @@ export default class extends Module {
     }
 
     setTheme() {
-        if(!this.config.theme)
-            if(this.themeStyle)
-                this.themeStyle.href = '';
+        let styleHRef = `css/${this.config.theme}.css`;
 
-        if(!this.themeStyle) {
-            this.themeStyle = document.createElement('link');
-            this.themeStyle.rel = 'stylesheet';
-            this.themeStyle.href = `css/${this.config.theme}.css`;
-            document.querySelector('head').append(this.themeStyle);
-        } else {
-            this.themeStyle.href = `css/${this.config.theme}.css`;
-        }
+        console.log('>>>', this.themeStyle.href, styleHRef);
 
-        console.log('>>> THEME',this.config.theme);
+        if (this.themeStyle.href.includes(styleHRef))
+            this.emit('style-loaded');
+
+        if (this.config.theme === undefined)
+            styleHRef = '';
+
+        this.themeStyle.href = styleHRef;
+        if (styleHRef === '')
+            this.emit('style-loaded');
     }
 
     get resizing() {

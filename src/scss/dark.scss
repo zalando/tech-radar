@@ -21,6 +21,18 @@ body {
   color: $color-foreground;
 }
 
+.header {
+  .company {
+    a {
+      color: $color-foreground;
+
+      .claim {
+        color: $color-foreground;
+      }
+    }
+  }
+}
+
 .radar {
   background-image: url("/images/bg_dark_1.jpg");
   background-size: cover;
@@ -28,6 +40,7 @@ body {
 
   .dot {
     border: none;
+
     &.active {
       border-radius: 0;
 
@@ -36,8 +49,9 @@ body {
   }
 
   .line {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
+
   .legends {
     .legend {
       ul {
@@ -58,7 +72,7 @@ body {
 
     &:before {
       color: $color-foreground;
-      opacity:0.5;
+      opacity: 0.5;
     }
   }
 }
@@ -66,7 +80,7 @@ body {
 .menu {
   .inner {
     background-color: rgba(0, 0, 0, 0.9);
-    border-bottom-color:$color-secondary;
+    border-bottom-color: $color-secondary;
 
     .open {
       color: $color-foreground;
@@ -78,7 +92,7 @@ body {
         color: $color-foreground;
 
         &:hover {
-          color:$color-secondary;
+          color: $color-secondary;
         }
       }
     }
@@ -86,6 +100,13 @@ body {
 }
 
 .page {
+  border-top-color: $color-secondary;
+
+  footer {
+    background-color: $color-secondary;
+    color: $color-foreground;
+  }
+
   h3 {
     color: $color-foreground;
   }

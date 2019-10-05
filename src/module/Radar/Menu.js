@@ -64,11 +64,9 @@ export default class extends Module {
 
     toggle(e) {
         this.target.classList.contains('opened') ? this.close(e) : this.open(e);
-        console.log('>>> TOGGLE', this.target.classList);
     }
 
     open(e) {
-        console.log('>>> OPEN', e);
         this.target.classList.add('opened');
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }

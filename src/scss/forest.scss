@@ -21,6 +21,18 @@ body {
   color: $color-foreground;
 }
 
+.header {
+  .company {
+    a {
+      color: $color-foreground;
+
+      .claim {
+        color: $color-foreground;
+      }
+    }
+  }
+}
+
 .radar {
   background-image: url("/images/bg_forest.jpg");
   background-size: cover;

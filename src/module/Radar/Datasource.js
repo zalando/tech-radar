@@ -56,7 +56,12 @@ export default class extends Module {
                     return this.getData();
                 })
                 .then(data => {
-                    this.data = data;
+                    this.data = data.map((dot, index) => {
+                        return {
+                            index: index,
+                            ...dot
+                        }
+                    });
                     document.querySelector('body').classList.remove('loading');
                     resolve(this);
                 });
