@@ -13,6 +13,7 @@ module.exports = class extends ConfigClass {
             entry: {
                 radar: './src/app.js',
                 default: './src/scss/radar.scss',
+                print: './src/scss/print.scss',
                 dark: './src/scss/dark.scss',
                 forest: './src/scss/forest.scss'
             },
@@ -82,6 +83,8 @@ module.exports = class extends ConfigClass {
                             pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/dark.css`);
                             pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/forest.css`);
                             pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/forest.css`);
+                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/print.css`);
+                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/print.css`);
                         });
                     }
                 }

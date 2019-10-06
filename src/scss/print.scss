@@ -1,0 +1,109 @@
+// change the ring size here. 0 = 0% , 1 = 100%
+:root {
+  --radar-ring-0: 0.37;
+  --radar-ring-1: 0.55;
+  --radar-ring-2: 0.68;
+  --radar-ring-3: 0.82;
+}
+
+@import "./mixins/responsive.scss";
+@import "./mixins/typo.scss";
+@import "./mixins/colors-print.scss";
+
+@import "./components/base.scss";
+@import "./components/splash.scss";
+@import "./components/header.scss";
+@import "./components/menu.scss";
+@import "./components/print.scss";
+@import "./components/radar.scss";
+@import "./components/page.scss";
+
+html, body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.header {
+  height: 50px;
+
+  .company {
+    background: none;
+    box-shadow: none;
+    width: 400px;
+    height: 50px;
+    line-height: 50px;
+
+    a {
+      color: #000000;
+      text-shadow: none;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+
+      .claim {
+        color: $color-foreground;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.radar {
+  box-shadow: none;
+  background-image: none;
+
+  .dot {
+    border: 0;
+    color: #000000;
+  }
+
+  .line {
+    background-color: #000000;
+  }
+
+  .ring {
+    background-color: inherit;
+    border: 1px solid #000000;
+
+    &:before {
+      color: $color-foreground;
+      opacity: 0.5;
+      font-weight: 400;
+    }
+  }
+
+  .legends {
+    .legend {
+      background-color: inherit;
+      text-shadow: none;
+
+      ul {
+        li {
+          a {
+            text-shadow: none;
+
+            &.active {
+              color: $color-chalk;
+              text-shadow: none;
+              transform: scale(3);
+
+              span {
+                text-shadow: none;
+                transform-origin: right;
+              }
+            }
+
+            span {
+              color: #000000;
+              font-weight: 800;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.menu {
+  display: none;
+}

@@ -6,6 +6,7 @@ import Quadrants from './Quadrants.js';
 import Legends from './Legends.js';
 import Lines from './Lines.js';
 import Menu from './Menu.js';
+import Print from './Print.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
@@ -68,7 +69,6 @@ export default class extends Module {
 
             // if a new style was loaded
             this.on('style-loaded', () => {
-                console.log('>>>>>>> THEME LOADED');
                 this.create();
             });
 
@@ -126,6 +126,8 @@ export default class extends Module {
         this.lines = new Lines(this);
         this.lines.draw();
 
+        this.print = new Print(this);
+
         this.emit('ready');
     }
 
@@ -134,6 +136,7 @@ export default class extends Module {
             x: this.target.getBoundingClientRect().width / 2,
             y: this.target.getBoundingClientRect().height / 2
         };
+
         if (only === true)
             return;
 
@@ -153,7 +156,6 @@ export default class extends Module {
             return;
 
         this.resizing = true;
-        console.log('>>> RESIZE STARTED');
         //...
     }
 
@@ -161,7 +163,6 @@ export default class extends Module {
         this.emit('resize-end', this);
         this.resizing = false;
         this.redraw();
-        console.log('>>> RESIZE ENDED');
     }
 
     setTheme() {
@@ -176,8 +177,6 @@ export default class extends Module {
         document.querySelector('head').append(this.themeStyle);
         this.themeStyle.onload = () => this.emit('style-loaded');
         this.themeStyle.onerror = () => this.emit('style-error');
-
-        console.log('>>>', this.themeStyle.href, styleHRef);
 
         if (this.themeStyle.href.includes(styleHRef))
             this.emit('style-loaded');

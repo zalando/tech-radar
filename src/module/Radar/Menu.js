@@ -78,7 +78,6 @@ export default class extends Module {
     select(dataSet, e) {
         if (e) {
             e.preventDefault();
-            console.log('>>> SELECT', e.target);
         }
         this.openButton.innerHTML = dataSet.label;
     }
