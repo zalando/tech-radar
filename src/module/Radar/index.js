@@ -66,13 +66,7 @@ export default class extends Module {
             page.innerHTML = pageTemplate;
             document.querySelector('body').append(page);
 
-            // the theme style element
-            this.themeStyle = document.createElement('link');
-            this.themeStyle.rel = 'stylesheet';
-            document.querySelector('head').append(this.themeStyle);
-            this.themeStyle.onload = () => this.emit('style-loaded');
-            this.themeStyle.onerror = () => this.emit('style-error');
-
+            // if a new style was loaded
             this.on('style-loaded', () => {
                 console.log('>>>>>>> THEME LOADED');
                 this.create();
@@ -132,8 +126,6 @@ export default class extends Module {
         this.lines = new Lines(this);
         this.lines.draw();
 
-        console.log('>>>>>>>>>>>> WTF');
-
         this.emit('ready');
     }
 
@@ -174,6 +166,16 @@ export default class extends Module {
 
     setTheme() {
         let styleHRef = `css/${this.config.theme}.css`;
+
+        // the theme style element
+        if(this.themeStyle){
+            this.themeStyle.remove();
+        }
+        this.themeStyle = document.createElement('link');
+        this.themeStyle.rel = 'stylesheet';
+        document.querySelector('head').append(this.themeStyle);
+        this.themeStyle.onload = () => this.emit('style-loaded');
+        this.themeStyle.onerror = () => this.emit('style-error');
 
         console.log('>>>', this.themeStyle.href, styleHRef);
 
