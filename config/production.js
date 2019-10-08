@@ -1,7 +1,7 @@
 const
     fs = require('fs-extra'),
-    ConfigClass = require('./config.js');
-spawn = require('child_process').spawn;
+    ConfigClass = require('./config.js'),
+    spawn = require('child_process').spawn;
 
 module.exports = class extends ConfigClass {
     constructor() {
