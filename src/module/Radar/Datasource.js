@@ -39,7 +39,7 @@ export default class extends Module {
                 resolve(this);
             });
         });
-    };
+    }
 
     selectDataSet(id, version) {
         this.dataSet = this.dataIndex.filter(i => i.id === id)[0];
@@ -66,9 +66,6 @@ export default class extends Module {
                     resolve(this);
                 });
         });
-
-
-
     }
 
     getDataIndex() {
@@ -76,7 +73,7 @@ export default class extends Module {
             .then(data => {
                 return data;
             });
-    };
+    }
 
     getConfig(id) {
         if (!id)
@@ -87,7 +84,7 @@ export default class extends Module {
             .then(data => {
                 return data;
             });
-    };
+    }
 
     getData(id, version) {
         if (!id)
@@ -101,7 +98,7 @@ export default class extends Module {
             .then(data => {
                 return data;
             });
-    };
+    }
 
     fetch(url) {
         if (!url)
@@ -139,7 +136,7 @@ export default class extends Module {
                 }
                 return data;
             });
-    };
+    }
 
 
     getStorageJson(field) {
@@ -147,10 +144,11 @@ export default class extends Module {
             try {
                 return JSON.parse(this.storage[`${this.storage_prefix}${field}`]);
             } catch (e) {
+                console.log('>>> ERROR', e);
             }
             return [];
         }
-    };
+    }
 
     setStorageJson(field, data, hash) {
         if (!field || !data)
@@ -163,6 +161,5 @@ export default class extends Module {
         } catch (e) {
             console.log('>>> ERROR', e);
         }
-    };
-
-};
+    }
+}

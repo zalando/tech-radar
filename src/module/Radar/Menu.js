@@ -88,4 +88,4 @@ export default class extends Module {
         this.close();
         this.emit('version-selected', dataSet.id, version);
     }
-};
+}

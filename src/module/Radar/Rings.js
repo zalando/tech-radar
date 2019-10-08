@@ -45,4 +45,4 @@ export default class extends Module {
             ring.draw();
         });
     }
-};
+}

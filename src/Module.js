@@ -91,23 +91,16 @@ export default class Module {
     get(match, not) {
         return this.items.filter(item => {
             if (item.id === match) {
-                if (not === item.id) {
-                    return false;
-                }
-                return true;
+                return not !== item.id;
             }
         })[0];
-    };
+    }
 
     getF(field, match, not) {
         return this.items.filter(item => {
             if (item[field] === match) {
-                if (not === item[field]) {
-                    return false;
-                }
-                return true;
+                return not !== item[field];
             }
         })[0];
-    };
-
-};
+    }
+}

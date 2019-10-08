@@ -195,4 +195,4 @@ export default class extends Module {
             this.target.style.top = `${this.y + this.offset.y - (this.elementWidth / 2)}px`;
     }
 
-};
+}

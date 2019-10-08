@@ -101,7 +101,6 @@ const pathReplace = (replaceFrom, replaceTo, replaceFile) => {
         replaceCommand,
         replaceFile
     ];
-    console.log('>>> sed', spawnOptions);
     setTimeout(() => {
         const proc = spawn('sed', spawnOptions); // pffft
         proc.on('error', (err) => {
