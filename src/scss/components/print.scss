@@ -8,12 +8,12 @@
   background-color: $color-primary;
   z-index: 20000;
   transform-origin: left bottom;
-  transform:scale(0.6);
-  transition:all 0.3s ease-in-out;
+  transform: scale(0.6);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    transform:scale(1);
-    transition:all 0.1s ease-in-out;
+    transform: scale(1);
+    transition: all 0.1s ease-in-out;
   }
 
   a {

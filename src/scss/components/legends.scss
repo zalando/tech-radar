@@ -69,7 +69,6 @@
     }
 
     .label-container {
-
       .ring-column {
         width: 50%;
         float: left;
@@ -86,19 +85,22 @@
     }
 
     &[data-ring="0"] {
-      transform-origin:left top;
+      transform-origin: left top;
       transform: translate(450px, 0);
     }
+
     &[data-ring="1"] {
-      transform-origin:right top;
+      transform-origin: right top;
       transform: translate(-700px, 0);
     }
+
     &[data-ring="2"] {
-      transform-origin:right bottom;
+      transform-origin: right bottom;
       transform: translate(-700px, 0);
     }
+
     &[data-ring="3"] {
-      transform-origin:left bottom;
+      transform-origin: left bottom;
       transform: translate(450px, 0);
     }
 

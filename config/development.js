@@ -1,5 +1,6 @@
 const
-    ConfigClass = require('./config.js');
+    ConfigClass = require('./config.js'),
+    StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = class extends ConfigClass {
     constructor() {
@@ -73,6 +74,9 @@ module.exports = class extends ConfigClass {
                     },
                 ],
             },
+            plugins : [
+                new StyleLintPlugin()
+            ],
 
             devServer: {
                 contentBase: ['public', 'dist/dev'],

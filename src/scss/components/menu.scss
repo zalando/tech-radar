@@ -21,14 +21,14 @@
   }
 
   .inner {
-    position:relative;
+    position: relative;
     width: 300px;
     display: block;
     background-color: rgba(255, 255, 255, 1);
     margin: auto;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    border-bottom:1px solid #E60023;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #E60023;
 
 
     a {
@@ -49,7 +49,7 @@
       text-align: left;
       background-color: $color-primary;
       color: $color-high;
-      text-shadow:1px 1px rgba(0,0,0,0.4);
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 
       &:before {
         content: attr(data-version);
@@ -60,6 +60,7 @@
 
     .version {
       font-weight: 600;
+
       &:hover {
         color: $color-primary;
       }

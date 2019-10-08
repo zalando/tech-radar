@@ -30,6 +30,8 @@
     "ramda": "^0.26.1",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "stylelint": "^11.0.0",
+    "stylelint-webpack-plugin": "^1.0.2",
     "template-literals-loader": "^1.1.2",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",

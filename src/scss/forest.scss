@@ -45,11 +45,12 @@ body {
       border-radius: 0;
 
     }
+  }
 
-  }
   .line {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
   }
+
   .legends {
     .legend {
       padding: 20px;
@@ -84,7 +85,7 @@ body {
             &.active {
               color: $color-chalk;
               text-shadow: none;
-              transform:scale(3);
+              transform: scale(3);
 
               span {
 
@@ -96,7 +97,7 @@ body {
 
             span {
               color: $color-foreground;
-              font-weight:800;
+              font-weight: 800;
             }
           }
         }
