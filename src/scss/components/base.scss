@@ -11,6 +11,8 @@ body, html {
 }
 
 body {
+  overflow-x: hidden;
+
   &:before {
     position: absolute;
     opacity: 0;
