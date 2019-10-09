@@ -3,6 +3,7 @@
   @font-face {
     font-family: "#{$style-name}";
     font-weight: $weight;
+    font-display: swap;
     src: url($filepath + ".woff2") format('woff2');
   }
 }
