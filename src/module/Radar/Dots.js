@@ -6,7 +6,6 @@ export default class extends Module {
     constructor(radar) {
         super();
         this.label = 'DOTS';
-        console.log(this.label, 'INIT');
 
         this.radar = radar;
         this.items = [];

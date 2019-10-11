@@ -4,7 +4,6 @@ export default class extends Module {
     constructor(args) {
         super();
         this.label = 'RING';
-        console.log(this.label, 'INIT');
 
         this.radar = args.radar;
         this.radius = args.options.radius;

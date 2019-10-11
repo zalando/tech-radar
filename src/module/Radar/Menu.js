@@ -4,13 +4,12 @@ export default class extends Module {
     constructor(radar) {
         super();
         this.label = 'MENU';
-        console.log(this.label, 'INIT');
 
         this.radar = radar;
         this.items = [];
 
-        this.on('version-selected', (id, version) => {
-            //...
+        this.on('version-selected', (dataSet, version) => {
+
         });
 
         const target = document.createElement('div');
@@ -56,7 +55,7 @@ export default class extends Module {
             inner.append(dataset);
         });
         this.target.append(inner);
-        this.selectVersion(this.radar.dataSource.dataSet,this.radar.dataSource.dataSet.versions[0]);
+        //this.selectVersion(this.radar.dataSource.dataSet,this.radar.dataSource.dataSet.versions[0]);
     }
 
     draw() {
@@ -82,10 +81,16 @@ export default class extends Module {
         this.openButton.innerHTML = dataSet.label;
     }
 
-    selectVersion(dataSet, version, e) {
-        this.openButton.setAttribute('data-version', version);
-        this.select(dataSet);
+    selectVersion(dataSet, version) {
+        console.log('>>>', this.label.padStart(15,' '), '>', 'MENU SELECT VERSION', dataSet, version);
         this.close();
-        this.emit('version-selected', dataSet.id, version);
+        this.emit('version-selected', dataSet, version);
+    }
+
+    drawVersion(id, version){
+        const dataSet = this.radar.dataSource.oneDataSet(id);
+        console.log('>>>', this.label.padStart(15,' '), '>', 'MENU DRAW VERSION', dataSet, version);
+        this.openButton.innerHTML = dataSet.label;
+        this.openButton.setAttribute('data-version', version);
     }
 }

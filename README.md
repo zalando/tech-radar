@@ -32,7 +32,8 @@ npm run dev
 
 #### 3. make build
 
-Create some distribution files in: `/dist` and copy it to `/docs`
+Create some distribution files in: `/dist` and copy it to `/docs`  
+At the moment - it is a must. Later we will use TravisCI. Then this step is obsolete.
 
 ```
 npm run build

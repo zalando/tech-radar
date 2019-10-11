@@ -7,6 +7,7 @@ import Legends from './Legends.js';
 import Lines from './Lines.js';
 import Menu from './Menu.js';
 import Print from './Print.js';
+import Controls from './Controls.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
@@ -14,13 +15,13 @@ export default class extends Module {
         super();
         return new Promise((resolve, reject) => {
             this.label = 'RADAR';
-            console.log(this.label, 'INIT');
+            this.controls = new Controls(this);
 
             // init the datasource
             // AND get the data index
             // AND get the config
             // AND get the data - by the data index
-            new Datasource()
+            new Datasource(this)
                 .then(datasource => {
                     this.dataSource = datasource;
                     this.config = this.dataSource.config;
@@ -31,16 +32,14 @@ export default class extends Module {
                     this.menu.draw();
 
                     // the dataset change
-                    this.menu.on('version-selected', (id, version) => {
-                        this.emit('version-selected', id, version);
-                        this.dataSource.selectDataSet(id, version).then(() => {
-                            this.config = this.dataSource.config;
-                            this.data = this.dataSource.data;
-                            this.redraw();
-                        });
+                    this.menu.on('version-selected', (dataSet, version) => this.selectVersion(dataSet.id, version));
+
+                    this.on('version-selected', (id, version) => {
+                        console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
+                        this.redraw();
                     });
 
-                    this.build();
+                    this.selectVersion();
                 });
 
             // create some elements while datasource is am rumrödeln
@@ -87,7 +86,6 @@ export default class extends Module {
                 this.legends.draw();
             });
 
-
             this.on('ready', () => {
                 resolve(this);
             });
@@ -128,6 +126,7 @@ export default class extends Module {
 
         this.print = new Print(this);
 
+
         this.emit('ready');
     }
 
@@ -146,7 +145,7 @@ export default class extends Module {
     }
 
     redraw() {
-        console.log('>>> REDRAWING');
+        console.log('>>>', this.label.padStart(15, ' '), '>', 'REDRAWING');
         this.destroy();
         this.build();
     }
@@ -169,7 +168,7 @@ export default class extends Module {
         let styleHRef = `css/${this.config.theme}.css`;
 
         // the theme style element
-        if(this.themeStyle){
+        if (this.themeStyle) {
             this.themeStyle.remove();
         }
         this.themeStyle = document.createElement('link');
@@ -187,6 +186,30 @@ export default class extends Module {
         this.themeStyle.href = styleHRef;
         if (styleHRef === '')
             this.emit('style-loaded');
+    }
+
+
+    selectVersion(id, version) {
+        if (!id)
+            id = this.controls.id;
+        if (!version)
+            version = this.controls.version;
+
+        console.log('');
+        console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
+
+        this.dataSource
+            .selectDataSet(id, version)
+            .then(() => {
+                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
+                this.config = this.dataSource.config;
+                this.data = this.dataSource.data;
+                this.emit('version-selected', id, version);
+            });
+    }
+
+    getHash() {
+        this.controls.getHash();
     }
 
     get resizing() {

@@ -4,8 +4,6 @@ export default class extends Module {
     constructor(args) {
         super();
         this.label = 'LEGEND';
-        console.log(this.label, 'INIT');
-
         this.radar = args.radar;
         this.options = args.options;
         this.dots = args.dots;

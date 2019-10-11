@@ -4,7 +4,6 @@ export default class extends Module {
     constructor(radar) {
         super();
         this.label = 'PRINT';
-        console.log(this.label, 'INIT');
         this.radar = radar;
         
         // the layer
@@ -56,6 +55,9 @@ export default class extends Module {
 
     disable(){
         this.printStyle = document.querySelector('#print-style');
+        if(!this.printStyle)
+            return;
+
         this.printStyle.remove();
         this.printStyle = false;
     }

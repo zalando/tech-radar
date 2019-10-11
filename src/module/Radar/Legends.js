@@ -5,7 +5,6 @@ export default class extends Module {
     constructor(radar) {
         super();
         this.label = 'LEGENDS';
-        console.log(this.label, 'INIT');
         this.radar = radar;
 
         const target = document.createElement('div');

@@ -5,7 +5,6 @@ export default class extends Module {
     constructor(radar) {
         super();
         this.label = 'RINGS';
-        console.log(this.label, 'INIT');
 
         this.radar = radar;
         const width = this.radar.target.getBoundingClientRect().width;
