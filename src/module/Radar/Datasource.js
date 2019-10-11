@@ -77,8 +77,6 @@ export default class extends Module {
                         }
                     });
                     document.querySelector('body').classList.remove('loading');
-                    this.radar.controls.setHash(this.dataSet.id, this.dataVersion);
-                    this.radar.menu.drawVersion(this.dataSet.id, this.dataVersion);
                     resolve(this.dataSet, this.dataVersion);
                 });
         });

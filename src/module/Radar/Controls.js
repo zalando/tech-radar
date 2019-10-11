@@ -14,7 +14,7 @@ export default class extends Module {
         this.versionField = 1;
 
         // this is not used. the hash will be rewritten
-        // window.addEventListener(onhashchange, (e) => this.getHash(e));
+        window.addEventListener(onhashchange, (e) => this.getHash(e));
         this.getHash();
     }
 

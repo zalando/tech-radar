@@ -36,6 +36,9 @@ export default class extends Module {
 
                     this.on('version-selected', (id, version) => {
                         console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
+                        this.controls.setHash(this.dataSource.dataSet.id, this.dataSource.dataVersion);
+                        this.menu.drawVersion(this.dataSource.dataSet.id, this.dataSource.dataVersion);
+                        this.title = `${this.dataSource.dataSet.label} - ${this.dataSource.dataVersion}`;
                         this.redraw();
                     });
 
@@ -43,6 +46,8 @@ export default class extends Module {
                 });
 
             // create some elements while datasource is am rumrödeln
+            this.titleElement = document.querySelector('title');
+
             // a splash screen?!
             const splash = document.createElement('div');
             splash.id = 'splash';
@@ -201,7 +206,7 @@ export default class extends Module {
         this.dataSource
             .selectDataSet(id, version)
             .then(() => {
-                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
+                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.dataSet.id, this.dataSource.dataVersion);
                 this.config = this.dataSource.config;
                 this.data = this.dataSource.data;
                 this.emit('version-selected', id, version);
@@ -219,5 +224,14 @@ export default class extends Module {
     set resizing(val) {
         this._resizing = val;
         this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
+    }
+
+    get title(){
+        return this._title;
+    }
+
+    set title(val){
+        this._title = val;
+        this.titleElement.innerHTML = `${this.title} | neofonie tech radar`;
     }
 }
