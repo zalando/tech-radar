@@ -33,6 +33,7 @@ export default class extends Module {
             dataset.classList.add('dataset');
 
             const dataSetButton = document.createElement('a');
+            dataSetButton.classList.add('label');
             dataSetButton.innerHTML = `${i.label}`;
             //dataSetButton.onclick = e => this.select(i, e);
 

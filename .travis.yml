@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '12'
+install:
+- npm install
+- npm run build
+after_install:
+- ls -l
+- cd ..
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  target_branch: gh-pages
+  local_dir: docs
+  on:
+    branch: master
+env:
+  global:
+  - secure: 7cKZ86nA5q4Ua0lRjMmOsLdL5Yu28BzS8h4D0GA1cX+I0YcXtGsHEVrj7GfNIGYTsB5agGnOh2PqsbtpVesHSgAJm30tok1v1mxzCqib4en9tPJq+2X4ZltmLMVW9X2I98Wu08l8EDC14xlPJEtj+OsMTlTLLgFRts1eb8YET1OUJAZHZoGDdHPmU2YDr8SLCmiVRplZdgrmGqI2SwNNp3rCg2UeQ/WBQWXiT1H9saUT8YZDaRFcl8ZpGo/mzixYgw8rorHXsX7QAUXX2KWxpJ8KnEKkkZHHKIOf2Xj356r4sFJ6DKKyih3sYuvobi0qLABCv6nYXJ6BKjRZHZRrhQCzMOthTov4VTgHD7Phbu3NtPsJwR+0wSApIWLogOLEem1OvcVHlMDgjV7aQzxNaf2F28CfVW502sl79IzzQImdKHTWGk8Q4jlOMSKn1jUR1673fIW+sBQurjoyfioXGiWYh0EAAvKXacJgDu5DxbpQVFXn/BIlkI20l2fA2frOk96WLbaEceYJKBS5T/AVYGom93fIL7xat20oCKsk2si6wrQzNRS8a5hR+tqo3Q7W9QVN8/Ikk0A87fVXEsjeUup+68sYPZpfB2QDXx5onp848pVfIOsOakpds3VibcsQTBPXSFJpkeTavJhz/LvqOL0JGF/eH9nlLpvZAug687g=

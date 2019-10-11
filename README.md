@@ -1,6 +1,6 @@
-![alt text](../master/docs/screenshots/neotechradar1.png?raw=true "Neofonie Tech Radar #1")
+![alt text](../master/public/screenshots/neotechradar1.png?raw=true "Neofonie Tech Radar #1")
   
-![alt text](../master/docs/screenshots/neotechradar2.png?raw=true "Neofonie Tech Radar #2")
+![alt text](../master/public/screenshots/neotechradar2.png?raw=true "Neofonie Tech Radar #2")
 
 
 # Motivation

@@ -16,8 +16,6 @@
       width: 600px;
       transition: all 0.2s ease-in-out;
     }
-
-
   }
 
   .inner {
@@ -29,7 +27,6 @@
     transition: all 0.2s ease-in-out;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid #E60023;
-
 
     a {
       text-decoration: none;
@@ -69,7 +66,9 @@
     .dataset {
       display: block;
 
-
+      .label {
+        width: 200px;
+      }
     }
   }
 }

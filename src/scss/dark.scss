@@ -79,12 +79,26 @@ body {
 
 .menu {
   .inner {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0);
     border-bottom-color: $color-secondary;
+    width: 400px;
 
     .open {
-      color: $color-foreground;
+      font-size: 16px;
+      line-height: 40px;
+      height: 40px;
+      font-weight: 600;
+      display: block;
+      text-align: left;
       background-color: $color-secondary;
+      color: $color-foreground;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+      &:before {
+        content: attr(data-version);
+        position: absolute;
+        right: 10px;
+      }
     }
 
     .dataset {
@@ -97,6 +111,37 @@ body {
       }
     }
   }
+
+  &.opened {
+    height: 300px;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+
+    .inner {
+      width: 600px;
+      background-color: rgba(0, 0, 0, 0.9);
+      transition: all 0.2s ease-in-out;
+
+      .open {
+        font-size: 16px;
+        line-height: 40px;
+        height: 40px;
+        font-weight: 600;
+        display: block;
+        text-align: left;
+        background-color: $color-secondary;
+        color: $color-foreground;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+        &:before {
+          content: attr(data-version);
+          position: absolute;
+          right: 10px;
+        }
+      }
+    }
+  }
+
 }
 
 .print {
