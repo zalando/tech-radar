@@ -1,6 +1,7 @@
 import Module from "../../Module";
 import Datasource from "./Datasource";
 import Dots from './Dots.js';
+import Fork from './Fork.js';
 import Rings from './Rings.js';
 import Quadrants from './Quadrants.js';
 import Legends from './Legends.js';
@@ -131,6 +132,7 @@ export default class extends Module {
 
         this.print = new Print(this);
 
+        this.fork = new Fork(this);
 
         this.emit('ready');
     }
