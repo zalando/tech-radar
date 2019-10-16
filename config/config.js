@@ -4,7 +4,7 @@ const
 
 module.exports = class {
     constructor() {
-        this.appPath = path.resolve(process.env.PWD);
+        this.appPath = path.resolve(process.cwd());
         this.defaults = {};
     }
 

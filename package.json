@@ -5,8 +5,8 @@
   "author": "neofonie GmbH",
   "main": "index.js",
   "scripts": {
-    "dev": "export ENV=dev && node_modules/.bin/webpack-dev-server --config config/index.js --progress --colors --watch --display-modules ",
-    "build": "export ENV=prod && node_modules/.bin/webpack --config config/index.js"
+    "dev": "cross-env ENV=dev && webpack-dev-server --config config/index.js --progress --colors --watch --display-modules ",
+    "build": "cross-env ENV=prod && webpack --config config/index.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,6 +18,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "d3": "^5.12.0",
     "es6-templates": "^0.2.3",
