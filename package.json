@@ -5,8 +5,8 @@
   "author": "neofonie GmbH",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env ENV=dev && webpack-dev-server --config config/index.js --progress --colors --watch --display-modules ",
-    "build": "cross-env ENV=prod && webpack --config config/index.js"
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --config config/index.js --progress --colors --watch --display-modules ",
+    "build": "cross-env NODE_ENV=prod webpack --config config/index.js"
   },
   "license": "MIT",
   "devDependencies": {

@@ -8,9 +8,11 @@
 /**
  * @type {string}
  */
-let env = `${process.env.ENV || 'dev'}`;
+let env = `${process.env.NODE_ENV || 'dev'}`;
 if(!['dev','prod'].includes(env))
     env = 'dev';
+
+console.log(`Building in ${env} mode`);
 
 /**
  * ... add here some environments
@@ -21,5 +23,4 @@ const configs = {
 };
 
 const configData = new configs[env]();
-console.log(configData);
 module.exports = configData;
