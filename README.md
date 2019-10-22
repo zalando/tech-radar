@@ -1,3 +1,7 @@
+# Neofonie TechRadar
+
+[![Build Status](https://api.travis-ci.org/Neofonie/tech-radar.svg?branch=master)](https://travis-ci.org/Neofonie/tech-radar) 
+
 ![alt text](../master/public/screenshots/neotechradar1.png?raw=true "Neofonie Tech Radar #1")
   
 ![alt text](../master/public/screenshots/neotechradar2.png?raw=true "Neofonie Tech Radar #2")
