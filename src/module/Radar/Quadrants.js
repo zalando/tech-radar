@@ -1,6 +1,5 @@
 import Module from "../../Module";
 import Quadrant from './Quadrant.js';
-import QuadrantsTemplate from "./Templates/Quadrants.html";
 
 export default class extends Module {
     constructor(radar) {
@@ -27,7 +26,7 @@ export default class extends Module {
                 radar : this.radar,
                 options: {
                     ...this.data[i],
-                    name: this.radar.config.quadrants[i].name
+                    label: this.radar.selectedRadar.quadrants[i].label
                 }
             });
             this.items.push(quadrant);

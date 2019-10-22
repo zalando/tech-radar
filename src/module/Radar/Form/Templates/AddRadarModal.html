@@ -1,0 +1,87 @@
+<h3>Add a new radar</h3>
+<form id="formAddRadar" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col">
+            <label for="AddRadar_Label">Label</label>
+            <input id="AddRadar_Label" type="text" name="label" class="label" value="${label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Theme">Theme</label>
+            <select id="AddRadar_Theme" name="theme" value="${theme}">
+                <option></option>
+                <option value="dark">dark</option>
+                <option value="forest">forest</option>
+                <option value="print">print</option>
+                <option value="retro">retro</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="AddRadar_Seed_From">Seed From</label>
+            <input id="AddRadar_Seed_From" type="text" name="seed_from" class="tac" value="${seed_from}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Seed_To">Seed to</label>
+            <input id="AddRadar_Seed_To" type="text" name="seed_to" class="tac" value="${seed_to}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="AddRadar_Quadrant0_Label">Quadrant 0 Label<br/><i>Bottom, Right</i></label>
+            <input id="AddRadar_Quadrant0_Label" type="text" name="quadrant0_label" value="${quadrant0_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Quadrant1_Label">Quadrant 1 Label<br/><i>Bottom, Left</i></label>
+            <input id="AddRadar_Quadrant1_Label" type="text" name="quadrant1_label" value="${quadrant1_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Quadrant2_Label">Quadrant 2 Label<br/><i>Top, Left</i></label>
+            <input id="AddRadar_Quadrant2_Label" type="text" name="quadrant2_label" value="${quadrant2_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Quadrant3_Label">Quadrant 3 Label<br/><i>Top, Right</i></label>
+            <input id="AddRadar_Quadrant3_Label" type="text" name="quadrant3_label" value="${quadrant3_label}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="AddRadar_Ring0_Label">Ring 0 Label<br/><i>inner</i></label>
+            <input id="AddRadar_Ring0_Label" type="text" name="ring0_label" value="${ring0_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Ring1_Label">Ring 1 Label<br/><i>&nbsp;</i></label>
+            <input id="AddRadar_Ring1_Label" type="text" name="ring1_label" value="${ring1_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Ring2_Label">Ring 2 Label<br/><i>&nbsp;</i></label>
+            <input id="AddRadar_Ring2_Label" type="text" name="ring2_label" value="${ring2_label}">
+        </div>
+        <div class="col">
+            <label for="AddRadar_Ring3_Label">Ring 3 Label<br/><i>outer</i></label>
+            <input id="AddRadar_Ring3_Label" type="text" name="ring3_label" value="${ring3_label}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="AddRadar_Default">Default Radar</label>
+            <select id="AddRadar_Default" name="is_default" value="${is_default}">
+                <option value="false">no</option>
+                <option value="true">yes</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="AddRadar_Version">Default Version</label>
+            <input id="AddRadar_Version" type="text" name="version" value="${version}">
+        </div>
+    </div>
+    <div class="row buttons">
+        <div class="col">
+            <button id="submit" type="button" class="create">create</button>
+        </div>
+        <div class="message">
+
+        </div>
+        <div class="col">
+            <button type="button" class="cancel">cancel</button>
+        </div>
+    </div>
+</form>

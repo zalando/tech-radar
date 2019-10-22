@@ -18,7 +18,7 @@ export default class extends Module {
                 index: i,
                 radar: this.radar,
                 options: {
-                    name: this.radar.quadrants.items[i].name
+                    label: this.radar.quadrants.items[i].label
                 },
                 dots: this.radar.dots.segmented[i]
             });

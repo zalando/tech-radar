@@ -7,6 +7,7 @@
   z-index: 10001;
   transition: all 0.5s ease-in-out;
 
+
   &.opened {
     height: 300px;
     opacity: 1;
@@ -31,10 +32,27 @@
     a {
       text-decoration: none;
       color: $color-foreground;
-      line-height: 25px;
       padding: 0 10px;
       cursor: pointer;
       display: inline-block;
+    }
+
+    a.add-radar {
+      position: absolute;
+      top: 0;
+      font-size: 40px;
+      left: -46px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      border: 2px solid $color-green-dark;
+      color: $color-chalk;
+      background-color: $color-green-dark;
+
+      &:hover {
+        background-color: $color-green;
+      }
+
     }
 
     .open {
@@ -63,8 +81,29 @@
       }
     }
 
-    .dataset {
+    .radar {
       display: block;
+      position: relative;
+      line-height: 23px;
+      border-bottom: 1px solid $color-dark;
+
+      a.add-dataset {
+        position: absolute;
+        top: 2px;
+        font-size: 30px;
+        right: 2px;
+        height: 17px;
+        width: 14px;
+        line-height: 19px;
+        text-align: center;
+        border: 2px solid $color-green-dark;
+        color: $color-chalk;
+        background-color: $color-green-dark;
+
+        &:hover {
+          background-color: $color-green;
+        }
+      }
 
       .label {
         width: 200px;

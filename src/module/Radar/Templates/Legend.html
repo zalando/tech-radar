@@ -1,0 +1,10 @@
+<h1>${legend.label}</h1>
+<div class="label-container">
+    ${ radar.rings.items.map((r,i) => ringTemplate({scope:{
+        index: i,
+        ring: r,
+        radar: radar,
+        dots: dots[i],
+        dotTemplate: dotTemplate
+    }})).join('') }
+</div>

@@ -1,0 +1,164 @@
+.modal {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 100px);
+  background-color: $color-chalk;
+  z-index: 20000;
+  border-top: 1px solid $color-beton;
+  border-bottom: 3px solid $color-green;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .inner {
+    width: 600px;
+    margin: auto;
+    height: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h2, h3 {
+      margin: 0;
+      padding: 0;
+      color: $color-foreground;
+      margin-bottom: 20px;
+
+      strong {
+        font-weight: 900;
+      }
+    }
+
+
+    input, button, select {
+      border: 1px solid $color-chalk;
+      font-family: 'Exo', 'Arial';
+      font-size: 20px;
+      width: calc(100% - 20px);
+      padding: 5px;
+      border-radius: 3px;
+      border-bottom: 3px solid $color-dark;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: $color-foreground;
+    }
+
+    label {
+      font-weight: 400;
+      font-size: 10px;
+      color: $color-foreground;
+      font-size: 12px;
+    }
+
+    select {
+      font-size: 20px;
+      line-height: 20px;
+      padding: 0;
+
+      option {
+        font-size: 20px;
+      }
+    }
+
+    .row {
+      margin-bottom: 10px;
+
+      &.buttons {
+        margin-top: 30px;
+      }
+
+      .username {
+        width: 33.3333%;
+        float: left;
+      }
+
+      .password {
+        width: 33.3333%;
+        float: left;
+      }
+
+      .button {
+        width: 33.3333%;
+        float: left;
+      }
+
+      .message {
+        line-height: 30px;
+        color: $color-primary;
+      }
+
+      button {
+        background-color: $color-green;
+        color: $color-chalk;
+        border-bottom-color: $color-green-dark;
+
+        &:hover {
+          background-color: $color-green-dark;
+          cursor: pointer;
+        }
+
+        &.cancel {
+          background-color: $color-dark;
+          color: $color-green-dark;
+        }
+      }
+    }
+  }
+
+  &.add-radar, &.add-dataset {
+    top: calc(50% - 200px);
+
+    .inner {
+      padding-top: 20px;
+      height: auto;
+
+      input, button {
+        font-size: 14px;
+      }
+
+      input {
+        &.label {
+          font-weight: 500;
+        }
+
+        &.tac {
+          text-align: center;
+        }
+      }
+
+      label {
+        i {
+          display: block;
+          width: calc(100% - 10px);
+          font-size: 10px;
+        }
+      }
+
+      select {
+        font-size: 14px;
+        padding: 3px;
+        width: calc(100% - 10px);
+        line-height: 16px;
+
+        option {
+          font-family: 'Exo', 'Arial';
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+
+      .row {
+        display: block;
+        overflow: hidden;
+
+        .col {
+          width: 25%;
+          float: left;
+        }
+      }
+
+    }
+  }
+
+}

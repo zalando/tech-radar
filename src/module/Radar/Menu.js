@@ -1,4 +1,7 @@
 import Module from "../../Module";
+import MenuTemplate from './Templates/Menu.html';
+import MenuRadarTemplate from './Templates/MenuRadar.html';
+import MenuRadarVersionTemplate from './Templates/MenuRadarVersion.html';
 
 export default class extends Module {
     constructor(radar) {
@@ -8,55 +11,35 @@ export default class extends Module {
         this.radar = radar;
         this.items = [];
 
-        this.on('version-selected', (dataSet, version) => {
+        this.on('version-selected', (selectedRadar, version) => {
 
         });
+        this.build();
+    }
 
+    build() {
+        if (this.target)
+            this.target.remove();
+
+        const html = MenuTemplate({
+            scope: {
+                radar: this.radar,
+                radarTemplate: MenuRadarTemplate,
+                versionTemplate: MenuRadarVersionTemplate
+            }
+        });
         const target = document.createElement('div');
         target.id = 'menu';
         target.className = 'menu';
+        target.innerHTML = html;
         document.querySelector('body').append(target);
         this.target = document.getElementById('menu');
 
-        const inner = document.createElement('div');
-        inner.classList.add('inner');
-
-        this.openButton = document.createElement('a');
-        this.openButton.classList.add('open');
+        this.openButton = this.target.querySelector('.open');
         this.openButton.onclick = e => this.toggle(e);
-        inner.append(this.openButton);
 
-        this.dataSetButtons = {};
-        this.versionButtons = {};
-        this.radar.dataSource.dataIndex.forEach(i => {
-            const dataset = document.createElement('div');
-            dataset.classList.add('dataset');
-
-            const dataSetButton = document.createElement('a');
-            dataSetButton.classList.add('label');
-            dataSetButton.innerHTML = `${i.label}`;
-            //dataSetButton.onclick = e => this.select(i, e);
-
-            dataset.append(dataSetButton);
-            this.dataSetButtons[i.id] = dataSetButton;
-
-            if (i.versions)
-                i.versions.forEach(ii => {
-                    const versionButton = document.createElement('a');
-                    versionButton.innerHTML = `${ii}`;
-                    versionButton.classList.add('version');
-                    versionButton.onclick = e => this.selectVersion(i, ii, e);
-
-                    if (!this.versionButtons[i.id])
-                        this.versionButtons[i.id] = [];
-                    this.versionButtons[i.id].push(versionButton);
-                    dataset.append(versionButton);
-                });
-
-            inner.append(dataset);
-        });
-        this.target.append(inner);
-        //this.selectVersion(this.radar.dataSource.dataSet,this.radar.dataSource.dataSet.versions[0]);
+        this.versionButtons = this.target.querySelectorAll('.version');
+        this.versionButtons.forEach(versionButton => versionButton.onclick = e => this.selectVersion(e));
     }
 
     draw() {
@@ -68,30 +51,74 @@ export default class extends Module {
 
     open(e) {
         this.target.classList.add('opened');
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        window.scrollTo({top: 0, left: 0, behavior: "smooth"});
     }
 
     close(e) {
         this.target.classList.remove('opened');
     }
 
-    select(dataSet, e) {
+    select(radar, e) {
         if (e) {
             e.preventDefault();
         }
-        this.openButton.innerHTML = dataSet.label;
+        this.openButton.innerHTML = radar.label;
     }
 
-    selectVersion(dataSet, version) {
-        console.log('>>>', this.label.padStart(15,' '), '>', 'MENU SELECT VERSION', dataSet, version);
+    selectVersion(e) {
+        const radarId = e.target.getAttribute('data-radar-id');
+        const version = e.target.innerHTML;
+
+        console.log('>>>', this.label.padStart(15, ' '), '>', 'MENU SELECT VERSION', radarId, version);
         this.close();
-        this.emit('version-selected', dataSet, version);
+        this.emit('version-selected', radarId, version);
     }
 
-    drawVersion(id, version){
-        const dataSet = this.radar.dataSource.oneDataSet(id);
-        console.log('>>>', this.label.padStart(15,' '), '>', 'MENU DRAW VERSION', dataSet, version);
-        this.openButton.innerHTML = dataSet.label;
+    drawVersion(id, version) {
+        const selectedRadar = this.radar.dataSource.oneRadar(id);
+        console.log('>>>', this.label.padStart(15, ' '), '>', 'MENU DRAW VERSION', selectedRadar, version);
+        this.openButton.innerHTML = selectedRadar.label;
         this.openButton.setAttribute('data-version', version);
+    }
+
+    addAdmin() {
+        if (this.radar.dataSource.serverMode === true) {
+            this.addRadarButton = document.createElement('a');
+            this.addRadarButton.id = 'addRadar';
+            this.addRadarButton.className = 'add-radar';
+            this.addRadarButton.innerHTML = '+';
+            this.addRadarButton.onclick = (e) => {
+                this.close();
+                this.radar.radarForm.toggle(e);
+                e.target.blur();
+            };
+            this.target.querySelector('.inner').append(this.addRadarButton);
+            this.target.querySelectorAll('.radar').forEach(i => {
+                const addDatasetButton = document.createElement('a');
+                addDatasetButton.id = 'addDataset';
+                addDatasetButton.className = 'add-dataset';
+                addDatasetButton.innerHTML = '+';
+                addDatasetButton.setAttribute('data-radar-id', i.getAttribute('data-radar-id'));
+                addDatasetButton.onclick = (e) => {
+                    this.close();
+                    this.radar.datasetForm.toggle(e);
+                };
+                i.append(addDatasetButton);
+            });
+        }
+    }
+
+    removeAdmin() {
+        this.addRadarButton.remove();
+        this.target.querySelectorAll('.radar .add-dataset').forEach(i => i.remove());
+    }
+
+    get admin() {
+        return this._admin;
+    }
+
+    set admin(val) {
+        this._admin = val;
+        this.admin ? this.addAdmin() : this.removeAdmin();
     }
 }

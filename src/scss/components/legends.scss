@@ -62,44 +62,79 @@
             transition: all 0.2s;
             cursor: none;
           }
-
-
         }
       }
     }
 
     .label-container {
-      .ring-column {
+      .ring-block {
         width: 50%;
         float: left;
+      }
+    }
 
-        .ring-block {
+    &[data-quadrant] {
+      width: 300px;
+      height: 400px;
+
+      [data-ring] {
+        a {
+          &.selected {
+            font-weight: 900;
+          }
+        }
+      }
+
+      [data-ring="0"] {
+        a {
+          &.active, &.selected {
+            background-color: $color-ring0;
+          }
+        }
+      }
+
+      [data-ring="1"] {
+        a {
+          &.active, &.selected {
+            background-color: $color-ring1;
+          }
+        }
+      }
+
+      [data-ring="2"] {
+        a {
+          &.active, &.selected {
+            background-color: $color-ring2;
+          }
+        }
+      }
+
+      [data-ring="3"] {
+        a {
+          &.active, &.selected {
+            background-color: $color-ring3;
+          }
         }
       }
 
     }
 
-    &[data-ring] {
-      width: 300px;
-      height: 400px;
-    }
-
-    &[data-ring="0"] {
+    &[data-quadrant="0"] {
       transform-origin: left top;
       transform: translate(450px, 0);
     }
 
-    &[data-ring="1"] {
+    &[data-quadrant="1"] {
       transform-origin: right top;
       transform: translate(-700px, 0);
     }
 
-    &[data-ring="2"] {
+    &[data-quadrant="2"] {
       transform-origin: right bottom;
       transform: translate(-700px, 0);
     }
 
-    &[data-ring="3"] {
+    &[data-quadrant="3"] {
       transform-origin: left bottom;
       transform: translate(450px, 0);
     }

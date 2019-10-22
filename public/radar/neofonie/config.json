@@ -1,0 +1,50 @@
+{
+    "id": "neofonie",
+    "foldername": "neofonie",
+    "atime": "at1571479449741",
+    "mtime": "mt1571479448003",
+    "ctime": "ct1571479448003",
+    "is_default": true,
+    "version": "2019.09",
+    "quadrants": [
+        {
+            "label": "A.I."
+        },
+        {
+            "label": "Frontend / Web"
+        },
+        {
+            "label": "DevOps / Infrastructure"
+        },
+        {
+            "label": "Platforms / Backend"
+        }
+    ],
+    "rings": [
+        {
+            "label": "ADOPT"
+        },
+        {
+            "label": "TRIAL"
+        },
+        {
+            "label": "ASSESS"
+        },
+        {
+            "label": "HOLD"
+        }
+    ],
+    "label": "Neofonie",
+    "seed": {
+        "from": 20,
+        "to": 50
+    },
+    "dot": {
+        "offset_x": 100,
+        "offset_y": 100
+    },
+    "versions": [
+        "2019.05",
+        "2019.09"
+    ]
+}

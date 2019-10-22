@@ -1,4 +1,5 @@
 .dot {
+  content: attr(data-quadrant);
   position: absolute;
   display: block;
   font-size: 11px;
@@ -40,7 +41,7 @@
   }
 
 
-  &.active {
+  &.active, &.selected {
     font-size: 20px;
     line-height: 43px;
     cursor: pointer;
@@ -52,6 +53,7 @@
     z-index: 2000;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
+    opacity: 1;
 
     &:before {
       position: absolute;
@@ -62,4 +64,65 @@
       width: 200px;
     }
   }
+
+  &.selected {
+    font-weight: 900;
+    //transform: rotate(5deg) scale(2);
+    z-index: 1000;
+    border-radius: 0px;
+    animation: dot-selection 3s infinite;
+    @keyframes dot-selection {
+      0% {
+        transform: scale(1.4) rotate(5deg);
+        transition-timing-function: linear;
+      }
+
+      25% {
+        transform: scale(1.6) rotate(7deg);
+        transition-timing-function: linear;
+      }
+
+      50% {
+        transform: scale(1.4) rotate(5deg);
+        transition-timing-function: linear;
+      }
+
+      75% {
+        transform: scale(1.2) rotate(2deg);
+        transition-timing-function: linear;
+      }
+
+      100% {
+        transform: scale(1.4) rotate(5deg);
+        transition-timing-function: linear;
+      }
+    }
+  }
+
+  &.active {
+    z-index: 3000;
+  }
+
+  &.active.selected {
+    font-weight: 900;
+  }
+
+
+  &.r0 {
+    background-color: $color-ring0;
+  }
+
+  &.r1 {
+    background-color: $color-ring1;
+  }
+
+  &.r2 {
+    background-color: $color-ring2;
+  }
+
+  &.r3 {
+    background-color: $color-ring3;
+  }
+
+
 }

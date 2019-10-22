@@ -9,6 +9,9 @@ import Lines from './Lines.js';
 import Menu from './Menu.js';
 import Print from './Print.js';
 import Controls from './Controls.js';
+import Auth from './Auth.js';
+import RadarForm from './Form/Radar.js';
+import DatasetForm from './Form/Dataset.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
@@ -16,6 +19,14 @@ export default class extends Module {
         super();
         return new Promise((resolve, reject) => {
             this.label = 'RADAR';
+
+            // set the server mode on or off here
+            // or with a window global variable RADAROPTIONS.serverMode
+            this.serverMode = false;
+            if(window.RADAROPTIONS)
+                if(window.RADAROPTIONS.serverMode)
+                    this.serverMode = RADAROPTIONS.serverMode;
+
             this.controls = new Controls(this);
 
             // init the datasource
@@ -25,21 +36,35 @@ export default class extends Module {
             new Datasource(this)
                 .then(datasource => {
                     this.dataSource = datasource;
-                    this.config = this.dataSource.config;
-                    this.data = this.dataSource.data;
+                    this.selectedRadar = this.dataSource.selectedRadar;     // empty on init
+                    this.data = this.dataSource.data;                       // empty on init
 
                     // we need the data index
                     this.menu = new Menu(this);
-                    this.menu.draw();
 
-                    // the dataset change
-                    this.menu.on('version-selected', (dataSet, version) => this.selectVersion(dataSet.id, version));
+                    // only in server mode some element will be available
+                    if (this.dataSource.serverMode === true) {
+                        this.auth = new Auth(this);
+                        this.auth.on('login', () => {
+                            console.log(this.label, 'LOGIN');
+                            this.menu.admin = true;
+                        });
+                        this.auth.on('logout', () => {
+                            console.log(this.label, 'LOGOUT');
+                            this.menu.admin = false;
+                        });
+                        this.radarForm = new RadarForm(this);
+                        this.datasetForm = new DatasetForm(this);
+                    }
+
+                    // the radar change
+                    this.menu.on('version-selected', (id, version) => this.selectVersion(id, version));
 
                     this.on('version-selected', (id, version) => {
                         console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
-                        this.controls.setHash(this.dataSource.dataSet.id, this.dataSource.dataVersion);
-                        this.menu.drawVersion(this.dataSource.dataSet.id, this.dataSource.dataVersion);
-                        this.title = `${this.dataSource.dataSet.label} - ${this.dataSource.dataVersion}`;
+                        this.controls.setHash(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+                        this.menu.drawVersion(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+                        this.title = `${this.dataSource.selectedRadar.label} - ${this.dataSource.radarVersion}`;
                         this.redraw();
                     });
 
@@ -99,6 +124,10 @@ export default class extends Module {
     }
 
     destroy() {
+        if (this.dots)
+            if (this.dots.simulation.stop)
+                this.dots.simulation.stop();
+
         this.target.innerHTML = '';
     }
 
@@ -131,7 +160,6 @@ export default class extends Module {
         this.lines.draw();
 
         this.print = new Print(this);
-
         this.fork = new Fork(this);
 
         this.emit('ready');
@@ -172,7 +200,7 @@ export default class extends Module {
     }
 
     setTheme() {
-        let styleHRef = `css/${this.config.theme}.css`;
+        let styleHRef = `css/${this.selectedRadar.theme}.css`;
 
         // the theme style element
         if (this.themeStyle) {
@@ -187,7 +215,7 @@ export default class extends Module {
         if (this.themeStyle.href.includes(styleHRef))
             this.emit('style-loaded');
 
-        if (this.config.theme === undefined)
+        if (this.selectedRadar.theme === undefined)
             styleHRef = '';
 
         this.themeStyle.href = styleHRef;
@@ -197,6 +225,8 @@ export default class extends Module {
 
 
     selectVersion(id, version) {
+        console.log('????????', id, version);
+
         if (!id)
             id = this.controls.id;
         if (!version)
@@ -206,10 +236,10 @@ export default class extends Module {
         console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
 
         this.dataSource
-            .selectDataSet(id, version)
+            .selectRadar(id, version)
             .then(() => {
-                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.dataSet.id, this.dataSource.dataVersion);
-                this.config = this.dataSource.config;
+                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+                this.selectedRadar = this.dataSource.selectedRadar;
                 this.data = this.dataSource.data;
                 this.emit('version-selected', id, version);
             });
@@ -228,11 +258,11 @@ export default class extends Module {
         this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
     }
 
-    get title(){
+    get title() {
         return this._title;
     }
 
-    set title(val){
+    set title(val) {
         this._title = val;
         this.titleElement.innerHTML = `${this.title} | neofonie tech radar`;
     }

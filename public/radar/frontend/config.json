@@ -1,0 +1,48 @@
+{
+    "id": "frontend",
+    "foldername": "frontend",
+    "atime": "at1571479405970",
+    "mtime": "mt1571479405280",
+    "ctime": "ct1571479405280",
+    "label": "Frontend",
+    "theme": "dark",
+    "seed": {
+        "from": 20,
+        "to": 100
+    },
+    "dot": {
+        "offset_x": 100,
+        "offset_y": 100
+    },
+    "quadrants": [
+        {
+            "label": "Tools"
+        },
+        {
+            "label": "Techniques"
+        },
+        {
+            "label": "Modules"
+        },
+        {
+            "label": "Frameworks"
+        }
+    ],
+    "rings": [
+        {
+            "label": "ADOPT"
+        },
+        {
+            "label": "TRIAL"
+        },
+        {
+            "label": "ASSESS"
+        },
+        {
+            "label": "HOLD"
+        }
+    ],
+    "versions": [
+        "2019.10"
+    ]
+}

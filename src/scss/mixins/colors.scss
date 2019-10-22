@@ -2,9 +2,22 @@ $color-primary: #E60023;
 $color-primary-dark: darken(desaturate($color-primary, 20%), 20%);
 $color-primary-light: lighten(desaturate($color-primary, 20%), 20%);
 
+$color-secondary: #104080;
+$color-secondary-dark: darken(desaturate($color-secondary, 20%), 20%);
+$color-secondary-light: lighten(desaturate($color-secondary, 20%), 20%);
+
+$color-green: #208030;
+$color-green-dark: darken(desaturate($color-green, 10%), 10%);
+$color-green-light: lighten(desaturate($color-green, 20%), 20%);
+
 $color-foreground: #444444;
 $color-high: #ffffff;
 $color-deep: #000000;
 $color-chalk: #dddddd;
 $color-beton: #bbbbbb;
 $color-dark: #999999;
+
+$color-ring0: #93c47d;
+$color-ring1: #93d2c2;
+$color-ring2: #fbdb84;
+$color-ring3: #efafa9;

@@ -1,0 +1,8 @@
+<div class="inner">
+    <a class="open" data-version="">${radar.dataSource.selectedRadar.label}</a>
+    ${ radar.dataSource.radarIndex.map((r,i) => radarTemplate({scope:{
+        index: i,
+        radar: r,
+        versionTemplate: versionTemplate
+    }})).join('') }
+</div>

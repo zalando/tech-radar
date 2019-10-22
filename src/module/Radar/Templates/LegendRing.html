@@ -1,0 +1,8 @@
+<div class="ring-block" data-ring="${index}">
+    <h2>${ring.label}</h2>
+    <ul>
+        ${ dots.map( (d,i) => dotTemplate( {scope:{
+            dot: d
+        }} )).join('') }
+    </ul>
+</div>

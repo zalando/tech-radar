@@ -5,7 +5,7 @@
 
   &:before {
     position: absolute;
-    content: attr(data-name);
+    content: attr(data-label);
     text-align: center;
     width: 100%;
     font-size: 40px;

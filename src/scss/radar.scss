@@ -9,6 +9,7 @@
 @import "./mixins/responsive.scss";
 @import "./mixins/typo.scss";
 @import "./mixins/colors.scss";
+@import "./mixins/modal.scss";
 
 @import "./components/base.scss";
 @import "./components/splash.scss";
@@ -16,5 +17,6 @@
 @import "./components/menu.scss";
 @import "./components/fork.scss";
 @import "./components/print.scss";
+@import "./components/auth.scss";
 @import "./components/radar.scss";
 @import "./components/page.scss";

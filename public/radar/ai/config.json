@@ -1,0 +1,51 @@
+{
+    "id": "ai",
+    "foldername": "ai",
+    "atime": "at1571496874955",
+    "mtime": "mt1571496870618",
+    "ctime": "ct1571496870618",
+    "label": "A.I.",
+    "theme": "forest",
+    "default": false,
+    "version": "2019.09",
+    "seed": {
+        "from": 20,
+        "to": 50
+    },
+    "dot": {
+        "offset_x": 100,
+        "offset_y": 100
+    },
+    "quadrants": [
+        {
+            "label": "Mechanics"
+        },
+        {
+            "label": "Tools"
+        },
+        {
+            "label": "DevOps / Infrastructure"
+        },
+        {
+            "label": "Platforms / Backend"
+        }
+    ],
+    "rings": [
+        {
+            "label": "ADOPT",
+            "color": "#93c47d"
+        },
+        {
+            "label": "TRIAL"
+        },
+        {
+            "label": "ASSESS"
+        },
+        {
+            "label": "HOLD"
+        }
+    ],
+    "versions": [
+        "2019.09"
+    ]
+}

@@ -1,0 +1,8 @@
+<div class="radar" data-radar-id="${radar.id}">
+    <a class="label">${radar.label}</a>
+    ${ radar.versions.map((v,i) => versionTemplate({scope:{
+        radar: radar,
+        index: i,
+        version: v
+    }})).join('') }
+</div>

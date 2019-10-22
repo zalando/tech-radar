@@ -33,7 +33,7 @@ export default class extends Module {
         const s = this.hash.split('/');
         // @TODO customizable per data index : field number 0 and 1
         // raw data, not checked
-        // here before dataIndex
+        // here before radarIndex
         this.id = s[this.idField].replace(/#/, '');
         this.version = s[this.versionField];
         console.log('>>>', this.label.padStart(15,' '), '>', 'PARSE HASH: ID', this.id, 'VERSION', this.version);

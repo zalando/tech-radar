@@ -1,0 +1,47 @@
+{
+    "id": "devops",
+    "foldername": "devops",
+    "atime": "at1571479561063",
+    "mtime": "mt1571479560376",
+    "ctime": "ct1571479560376",
+    "label": "Devops",
+    "seed": {
+        "from": 20,
+        "to": 50
+    },
+    "dot": {
+        "offset_x": 100,
+        "offset_y": 100
+    },
+    "quadrants": [
+        {
+            "label": "A.I."
+        },
+        {
+            "label": "Frontend / Web"
+        },
+        {
+            "label": "DevOps / Infrastructure"
+        },
+        {
+            "label": "Platforms / Backend"
+        }
+    ],
+    "rings": [
+        {
+            "label": "ADOPT"
+        },
+        {
+            "label": "TRIAL"
+        },
+        {
+            "label": "ASSESS"
+        },
+        {
+            "label": "HOLD"
+        }
+    ],
+    "versions": [
+        "2019.09"
+    ]
+}

@@ -20,8 +20,11 @@ body {
     width: 100px;
     height: 100px;
     line-height: 100px;
-    border-radius: 50px;
-    background-color: $color-high;
+    border-radius: 60px;
+    box-shadow: 0 0 200px $color-high;
+    border: 10px solid $color-high;
+    background-color: $color-primary;
+    color: $color-high;
     left: calc(50% - 50px);
     top: calc(50% - 50px);
     transition: all 1s ease-in-out;
@@ -33,18 +36,43 @@ body {
       content: 'loading...';
       opacity: 1;
       transition: all 1s ease-in-out;
-      box-shadow: 0 0 200px $color-deep;
-      border: 2px solid $color-dark;
+      box-shadow: 0 0 50px $color-high;
+      border: 10px solid $color-high;
+      background-color: $color-primary;
+      color: $color-high;
+      font-weight: 800;
     }
 
     &:after {
-      content: '*';
       position: absolute;
-      width: 150px;
-      height: 150px;
-      left: calc(50% - 75px);
-      top: calc(50% - 75px);
-      color: $color-primary;
+      content: '*';
+      font-family: arial;
+      width: 300px;
+      font-size: 800px;
+      line-height: 650px;
+      height: 300px;
+      margin-left: -150px;
+      margin-top: -140px;
+
+      left: calc(50%);
+      top: calc(50%);
+      color: $color-primary-dark;
+      text-align: center;
+      animation: infinite-rotation 3s linear infinite;
+      transform-origin: center center;
+      display: block;
+      overflow: hidden;
+      opacity: 1;
+
+      @keyframes infinite-rotation {
+        0% {
+          transform: rotate(0);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     }
 
     .radar {

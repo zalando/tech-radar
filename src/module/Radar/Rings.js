@@ -29,7 +29,7 @@ export default class extends Module {
                 radar: this.radar,
                 options: {
                     index: i,
-                    ...this.radar.config.rings[i],
+                    ...this.radar.selectedRadar.rings[i],
                     radius: r.radius
                 }
             });

@@ -67,7 +67,7 @@ export default class extends Module {
     }
 
     draw() {
-        d3.forceSimulation(this.items)
+        this.simulation = d3.forceSimulation(this.items)
             .velocityDecay(this.velocityDecay) // magic number (found by experimentation)
             .force("collision", d3.forceCollide().radius(16).strength(1))
             .on("tick", () => {

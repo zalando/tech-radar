@@ -7,19 +7,17 @@ export default class extends Module {
 
         this.radar = args.radar;
         this.radius = args.options.radius;
-        this.name = args.options.name;
+        this.label = args.options.label;
         this.color = args.options.color;
         this.index = this.options.index;
 
         this.target = document.createElement('div');
         this.target.className = 'ring';
-        this.target.setAttribute('data-name',this.name);
+        this.target.setAttribute('data-label',this.label);
         this.draw();
     }
 
     draw(){
-
-
         const width = this.radar.target.getBoundingClientRect().width;
         const height = this.radar.target.getBoundingClientRect().height;
         this.target.style.width = `${this.radius * 2}px`;
