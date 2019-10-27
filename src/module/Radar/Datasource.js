@@ -7,41 +7,27 @@ export default class extends Module {
 
         return new Promise((resolve, reject) => {
             this.label = 'DATASOURCE';
+
             this.radar = args;
             this.saltnpepper = 'push-it';
             this.storage_prefix = 'techradar_';
             this.storage = localStorage;
             this.cache_age = 0;
 
-            const radarOptions = window.RADAROPTIONS;
-
             this.serverMode = this.radar.serverMode;
-            this.protocol = radarOptions.protocol || 'http';
-            this.host = radarOptions.host || 'localhost';
-            this.port = radarOptions.port || 8200;
-            this.apiVersion = radarOptions.apiVersion || 'v1';
+            this.protocol = this.radar.options.protocol;
+            this.host =  this.radar.options.host;
+            this.port =  this.radar.options.port;
+            this.apiVersion =  this.radar.options.apiVersion;
 
             //
-            if (this.serverMode === true) {
-                this.baseUrl = `${this.protocol}://${this.host}`;
-                if (this.port)
-                    this.baseUrl += `:${this.port}`;
-
-                this.baseUrl += `/${this.apiVersion}`;
-                this.radarIndexUrl = `${this.baseUrl}/radar`;
-            } else {
-                this.baseUrl = `${document.location.origin}`;
-                if (document.location.pathname !== '/')
-                    this.baseUrl += `${document.location.pathname}`;
-
-                this.radarIndexUrl = `${this.baseUrl}/radar/index.json`;
-            }
-
             this.radarIndex = false;     // the index of all ids
             this.defaultRadar = false;
             this.selectedRadar = false;
             this.radarVersion = false;
-            this.data = false;          // the dots data
+            this.data = false;           // the dots data
+
+            this.buildBaseUrl();
 
             this
                 .getDataIndex()
@@ -91,7 +77,6 @@ export default class extends Module {
         document.querySelector('body').classList.add('loading');
 
         return new Promise((resolve, reject) => {
-            //this.radarVersion = version;
             this.getConfig()
                 .then(config => {
                     this.selectedRadar = config;
@@ -232,5 +217,42 @@ export default class extends Module {
         } catch (e) {
             console.log('>>>', this.label.padStart(15, ' '), '>', 'ERROR', e);
         }
+    }
+
+    buildBaseUrl(){
+        let baseUrl;
+        const loc = document.location;
+
+        if (this.serverMode === true) {
+            baseUrl = `${this.protocol}://${this.host}`;
+            if (loc.port)
+                baseUrl += `:${loc.port}`;
+
+            baseUrl += `/${this.apiVersion}`;
+        } else {
+            baseUrl = `${document.location.origin}`;
+            if (document.location.pathname !== '/')
+                baseUrl += `${document.location.pathname}`;
+        }
+        this.baseUrl = baseUrl;
+    }
+
+    buildRadarIndexUrl(){
+        this.serverMode ? this.radarIndexUrl = `${this.baseUrl}/radar` : this.radarIndexUrl = `${this.baseUrl}/radar/index.json`;
+    }
+
+    set serverMode(val){
+        this._serverMode = val;
+    }
+    get serverMode(){
+        return this._serverMode;
+    }
+
+    set baseUrl(val){
+        this._baseUrl = val;
+        this.buildRadarIndexUrl();
+    }
+    get baseUrl(){
+        return this._baseUrl;
     }
 }

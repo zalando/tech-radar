@@ -82,6 +82,7 @@ module.exports = class extends ConfigClass {
                 contentBase: ['public', 'dist/dev'],
                 publicPath: '/',
                 compress: true,
+                host: '0.0.0.0',
                 port: 9000,
                 headers: {
                     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",

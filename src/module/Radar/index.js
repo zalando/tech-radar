@@ -1,4 +1,5 @@
 import Module from "../../Module";
+import * as R from '../../Ramda.js';
 import Datasource from "./Datasource";
 import Dots from './Dots.js';
 import Fork from './Fork.js';
@@ -15,19 +16,22 @@ import DatasetForm from './Form/Dataset.js';
 import PageTemplate from './Templates/Page.html';
 
 export default class extends Module {
-    constructor(args) {
+    constructor(options) {
         super();
         return new Promise((resolve, reject) => {
             this.label = 'RADAR';
 
-            // set the server mode on or off here
-            // or with a window global variable RADAROPTIONS.serverMode
-            this.serverMode = false;
-            if(window.RADAROPTIONS)
-                if(window.RADAROPTIONS.serverMode)
-                    this.serverMode = RADAROPTIONS.serverMode;
+            this.defaults = {
+                serverMode : false,
+                protocol: document.location.protocol,
+                host: document.location.hostname,
+                port: document.location.port,
+                apiVersion: 'v1'
+            };
+            options ? this.options = R.merge(this.defaults, options) : this.options = this.defaults;
+            this.options.serverMode ? this.serverMode = this.options.serverMode : this.serverMode = false;
 
-            this.controls = new Controls(this);
+            this.controls = new Controls(this); // for the url hash
 
             // init the datasource
             // AND get the data index
@@ -36,13 +40,9 @@ export default class extends Module {
             new Datasource(this)
                 .then(datasource => {
                     this.dataSource = datasource;
-                    this.selectedRadar = this.dataSource.selectedRadar;     // empty on init
-                    this.data = this.dataSource.data;                       // empty on init
-
-                    // we need the data index
                     this.menu = new Menu(this);
 
-                    // only in server mode some element will be available
+                    // adding authentication in server mode
                     if (this.dataSource.serverMode === true) {
                         this.auth = new Auth(this);
                         this.auth.on('login', () => {
@@ -223,10 +223,7 @@ export default class extends Module {
             this.emit('style-loaded');
     }
 
-
     selectVersion(id, version) {
-        console.log('????????', id, version);
-
         if (!id)
             id = this.controls.id;
         if (!version)
