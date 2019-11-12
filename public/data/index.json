@@ -4,8 +4,8 @@
     "label": "Neofonie",
     "default": true,
     "cache_age": 0,
-    "version": "2019.09",
-    "versions": ["2019.09", "2019.05"]
+    "version": "2019.10",
+    "versions": ["2019.10", "2019.05"]
   },
   {
     "id": "frontend",
@@ -16,19 +16,19 @@
   {
     "id": "ai",
     "label": "A.I. / Machine Learning",
-    "version": "2019.09",
-    "versions": ["2019.09"]
+    "version": "2019.10",
+    "versions": ["2019.10"]
   },
   {
     "id": "backend",
     "label": "Backend / Platforms",
-    "version": "2019.09",
-    "versions": ["2019.09"]
+    "version": "2019.10",
+    "versions": ["2019.10"]
   },
   {
     "id": "devops",
     "label": "DevOps / Infrastructure",
-    "version": "2019.09",
-    "versions": ["2019.09"]
+    "version": "2019.10",
+    "versions": ["2019.10"]
   }
 ]

@@ -55,7 +55,7 @@ The `/docs` folder is only for github pages.
 - any data group is represented by a folder like `public/data/neofonie/`
 - in this folder there is a config file for the group `public/data/neofonie/config.json`
 - any group can have unlimited datasets.
-- the dataset filename without the file extension must be an entry in `public/data/index.json` in `"versions": ["2019.09", "2019.05"]`
+- the dataset filename without the file extension must be an entry in `public/data/index.json` in `"versions": ["2019.10", "2019.05"]`
 
 ## The Theme
 - take a look in the webpack config, there are multiple entry points for the css

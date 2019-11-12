@@ -3,23 +3,23 @@
     "id": "ai",
     "label": "A.I. / Machine Learning",
     "default": false,
-    "version": "2019.09",
+    "version": "2019.10",
     "versions": [
-      "2019.09"
+      "2019.10"
     ]
   },
   {
     "id": "backend",
     "label": "Backend / Platforms",
     "versions": [
-      "2019.09"
+      "2019.10"
     ]
   },
   {
     "id": "devops",
     "label": "Devops / Infrastructure",
     "versions": [
-      "2019.09"
+      "2019.10"
     ]
   },
   {
@@ -33,10 +33,10 @@
     "id": "neofonie",
     "label": "Neofonie",
     "is_default": true,
-    "version": "2019.09",
+    "version": "2019.10",
     "versions": [
       "2019.05",
-      "2019.09"
+      "2019.10"
     ]
   }
 ]

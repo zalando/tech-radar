@@ -7,7 +7,7 @@
     "label": "A.I.",
     "theme": "forest",
     "default": false,
-    "version": "2019.09",
+    "version": "2019.10",
     "seed": {
         "from": 20,
         "to": 50
@@ -46,6 +46,6 @@
         }
     ],
     "versions": [
-        "2019.09"
+        "2019.10"
     ]
 }
