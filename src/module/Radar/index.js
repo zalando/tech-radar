@@ -13,7 +13,7 @@ import Controls from './Controls.js';
 import Auth from './Auth.js';
 import RadarForm from './Form/Radar.js';
 import DatasetForm from './Form/Dataset.js';
-import PageTemplate from './Templates/Page.html';
+import DescriptionTemplate from './Templates/Description.html';
 
 export default class extends Module {
     constructor(options) {
@@ -78,24 +78,21 @@ export default class extends Module {
             const splash = document.createElement('div');
             splash.id = 'splash';
             splash.className = 'splash';
-            document.querySelector('body').append(splash);
+            document.querySelector('main').append(splash);
 
             // the radar target element
             const target = document.createElement('div');
             target.id = 'radar';
             target.className = 'radar';
-            document.querySelector('body').append(target);
+            document.querySelector('main').append(target);
             this.target = document.getElementById('radar');
 
             // the page content after the radar
-            const pageTemplate = PageTemplate({
-                scope: {}
-            });
-            const page = document.createElement('div');
-            page.id = 'page';
-            page.className = 'page';
-            page.innerHTML = pageTemplate;
-            document.querySelector('body').append(page);
+            const descriptionTemplate = DescriptionTemplate();
+            const description = document.createElement('div');
+            description.className = 'description';
+            description.innerHTML = descriptionTemplate;
+            document.querySelector('main').append(description);
 
             // if a new style was loaded
             this.on('style-loaded', () => {
