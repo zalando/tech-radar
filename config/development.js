@@ -74,6 +74,7 @@ module.exports = class extends ConfigClass {
                     },
                 ],
             },
+
             plugins : [
                 new StyleLintPlugin()
             ],

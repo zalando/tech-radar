@@ -36,7 +36,9 @@ export default class extends Module {
         this.target = document.getElementById('menu');
 
         this.openButton = this.target.querySelector('.open');
-        this.openButton.onclick = e => this.toggle(e);
+
+        // disable for now until version selection is handled correctly, issue #29
+        //this.openButton.onclick = e => this.toggle(e);
 
         this.versionButtons = this.target.querySelectorAll('.version');
         this.versionButtons.forEach(versionButton => versionButton.onclick = e => this.selectVersion(e));

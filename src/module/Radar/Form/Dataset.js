@@ -35,7 +35,6 @@ export default class extends Module {
             this.datasetModal.querySelector('button.cancel').onclick = (e) => {
                 this.close(e);
             };
-            console.log('>>>');
         }
     }
 

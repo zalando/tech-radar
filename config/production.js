@@ -72,8 +72,6 @@ module.exports = class extends ConfigClass {
                 {
                     apply: (compiler) => {
                         compiler.hooks.afterEmit.tap('Complete', (compilation) => {
-                            console.log('>>> HOOKED');
-
                             fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
                             fs.copySync(`${this.appPath}/dist/prod`, `${this.appPath}/docs`);
 
@@ -107,9 +105,6 @@ const pathReplace = (replaceFrom, replaceTo, replaceFile) => {
             console.error('>>> ERROR', err);
         });
         proc.stdout.on('data', (data) => {
-            console.log(data.toString());
-        });
-        proc.stderr.on('data', (data) => {
             console.log(data.toString());
         });
     }, 2000);
