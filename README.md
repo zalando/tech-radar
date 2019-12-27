@@ -2,7 +2,7 @@
 
 At [Zalando](http://zalando.de), we maintain a [public Tech
 Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
-align on technology choices. Is is based on the [pioneering work
+align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
 This repository contains the code to generate the visualization:
