@@ -1,0 +1,101 @@
+Quadrant,Quadrant_Number,Ring,Ring_Number,Active,Name,Link,Moved,Moved_Number,Notes
+Data Management,3,Adopt,0,TRUE,AWS EMR,../data_processing/aws_emr.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Spark,../data_processing/spark.html,Down,-1,Needs review
+Data Management,3,Hold,3,TRUE,Airflow,../data_processing/airflow.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,AWS Data Pipeline,../data_processing/aws_data_pipeline.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Flink,../data_processing/flink.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Google BigQuery,../data_processing/google_bigquery.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Presto,../data_processing/presto.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Hadoop,../data_processing/hadoop.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,YARN,../data_processing/yarn.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Esper,../data_processing/esper.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,AWS S3,../datastores/aws_s3.html,Static,0,Needs review
+Data Management,3,Assess,2,TRUE,Cassandra,../datastores/cassandra.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Elasticsearch,../datastores/elasticsearch.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,etcd,../datastores/etcd.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,PostgreSQL,../datastores/postgresql.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Redis,../datastores/redis.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Solr,../datastores/solr.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,AWS DynamoDB,../datastores/aws_dynamodb.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,HDFS,../datastores/hdfs.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Consul,../datastores/consul.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Google Bigtable,../datastores/google_bigtable.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,RocksDB,../datastores/rocksdb.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Aerospike,../datastores/aerospike.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,CouchBase,../datastores/couchbase.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,HBase,../datastores/hbase.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Memcached,../datastores/memcached.html,Static,0,Needs review
+Data Management,3,Trial,1,TRUE,MongoDB,../datastores/mongodb.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,MySQL,../datastores/mysql.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Oracle DB,../datastores/oracle_db.html,Static,0,Needs review
+Data Management,3,Trial,1,TRUE,ZooKeeper,../datastores/zookeeper.html,Static,0,Needs review
+Frameworks,2,Trial,1,TRUE,Akka (Scala),../frameworks/akka_scala.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,Node.js,../frameworks/nodejs.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Play (Scala),../frameworks/play_scala.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,ReactJS,../frameworks/reactjs.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,RxJava (Android),../frameworks/rxjava_android.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,scikit-learn,../frameworks/scikit_learn.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,Spring,../frameworks/spring.html,Static,0,Needs review
+Frameworks,2,Trial,1,TRUE,Akka-Http,../frameworks/akka_http.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Angular,../frameworks/angular.html,Static,0,Needs review
+Frameworks,2,Trial,1,TRUE,AspectJ,../frameworks/aspectj.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Camel,../frameworks/camel.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Camunda,../frameworks/camunda.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,OpenNLP,../frameworks/opennlp.html,Static,0,Needs review
+Frameworks,2,Assess,2,TRUE,TensorFlow,../frameworks/tensorflow.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,Thymeleaf,../frameworks/thymeleaf.html,Static,0,Needs review
+Frameworks,2,Assess,2,TRUE,Aurelia,../frameworks/aurelia.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Ember.js,../frameworks/emberjs.html,Static,0,Needs review
+Frameworks,2,Assess,2,TRUE,gRPC,../frameworks/grpc.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,Http4s,../frameworks/http4s.html,Static,0,Needs review
+Frameworks,2,Adopt,0,TRUE,jOOQ,../frameworks/jooq.html,Static,0,Needs review
+Frameworks,2,Adopt,0,FALSE,Redux,../frameworks/redux.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Vert.x,../frameworks/vertx.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Vue.js,../frameworks/vuejs.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Activiti,../frameworks/activiti.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,AngularJS 1.x,../frameworks/angularjs_1x.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,BackboneJS,../frameworks/backbonejs.html,Static,0,Needs review
+Frameworks,2,Assess,2,TRUE,Drools,../frameworks/drools.html,Static,0,Needs review
+Frameworks,2,Hold,3,TRUE,Spray,../frameworks/spray.html,Static,0,Needs review
+Infrastructure,1,Adopt,0,TRUE,Docker,../infrastructure/docker.html,Static,0,Needs review
+Infrastructure,1,Assess,2,TRUE,Hystrix,../infrastructure/hystrix.html,Static,0,Needs review
+Infrastructure,1,Assess,2,TRUE,Kubernetes,../infrastructure/kubernetes.html,Static,0,Needs review
+Infrastructure,1,Adopt,0,TRUE,Nginx,../infrastructure/nginx.html,Static,0,Needs review
+Infrastructure,1,Assess,2,TRUE,OpenTracing,../infrastructure/opentracing.html,Static,0,Needs review
+Infrastructure,1,Hold,3,TRUE,Tomcat,../infrastructure/tomcat.html,Static,0,Needs review
+Infrastructure,1,Hold,3,TRUE,ZMON,../infrastructure/zmon.html,Static,0,Needs review
+Infrastructure,1,Adopt,0,TRUE,Failsafe,../infrastructure/failsafe.html,Static,0,Needs review
+Infrastructure,1,Adopt,0,TRUE,Undertow,../infrastructure/undertow.html,Static,0,Needs review
+Infrastructure,1,Adopt,0,TRUE,AWS Lambda,../infrastructure/aws_lambda.html,Static,0,Needs review
+Infrastructure,1,Hold,3,TRUE,STUPS,../infrastructure/stups.html,Static,0,Needs review
+Languages,0,Trial,1,TRUE,Go,../languages/go.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,Java,../languages/java.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,JavaScript,../languages/javascript.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,OpenAPI (Swagger),../languages/openapi_swagger.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,Python,../languages/python.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,Scala,../languages/scala.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Swift,../languages/swift.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Clojure,../languages/clojure.html,Static,0,Needs review
+Languages,0,Trial,1,TRUE,GraphQL,../languages/graphql.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Haskell,../languages/haskell.html,Static,0,Needs review
+Languages,0,Assess,2,TRUE,Kotlin,../languages/kotlin.html,Static,0,Needs review
+Languages,0,Adopt,0,TRUE,TypeScript,../languages/typescript.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Elm,../languages/elm.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,R,../languages/r.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Rust,../languages/rust.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,C languages,../languages/c_languages.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,CoffeeScript,../languages/coffeescript.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Erlang,../languages/erlang.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Groovy,../languages/groovy.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,.NET languages,../languages/net_languages.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Perl,../languages/perl.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,PHP,../languages/php.html,Static,0,Needs review
+Languages,0,Hold,3,TRUE,Ruby,../languages/ruby.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,AWS SNS,../queues/aws_sns.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,AWS SQS,../queues/aws_sqs.html,Static,0,Needs review
+Data Management,3,Adopt,0,TRUE,Kafka,../queues/kafka.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,Nakadi,../queues/nakadi.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,RabbitMQ,../queues/rabbitmq.html,Static,0,Needs review
+Data Management,3,Assess,2,TRUE,AWS Kinesis,../queues/aws_kinesis.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,ActiveMQ,../queues/activemq.html,Static,0,Needs review
+Data Management,3,Hold,3,TRUE,HornetQ,../queues/hornetq.html,Static,0,Needs review

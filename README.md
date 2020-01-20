@@ -1,80 +1,27 @@
 # Motivation
 
-At [Zalando](http://zalando.de), we maintain a [public Tech
-Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
-align on technology choices. It is based on the [pioneering work
+At KTech, we are working towards maintaining a Tech
+Radar to help our engineering teams align on technology choices.
+It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
-This repository contains the code to generate the visualization:
-[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
-Feel free to use and adapt it for your own purposes.
+This repository contains an adaptation of the open source version of
+[Zalando's tech radar](https://github.com/zalando/tech-radar).
 
-## Usage
+## To run
 
-1. include `d3.js` and `radar.js`:
+    docker-compose up
 
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.5.js"></script>
-```
-
-2. insert an empty `svg` tag:
-
-```html
-<svg id="radar"></svg>
-```
-
-3. configure the radar visualization:
-
-```js
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
-  ],
-  print_layout: true,
-  entries: [
-   {
-      label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
-      ring: 2,              // 0,1,2,3 (starting from inside)
-      moved: -1             // -1 = moved out (triangle pointing down)
-                            //  0 = not moved (circle)
-                            //  1 = moved in  (triangle pointing up)
-   },
-    // ...
-  ]
-});
-```
-
-Entries are positioned automatically so that they don't overlap.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://zalando.github.io/tech-radar/).
+You can then view the radar on http://localhost:8080
 
 ## Local Development
+
+This uses tbe browser-sync npm-based tool for auto-reloading when you modify the code.
 
 1. install dependencies with yarn (or npm):
 
 ```
-yarn 
+yarn
 ```
 
 2. start local dev server:
@@ -84,10 +31,33 @@ yarn start
 ```
 
 3. your default browser should automatically open and show the url
- 
+
 ```
 http://localhost:3000/
 ```
+
+## Backlog
+
+### Tech backlog
+
+* TODO Build pipeline
+* TODO Rewrite this PoC (the necessary bits) into the forked Zalando codebase
+* TODO Refactor Flask configuration to serve static assets more gracefully.
+* TODO Figure out how to set up the links to the tech-specific pages.
+* TODO Decide on final architecture; do we want to retrieve entries.json from somewhere else, for example?
+* TODO Terraform to host this in AWS, including a nice URL and probably an ECS container.
+* TODO Production configuration
+* TODO Tests
+* TODO Refactor to use Node/Express/Koa?
+* TODO Find out what the "ACTIVE" column does!
+* TODO Get a front end engineer and a designer to make the index page more exciting and branded properly.
+
+### Process and culture backlog
+
+* TODO Formulate a process for managing and updating the radar within EPG.
+* TODO Write an RFC and any other accompanying documentation.
+* TODO Decide on which quadrants we want to use
+* TODO Decide how/when we "drop" blips off the radar
 
 ## License
 
