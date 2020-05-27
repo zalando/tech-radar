@@ -58,7 +58,7 @@
     {
         "quadrant": 0,
         "ring": 0,
-        "label": "Language Models (Bert, Flair)",
+        "label": "Bert, Flair",
         "active": false,
         "moved": 1
     },
