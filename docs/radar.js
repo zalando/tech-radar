@@ -305,6 +305,14 @@ function radar_visualization(config) {
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
+            .append("a")
+                .attr("xlink:href", function (d, i) {
+                  return d.url ? "#" : null; // it's better to open new window so we provide # as url to stay on same page
+                })
+                .on("click", function (d) {
+                  // let's open new tab/window instead of redirecting off the radar
+                  window.open(d.url, "_blank");
+                })
             .append("text")
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
