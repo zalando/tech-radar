@@ -12,7 +12,7 @@ module.exports = class extends ConfigClass {
             target: 'web',
             entry: {
                 radar: './src/app.js',
-                default: './src/scss/radar.scss',
+                default: './src/scss/app.scss',
                 print: './src/scss/print.scss',
                 dark: './src/scss/dark.scss',
                 forest: './src/scss/forest.scss'
@@ -75,8 +75,8 @@ module.exports = class extends ConfigClass {
                             fs.copySync(`${this.appPath}/public/`, `${this.appPath}/dist/prod`);
                             fs.copySync(`${this.appPath}/dist/prod`, `${this.appPath}/docs`);
 
-                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/radar.css`);
-                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/radar.css`);
+                            pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/app.css`);
+                            pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/app.css`);
                             pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/dark.css`);
                             pathReplace('/images', '/tech-radar/images', `${this.appPath}/docs/css/dark.css`);
                             pathReplace('/css', '/tech-radar/css', `${this.appPath}/docs/css/forest.css`);
