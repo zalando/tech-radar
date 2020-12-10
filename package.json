@@ -1,9 +1,9 @@
 {
-  "name": "zalando-tech-radar",
+  "name": "bidroom-tech-radar",
   "version": "2018.5.0",
   "description": "Visualizing our technology choices",
-  "homepage": "https://github.com/zalando/tech-radar#readme",
-  "repository": "https://github.com/zalando/tech-radar.git",
+  "homepage": "https://github.com/Bidroombv/tech-radar#readme",
+  "repository": "https://github.com/Bidroombv/tech-radar.git",
   "license": "MIT",
   "directories": {
     "doc": "docs"
