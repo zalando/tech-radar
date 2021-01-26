@@ -305,6 +305,10 @@ function radar_visualization(config) {
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
+            .append("a")
+                .attr("href", function (d, i) {
+                  return d.link ? d.link : "#"; // stay on same page if no link was provided
+                })
             .append("text")
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
