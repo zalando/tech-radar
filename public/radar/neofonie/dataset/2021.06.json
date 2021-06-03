@@ -585,10 +585,10 @@
     },
     {
         "quadrant": 2,
-        "ring": 1,
+        "ring": 3,
         "label": "Zabbix",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 2,
@@ -599,10 +599,10 @@
     },
     {
         "quadrant": 2,
-        "ring": 1,
+        "ring": 2,
         "label": "Harbor",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 2,
@@ -646,6 +646,13 @@
         "label": "Consul",
         "active": false,
         "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 1,
+        "label": "Terraform",
+        "active": false,
+        "moved": 1
     },
     {
         "quadrant": 3,
