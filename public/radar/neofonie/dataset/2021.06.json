@@ -832,10 +832,10 @@
     },
     {
         "quadrant": 3,
-        "ring": 1,
-        "label": "Rx.Java",
+        "ring": 2,
+        "label": "Micronaut",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 3,
