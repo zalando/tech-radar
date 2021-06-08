@@ -805,7 +805,14 @@
     {
         "quadrant": 3,
         "ring": 2,
-        "label": "ez Platform",
+        "label": "Ibexa",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 2,
+        "label": "Shopify",
         "active": false,
         "moved": 1
     },
