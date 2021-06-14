@@ -4,7 +4,7 @@
         "ring": 0,
         "label": "Elasticsearch",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
@@ -736,14 +736,14 @@
         "ring": 0,
         "label": "Symfony",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,
         "ring": 1,
         "label": "smarty",
         "active": false,
-        "moved": -1
+        "moved": 0
     },
     {
         "quadrant": 3,
@@ -778,7 +778,7 @@
         "ring": 0,
         "label": "twig",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,

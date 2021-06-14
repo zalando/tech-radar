@@ -107,7 +107,6 @@
     font-weight: 900;
   }
 
-
   &.r0 {
     background-color: $color-ring0;
   }
@@ -124,5 +123,17 @@
     background-color: $color-ring3;
   }
 
+  &-moved {
+    &-1 {
+      &:after {
+        content: "▲";
+      }
+    }
 
+    &--1 {
+      &:after {
+        content: "▼";
+      }
+    }
+  }
 }
