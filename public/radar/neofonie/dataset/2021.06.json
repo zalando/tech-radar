@@ -2,7 +2,49 @@
     {
         "quadrant": 0,
         "ring": 0,
-        "label": "Amazon Sagemaker",
+        "label": "Elasticsearch",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Apache SOLR",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "TXTWerk",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Flair, Bert and other LMs",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "OpenNLP, Spacy",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Keras, Tensorflow",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Scrapy",
         "active": false,
         "moved": 0
     },
@@ -16,51 +58,23 @@
     {
         "quadrant": 0,
         "ring": 0,
-        "label": "Apache SOLR",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Keras",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "OpenNLP",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Scala",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Scrapy",
+        "label": "Jupyter/Colab",
         "active": false,
         "moved": 1
     },
     {
         "quadrant": 0,
         "ring": 0,
-        "label": "txtwerk",
+        "label": "Python/Java/Scala",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 0,
-        "ring": 0,
-        "label": "Bert, Flair",
+        "ring": 1,
+        "label": "Apache Sagemaker",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
@@ -79,28 +93,21 @@
     {
         "quadrant": 0,
         "ring": 1,
-        "label": "Apache Zeppelin",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 1,
-        "label": "Jupyter",
-        "active": false,
-        "moved": 1
-    },
-    {
-        "quadrant": 0,
-        "ring": 1,
-        "label": "TensorFlow",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 1,
         "label": "AWS ML / Lambda",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Stanza NLP",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Apache Airflow",
         "active": false,
         "moved": 1
     },
@@ -114,28 +121,7 @@
     {
         "quadrant": 0,
         "ring": 2,
-        "label": "Stanza NLP",
-        "active": false,
-        "moved": 1
-    },
-    {
-        "quadrant": 0,
-        "ring": 2,
-        "label": "Deeplearning4j",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 2,
         "label": "Fast.AI",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 2,
-        "label": "Google Cloud AI&ML",
         "active": false,
         "moved": 0
     },
@@ -149,6 +135,13 @@
     {
         "quadrant": 0,
         "ring": 2,
+        "label": "Google Cloud AI&ML",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
         "label": "PyTorch",
         "active": false,
         "moved": 0
@@ -156,7 +149,14 @@
     {
         "quadrant": 0,
         "ring": 2,
-        "label": "Spacy",
+        "label": "Virtuoso",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Ontotext GraphDB",
         "active": false,
         "moved": 0
     },
@@ -177,6 +177,13 @@
     {
         "quadrant": 0,
         "ring": 3,
+        "label": "R",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
         "label": "Clojure",
         "active": false,
         "moved": 0
@@ -184,25 +191,10 @@
     {
         "quadrant": 0,
         "ring": 3,
-        "label": "Ontotext GraphDB",
+        "label": "Deeplearning4j",
         "active": false,
         "moved": 0
     },
-    {
-        "quadrant": 0,
-        "ring": 3,
-        "label": "Virtuoso",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 3,
-        "label": "R",
-        "active": false,
-        "moved": -1
-    },
-
     {
         "quadrant": 1,
         "ring": 0,
