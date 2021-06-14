@@ -544,6 +544,20 @@
     {
         "quadrant": 2,
         "ring": 0,
+        "label": "AWS",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Graylog",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
         "label": "Debian",
         "active": false,
         "moved": 0
