@@ -9,9 +9,10 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.27.7",
     "eslint": "^5.7.0",
-    "htmllint": "^0.7.2"
+    "htmllint": "^0.7.2",
+    "socket.io": "^4.4.1"
   },
   "scripts": {
     "start": "browser-sync docs -w",
