@@ -48,7 +48,7 @@ function radar_visualization(config) {
     { radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1 }
   ];
 
-  const rings = config.rings.map((ring, i) => ({ radius: 140 + (100 * i)}))
+  const rings = config.rings.map((ring, i) => ({ radius: 140 + (75 * i)}))
   const RING_COUNT = rings.length;
 
   const title_offset =
@@ -253,7 +253,7 @@ function radar_visualization(config) {
   }
 
   function legendTransform(quadrant, ring, index=null) {
-    let dx = ring < 2 ? 0 : 120;
+    let dx = ring < 2 ? 0 : 160;
     let dy = (index == null ? -16 : index * 12);
     if (ring % 2 === 1) {
       dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
