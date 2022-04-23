@@ -1,0 +1,249 @@
+<html>
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Invoca Front End Tech Radar</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="radar.js"></script>
+
+<link rel="stylesheet" href="radar.css">
+</head>
+
+<body>
+  <header>
+    <img src="logo.png" height="30px" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Main Tech Radar</a></li>
+        <li>Front End Tech Radar</li>
+      </ul>
+    </nav>
+  </header>
+
+<svg id="radar"></svg>
+
+<script>
+radar_visualization({
+  svg_id: "radar",
+  width: 1450,
+  height: 1000,
+  colors: {
+    background: "#fff",
+    grid: "#bbb",
+    inactive: "#ddd"
+  },
+  title: "Invoca Front End Tech Radar",
+  quadrants: [
+    { name: "Frameworks" },
+    { name: "Languages" },
+    { name: "Libraries" },
+    { name: "Testing" }
+  ],
+  rings: [
+    { name: "ADOPT", color: "#93c47d" },
+    { name: "TRIAL", color: "#fbdb84" },
+    { name: "ASSESS", color: "#efafa9" },
+    { name: "HOLD", color: "#d33030" }
+  ],
+  print_layout: true,
+  //ENTRIES
+  entries: [
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "React",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 0,
+        ring: 0,
+        label: "Titan",
+        active: true,
+        moved: 1
+      },
+      {
+        quadrant: 0,
+        ring: 3,
+        label: "Backdraft",
+        active: true,
+        moved: -1
+      },
+      {
+        quadrant: 1,
+        ring: 0,
+        label: "JavaScript",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 1,
+        ring: 3,
+        label: "CoffeeScript",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 1,
+        ring: 2,
+        label: "TypeScript",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "jQuery",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Underscore",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 2,
+        label: "Lodash",
+        active: true,
+        moved: -1
+      },
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "Apollo",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 0,
+        label: "D3",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "Grunt",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 2,
+        ring: 3,
+        label: "Moment",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Jasmine",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 3,
+        ring: 3,
+        label: "Karma",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Jest",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 3,
+        ring: 0,
+        label: "Enzyme",
+        active: true,
+        moved: 0
+      },
+      {
+        quadrant: 3,
+        ring: 1,
+        label: "React Testing Library",
+        active: true,
+        moved: 0
+      } 
+  ]
+  //ENTRIES
+});
+</script>
+
+<table>
+<tr>
+<td>
+
+<p>
+The Invoca Front End Tech Radar is maintained by the UI Guild. Anyone can propose updates via pull request.
+</p>
+
+<hr />
+
+<h2>Frameworks</h2>
+<h3 id="react">React</h3>
+<p>Component oriented development framework.</p>
+<h3 id="titan">Titan</h3>
+<p>Component Library with build tools and guidelines for development. Based on React and Material UI.</p>
+<h3 id="backdraft">Backdraft</h3>
+<p>Older UI framework using Backbone. Some of it has been partially migrated to React.</p>
+
+<h2>Languages</h2>
+<h3 id="javascript">JavaScript</h3>
+<p>Used for all current front end development with React</p>
+<h3 id="coffeescript">CoffeeScript</h3>
+<p>Functional programming oriented language that transpiles to JavaScript. Used in legacy UI components.</p>
+<h3 id="typescript">TypeScript</h3>
+<p>Superset of JavaScript that provides compile time checking of code.</p>
+
+<h2>Libraries</h2>
+<h3 id="jquery">jQuery</h3>
+<section>
+  Necessary for Backbone but should not be integrated with React
+  <ul>
+    <li>Favor fetch over $.ajax</li>
+    <li>Use native DOM apis for HTML element state through refs in the rare case an escape hatch is necessary</li>
+    <li>React already manages the DOM, further manipulating it with jQuery can put you in an uncertain state.</li>
+  </ul>
+</section>
+<h3 id="underscore">Underscore</h3>
+<p>Necessary for Backbone but has been used outside that code.</p>
+<h3 id="lodash">Lodash</h3>
+<p>A more modern take to Underscore but almost completely overlaps with it. Since we can’t remove underscore until Backbone is gone, we should not be using Lodash</p>
+<h3 id="apollo">Apollo</h3>
+<p>Data fetching library for GraphQL</p>
+<h3 id="d3">D3</h3>
+<p>Visualization Library</p>
+<h3 id="grunt">Grunt</h3>
+<p>JS task runner. Overlaps with Webpack</p>
+<h3 id="moment">Moment</h3>
+<p>Time and time zone library. <a href="https://momentjs.com/docs/#/-project-status/">No longer developed, less useful with modern browsers.</a></p>
+
+<h2>Testing</h2>
+<h3 id="jasmine">Jasmine</h3>
+<p>Test DSL used for our older UI tools.</p>
+<h3 id="karma">Karma</h3>
+<p>Test runner for Jasmine.</p>
+<h3 id="Jest">Jest</h3>
+<p>Test framework for our React components.</p>
+<h3 id="enzyme">Enzyme</h3>
+<p>Matcher library and renderer for current React tests.</p>
+<h3 id="react-testing-library">React Testing Library</h3>
+<p>Candidate for replacing Enzyme with a more user centric testing approach.</p>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

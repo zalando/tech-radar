@@ -12,10 +12,32 @@
 </head>
 
 <body>
+  <header>
+    <img src="logo.png" height="30px" />
+    <nav>
+      <ul>
+        <li>Main Tech Radar</li>
+        <li><a href="front_end.html">Front End Tech Radar</a></li>
+      </ul>
+    </nav>
+  </header>
 
 <svg id="radar"></svg>
 
 <script>
+  var Rings = {
+    ADOPT: 0,
+    TRIAL: 1,
+    ASSESS: 2,
+    HOLD: 3
+  };
+
+  var Moved = {
+    NO: 0,
+    IN: 1,
+    OUT: -1
+  }
+
 radar_visualization({
   svg_id: "radar",
   width: 1450,
@@ -25,150 +47,519 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Invoca Frontend Tech Radar",
+  title: "Invoca Tech Radar",
   quadrants: [
-    { name: "Frameworks" },
-    { name: "Languages" },
-    { name: "Libraries" },
-    { name: "Testing" }
+    { name: "Design Patterns & Techniques" },
+    { name: "Infrastructure" },
+    { name: "Languages & Libraries" },
+    { name: "Data management" }
   ],
   rings: [
-    { name: "ADOPT", color: "#93c47d" },
-    { name: "ASSESS", color: "#fbdb84" },
-    { name: "HOLD", color: "#efafa9" },
-    { name: "DEPRECATED", color: "#d33030" }
+    { name: Object.keys(Rings)[0], color: "#93c47d" },
+    { name: Object.keys(Rings)[1], color: "#fbdb84" },
+    { name: Object.keys(Rings)[2], color: "#efafa9" },
+    { name: Object.keys(Rings)[3], color: "#d33030" }
   ],
   print_layout: true,
-  //ENTRIES
   entries: [
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "React",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Titan",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Backdraft",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "JavaScript",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "CoffeeScript",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "TypeScript",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "jQuery",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Underscore",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Lodash",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Apollo",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "D3",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Grunt",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Moment",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Jasmine",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "Karma",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Jest",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Enzyme",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "React Testing Library",
-        active: true,
-        moved: 0
-      } 
+    // Design Patterns & Techniques
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Functional",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Immutable",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Object Oriented",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Composable",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Orthogonal",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Service-Oriented/Componentized",
+      tags: ["services"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.HOLD,
+      label: "Monolithic",
+      tags: ["services"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.HOLD,
+      label: "Threaded Concurrency",
+      tags: ["services"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Cooperative Concurrency",
+      tags: ["services"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.HOLD,
+      label: "REST APIs",
+      tags: ["services", "apis"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 0,
+      ring: Rings.HOLD,
+      label: "JSON APIs",
+      tags: ["apis"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "GraphQL",
+      tags: ["apis"],
+      moved: Moved.IN
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "Design By Contract",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 0,
+      ring: Rings.ADOPT,
+      label: "TDD",
+      tags: ["programming"],
+      moved: Moved.NO
+    },
+
+    // Infrastructure
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Docker",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Kubernetes",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Grafana",
+      tags: ["monitoring"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Vault",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Consul",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.HOLD,
+      label: "AWS ELBs",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "AWS ALBs",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Kamailio",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Nginx",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Logstash",
+      tags: ["logging"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Kibana",
+      tags: ["logging"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.HOLD,
+      label: "Graphite",
+      tags: ["monitoring"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 1,
+      ring: Rings.HOLD,
+      label: "Statsd",
+      tags: ["monitoring"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ADOPT,
+      label: "Prometheus",
+      tags: ["monitoring"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.HOLD,
+      label: "Chef",
+      tags: [],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 1,
+      ring: Rings.ASSESS,
+      label: "Kustomize",
+      tags: [],
+      moved: Moved.NO
+    },
+
+    // Languages
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Ruby",
+      tags: ["language", "ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Python",
+      tags: ["language"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "JavaScript",
+      tags: ["javascript", "language"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ASSESS,
+      label: "Go",
+      tags: ["language"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Elixir",
+      tags: ["language"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "PHP",
+      tags: ["language"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ASSESS,
+      label: "Rust",
+      tags: ["language"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "C++",
+      tags: ["language"],
+      moved: Moved.NO
+    },
+
+    // Frameworks & Libraries
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Ruby on Rails",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Sinatra",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Goliath",
+      tags: ["ruby"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Event Machine",
+      tags: ["ruby", "concurrency"],
+      notes: "Should not be used on it's own. If doing concurrent programming, use with EM::Synchrony",
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Event Machine + Synchrony",
+      tags: ["ruby", "concurrency"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ASSESS,
+      label: "Async",
+      tags: ["ruby", "concurrency"],
+      moved: Moved.IN
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ASSESS,
+      label: "NodeJS",
+      tags: ["javascript", "concurrency"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Goliath",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "Sidekiq",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "DelayedJob",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Unicorn",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ASSESS,
+      label: "Falcon",
+      tags: ["ruby"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 2,
+      ring: Rings.ADOPT,
+      label: "RSpec",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "MiniTest",
+      tags: ["ruby"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "RR",
+      tags: ["ruby"],
+      notes: "Mocking and stubbing library. Exists in web but rspec-mocks should be used instead",
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "PhantomJS",
+      tags: ["javascript"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 2,
+      ring: Rings.HOLD,
+      label: "Capistrano",
+      tags: ["deploy"],
+      moved: Moved.NO
+    },
+
+    // Data management
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "MySQL",
+      tags: ["database"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "PostgreSQL",
+      tags: ["database"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "ElasticSearch",
+      tags: ["database"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "Kafka",
+      tags: ["messaging", "event-driven"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "Kafka Racecar",
+      tags: ["messaging", "event-driven"],
+      note: "InvocaKafka is the preferred wrapper around Racecar (which is a wrapper around ruby-kafka)",
+      url: "https://github.com/Invoca/invoca_kafka",
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "Redis",
+      tags: ["database", "cache"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "Memcache",
+      tags: ["database", "cache"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "AWS ElastiCache",
+      tags: ["database", "cache", "aws"],
+      moved: Moved.OUT
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ADOPT,
+      label: "AWS S3",
+      tags: ["aws"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.ASSESS,
+      label: "AWS Dynamo",
+      tags: ["database", "aws"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "MongoDB",
+      tags: ["database"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "Redshift",
+      tags: ["database"],
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.HOLD,
+      label: "RabbitMQ",
+      tags: ["messaging"],
+      notes: "BunnyBus is the Invoca library built on top of RabbitMQ",
+      moved: Moved.NO
+    },
+    {
+      quadrant: 3,
+      ring: Rings.TRIAL,
+      label: "DataBricks",
+      tags: ["machine-learning"],
+      moved: Moved.NO
+    },
   ]
-  //ENTRIES
 });
 </script>
 
@@ -182,11 +573,11 @@ radar_visualization({
 The Invoca Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
 </p>
 
-<ul>
+<ul class="documentation">
 <li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Invoca production environment, low risk and recommended to be widely used.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
-<li><strong>DEPRECATED</strong> &mdash; Technologies that are being actively replaced. If possible, you should remove them when you see them.</li>
+<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
+<li><strong>HOLD</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
+<li><strong>DEPRECATED</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
 </ul>
 
 </td><td>
@@ -194,67 +585,17 @@ The Invoca Tech Radar is a list of technologies, complemented by an assessment r
 <h3>What is the purpose?</h3>
 
 <p>
-The Tech Radar is a tool to inspire and support Engineering teams at Invoca to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
+The Tech Radar is a tool to inspire and support Engineering teams at Invoca to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, and forked from <a href="https://github.com/zalando/tech-radar">Zalando</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
 </p>
 
 <h3>How do we maintain it?</h3>
 
 <p>
-The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Invoca across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Invoca and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
+The Tech Radar is maintained by our <em>Principal Engineers & Software Architects</em> team. Anyone can propose changes or updates to the radar via pull request.<br/>
 </p>
 
 </td></tr>
 </table>
 
-<h2>Frameworks</h2>
-<h3 id="react">React</h3>
-<p>Component oriented development framework.</p>
-<h3 id="titan">Titan</h3>
-<p>Component Library with build tools and guidelines for development. Based on React and Material UI.</p>
-<h3 id="backdraft">Backdraft</h3>
-<p>Older UI framework using Backbone. Some of it has been partially migrated to React.</p>
-
-<h2>Languages</h2>
-<h3 id="javascript">JavaScript</h3>
-<p>Used for all current front end development with React</p>
-<h3 id="coffeescript">CoffeeScript</h3>
-<p>Functional programming oriented language that transpiles to JavaScript. Used in legacy UI components.</p>
-<h3 id="typescript">TypeScript</h3>
-<p>Superset of JavaScript that provides compile time checking of code.</p>
-
-<h2>Libraries</h2>
-<h3 id="jquery">jQuery</h3>
-<section>
-  Necessary for Backbone but should not be integrated with React
-  <ul>
-    <li>Favor fetch over $.ajax</li>
-    <li>Use native DOM apis for HTML element state through refs in the rare case an escape hatch is necessary</li>
-    <li>React already manages the DOM, further manipulating it with jQuery can put you in an uncertain state.</li>
-  </ul>
-</section>
-<h3 id="underscore">Underscore</h3>
-<p>Necessary for Backbone but has been used outside that code.</p>
-<h3 id="lodash">Lodash</h3>
-<p>A more modern take to Underscore but almost completely overlaps with it. Since we can’t remove underscore until Backbone is gone, we should not be using Lodash</p>
-<h3 id="apollo">Apollo</h3>
-<p>Data fetching library for GraphQL</p>
-<h3 id="d3">D3</h3>
-<p>Visualization Library</p>
-<h3 id="grunt">Grunt</h3>
-<p>JS task runner. Overlaps with Webpack</p>
-<h3 id="moment">Moment</h3>
-<p>Time and time zone library. <a href="https://momentjs.com/docs/#/-project-status/">No longer developed, less useful with modern browsers.</a></p>
-
-<h2>Testing</h2>
-<h3 id="jasmine">Jasmine</h3>
-<p>Test DSL used for our older UI tools.</p>
-<h3 id="karma">Karma</h3>
-<p>Test runner for Jasmine.</p>
-<h3 id="Jest">Jest</h3>
-<p>Test framework for our React components.</p>
-<h3 id="enzyme">Enzyme</h3>
-<p>Matcher library and renderer for current React tests.</p>
-<h3 id="react-testing-library">React Testing Library</h3>
-<p>Candidate for replacing Enzyme with a more user centric testing approach.</p>
 </body>
 </html>
