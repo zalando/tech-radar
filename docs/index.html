@@ -47,7 +47,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
-  title: "Invoca Tech Radar",
+  title: "Invoca Tech Radar 2022.04",
   quadrants: [
     { name: "Design Patterns & Techniques" },
     { name: "Infrastructure" },
@@ -135,8 +135,9 @@ radar_visualization({
     },
     {
       quadrant: 0,
-      ring: Rings.HOLD,
+      ring: Rings.ADOPT,
       label: "JSON APIs",
+      notes: "Preferred for external facing APIs. For internal only APIs, consider GraphQL.",
       tags: ["apis"],
       moved: Moved.NO
     },
@@ -369,7 +370,7 @@ radar_visualization({
       ring: Rings.ADOPT,
       label: "Event Machine + Synchrony",
       tags: ["ruby", "concurrency"],
-      moved: Moved.NO
+      moved: Moved.OUT
     },
     {
       quadrant: 2,
@@ -383,13 +384,6 @@ radar_visualization({
       ring: Rings.ASSESS,
       label: "NodeJS",
       tags: ["javascript", "concurrency"],
-      moved: Moved.NO
-    },
-    {
-      quadrant: 2,
-      ring: Rings.HOLD,
-      label: "Goliath",
-      tags: ["ruby"],
       moved: Moved.NO
     },
     {
@@ -418,7 +412,7 @@ radar_visualization({
       ring: Rings.ASSESS,
       label: "Falcon",
       tags: ["ruby"],
-      moved: Moved.OUT
+      moved: Moved.IN
     },
     {
       quadrant: 2,
@@ -558,7 +552,7 @@ radar_visualization({
       label: "DataBricks",
       tags: ["machine-learning"],
       moved: Moved.NO
-    },
+    }
   ]
 });
 </script>
