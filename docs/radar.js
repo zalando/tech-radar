@@ -385,6 +385,47 @@ function radar_visualization(config) {
     legendItem.removeAttribute("fill");
   }
 
+  function rotationOfMovementTriangle(d) {
+    const sideA = Math.abs(d.y);
+    const sideB = Math.abs(d.x);
+    const hypotenuse = Math.sqrt(Math.pow(sideA,2) + Math.pow(sideB,2));
+    const angle = Math.asin(sideA/hypotenuse) * (180 / Math.PI);
+
+    // quadrants:
+    //  2 | 3
+    //  -----
+    //  1 | 0
+    let rotation;
+    switch(d.quadrant) {
+      case 0:
+        rotation = 0 - (90 - angle);
+        break;
+
+      case 1:
+        rotation = 90 - angle;
+        break;
+
+      case 2:
+        rotation = 90 + angle;
+        break;
+
+      case 3:
+        rotation = 0 - (90 + angle);
+        break;
+
+      default:
+        throw new Error("unnknown quadrant index: " + d.quadrant);
+    }
+
+    if (d.moved > 0) {
+      return rotation;
+    } else if (d.moved < 0) {
+      return rotation + 180;
+    } else {
+      return 0;
+    }
+  }
+
   // draw blips on radar
   const blips = rink.selectAll(".blip")
     .data(config.entries)
@@ -406,13 +447,10 @@ function radar_visualization(config) {
     }
 
     // blip shape
-    if (d.moved > 0) {
+    if (d.moved) {
       blip.append("path")
-        .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
-        .style("fill", d.color);
-    } else if (d.moved < 0) {
-      blip.append("path")
-        .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
+        .attr("d", "M -11,5 11,5 0,-17 z") // triangle pointing in towards center
+        .attr("transform", 'rotate(' + rotationOfMovementTriangle(d) + ')')
         .style("fill", d.color);
     } else {
       blip.append("circle")
