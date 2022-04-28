@@ -1,9 +1,8 @@
 # Motivation
 
 At Invoca, we maintain a tech radar to help our engineering teams
-align on technology choices. The radar currently focuses on front end
-technologies but we may extend the current one or add additional radars in this
-repository to cover a broader area.
+align on technology choices. Currently we have two radars - one on the broader tech ecosystem and 
+one focused on front end technologies. We will likely combine into one once we add filtering support.
 
 This repository was forked from [Zalando's implementation](https://github.com/zalando/tech-radar).
 
