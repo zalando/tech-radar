@@ -1,4 +1,4 @@
-import merge from '../node_modules/ramda/src/merge.js';
+import mergeRight from '../node_modules/ramda/src/mergeRight.js';
 import sortBy from '../node_modules/ramda/src/sortBy.js';
 import compose from '../node_modules/ramda/src/compose.js';
 import toLower from '../node_modules/ramda/src/toLower.js';
@@ -266,5 +266,5 @@ import thunkify from '../../node_modules/ramda/es/thunkify.js';
 */
 
 export {
-    merge , sortBy, compose, toLower, prop, reverse, mergeDeepLeft
+  mergeRight , sortBy, compose, toLower, prop, reverse, mergeDeepLeft
 };

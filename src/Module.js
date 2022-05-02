@@ -21,7 +21,7 @@ export default class Module {
 
     mergeOptions(args) {
         if (typeof args === 'object') {
-            this.options = R.merge(this.defaults, args);
+            this.options = R.mergeRight(this.defaults, args);
         } else {
             this.options = this.defaults;
         }
