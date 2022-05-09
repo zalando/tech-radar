@@ -1,0 +1,1105 @@
+{
+  "rings": [
+    { "id": "adopt", "name": "Adopt", "color": "#02b388" },
+    { "id": "trial", "name": "Trial", "color": "#9ae1cf" },
+    { "id": "assess", "name": "Assess", "color": "#f8cab5" },
+    { "id": "hold", "name": "Hold", "color": "#ee5744" }
+  ],
+  "quadrants": [
+    { "id": "design_patterns", "name": "Design Patterns & Techniques" },
+    { "id": "infrastructure", "name": "Infrastructure" },
+    { "id": "languages", "name": "Languages & Libraries" },
+    { "id": "data_management", "name": "Data management" }
+  ],
+  "entries": [
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "functional",
+      "id": "functional",
+      "title": "Functional Programming",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "immutable",
+      "id": "immutable",
+      "title": "Immutable",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "object_oriented",
+      "id": "object_oriented",
+      "title": "Object Oriented",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "composable",
+      "id": "composable",
+      "title": "Composable",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "orthogonal",
+      "id": "orthogonal",
+      "title": "Orthogonal",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "service-oriented-componentized",
+      "id": "service-oriented-componentized",
+      "title": "Service-Oriented/Componentized",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "monolithic",
+      "id": "monolithic",
+      "title": "monolithic",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "threaded_concurrency",
+      "id": "threaded_concurrency",
+      "title": "Threaded Concurrency",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "cooperative_concurrency",
+      "id": "cooperative_concurrency",
+      "title": "Cooperative Concurrency",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "rest_apis",
+      "id": "rest_apis",
+      "title": "REST APIs",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "json_apis",
+      "id": "json_apis",
+      "title": "JSON APIs",
+      "quadrant": "design_patterns",
+      "description": "Preferred for external facing APIs. For internal only APIs, consider GraphQL."
+    },
+    {
+      "timeline": [
+        {
+          "moved": 1,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "GraphQL",
+      "id": "GraphQL",
+      "title": "GraphQL",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "design_by_contract",
+      "id": "design_by_contract",
+      "title": "Design By Contract",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "tdd",
+      "id": "tdd",
+      "title": "TDD",
+      "quadrant": "design_patterns",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "docker",
+      "id": "docker",
+      "title": "Docker",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "kubernetes",
+      "id": "kubernetes",
+      "title": "Kubernetes",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "grafana",
+      "id": "grafana",
+      "title": "Grafana",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "vault",
+      "id": "vault",
+      "title": "Vault",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "consul",
+      "id": "consul",
+      "title": "Consul",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_elbs",
+      "id": "aws_elbs",
+      "title": "AWS ELBs",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_albs",
+      "id": "aws_albs",
+      "title": "AWS ALBs",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "kamailio",
+      "id": "kamailio",
+      "title": "Kamailio",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "nginx",
+      "id": "nginx",
+      "title": "Nginx",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "logstash",
+      "id": "logstash",
+      "title": "Logstash",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "kibana",
+      "id": "kibana",
+      "title": "Kibana",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "graphite",
+      "id": "graphite",
+      "title": "Graphite",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "statsd",
+      "id": "statsd",
+      "title": "Statsd",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "prometheus",
+      "id": "prometheus",
+      "title": "Prometheus",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "chef",
+      "id": "chef",
+      "title": "Chef",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "kustomize",
+      "id": "kustomize",
+      "title": "Kustomize",
+      "quadrant": "infrastructure",
+      "description": ""
+    },
+
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "ruby",
+      "id": "ruby",
+      "title": "Ruby",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "python",
+      "id": "python",
+      "title": "Python",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "javaScript",
+      "id": "javaScript",
+      "title": "JavaScript",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "go",
+      "id": "go",
+      "title": "Go",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "elixir",
+      "id": "elixir",
+      "title": "Elixir",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "php",
+      "id": "php",
+      "title": "PHP",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "rust",
+      "id": "rust",
+      "title": "Rust",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "cpp",
+      "id": "cpp",
+      "title": "C++",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "ruby_on_rails",
+      "id": "ruby_on_rails",
+      "title": "Ruby on Rails",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "sinatra",
+      "id": "sinatra",
+      "title": "Sinatra",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "goliath",
+      "id": "goliath",
+      "title": "Goliath",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": "Should not be used on it's own. If doing concurrent programming, use with EM::Synchrony"
+        }
+      ],
+      "url": "#",
+      "key": "event_machine",
+      "id": "event_machine",
+      "title": "Event Machine",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "em_synchrony",
+      "id": "em_synchrony",
+      "title": "Event Machine + Synchrony",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 1,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "async",
+      "id": "async",
+      "title": "Async",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "node_js",
+      "id": "node_js",
+      "title": "NodeJS",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "sidekiq",
+      "id": "sidekiq",
+      "title": "Sidekiq",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "delayed_job",
+      "id": "delayed_job",
+      "title": "DelayedJob",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "unicorn",
+      "id": "unicorn",
+      "title": "Unicorn",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 1,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "falcon",
+      "id": "falcon",
+      "title": "Falcon",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "rspec",
+      "id": "rspec",
+      "title": "RSpec",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "minitest",
+      "id": "minitest",
+      "title": "MiniTest",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": "Mocking and stubbing library. Exists in web but rspec-mocks should be used instead"
+        }
+      ],
+      "url": "#",
+      "key": "rr",
+      "id": "rr",
+      "title": "RR",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "phantom_js",
+      "id": "phantom_js",
+      "title": "PhantomJS",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "capistrano",
+      "id": "capistrano",
+      "title": "Capistrano",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "mysql",
+      "id": "mysql",
+      "title": "MySQL",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "postgresql",
+      "id": "postgresql",
+      "title": "PostgreSQL",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "elasticsearch",
+      "id": "elasticsearch",
+      "title": "ElasticSearch",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "kafka",
+      "id": "kafka",
+      "title": "Kafka",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": "InvocaKafka is the preferred wrapper around Racecar (which is a wrapper around ruby-kafka)"
+        }
+      ],
+      "url": "https://github.com/Invoca/invoca_kafka",
+      "key": "kafka_racecar",
+      "id": "kafka_racecar",
+      "title": "Kafka Racecar",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "redis",
+      "id": "redis",
+      "title": "Redis",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "memcache",
+      "id": "memcache",
+      "title": "Memcache",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_elasticache",
+      "id": "aws_elasticachee",
+      "title": "AWS ElastiCache",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_s3",
+      "id": "aws_s3",
+      "title": "AWS S3",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_dynamo",
+      "id": "aws_dynamo",
+      "title": "AWS Dynamo",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "mongodb",
+      "id": "mongodb",
+      "title": "MongoDB",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "redshift",
+      "id": "redshift",
+      "title": "Redshift",
+      "quadrant": "data_management",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "rabbitmq",
+      "id": "rabbitmq",
+      "title": "RabbitMQ",
+      "quadrant": "data_management",
+      "description": "BunnyBus is the Invoca library built on top of RabbitMQ"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "databricks",
+      "id": "databricks",
+      "title": "DataBricks",
+      "quadrant": "data_management",
+      "description": ""
+    }
+  ]
+}

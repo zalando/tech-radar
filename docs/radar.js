@@ -22,7 +22,7 @@
 
 
 function radar_visualization(config) {
-  
+
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -142,12 +142,15 @@ function radar_visualization(config) {
   // position each entry randomly in its segment
   for (let i = 0; i < config.entries.length; i++) {
     const entry = config.entries[i];
-    entry.segment = segment(entry.quadrant, entry.ring);
+    const quadrantIndex = config.quadrants.findIndex(function(q) { return q.id == entry.quadrant });
+    const ringIndex = config.rings.findIndex(function(r) { return r.id == entry.timeline[0].ringId });
+
+    entry.segment = segment(quadrantIndex, ringIndex);
     const point = entry.segment.random();
     entry.x = point.x;
     entry.y = point.y;
     entry.color = entry.active || config.print_layout ?
-      config.rings[entry.ring].color : config.colors.inactive;
+      config.rings[ringIndex].color : config.colors.inactive;
   }
 
   // partition entries according to segments
@@ -160,7 +163,10 @@ function radar_visualization(config) {
   }
   for (let i=0; i<config.entries.length; i++) {
     const entry = config.entries[i];
-    segmented[entry.quadrant][entry.ring].push(entry);
+    const quadrantIndex = config.quadrants.findIndex(function(q) { return q.id == entry.quadrant });
+    const ringIndex = config.rings.findIndex(function(r) { return r.id == entry.timeline[0].ringId });
+
+    segmented[quadrantIndex][ringIndex].push(entry);
   }
 
   // assign unique sequential id to each entry
@@ -168,7 +174,7 @@ function radar_visualization(config) {
   for (let quadrant of [2,3,1,0]) {
     for (let ring = 0; ring < RING_COUNT; ring++) {
       const entries = segmented[quadrant][ring];
-      entries.sort(function(a,b) { return a.label.localeCompare(b.label); })
+      entries.sort(function(a,b) { return a.key.localeCompare(b.key); })
       for (let i=0; i<entries.length; i++) {
         entries[i].id = "" + id++;
       }
@@ -309,13 +315,13 @@ function radar_visualization(config) {
           .enter()
             .append("a")
                 .attr("href", function (d) {
-                  return linkifyName(d.label);
+                  return linkifyName(d.title);
                 })
             .append("text")
               .attr("transform", function(d, i) { return legendTransform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; })
+              .text(function(d, i) { return d.id + ". " + d.title; })
               .style("font-family", "Arial, Helvetica")
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
@@ -351,7 +357,7 @@ function radar_visualization(config) {
   function showBubble(d) {
     if (d.active || config.print_layout) {
       const tooltip = d3.select("#bubble text")
-        .text(d.label);
+        .text(d.title);
       const bbox = tooltip.node().getBBox();
       d3.select("#bubble")
         .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
@@ -390,13 +396,14 @@ function radar_visualization(config) {
     const sideB = Math.abs(d.x);
     const hypotenuse = Math.sqrt(Math.pow(sideA,2) + Math.pow(sideB,2));
     const angle = Math.asin(sideA/hypotenuse) * (180 / Math.PI);
+    const quadrantIndex = config.quadrants.findIndex(function(q) { return q.id == d.quadrant });
 
     // quadrants:
     //  2 | 3
     //  -----
     //  1 | 0
     let rotation;
-    switch(d.quadrant) {
+    switch(quadrantIndex) {
       case 0:
         rotation = 0 - (90 - angle);
         break;
@@ -414,12 +421,12 @@ function radar_visualization(config) {
         break;
 
       default:
-        throw new Error("unnknown quadrant index: " + d.quadrant);
+        throw new Error("unnknown quadrant index: " + quadrantIndex);
     }
 
-    if (d.moved > 0) {
+    if (d.timeline[0].moved > 0) {
       return rotation;
-    } else if (d.moved < 0) {
+    } else if (d.timeline[0].moved < 0) {
       return rotation + 180;
     } else {
       return 0;
@@ -432,7 +439,11 @@ function radar_visualization(config) {
     .enter()
       .append("g")
         .attr("class", "blip")
-        .attr("transform", function(d, i) { return legendTransform(d.quadrant, d.ring, i); })
+        .attr("transform", function(d, i) {
+          const quadrantIndex = config.quadrants.findIndex(function(q) { return q.id == d.quadrant });
+          const ringIndex = config.rings.findIndex(function(r) { return r.id == d.timeline[0].ringId });
+          return legendTransform(quadrantIndex, ringIndex, i);
+        })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
         .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
@@ -447,7 +458,7 @@ function radar_visualization(config) {
     }
 
     // blip shape
-    if (d.moved) {
+    if (d.timeline[0].moved) {
       blip.append("path")
         .attr("d", "M -11,5 11,5 0,-17 z") // triangle pointing in towards center
         .attr("transform", 'rotate(' + rotationOfMovementTriangle(d) + ')')
@@ -460,7 +471,7 @@ function radar_visualization(config) {
 
     // blip text
     if (d.active || config.print_layout) {
-      const blip_text = config.print_layout ? d.id : d.label.match(/[a-z]/i);
+      const blip_text = config.print_layout ? d.id : d.title.match(/[a-z]/i);
       blip.append("text")
         .text(blip_text)
         .attr("y", 3)

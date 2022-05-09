@@ -5,7 +5,6 @@
   <link rel="shortcut icon" href="favicon.ico">
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="radar_config.js"></script>
   <script src="radar.js"></script>
 
   <link rel="stylesheet" href="radar.css">
@@ -31,23 +30,27 @@
 <svg id="radar"></svg>
 
 <script>
-  radar_visualization({
-    svg_id: "radar",
-    width: 1450,
-    height: 1000,
-    colors: {
-      background: "#fff",
-      grid: "#ededed",
-      inactive: "#ddd"
-    },
-    print_layout: true,
-    // Update the year / month if making a new revision
-    title: "Invoca Tech Radar 2022.04",
+  fetch('./config.json').then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    radar_visualization({
+      svg_id: "radar",
+      width: 1450,
+      height: 1000,
+      colors: {
+        background: "#fff",
+        grid: "#ededed",
+        inactive: "#ddd"
+      },
+      print_layout: true,
+      // Update the year / month if making a new revision
+      title: "Invoca Tech Radar 2022.04",
 
-    // supplied via radar_config.js
-    rings: rings,
-    quadrants: quadrants,
-    entries: entries
+      // supplied via radar_config.js
+      rings: data.rings,
+      quadrants: data.quadrants,
+      entries: data.entries
+    });
   });
 </script>
 
