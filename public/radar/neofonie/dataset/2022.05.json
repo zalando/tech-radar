@@ -60,12 +60,19 @@
         "ring": 0,
         "label": "Jupyter/Colab",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
         "ring": 0,
         "label": "Python/Java/Scala",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Microsoft Azure AI",
         "active": false,
         "moved": 1
     },
@@ -93,13 +100,6 @@
     {
         "quadrant": 0,
         "ring": 1,
-        "label": "AWS ML / Lambda",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 1,
         "label": "Stanza NLP",
         "active": false,
         "moved": 0
@@ -109,7 +109,7 @@
         "ring": 1,
         "label": "Apache Airflow",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
@@ -128,9 +128,9 @@
     {
         "quadrant": 0,
         "ring": 2,
-        "label": "Microsoft Azure AI",
+        "label": "AWS ML / Lambda",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 0,
