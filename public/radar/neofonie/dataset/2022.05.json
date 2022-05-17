@@ -692,49 +692,7 @@
     {
         "quadrant": 3,
         "ring": 1,
-        "label": "Go",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Python",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 1,
         "label": "Kotlin",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Groovy",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Grails",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "C languages",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Perl",
         "active": false,
         "moved": 0
     },
@@ -769,6 +727,20 @@
     {
         "quadrant": 3,
         "ring": 0,
+        "label": "Shopware",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Typo 3",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
         "label": "MySQL",
         "active": false,
         "moved": 0
@@ -796,38 +768,17 @@
     },
     {
         "quadrant": 3,
-        "ring": 3,
-        "label": "Laravel",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 1,
+        "ring": 0,
         "label": "PostgreSQL",
         "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "Spryker",
-        "active": false,
         "moved": 1
-    },
-    {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "Ibexa",
-        "active": false,
-        "moved": 0
     },
     {
         "quadrant": 3,
         "ring": 2,
         "label": "Shopify",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,
@@ -862,33 +813,12 @@
         "ring": 2,
         "label": "Micronaut",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,
         "ring": 2,
         "label": "GraphQL",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "ActiveMQ",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Thymeleaf",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Vert.X",
         "active": false,
         "moved": 0
     }
