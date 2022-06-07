@@ -28,7 +28,7 @@ export default class extends Module {
                 port: document.location.port,
                 apiVersion: 'v1'
             };
-            options ? this.options = R.merge(this.defaults, options) : this.options = this.defaults;
+            options ? this.options = R.mergeRight(this.defaults, options) : this.options = this.defaults;
             this.options.serverMode ? this.serverMode = this.options.serverMode : this.serverMode = false;
 
             this.controls = new Controls(this); // for the url hash

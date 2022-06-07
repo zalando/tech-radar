@@ -1,0 +1,825 @@
+[
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Elasticsearch",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Apache SOLR",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "TXTWerk",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Flair, Bert and other LMs",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "OpenNLP, Spacy",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Keras, Tensorflow",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Scrapy",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Apache Kafka",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Jupyter/Colab",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Python/Java/Scala",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Microsoft Azure AI",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Apache Sagemaker",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Apache Cassandra",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Apache Spark",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Stanza NLP",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Apache Airflow",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "AllenNLP",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "Fast.AI",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "AWS ML / Lambda",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "Google Cloud AI&ML",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "PyTorch",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 2,
+        "label": "Virtuoso",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Ontotext GraphDB",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Apache Flume",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Apache Pig",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "R",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Clojure",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 3,
+        "label": "Deeplearning4j",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Three.js",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "CSS Grid",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Gulp",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "PostCSS",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "React",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Sass",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Storybook",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Vue.js",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Webpack",
+        "active": false,
+        "moved": 0,
+        "boost": 1.2
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Anime.js",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Chromatic",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "CSS Subgrids",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Cypress",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "esbuild",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Gatsby JS",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Jest",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "litHtml",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Next.js",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Pupeteer",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Redux",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "StencilJS",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "TestCafe",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 1,
+        "ring": 0,
+        "label": "Typescript",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Container Queries",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Deno",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Electron",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Express",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Progressive Web Apps",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Rollup",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Lerna",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Sapper / SvelteKit",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Svelte",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Tailwind",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Vite.js",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Flow",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "NPM workspaces",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 2,
+        "label": "Alpine.js",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
+        "label": "Angular",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Browserify",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Grunt",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "Less",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 1,
+        "ring": 3,
+        "label": "jQuery",
+        "active": false,
+        "moved": 0
+    },
+
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Docker Swarm",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Icinga",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Ha-Proxy",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Let\"s Encrypt / certbot",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Apache / mod_proxy",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Puppet",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Ansible",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "AWS",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Graylog",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Debian",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Ubuntu",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Bitbucket",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Jenkins",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Maven",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Tomcat",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 3,
+        "label": "Zabbix",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 2,
+        "ring": 1,
+        "label": "Prometheus",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Harbor",
+        "active": false,
+        "moved": -1
+    },
+    {
+        "quadrant": 2,
+        "ring": 1,
+        "label": "Jetty",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 1,
+        "label": "ProxySQL",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Kubernetes",
+        "active": false,
+        "moved": 0,
+        "boost":1.3
+    },
+    {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Gradle",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Undertow",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 3,
+        "label": "Consul",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 1,
+        "label": "Terraform",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Java",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "node.js",
+        "active": false,
+        "moved": 0,
+        "boost": 1.5
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "PHP",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 1,
+        "label": "Kotlin",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Symfony",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 1,
+        "label": "smarty",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "doctrine",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "composer",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Shopware",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Typo 3",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "MySQL",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Elasticsearch",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "twig",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Spring Boot",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "PostgreSQL",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 2,
+        "label": "Shopify",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Freemarker",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Keycloak",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "MongoDB",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "RabbitMQ",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 2,
+        "label": "Micronaut",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 3,
+        "ring": 2,
+        "label": "GraphQL",
+        "active": false,
+        "moved": 0
+    }
+]

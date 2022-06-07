@@ -1,5 +1,4 @@
 .legends {
-
   display: none;
   position: absolute;
   top: 0;
@@ -26,11 +25,11 @@
     h1 {
       font-size: 20px;
       font-weight: 600;
+      margin-bottom: 10px;
     }
 
     h2 {
       font-size: 14px;
-      margin-top: 10px;
     }
 
     ul {
@@ -67,9 +66,19 @@
     }
 
     .label-container {
+      column-count: 2;
+
       .ring-block {
-        width: 50%;
-        float: left;
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 10px;
+
+        ul {
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
       }
     }
 
