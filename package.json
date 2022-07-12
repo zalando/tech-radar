@@ -1,6 +1,6 @@
 {
   "name": "zalando-tech-radar",
-  "version": "2018.5.0",
+  "version": "2022.5.0",
   "description": "Visualizing our technology choices",
   "homepage": "https://github.com/zalando/tech-radar#readme",
   "repository": "https://github.com/zalando/tech-radar.git",
@@ -9,9 +9,10 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.27.7",
     "eslint": "^5.7.0",
-    "htmllint": "^0.7.2"
+    "htmllint": "^0.7.2",
+    "socket.io": "^4.4.1"
   },
   "scripts": {
     "start": "browser-sync docs -w",
