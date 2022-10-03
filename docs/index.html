@@ -1,7 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Zalando Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Zalando Tech Radar</title>
 <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
@@ -26,7 +29,7 @@ radar_visualization({
     inactive: "#ddd"
   },
   title: "Zalando Tech Radar",
-  date: "2022.04",
+  date: "2022.08",
   quadrants: [
     { name: "Languages" },
     { name: "Infrastructure" },
@@ -134,7 +137,7 @@ radar_visualization({
         "ring": 2,
         "label": "dbt",
         "active": true,
-        "moved": 1
+        "moved": 0
       },
       {
         "quadrant": 2,
@@ -159,8 +162,22 @@ radar_visualization({
       },
       {
         "quadrant": 2,
+        "ring": 2,
+        "label": "Amazon MemoryDB",
+        "active": true,
+        "moved": 0
+      },
+      {
+        "quadrant": 2,
         "ring": 1,
         "label": "Amazon Redshift",
+        "active": true,
+        "moved": 0
+      },
+      {
+        "quadrant": 2,
+        "ring": 2,
+        "label": "Amazon SageMaker Feature Store",
         "active": true,
         "moved": 0
       },
@@ -191,7 +208,7 @@ radar_visualization({
         "ring": 1,
         "label": "Druid",
         "active": true,
-        "moved": 1
+        "moved": 0
       },
       {
         "quadrant": 2,
@@ -390,10 +407,17 @@ radar_visualization({
       },
       {
         "quadrant": 1,
-        "ring": 0,
+        "ring": 2,
+        "label": "WebAssembly",
+        "active": true,
+        "moved": 1
+      },
+      {
+        "quadrant": 1,
+        "ring": 3,
         "label": "ZMON",
         "active": true,
-        "moved": 0
+        "moved": -1
       },
       {
         "quadrant": 0,
@@ -408,7 +432,7 @@ radar_visualization({
         "ring": 1,
         "label": "Dart",
         "active": true,
-        "moved": 1
+        "moved": 0
       },
       {
         "quadrant": 0,
@@ -560,7 +584,7 @@ radar_visualization({
         "quadrant": 3,
         "ring": 0,
         "label": "Nakadi",
-        "link": "https://nakadi.docs.zalando.net",
+        "link": "https://nakadi.io",
         "active": true,
         "moved": 0
       },
