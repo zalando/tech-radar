@@ -8,16 +8,20 @@
     "version": "2022.06",
     "quadrants": [
         {
-            "label": "A.I."
+            "label": "JAVA",
+            "short": "java"
         },
         {
-            "label": "Frontend / Web"
+            "label": "Frontend / Web",
+            "short": "frontend"
         },
         {
-            "label": "DevOps / Infrastructure"
+            "label": "DevOps / Infrastructure",
+            "short": "devops"
         },
         {
-            "label": "Platforms / Backend"
+            "label": "PHP",
+            "short": "php"
         }
     ],
     "rings": [
@@ -48,6 +52,7 @@
         "2019.10",
         "2020.05",
         "2021.06",
-        "2022.06"
+        "2022.06",
+        "2022.11"
     ]
 }

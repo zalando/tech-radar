@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import Module from "../../Module";
+import Module from '../../Module';
 
 export default class extends Module {
     constructor(args) {
@@ -84,6 +84,7 @@ export default class extends Module {
                     return this.getData();
                 })
                 .then(data => {
+
                     this.data = data.map((dot, index) => {
                         return {
                             index: index,

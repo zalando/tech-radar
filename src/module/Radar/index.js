@@ -1,6 +1,6 @@
-import Module from "../../Module";
+import Module from '../../Module';
 import * as R from '../../Ramda.js';
-import Datasource from "./Datasource";
+import Datasource from './Datasource';
 import Dots from './Dots.js';
 import Fork from './Fork.js';
 import Rings from './Rings.js';
@@ -16,248 +16,248 @@ import DatasetForm from './Form/Dataset.js';
 import DescriptionTemplate from './Templates/Description.html';
 
 export default class extends Module {
-    constructor(options) {
-        super();
-        return new Promise((resolve, reject) => {
-            this.label = 'RADAR';
+  constructor(options) {
+    super();
+    return new Promise((resolve, reject) => {
+      this.label = 'RADAR';
 
-            this.defaults = {
-                serverMode : false,
-                protocol: document.location.protocol,
-                host: document.location.hostname,
-                port: document.location.port,
-                apiVersion: 'v1'
-            };
-            options ? this.options = R.mergeRight(this.defaults, options) : this.options = this.defaults;
-            this.options.serverMode ? this.serverMode = this.options.serverMode : this.serverMode = false;
+      this.defaults = {
+        serverMode: false,
+        protocol: document.location.protocol,
+        host: document.location.hostname,
+        port: document.location.port,
+        apiVersion: 'v1'
+      };
+      options ? this.options = R.mergeRight(this.defaults, options) : this.options = this.defaults;
+      this.options.serverMode ? this.serverMode = this.options.serverMode : this.serverMode = false;
 
-            this.controls = new Controls(this); // for the url hash
+      this.controls = new Controls(this); // for the url hash
 
-            // init the datasource
-            // AND get the data index
-            // AND get the config
-            // AND get the data - by the data index
-            new Datasource(this)
-                .then(datasource => {
-                    this.dataSource = datasource;
-                    this.menu = new Menu(this);
+      // init the datasource
+      // AND get the data index
+      // AND get the config
+      // AND get the data - by the data index
+      new Datasource(this)
+        .then(datasource => {
+          this.dataSource = datasource;
+          this.menu = new Menu(this);
 
-                    // adding authentication in server mode
-                    if (this.dataSource.serverMode === true) {
-                        this.auth = new Auth(this);
-                        this.auth.on('login', () => {
-                            console.log(this.label, 'LOGIN');
-                            this.menu.admin = true;
-                        });
-                        this.auth.on('logout', () => {
-                            console.log(this.label, 'LOGOUT');
-                            this.menu.admin = false;
-                        });
-                        this.radarForm = new RadarForm(this);
-                        this.datasetForm = new DatasetForm(this);
-                    }
-
-                    // the radar change
-                    this.menu.on('version-selected', (id, version) => this.selectVersion(id, version));
-
-                    this.on('version-selected', (id, version) => {
-                        console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
-                        this.controls.setHash(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
-                        this.menu.drawVersion(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
-                        this.title = `${this.dataSource.selectedRadar.label} - ${this.dataSource.radarVersion}`;
-                        this.redraw();
-                    });
-
-                    this.selectVersion();
-                });
-
-            // create some elements while datasource is am rumrödeln
-            this.titleElement = document.querySelector('title');
-
-            // a splash screen?!
-            const splash = document.createElement('div');
-            splash.id = 'splash';
-            splash.className = 'splash';
-            document.querySelector('main').append(splash);
-
-            // the radar target element
-            const target = document.createElement('div');
-            target.id = 'radar';
-            target.className = 'radar';
-            document.querySelector('main').append(target);
-            this.target = document.getElementById('radar');
-
-            // the page content after the radar
-            const descriptionTemplate = DescriptionTemplate();
-            const description = document.createElement('div');
-            description.className = 'description';
-            description.innerHTML = descriptionTemplate;
-            document.querySelector('main').append(description);
-
-            // if a new style was loaded
-            this.on('style-loaded', () => {
-                this.create();
+          // adding authentication in server mode
+          if (this.dataSource.serverMode === true) {
+            this.auth = new Auth(this);
+            this.auth.on('login', () => {
+              console.log(this.label, 'LOGIN');
+              this.menu.admin = true;
             });
-
-            // window resize end behavior
-            this.resizeTimeout = false;
-            this.resizing = false;
-            window.addEventListener('resize', () => {
-                clearTimeout(this.resizeTimeout);
-                this.resizeStart();
-                this.resizeTimeout = setTimeout(() => {
-                    this.resizeEnd();
-                }, 500);
+            this.auth.on('logout', () => {
+              console.log(this.label, 'LOGOUT');
+              this.menu.admin = false;
             });
+            this.radarForm = new RadarForm(this);
+            this.datasetForm = new DatasetForm(this);
+          }
 
-            window.addEventListener('scroll', () => {
-                this.legends.draw();
-            });
+          // the radar change
+          this.menu.on('version-selected', (id, version) => this.selectVersion(id, version));
 
-            this.on('ready', () => {
-                resolve(this);
-            });
-        });
-    }
+          this.on('version-selected', (id, version) => {
+            console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
+            this.controls.setHash(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+            this.menu.drawVersion(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+            this.title = `${this.dataSource.selectedRadar.label} - ${this.dataSource.radarVersion}`;
+            this.redraw();
+          });
 
-    destroy() {
-        if (this.dots)
-            if (this.dots.simulation.stop)
-                this.dots.simulation.stop();
-
-        this.target.innerHTML = '';
-    }
-
-    build() {
-        document.querySelector('body').classList.remove('loading');
-        this.setTheme();
-        // continue here withe the event "style-loaded"
-    }
-
-    create() {
-        this.draw(true);
-
-        this.rings = new Rings(this);
-        this.rings.draw();
-
-        this.quadrants = new Quadrants(this);
-        this.quadrants.draw();
-
-        this.dots = new Dots(this);
-        this.dots.draw();
-
-        this.dots.on('simulation-complete', () => {
-            this.emit('simulation-complete', this);
+          this.selectVersion();
         });
 
-        this.legends = new Legends(this);
+      // create some elements while datasource is am rumrödeln
+      this.titleElement = document.querySelector('title');
+
+      // a splash screen?!
+      const splash = document.createElement('div');
+      splash.id = 'splash';
+      splash.className = 'splash';
+      document.querySelector('main').append(splash);
+
+      // the radar target element
+      const target = document.createElement('div');
+      target.id = 'radar';
+      target.className = 'radar';
+      document.querySelector('main').append(target);
+      this.target = document.getElementById('radar');
+
+      // the page content after the radar
+      const descriptionTemplate = DescriptionTemplate();
+      const description = document.createElement('div');
+      description.className = 'description';
+      description.innerHTML = descriptionTemplate;
+      document.querySelector('main').append(description);
+
+      // if a new style was loaded
+      this.on('style-loaded', () => {
+        this.create();
+      });
+
+      // window resize end behavior
+      this.resizeTimeout = false;
+      this.resizing = false;
+      window.addEventListener('resize', () => {
+        clearTimeout(this.resizeTimeout);
+        this.resizeStart();
+        this.resizeTimeout = setTimeout(() => {
+          this.resizeEnd();
+        }, 500);
+      });
+
+      window.addEventListener('scroll', () => {
         this.legends.draw();
+      });
 
-        this.lines = new Lines(this);
-        this.lines.draw();
+      this.on('ready', () => {
+        resolve(this);
+      });
+    });
+  }
 
-        this.print = new Print(this);
-        this.fork = new Fork(this);
+  destroy() {
+    if (this.dots)
+      if (this.dots.simulation.stop)
+        this.dots.simulation.stop();
 
-        this.emit('ready');
+    this.target.innerHTML = '';
+  }
+
+  build() {
+    document.querySelector('body').classList.remove('loading');
+    this.setTheme();
+    // continue here withe the event "style-loaded"
+  }
+
+  create() {
+    this.draw(true);
+
+    this.rings = new Rings(this);
+    this.rings.draw();
+
+    this.quadrants = new Quadrants(this);
+    this.quadrants.draw();
+
+    this.dots = new Dots(this);
+    this.dots.draw();
+
+    this.dots.on('simulation-complete', () => {
+      this.emit('simulation-complete', this);
+    });
+
+    this.legends = new Legends(this);
+    this.legends.draw();
+
+    this.lines = new Lines(this);
+    this.lines.draw();
+
+    this.print = new Print(this);
+    this.fork = new Fork(this);
+
+    this.emit('ready');
+  }
+
+  draw(only) {
+    this.offset = {
+      x: this.target.getBoundingClientRect().width / 2,
+      y: this.target.getBoundingClientRect().height / 2
+    };
+
+    if (only === true)
+      return;
+
+    //his.rings.draw();
+    //this.dots.draw();
+    //this.legends.draw();
+  }
+
+  redraw() {
+    console.log('>>>', this.label.padStart(15, ' '), '>', 'REDRAWING');
+    this.destroy();
+    this.build();
+  }
+
+  resizeStart() {
+    if (this.resizing === true)
+      return;
+
+    this.resizing = true;
+    //...
+  }
+
+  resizeEnd() {
+    this.emit('resize-end', this);
+    this.resizing = false;
+    this.redraw();
+  }
+
+  setTheme() {
+    let styleHRef = `css/${this.selectedRadar.theme}.css`;
+
+    // the theme style element
+    if (this.themeStyle) {
+      this.themeStyle.remove();
     }
+    this.themeStyle = document.createElement('link');
+    this.themeStyle.rel = 'stylesheet';
+    document.querySelector('head').append(this.themeStyle);
+    this.themeStyle.onload = () => this.emit('style-loaded');
+    this.themeStyle.onerror = () => this.emit('style-error');
 
-    draw(only) {
-        this.offset = {
-            x: this.target.getBoundingClientRect().width / 2,
-            y: this.target.getBoundingClientRect().height / 2
-        };
+    if (this.themeStyle.href.includes(styleHRef))
+      this.emit('style-loaded');
 
-        if (only === true)
-            return;
+    if (this.selectedRadar.theme === undefined)
+      styleHRef = '';
 
-        //his.rings.draw();
-        //this.dots.draw();
-        //this.legends.draw();
-    }
+    this.themeStyle.href = styleHRef;
+    if (styleHRef === '')
+      this.emit('style-loaded');
+  }
 
-    redraw() {
-        console.log('>>>', this.label.padStart(15, ' '), '>', 'REDRAWING');
-        this.destroy();
-        this.build();
-    }
+  selectVersion(id, version) {
+    if (!id)
+      id = this.controls.id;
+    if (!version)
+      version = this.controls.version;
 
-    resizeStart() {
-        if (this.resizing === true)
-            return;
+    console.log('');
+    console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
 
-        this.resizing = true;
-        //...
-    }
+    this.dataSource
+      .selectRadar(id, version)
+      .then(() => {
+        console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
+        this.selectedRadar = this.dataSource.selectedRadar;
+        this.data = this.dataSource.data;
+        this.emit('version-selected', id, version);
+      });
+  }
 
-    resizeEnd() {
-        this.emit('resize-end', this);
-        this.resizing = false;
-        this.redraw();
-    }
+  getHash() {
+    this.controls.getHash();
+  }
 
-    setTheme() {
-        let styleHRef = `css/${this.selectedRadar.theme}.css`;
+  get resizing() {
+    return this._resizing;
+  }
 
-        // the theme style element
-        if (this.themeStyle) {
-            this.themeStyle.remove();
-        }
-        this.themeStyle = document.createElement('link');
-        this.themeStyle.rel = 'stylesheet';
-        document.querySelector('head').append(this.themeStyle);
-        this.themeStyle.onload = () => this.emit('style-loaded');
-        this.themeStyle.onerror = () => this.emit('style-error');
+  set resizing(val) {
+    this._resizing = val;
+    this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
+  }
 
-        if (this.themeStyle.href.includes(styleHRef))
-            this.emit('style-loaded');
+  get title() {
+    return this._title;
+  }
 
-        if (this.selectedRadar.theme === undefined)
-            styleHRef = '';
-
-        this.themeStyle.href = styleHRef;
-        if (styleHRef === '')
-            this.emit('style-loaded');
-    }
-
-    selectVersion(id, version) {
-        if (!id)
-            id = this.controls.id;
-        if (!version)
-            version = this.controls.version;
-
-        console.log('');
-        console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
-
-        this.dataSource
-            .selectRadar(id, version)
-            .then(() => {
-                console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
-                this.selectedRadar = this.dataSource.selectedRadar;
-                this.data = this.dataSource.data;
-                this.emit('version-selected', id, version);
-            });
-    }
-
-    getHash() {
-        this.controls.getHash();
-    }
-
-    get resizing() {
-        return this._resizing;
-    }
-
-    set resizing(val) {
-        this._resizing = val;
-        this.resizing ? document.querySelector('body').classList.add('resizing') : document.querySelector('body').classList.remove('resizing');
-    }
-
-    get title() {
-        return this._title;
-    }
-
-    set title(val) {
-        this._title = val;
-        this.titleElement.innerHTML = `${this.title} | neofonie tech radar`;
-    }
+  set title(val) {
+    this._title = val;
+    this.titleElement.innerHTML = `${this.title} | neofonie tech radar`;
+  }
 }

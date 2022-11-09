@@ -7,7 +7,6 @@
   "scripts": {
     "--- NPM DEFAULT SCRIPTS ----------": "",
     "start": "npm run dev",
-    "test": "echo 'No tests specified'; exit 0;",
     "--- CUSTOM SCRIPTS ---------------": "",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --config config/index.js --progress --colors --watch --display-modules ",
     "build": "cross-env NODE_ENV=prod webpack --config config/index.js"
