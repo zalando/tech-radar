@@ -28,8 +28,6 @@ export default class extends Module {
     }
 
     draw() {
-        this.items.forEach(legend => {
-            legend.draw();
-        })
+        this.items.map(legend => legend.draw());
     }
 }

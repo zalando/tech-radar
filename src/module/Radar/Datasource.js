@@ -76,7 +76,7 @@ export default class extends Module {
 
         document.querySelector('body').classList.add('loading');
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.getConfig()
                 .then(config => {
                     this.selectedRadar = config;
@@ -84,6 +84,27 @@ export default class extends Module {
                     return this.getData();
                 })
                 .then(data => {
+                    if (!Array.isArray(data)) {
+                      const loadedData = data;
+                      data = [];
+                      // flat the object
+                      Object.entries(loadedData).map(([quadrantShort, rings]) =>  {
+                        console.log({quadrantShort})
+                        const quadrant = this.selectedRadar.quadrants.findIndex(quadrant => quadrant.short === quadrantShort);
+                        Object.entries(rings).map(([ringShort, ringItems]) => {
+                          console.log({ringShort})
+                          const ring = this.selectedRadar.rings.findIndex(ring => ring.label.toLowerCase() === ringShort);
+                          ringItems.map(item => {
+                            data.push({
+                              quadrant,
+                              ring,
+                              active: false,
+                              ...item
+                            })
+                          })
+                        })
+                      });
+                    }
 
                     this.data = data.map((dot, index) => {
                         return {
@@ -91,6 +112,7 @@ export default class extends Module {
                             ...dot
                         }
                     });
+
                     document.querySelector('body').classList.remove('loading');
                     resolve(this.selectedRadar, this.radarVersion);
                 });

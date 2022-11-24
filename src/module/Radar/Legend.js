@@ -6,7 +6,6 @@ import LegendDotTemplate from './Templates/LegendDot.html';
 export default class extends Module {
     constructor(args) {
         super();
-        this.label = 'LEGEND';
         this.radar = args.radar;
         this.options = args.options;
         this.dots = args.dots;
@@ -84,7 +83,6 @@ export default class extends Module {
         });
         this.draw();
     }
-
 
     draw() {
         const quadrant = this.radar.quadrants.items[this.index].target;

@@ -35,8 +35,6 @@ export default class extends Module {
     }
 
     draw() {
-        this.items.forEach(quad => {
-            quad.draw();
-        });
+        this.items.map(quadrant => quadrant.draw());
     }
 }

@@ -112,19 +112,15 @@
     "frontend": {
         "adopt": [
             {
-                "label": "PostCSS",
+                "label": "React / Next.js",
                 "moved": 0
             },
             {
-                "label": "React",
+                "label": "Sass / PostCSS",
                 "moved": 0
             },
             {
-                "label": "Sass",
-                "moved": 0
-            },
-            {
-                "label": "Storybook",
+                "label": "Storybook / Chromatic",
                 "moved": 0
             },
             {
@@ -132,23 +128,11 @@
                 "moved": 0
             },
             {
-                "label": "Webpack",
-                "moved": 0
-            },
-            {
-                "label": "Chromatic",
-                "moved": 1
-            },
-            {
                 "label": "Cypress",
                 "moved": 1
             },
             {
                 "label": "Jest",
-                "moved": 1
-            },
-            {
-                "label": "Next.js",
                 "moved": 1
             },
             {
@@ -170,10 +154,6 @@
                 "moved": 1
             },
             {
-                "label": "Gatsby JS",
-                "moved": 0
-            },
-            {
                 "label": "Redux",
                 "moved": 0
             },
@@ -188,15 +168,19 @@
             {
                 "label": "Tailwind",
                 "moved": 1
+            },
+            {
+                "label": "Vite.js / esbuild",
+                "moved": 1
+            },
+            {
+                "label": "NPM workspaces",
+                "moved": 1
             }
         ],
         "assess": [
             {
                 "label": "Shopify",
-                "moved": 0
-            },
-            {
-                "label": "Deno",
                 "moved": 0
             },
             {
@@ -209,26 +193,30 @@
             },
             {
                 "label": "Three.js",
-                "moved": 1
-            },
-            {
-                "label": "Svelte",
                 "moved": 0
             },
             {
-                "label": "NPM workspaces",
-                "moved": 1
+                "label": "Svelte / Kit",
+                "moved": 0
             },
             {
-                "label": "Alpine.js",
-                "moved": 1
+                "label": "BunJS",
+                "moved": 0
             },
             {
-                "label": "Vite.js",
+                "label": "GraphQL",
+                "moved": 0
+            },
+            {
+                "label": "ChakraUI",
                 "moved": 0
             }
         ],
         "hold": [
+            {
+                "label": "Webpack",
+                "moved": -1
+            },
             {
                 "label": "Gulp",
                 "moved": -1
@@ -254,11 +242,15 @@
                 "moved": 0
             },
             {
-                "label": "jQuery",
+                "label": "Bootstrap",
                 "moved": 0
             },
             {
                 "label": "Flow",
+                "moved": 0
+            },
+            {
+                "label": "Jquery",
                 "moved": 0
             }
         ]

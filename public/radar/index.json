@@ -1,0 +1,43 @@
+[
+    {
+        "id": "neofonie",
+        "label": "Neofonie",
+        "is_default": true,
+        "version": "2022.11",
+        "versions": [
+            "2022.11"
+        ],
+        "quadrants": [
+            {
+                "label": "Frontend",
+                "short": "frontend"
+            },
+            {
+                "label": "DevOps / Infrastructure",
+                "short": "devops"
+            },
+            {
+                "label": "PHP",
+                "short": "php"
+            },
+            {
+                "label": "JAVA",
+                "short": "java"
+            }
+        ],
+        "rings": [
+            {
+                "label": "ADOPT"
+            },
+            {
+                "label": "TRIAL"
+            },
+            {
+                "label": "ASSESS"
+            },
+            {
+                "label": "HOLD"
+            }
+        ]
+    }
+]

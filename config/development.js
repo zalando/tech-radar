@@ -13,6 +13,7 @@ module.exports = class extends ConfigClass {
                 radar: './src/app.js',
                 default: './src/scss/app.scss',
                 print: './src/scss/print.scss',
+                dark: './src/scss/dark.scss',
             },
 
             output: {

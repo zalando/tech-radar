@@ -1,18 +1,15 @@
 {
     "id": "neofonie",
     "foldername": "neofonie",
-    "atime": "at1571479449741",
-    "mtime": "mt1571479448003",
-    "ctime": "ct1571479448003",
+    "label": "Neofonie Tech Radar",
     "is_default": true,
-    "version": "2022.06",
+    "version": "2022.11",
+    "versions": [
+        "2022.11"
+    ],
     "quadrants": [
         {
-            "label": "JAVA",
-            "short": "java"
-        },
-        {
-            "label": "Frontend / Web",
+            "label": "Frontend",
             "short": "frontend"
         },
         {
@@ -22,6 +19,10 @@
         {
             "label": "PHP",
             "short": "php"
+        },
+        {
+            "label": "JAVA",
+            "short": "java"
         }
     ],
     "rings": [
@@ -38,7 +39,6 @@
             "label": "HOLD"
         }
     ],
-    "label": "Neofonie",
     "seed": {
         "from": 20,
         "to": 50
@@ -46,13 +46,5 @@
     "dot": {
         "offset_x": 100,
         "offset_y": 100
-    },
-    "versions": [
-        "2019.05",
-        "2019.10",
-        "2020.05",
-        "2021.06",
-        "2022.06",
-        "2022.11"
-    ]
+    }
 }
