@@ -7,12 +7,19 @@ export default class extends Module {
         this.label = 'QUADRANTS';
         this.radar = radar;
 
-        this.data = [
-            {radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1},
-            {radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1},
-            {radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1},
-            {radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1}
-        ];
+        // this.data = [
+        //   {radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: -1}, // frontend
+        //   {radial_min: -1, radial_max: -0.5, factor_x: 1, factor_y: -1}, // devops
+        //   {radial_min: 0, radial_max: 0.5, factor_x: -1, factor_y: 1}, // php
+        //   {radial_min: 0.5, radial_max: 1, factor_x: 1, factor_y: 1} // java
+        // ];
+
+      this.data = [
+        {radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1}, // php
+        {radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1}, // java
+        {radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1}, // devops
+        {radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1} // frontend
+      ];
 
         const target = document.createElement('div');
         target.id = 'quadrants';
