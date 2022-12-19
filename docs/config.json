@@ -246,9 +246,9 @@
         }
       ],
       "url": "#",
-      "key": "docker",
-      "id": "docker",
-      "title": "Docker",
+      "key": "kubernetes",
+      "id": "kubernetes",
+      "title": "Kubernetes",
       "quadrant": "infrastructure",
       "description": ""
     },
@@ -256,15 +256,15 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "adopt",
-          "date": "2022-05-01",
+          "ringId": "trial",
+          "date": "2022-12-19",
           "description": ""
         }
       ],
       "url": "#",
-      "key": "kubernetes",
-      "id": "kubernetes",
-      "title": "Kubernetes",
+      "key": "kubernetes_operators",
+      "id": "kubernetes_operators",
+      "title": "Kubernetes Operators",
       "quadrant": "infrastructure",
       "description": ""
     },
@@ -368,8 +368,8 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "adopt",
-          "date": "2022-05-01",
+          "ringId": "hold",
+          "date": "2022-12-19",
           "description": ""
         }
       ],
@@ -480,19 +480,34 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "assess",
-          "date": "2022-05-01",
+          "ringId": "trial",
+          "date": "2022-12-19",
           "description": ""
         }
       ],
       "url": "#",
-      "key": "kustomize",
-      "id": "kustomize",
-      "title": "Kustomize",
+      "key": "jsonnet",
+      "id": "jsonnet",
+      "title": "Jsonnet",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-12-19",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "tanka",
+      "id": "tanka",
+      "title": "Tanka",
       "quadrant": "infrastructure",
       "description": ""
     },
-
     {
       "timeline": [
         {
