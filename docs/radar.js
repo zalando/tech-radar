@@ -319,9 +319,13 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("a")
-                .attr("href", function (d, i) {
-                  return d.link ? d.link : "#"; // stay on same page if no link was provided
-                })
+              .attr("href", function (d, i) {
+                 return d.link ? d.link : "#"; // stay on same page if no link was provided
+              })
+              // Add a target if (and only if) there is a link and we want new tabs
+              .attr("target", function (d, i) {
+                 return (d.link && config.links_in_new_tabs) ? "_blank" : null;
+              })
             .append("text")
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
@@ -410,9 +414,13 @@ function radar_visualization(config) {
     var blip = d3.select(this);
 
     // blip link
-    if (!config.print_layout && d.active && d.hasOwnProperty("link")) {
+    if (d.active && d.hasOwnProperty("link") && d.link) {
       blip = blip.append("a")
         .attr("xlink:href", d.link);
+
+      if (config.links_in_new_tabs) {
+        blip.attr("target", "_blank");
+      }
     }
 
     // blip shape

@@ -50,6 +50,7 @@ radar_visualization({
     { name: "OUTER",  color: "#e09b96" }
   ],
   print_layout: true,
+  links_in_new_tabs: true,
   entries: [
    {
       label: "Some Entry",
