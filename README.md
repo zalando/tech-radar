@@ -12,7 +12,27 @@ Feel free to use and adapt it for your own purposes.
 
 ## Usage
 
-configure the radar visualization:
+Entries are added to the `entries` field as needed, with each entry declaring its `quadrant` and `timeline`.
+
+Entries are positioned automatically so that they don't overlap. Each entry will end up in a table
+outside the radar screen and will be a link. You should create headings to match the links describing
+each item on the radar. For example, "React Testing Library" will have a link to "#react-testing-library".
+
+### Timeline
+
+The `timeline` in each entry is to show the historic "movement" of an entry.
+
+A brand new entry would have only one entry in its timeline, but as it moves inward or outward on the rings each movement should be a separate entry in the timeline. The first entry in the timeline is displayed. Each timeline entry captures the date of the movement, a description of the movement, and an optional "direction" via the `moved` field.
+
+The `moved` field conforms to the following:
+
+* `-1` means the entry has momementum or movement outward (triangle pointing down or outward from the center)
+* `0` means the entry no momementum or movement (a simple circle)
+* `1` means the entry has momentum or movement inward (triangle pointing up or inward to the center)
+
+## Example
+
+Here is an example configuration of the radar visualization:
 
 ```js
 radar_visualization({
@@ -51,10 +71,6 @@ radar_visualization({
   ]
 });
 ```
-
-Entries are positioned automatically so that they don't overlap. Each entry will end up in a table
-outside the radar screen and will be a link. You should create headings to match the links describing
-each item on the radar. For example, "React Testing Library" will have a link to "#react-testing-library".
 
 ## Local Development
 
