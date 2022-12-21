@@ -370,6 +370,12 @@
           "moved": 0,
           "ringId": "hold",
           "date": "2022-12-19",
+          "description": "Used for Ingress in places, but no new usage in some time."
+        },
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2022-05-1",
           "description": ""
         }
       ],
