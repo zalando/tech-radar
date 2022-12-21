@@ -306,9 +306,8 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("a")
-              // Add an href if (and only if) there is a link
               .attr("href", function (d, i) {
-                 return d.link ? d.link : null;
+                 return d.link ? d.link : "#"; // stay on same page if no link was provided
               })
               // Add a target if (and only if) there is a link and we want new tabs
               .attr("target", function (d, i) {
