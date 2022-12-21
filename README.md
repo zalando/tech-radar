@@ -44,10 +44,10 @@ radar_visualization({
     { name: "Top Right" }
   ],
   rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
+    { name: "INNER",  color: "#5ba300" },
+    { name: "SECOND", color: "#009eb0" },
+    { name: "THIRD",  color: "#c7ba00" },
+    { name: "OUTER",  color: "#e09b96" }
   ],
   print_layout: true,
   entries: [
