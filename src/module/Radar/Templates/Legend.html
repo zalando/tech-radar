@@ -1,6 +1,6 @@
 <h1>${legend.label}</h1>
-<div class="label-container">
-    ${ radar.rings.items.map((r,i) => ringTemplate({scope:{
+<div class="label-container" data-index="${legend.index}">
+    ${radar.rings.items.map((r,i) => ringTemplate({scope:{
         index: i,
         ring: r,
         radar: radar,

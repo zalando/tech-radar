@@ -1,0 +1,48 @@
+{
+    "id": "neofonie",
+    "label": "Neofonie Tech Radar",
+    "version": "2023.01",
+    "versions": [
+        "2023.01"
+    ],
+    "quadrants": [
+        {
+            "label": "Frontend",
+            "short": "frontend"
+        },
+        {
+            "label": "DevOps / Infrastructure",
+            "short": "devops"
+        },
+        {
+            "label": "PHP",
+            "short": "php"
+        },
+        {
+            "label": "JAVA",
+            "short": "java"
+        }
+    ],
+    "rings": [
+        {
+            "label": "ADOPT"
+        },
+        {
+            "label": "TRIAL"
+        },
+        {
+            "label": "ASSESS"
+        },
+        {
+            "label": "HOLD"
+        }
+    ],
+    "seed": {
+        "from": 20,
+        "to": 50
+    },
+    "dot": {
+        "offset_x": 100,
+        "offset_y": 100
+    }
+}

@@ -1,1 +1,1 @@
-Veeck <veeck@neofonie.de>
+Willy Woitas <willy.woitas@neofonie.de>

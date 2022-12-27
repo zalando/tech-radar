@@ -3,7 +3,6 @@ import Crypto from 'crypto';
 import * as R from './Ramda.js';
 
 export default class Module {
-
     constructor(args) {
         this.name = 'module';
         this.label = 'MODULE';
@@ -67,9 +66,6 @@ export default class Module {
 
     set ready(ready) {
         this._ready = ready;
-        //if (this.ready === true) {
-        //    this.emit('ready', this);
-        //}
     }
 
     get options() {

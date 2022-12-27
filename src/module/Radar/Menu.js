@@ -71,14 +71,12 @@ export default class extends Module {
         const radarId = e.target.getAttribute('data-radar-id');
         const version = e.target.innerHTML;
 
-        console.log('>>>', this.label.padStart(15, ' '), '>', 'MENU SELECT VERSION', radarId, version);
         this.close();
         this.emit('version-selected', radarId, version);
     }
 
     drawVersion(id, version) {
         const selectedRadar = this.radar.dataSource.oneRadar(id);
-        console.log('>>>', this.label.padStart(15, ' '), '>', 'MENU DRAW VERSION', selectedRadar, version);
         this.openButton.innerHTML = selectedRadar.label;
         this.openButton.setAttribute('data-version', version);
     }

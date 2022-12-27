@@ -60,12 +60,19 @@
         "ring": 0,
         "label": "Jupyter/Colab",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
         "ring": 0,
         "label": "Python/Java/Scala",
+        "active": false,
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Microsoft Azure AI",
         "active": false,
         "moved": 1
     },
@@ -93,13 +100,6 @@
     {
         "quadrant": 0,
         "ring": 1,
-        "label": "AWS ML / Lambda",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 0,
-        "ring": 1,
         "label": "Stanza NLP",
         "active": false,
         "moved": 0
@@ -109,7 +109,7 @@
         "ring": 1,
         "label": "Apache Airflow",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 0,
@@ -128,9 +128,9 @@
     {
         "quadrant": 0,
         "ring": 2,
-        "label": "Microsoft Azure AI",
+        "label": "AWS ML / Lambda",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 0,
@@ -197,10 +197,10 @@
     },
     {
         "quadrant": 1,
-        "ring": 0,
-        "label": "CSS Flexbox",
+        "ring": 2,
+        "label": "Three.js",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 1,
@@ -211,17 +211,17 @@
     },
     {
         "quadrant": 1,
-        "ring": 0,
+        "ring": 3,
         "label": "Gulp",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 1,
         "ring": 0,
         "label": "PostCSS",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
@@ -242,7 +242,7 @@
         "ring": 0,
         "label": "Storybook",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
@@ -256,19 +256,18 @@
         "ring": 0,
         "label": "Webpack",
         "active": false,
-        "moved": 0,
-        "boost": 1.2
+        "moved": 0
     },
     {
         "quadrant": 1,
         "ring": 1,
         "label": "Anime.js",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "Chromatic",
         "active": false,
         "moved": 1
@@ -278,11 +277,11 @@
         "ring": 2,
         "label": "CSS Subgrids",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "Cypress",
         "active": false,
         "moved": 1
@@ -292,39 +291,39 @@
         "ring": 1,
         "label": "esbuild",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
         "ring": 1,
         "label": "Gatsby JS",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "Jest",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 1,
         "ring": 1,
         "label": "litHtml",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
         "ring": 1,
         "label": "Next.js",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "Pupeteer",
         "active": false,
         "moved": 1
@@ -338,31 +337,31 @@
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "StencilJS",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 3,
         "label": "TestCafe",
         "active": false,
-        "moved": 0
+        "moved": -1
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 0,
         "label": "Typescript",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 1,
         "ring": 2,
         "label": "Container Queries",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
@@ -394,22 +393,22 @@
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Rollup",
         "active": false,
         "moved": 1
     },
     {
         "quadrant": 1,
-        "ring": 2,
-        "label": "Rome",
+        "ring": 3,
+        "label": "Lerna",
         "active": false,
-        "moved": 1
+        "moved": -1
     },
     {
         "quadrant": 1,
-        "ring": 2,
-        "label": "Sapper",
+        "ring": 1,
+        "label": "Sapper / SvelteKit",
         "active": false,
         "moved": 1
     },
@@ -422,7 +421,7 @@
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Tailwind",
         "active": false,
         "moved": 1
@@ -432,28 +431,35 @@
         "ring": 2,
         "label": "Vite.js",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 1,
         "ring": 3,
         "label": "Flow",
         "active": false,
-        "moved": -1
+        "moved": 0
     },
     {
         "quadrant": 1,
-        "ring": 3,
-        "label": "Greensock GSAP",
+        "ring": 2,
+        "label": "NPM workspaces",
         "active": false,
-        "moved": -1
+        "moved": 1
     },
     {
         "quadrant": 1,
-        "ring": 3,
+        "ring": 2,
+        "label": "Alpine.js",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 1,
+        "ring": 1,
         "label": "Angular",
         "active": false,
-        "moved": 0
+        "moved": 1
     },
     {
         "quadrant": 1,
@@ -479,7 +485,7 @@
     {
         "quadrant": 1,
         "ring": 3,
-        "label": "Yarn",
+        "label": "jQuery",
         "active": false,
         "moved": 0
     },
@@ -629,8 +635,7 @@
         "ring": 0,
         "label": "Kubernetes",
         "active": false,
-        "moved": 0,
-        "boost":1.3
+        "moved": 0
     },
     {
         "quadrant": 2,
@@ -672,8 +677,7 @@
         "ring": 0,
         "label": "node.js",
         "active": false,
-        "moved": 0,
-        "boost": 1.5
+        "moved": 0
     },
     {
         "quadrant": 3,
@@ -685,49 +689,7 @@
     {
         "quadrant": 3,
         "ring": 1,
-        "label": "Go",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Python",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 1,
         "label": "Kotlin",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Groovy",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Grails",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "C languages",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Perl",
         "active": false,
         "moved": 0
     },
@@ -762,6 +724,20 @@
     {
         "quadrant": 3,
         "ring": 0,
+        "label": "Shopware",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
+        "label": "Typo 3",
+        "active": false,
+        "moved": 1
+    },
+    {
+        "quadrant": 3,
+        "ring": 0,
         "label": "MySQL",
         "active": false,
         "moved": 0
@@ -789,38 +765,17 @@
     },
     {
         "quadrant": 3,
-        "ring": 3,
-        "label": "Laravel",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 1,
+        "ring": 0,
         "label": "PostgreSQL",
         "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "Spryker",
-        "active": false,
         "moved": 1
-    },
-    {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "Ibexa",
-        "active": false,
-        "moved": 0
     },
     {
         "quadrant": 3,
         "ring": 2,
         "label": "Shopify",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,
@@ -855,33 +810,12 @@
         "ring": 2,
         "label": "Micronaut",
         "active": false,
-        "moved": 1
+        "moved": 0
     },
     {
         "quadrant": 3,
         "ring": 2,
         "label": "GraphQL",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "ActiveMQ",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Thymeleaf",
-        "active": false,
-        "moved": 0
-    },
-    {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Vert.X",
         "active": false,
         "moved": 0
     }
