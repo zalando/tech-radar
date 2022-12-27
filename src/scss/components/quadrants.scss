@@ -8,20 +8,54 @@
     background: rgba(0, 0, 0, 0);
     border: 0 solid rgba(0, 0, 0, 0.2);
 
-    &.active {
+    .label {
+      position: absolute;
+      background-color: red;
+      white-space: nowrap;
+      transform: rotate(-90deg);
 
-    }
+      &:after {
+        padding: 16px;
+        position: absolute;
+        content: attr(data-label);
+        font-size: 20px;
+        font-weight: 600;
+        color: #444444;
 
-    &:nth-child(1) {
+        @include media-desktop-min {
+          display: none;
+        }
+      }
 
-    }
+      &[data-position='top-left'] {
+        bottom: 0;
 
-    &:nth-child(2) {
+        &:after {
+          bottom: 0;
+        }
+      }
 
-    }
+      &[data-position='bottom-left'] {
+        top: 0;
 
-    &:nth-child(3) {
+        &:after {
+          right: 0;
+          bottom: 0;
+        }
+      }
 
+      &[data-position='top-right'] {
+        bottom: 0;
+        right: 0;
+      }
+
+      &[data-position='bottom-right'] {
+        right: 0;
+
+        &:after {
+          right: 0;
+        }
+      }
     }
   }
 }

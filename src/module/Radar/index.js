@@ -46,11 +46,9 @@ export default class extends Module {
           if (this.dataSource.serverMode === true) {
             this.auth = new Auth(this);
             this.auth.on('login', () => {
-              console.log(this.label, 'LOGIN');
               this.menu.admin = true;
             });
             this.auth.on('logout', () => {
-              console.log(this.label, 'LOGOUT');
               this.menu.admin = false;
             });
             this.radarForm = new RadarForm(this);
@@ -61,7 +59,6 @@ export default class extends Module {
           this.menu.on('version-selected', (id, version) => this.selectVersion(id, version));
 
           this.on('version-selected', (id, version) => {
-            console.log('>>>', this.label.padStart(15, ' '), '>', 'ON VERSION SELECTED', id, version);
             this.controls.setHash(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
             this.menu.drawVersion(this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
             this.title = `${this.dataSource.selectedRadar.label} - ${this.dataSource.radarVersion}`;
@@ -177,7 +174,6 @@ export default class extends Module {
   }
 
   redraw() {
-    console.log('>>>', this.label.padStart(15, ' '), '>', 'REDRAWING');
     this.destroy();
     this.build();
   }
@@ -226,13 +222,9 @@ export default class extends Module {
     if (!version)
       version = this.controls.version;
 
-    console.log('');
-    console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', id, version);
-
     this.dataSource
       .selectRadar(id, version)
       .then(() => {
-        console.log('>>>', this.label.padStart(15, ' '), '>', 'SELECT VERSION', this.dataSource.selectedRadar.id, this.dataSource.radarVersion);
         this.selectedRadar = this.dataSource.selectedRadar;
         this.data = this.dataSource.data;
         this.emit('version-selected', id, version);

@@ -31,7 +31,7 @@
    * accessible at "window.RADAR"
    */
 
-    // this is the global radar options object
+  // this is the global radar options object
   const radarOptions = {
       serverMode: false,
       protocol: 'http',
@@ -42,16 +42,6 @@
 
   new RADAR(radarOptions).then(radar => {
     window.RADAR = radar;
-    console.log('>>> RADAR ACCESSIBLE', 'window.RADAR or RADAR');
-
-    // add events
-    RADAR.on('simulation-complete', () => {
-      console.log('>>> SIMULATION COMPLETE');
-    });
-
-    RADAR.on('mouseover', (e, dot) => {
-      console.log('>>> HOVERING DOT', dot.label);
-    });
   });
 </script>
 </body>

@@ -1,11 +1,9 @@
 {
     "id": "neofonie",
-    "foldername": "neofonie",
     "label": "Neofonie Tech Radar",
-    "is_default": true,
-    "version": "2022.11",
+    "version": "2023.01",
     "versions": [
-        "2022.11"
+        "2023.01"
     ],
     "quadrants": [
         {
