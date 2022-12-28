@@ -79,22 +79,15 @@ export default class extends Module {
         .then(config => {
           this.selectedRadar = config;
 
-          const quadrantsRules = {
-            0: 'bottom-right',
-            1: 'bottom-left',
-            2: 'top-left',
-            3: 'top-right',
-          }
-          // TODO: changes of this prio didnt work
-          // const quadrantsRules = {
-          //   0: 'top-left',
-          //   1: 'top-right',
-          //   2: 'bottom-left',
-          //   3: 'bottom-right',
-          // }
+          const d3Config = [
+            { position: 'top-left', radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1 },
+            { position: 'top-right', radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1 },
+            { position: 'bottom-left', radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1 },
+            { position: 'bottom-right', radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1 },
+          ];
 
           this.selectedRadar.quadrants = this.selectedRadar.quadrants.map((quadrant, index) => {
-            return {...quadrant, position: quadrantsRules[index], index}
+            return {...quadrant, position: d3Config[index].position, d3: d3Config[index], index}
           });
 
           this.radarVersion = version;
