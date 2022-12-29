@@ -1,10 +1,8 @@
 # Neofonie TechRadar
 
-[![Build Status](https://api.travis-ci.org/Neofonie/tech-radar.svg?branch=master)](https://travis-ci.org/Neofonie/tech-radar) 
+[![Build Status](https://github.com/Neofonie/tech-radar/workflows/deploy/badge.svg)](https://github.com/Neofonie/tech-radar/actions)
 
-![alt text](../master/public/screenshots/neotechradar1.png?raw=true "Neofonie Tech Radar #1")
-  
-![alt text](../master/public/screenshots/neotechradar2.png?raw=true "Neofonie Tech Radar #2")
+![Screenshot](../main/public/screenshots/neotechradar2.png?raw=true)
 
 
 # Motivation
@@ -68,7 +66,7 @@ The `/docs` folder is only for github pages.
 ```
 The MIT License (MIT)
 
-Copyright (c) 2018 Neofonie GmbH
+Copyright (c) 2022 Neofonie GmbH
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

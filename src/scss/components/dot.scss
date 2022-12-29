@@ -36,7 +36,6 @@
     top: 50px;
     text-transform: uppercase;
     width: 200px;
-    transition: all 0.2s;
     text-align: center;
   }
 
@@ -59,18 +58,15 @@
       position: absolute;
       top: 15px;
       font-size: 10px;
-      transition: all 0.2s;
-      transition-delay: 0.1s;
       width: 200px;
     }
   }
 
   &.selected {
     font-weight: 900;
-    //transform: rotate(5deg) scale(2);
     z-index: 1000;
-    border-radius: 0px;
-    animation: dot-selection 3s infinite;
+    border-radius: 0;
+    animation: dot-selection 3s paused;
     @keyframes dot-selection {
       0% {
         transform: scale(1.4) rotate(5deg);
