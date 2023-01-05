@@ -1121,6 +1121,38 @@
       "title": "DataBricks",
       "quadrant": "data_management",
       "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-12-21",
+          "description": ""
+        }
+      ],
+      "url": "https://github.com/kubernetes/kops",
+      "key": "kops",
+      "id": "kops",
+      "title": "Kops",
+      "quadrant": "infrastructure",
+      "description": "Kubernetes Cluster Management"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "docker_desktop",
+      "id": "docker_desktop",
+      "title": "Docker Desktop",
+      "quadrant": "infrastructure",
+      "description": "Container Runtime for Local Development"
     }
   ]
 }
