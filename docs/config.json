@@ -246,9 +246,9 @@
         }
       ],
       "url": "#",
-      "key": "docker",
-      "id": "docker",
-      "title": "Docker",
+      "key": "kubernetes",
+      "id": "kubernetes",
+      "title": "Kubernetes",
       "quadrant": "infrastructure",
       "description": ""
     },
@@ -256,15 +256,15 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "adopt",
-          "date": "2022-05-01",
+          "ringId": "trial",
+          "date": "2022-12-19",
           "description": ""
         }
       ],
       "url": "#",
-      "key": "kubernetes",
-      "id": "kubernetes",
-      "title": "Kubernetes",
+      "key": "kubernetes_operators",
+      "id": "kubernetes_operators",
+      "title": "Kubernetes Operators",
       "quadrant": "infrastructure",
       "description": ""
     },
@@ -368,8 +368,14 @@
       "timeline": [
         {
           "moved": 0,
+          "ringId": "hold",
+          "date": "2022-12-19",
+          "description": "Used for Ingress in places, but no new usage in some time."
+        },
+        {
+          "moved": 0,
           "ringId": "adopt",
-          "date": "2022-05-01",
+          "date": "2022-05-1",
           "description": ""
         }
       ],
@@ -480,19 +486,34 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "assess",
-          "date": "2022-05-01",
+          "ringId": "trial",
+          "date": "2022-12-19",
           "description": ""
         }
       ],
       "url": "#",
-      "key": "kustomize",
-      "id": "kustomize",
-      "title": "Kustomize",
+      "key": "jsonnet",
+      "id": "jsonnet",
+      "title": "Jsonnet",
+      "quadrant": "languages",
+      "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-12-19",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "tanka",
+      "id": "tanka",
+      "title": "Tanka",
       "quadrant": "infrastructure",
       "description": ""
     },
-
     {
       "timeline": [
         {
@@ -1100,6 +1121,38 @@
       "title": "DataBricks",
       "quadrant": "data_management",
       "description": ""
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-12-21",
+          "description": ""
+        }
+      ],
+      "url": "https://github.com/kubernetes/kops",
+      "key": "kops",
+      "id": "kops",
+      "title": "Kops",
+      "quadrant": "infrastructure",
+      "description": "Kubernetes Cluster Management"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2022-05-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "docker_desktop",
+      "id": "docker_desktop",
+      "title": "Docker Desktop",
+      "quadrant": "infrastructure",
+      "description": "Container Runtime for Local Development"
     }
   ]
 }
