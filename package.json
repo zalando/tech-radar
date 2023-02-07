@@ -15,7 +15,7 @@
     "socket.io": "^4.4.1"
   },
   "resolutions": {
-    "qs": "6.2.4"
+    "ua-parser-js": "1.0.33"
   },
   "scripts": {
     "start": "browser-sync docs -w",
