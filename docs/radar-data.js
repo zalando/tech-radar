@@ -91,4 +91,4 @@ var entries = [
 var title = "Zalando Tech Radar";
 var date = "2023.02";
 
-var radarData = { quadrants, rings, entries, title, date }
+var radarData = { quadrants, rings, entries, title, date };
