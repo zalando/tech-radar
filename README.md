@@ -84,9 +84,13 @@ If you need to have your Tech Radar accessed only by your people in your organiz
 
 1. Connect your git repository to Pages and deploy. Choose framework as None and build output directory as `docs`. ( [https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages](https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages) )
 
-2. Add a custom domain, it can be something like `tech-radar.yourorganization.com` ( [https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) )
+2. In your just deployed Pages, go to Settings > General > and select Enable access policy.
 
-3. Add ZeroTrust protection for your custom domain. ( [https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/) )
+3. Once the policy is added, click on Manage Policies and choose the just added policy.
+
+4. Click on Overview and remove `*` from the subdomain and click Save application.
+
+5. (optional) Add a custom domain, it can be something like `tech-radar.yourorganization.com` ( [https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) ) and add ZeroTrust protection for your custom domain. ( [https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/) )
 
 Now only the people who are allowed in your Zero Trust policies will be able to access to your Tech Radar.
 
