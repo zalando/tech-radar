@@ -70,6 +70,26 @@ Entries are positioned automatically so that they don't overlap.
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
 Radar](http://zalando.github.io/tech-radar/).
 
+## Deployment
+
+Tech Radar is static, so it can be deployed as a static website to anywhere.
+
+### Deploying to CloudFlare Pages with Authentication
+
+If you need to have your Tech Radar accessed only by your people in your organization and not by everyone in public, there's a way to do it easily with using CloudFlare Pages.
+
+![CloudFlare Access Login Page Example](https://blog.cloudflare.com/content/images/2020/02/multi-sso-login-2.png "CloudFlare Access Login Page Example")
+
+> As an example, we'll use this repository's structure. So, we have a private repository for Tech Radar with index.html in it.
+
+1. Connect your git repository to Pages and deploy. Choose framework as None and build output directory as `docs`. ( [https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages](https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages) )
+
+2. Add a custom domain, it can be something like `tech-radar.yourorganization.com` ( [https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) )
+
+3. Add ZeroTrust protection for your custom domain. ( [https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/) )
+
+Now only the people who are allowed in your Zero Trust policies will be able to access to your Tech Radar.
+
 ## Local Development
 
 1. install dependencies with yarn (or npm):
