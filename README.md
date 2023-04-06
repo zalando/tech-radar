@@ -74,6 +74,16 @@ Radar](http://zalando.github.io/tech-radar/).
 
 Tech Radar is static, so it can be deployed as a static website to anywhere.
 
+### Deploying to Github Pages
+
+1. After forking/cloning this repository, go to Settings > Pages.
+
+2. Choose the main branch and choose `docs` as folder, and click Save.
+
+3. (optional) You can add a custom domain, like `tech-radar.yourorganization.com` ( [https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) )
+
+Now you have your Tech Radar deployed, it's publicly available for everyone. If you want to have it private and you have Github Enterprise, you can follow the [instructions](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site) or choose the other options of deployment.
+
 ### Deploying to CloudFlare Pages with Authentication
 
 If you need to have your Tech Radar accessed only by your people in your organization and not by everyone in public, there's a way to do it easily with using CloudFlare Pages.
