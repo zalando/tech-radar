@@ -319,6 +319,38 @@
     {
       "timeline": [
         {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2023-04-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_app_runner",
+      "id": "aws_app_runner",
+      "title": "AWS AppRunner",
+      "quadrant": "infrastructure",
+      "description": "AWS AppRunner is a fully managed service that makes it easy to deploy containerized web applications and APIs without any prior infrastructure or container experience"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2023-04-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "aws_documentdb",
+      "id": "aws_documentdb",
+      "title": "AWS DocumentDB",
+      "quadrant": "infrastructure",
+      "description": "Amazon DocumentDB (with MongoDB compatibility) is a fully managed, scalable, highly durable, and highly available document database service that offers high performance, high availability, and securitye"
+    },
+    {
+      "timeline": [
+        {
           "moved": -1,
           "ringId": "hold",
           "date": "2022-05-01",
@@ -741,9 +773,9 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "assess",
-          "date": "2022-05-01",
+          "moved": 1,
+          "ringId": "trial",
+          "date": "2023-04-01",
           "description": ""
         }
       ],
@@ -752,7 +784,23 @@
       "id": "node_js",
       "title": "NodeJS",
       "quadrant": "languages",
-      "description": ""
+      "description": "Node.js is also known for its event-driven non-blocking I/O model, which allows it to handle a large number of concurrent connections efficiently"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2023-04-01",
+          "description": ""
+        }
+      ],
+      "url": "#",
+      "key": "typescript",
+      "id": "typescript",
+      "title": "TypeScript",
+      "quadrant": "languages",
+      "description": "TypeScript is a superset of JavaScript that adds optional static typing."
     },
     {
       "timeline": [
