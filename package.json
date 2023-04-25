@@ -9,14 +9,14 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "eslint": "^5.7.0",
-    "htmllint": "^0.7.2"
+    "browser-sync": "^2.29.1",
+    "eslint": "^8.39.0",
+    "eslint-plugin-html": "^7.1.0"
   },
   "scripts": {
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
-    "lint:html": "htmllint docs/*.html"
+    "lint:html": "eslint docs/*.html"
   }
 }
