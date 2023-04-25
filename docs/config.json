@@ -322,7 +322,7 @@
           "moved": 0,
           "ringId": "trial",
           "date": "2023-04-01",
-          "description": ""
+          "description": "AWS AppRunner is now being used in production: Recording Proxy Service"
         }
       ],
       "url": "#",
@@ -338,7 +338,7 @@
           "moved": 0,
           "ringId": "trial",
           "date": "2023-04-01",
-          "description": ""
+          "description": "AWS DocumentDB is now being used in production: Recording Proxy Service"
         }
       ],
       "url": "#",
@@ -773,10 +773,16 @@
     {
       "timeline": [
         {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
+        },
+        {
           "moved": 1,
           "ringId": "trial",
           "date": "2023-04-01",
-          "description": ""
+          "description": "Node is now being used in production: Recording Proxy Service"
         }
       ],
       "url": "#",
@@ -792,7 +798,7 @@
           "moved": 0,
           "ringId": "trial",
           "date": "2023-04-01",
-          "description": ""
+          "description": "TypeScript is now being used to develop the Recording Proxy Service"
         }
       ],
       "url": "#",
