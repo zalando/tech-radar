@@ -773,16 +773,16 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "assess",
-          "date": "2022-05-01",
-          "description": ""
-        },
-        {
           "moved": 1,
           "ringId": "trial",
           "date": "2023-04-01",
           "description": "Node is now being used in production: Recording Proxy Service"
+        },
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2022-05-01",
+          "description": ""
         }
       ],
       "url": "#",
