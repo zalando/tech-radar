@@ -36,7 +36,7 @@
     radar_visualization({
       svg_id: "radar",
       width: 1450,
-      height: 1000,
+      height: 900,
       colors: {
         background: "#fff",
         grid: "#ededed",
@@ -44,7 +44,7 @@
       },
       print_layout: true,
       // Update the year / month if making a new revision
-      title: "Invoca Tech Radar 2023.01",
+      title: "Invoca Tech Radar 2023.04",
 
       // supplied via radar_config.js
       rings: data.rings,
@@ -53,6 +53,12 @@
     });
   });
 </script>
+
+<div class="active-area">
+  <p id="active-title"></p>
+  <p id="active-description"></p>
+  <div id="active-timeline"></div>
+</div>
 
 <table>
 <tr>
