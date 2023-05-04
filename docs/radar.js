@@ -270,10 +270,6 @@ function radar_visualization(config) {
     );
   }
 
-  function linkifyName(name) {
-    return `#${name.replaceAll(" ", "-").toLowerCase()}`;
-  }
-
   // draw title and legend (only in print layout)
   if (config.print_layout) {
 
@@ -314,9 +310,8 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("a")
-                .attr("href", function (d) {
-                  return linkifyName(d.title);
-                })
+                .attr("href", "#")
+                .on("click", function(d) { toggleInfo(d, true); })
             .append("text")
               .attr("transform", function(d, i) { return legendTransform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
@@ -377,6 +372,24 @@ function radar_visualization(config) {
     d3.select("#bubble")
       .attr("transform", translate(0,0))
       .style("opacity", 0);
+  }
+
+  function toggleInfo(d, updateUrl) {
+    document.getElementById("active-title").innerText = d.title;
+    document.getElementById("active-description").innerHTML = d.description || "<i>No description</i>";
+    document.getElementById("active-timeline").innerHTML = renderTimeline(d);
+
+    if (updateUrl) {
+      history.pushState(null, null, "#" + d.key);
+      d3.event.preventDefault();
+    }
+  }
+
+  function renderTimeline(d) {
+     return d.timeline.map(function(e) {
+      return "<span class='date'>" + e.date + "</span>" +
+        " (" + e.ringId + ") " + e.description + "<br />";
+     }).join("");
   }
 
   function highlightLegendItem(d) {
@@ -445,16 +458,18 @@ function radar_visualization(config) {
           return legendTransform(quadrantIndex, ringIndex, i);
         })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+        .on("click", function(d) { toggleInfo(d, true); })
+        ;
 
   // configure each blip
   blips.each(function(d) {
     let blip = d3.select(this);
 
     // blip link
-    if (!config.print_layout && d.active && d.hasOwnProperty("link")) {
+    if (d.hasOwnProperty("url")) {
       blip = blip.append("a")
-        .attr("xlink:href", d.link);
+        .attr("href", d.url);
     }
 
     // blip shape
@@ -497,4 +512,10 @@ function radar_visualization(config) {
     .velocityDecay(0.19) // magic number (found by experimentation)
     .force("collision", d3.forceCollide().radius(12).strength(0.85))
     .on("tick", ticked);
+
+  // start with an element selected and description shown, if hash in URL exists
+  if (window.location.hash.match(/\#[A-z]+/)) {
+    let d = config.entries.find((e) => e.key === window.location.hash.substring(1));
+    d && toggleInfo(d);
+  }
 }
