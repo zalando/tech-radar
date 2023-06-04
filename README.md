@@ -72,37 +72,7 @@ Radar](http://zalando.github.io/tech-radar/).
 
 ## Deployment
 
-Tech Radar is static, so it can be deployed as a static website to anywhere.
-
-### Deploying to Github Pages
-
-1. After forking/cloning this repository, go to Settings > Pages.
-
-2. Choose the main branch and choose `docs` as folder, and click Save.
-
-3. (optional) You can add a custom domain, like `tech-radar.yourorganization.com` ( [https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) )
-
-Now you have your Tech Radar deployed, it's publicly available for everyone. If you want to have it private and you have Github Enterprise, you can follow the [instructions](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site) or choose the other options of deployment.
-
-### Deploying to CloudFlare Pages with Authentication
-
-If you need to have your Tech Radar accessed only by your people in your organization and not by everyone in public, there's a way to do it easily with using CloudFlare Pages.
-
-![CloudFlare Access Login Page Example](https://blog.cloudflare.com/content/images/2020/02/multi-sso-login-2.png "CloudFlare Access Login Page Example")
-
-> As an example, we'll use this repository's structure. So, we have a private repository for Tech Radar with index.html in it.
-
-1. Connect your git repository to Pages and deploy. Choose framework as None and build output directory as `docs`. ( [https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages](https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages) )
-
-2. In your just deployed Pages, go to Settings > General > and select Enable access policy.
-
-3. Once the policy is added, click on Manage Policies and choose the just added policy.
-
-4. Click on Overview and remove `*` from the subdomain and click Save application.
-
-5. (optional) Add a custom domain, it can be something like `tech-radar.yourorganization.com` ( [https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) ) and add ZeroTrust protection for your custom domain. ( [https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/) )
-
-Now only the people who are allowed in your Zero Trust policies will be able to access to your Tech Radar.
+Tech Radar is a static page, so it can be deployed using any hosting provider of your choice offering static page hosting.
 
 ## Local Development
 
