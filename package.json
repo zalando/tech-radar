@@ -14,9 +14,6 @@
     "htmllint-cli": "^0.0.7",
     "socket.io": "^4.4.1"
   },
-  "resolutions": {
-    "ua-parser-js": "1.0.33"
-  },
   "scripts": {
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
