@@ -11,7 +11,7 @@
   "devDependencies": {
     "browser-sync": "^2.27.7",
     "eslint": "^5.7.0",
-    "htmllint": "^0.7.2",
+    "htmllint-cli": "^0.0.7",
     "socket.io": "^4.4.1"
   },
   "resolutions": {
