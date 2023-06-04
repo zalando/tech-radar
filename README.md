@@ -70,6 +70,10 @@ Entries are positioned automatically so that they don't overlap.
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
 Radar](http://zalando.github.io/tech-radar/).
 
+## Deployment
+
+Tech Radar is a static page, so it can be deployed using any hosting provider of your choice offering static page hosting.
+
 ## Local Development
 
 1. install dependencies with yarn (or npm):
