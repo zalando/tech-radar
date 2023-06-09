@@ -696,7 +696,7 @@
           "moved": 0,
           "ringId": "adopt",
           "date": "2022-05-01",
-          "description": ""
+          "description": "Use for lightweight Ruby services that don't need Rails. Works great with Falcon."
         }
       ],
       "url": "#",
@@ -712,7 +712,7 @@
           "moved": -1,
           "ringId": "hold",
           "date": "2022-05-01",
-          "description": ""
+          "description": "Supplanted by Sinatra + Falcon."
         }
       ],
       "url": "#",
@@ -725,10 +725,16 @@
     {
       "timeline": [
         {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2023-06-05",
+          "description": "Supplanted by Async."
+        },
+        {
           "moved": 0,
           "ringId": "hold",
           "date": "2022-05-01",
-          "description": "Should not be used on it's own. If doing concurrent programming, use with EM::Synchrony"
+          "description": "Should not be used on its own. If doing concurrent programming, use with EM::Synchrony"
         }
       ],
       "url": "#",
@@ -740,6 +746,12 @@
     },
     {
       "timeline": [
+        {
+          "moved": -1,
+          "ringId": "hold",
+          "date": "2023-06-05",
+          "description": "Supplanted by Async"
+        },
         {
           "moved": -1,
           "ringId": "adopt",
@@ -758,12 +770,18 @@
       "timeline": [
         {
           "moved": 1,
+          "ringId": "adopt",
+          "date": "2023-06-05",
+          "description": "Works out-of-the-box with Ruby 3. Actively supported, unlike Synchrony (which it supplants)."
+        },
+        {
+          "moved": 1,
           "ringId": "assess",
           "date": "2022-05-01",
           "description": ""
         }
       ],
-      "url": "#",
+      "url": "https://github.com/socketry/async",
       "key": "async",
       "id": "async",
       "title": "Async",
@@ -860,12 +878,18 @@
       "timeline": [
         {
           "moved": 1,
+          "ringId": "adopt",
+          "date": "2023-06-05",
+          "description": "Use instead of Unicorn or Puma."
+        },
+        {
+          "moved": 1,
           "ringId": "assess",
           "date": "2022-05-01",
           "description": ""
         }
       ],
-      "url": "#",
+      "url": "https://github.com/socketry/falcon",
       "key": "falcon",
       "id": "falcon",
       "title": "Falcon",
@@ -894,7 +918,7 @@
           "moved": 0,
           "ringId": "hold",
           "date": "2022-05-01",
-          "description": ""
+          "description": "Supplanted by rspec."
         }
       ],
       "url": "#",
@@ -910,7 +934,7 @@
           "moved": -1,
           "ringId": "hold",
           "date": "2022-05-01",
-          "description": "Mocking and stubbing library. Exists in web but rspec-mocks should be used instead"
+          "description": "Mocking and stubbing library. Deprecated in favor of rspec-mocks."
         }
       ],
       "url": "#",
