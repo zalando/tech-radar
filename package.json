@@ -12,10 +12,7 @@
     "browser-sync": "^2.29.3",
     "eslint": "^8.42.0",
     "htmllint-cli": "^0.0.7",
-    "socket.io": "^4.6.2"
-  },
-  "resolutions": {
-    "yargs-parser": "21.1.1"
+    "socket.io": "^4.7.2"
   },
   "scripts": {
     "start": "browser-sync docs -w",
