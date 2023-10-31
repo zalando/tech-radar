@@ -3,6 +3,7 @@
         "browser": true,
         "es6": true
     },
+    "plugins": ["html"],
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2015,
