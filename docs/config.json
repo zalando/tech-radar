@@ -1,5 +1,5 @@
 {
-  "date": "2023.10",
+  "date": "2023.11",
   "entries": [
     {
       "quadrant": 3,
@@ -28,6 +28,13 @@
       "label": "AWS Glue",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 2,
+      "label": "AWS Lake Formation",
+      "active": true,
+      "moved": 1
     },
     {
       "quadrant": 3,
@@ -82,6 +89,13 @@
     },
     {
       "quadrant": 3,
+      "ring": 2,
+      "label": "Streamlit",
+      "active": true,
+      "moved": 1
+    },
+    {
+      "quadrant": 3,
       "ring": 3,
       "label": "YARN",
       "active": true,
@@ -89,7 +103,7 @@
     },
     {
       "quadrant": 3,
-      "ring": 2,
+      "ring": 1,
       "label": "dbt",
       "active": true,
       "moved": 0
@@ -134,7 +148,7 @@
       "ring": 1,
       "label": "Amazon Feature Store",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 2,
@@ -292,7 +306,7 @@
       "ring": 1,
       "label": "AWS Elemental MediaConvert",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 1,
@@ -333,16 +347,15 @@
     },
     {
       "quadrant": 1,
-      "ring": 0,
-      "label": "OpenTracing",
+      "ring": 1,
+      "label": "Open Policy Agent",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 1,
-      "ring": 3,
-      "label": "STUPS",
-      "link": "https://engineering.zalando.com/tags/stups.html",
+      "ring": 0,
+      "label": "OpenTracing",
       "active": true,
       "moved": 0
     },
@@ -362,10 +375,10 @@
     },
     {
       "quadrant": 1,
-      "ring": 2,
+      "ring": 1,
       "label": "WebAssembly",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 1,
