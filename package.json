@@ -5,6 +5,7 @@
   "homepage": "https://github.com/zalando/tech-radar#readme",
   "repository": "https://github.com/zalando/tech-radar.git",
   "license": "MIT",
+  "private": true,
   "directories": {
     "doc": "docs"
   },

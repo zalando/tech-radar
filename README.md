@@ -15,7 +15,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.7.js"></script>
+<script src="http://zalando.github.io/tech-radar/release/radar-0.8.js"></script>
 ```
 
 2. insert an empty `svg` tag:
@@ -31,6 +31,7 @@ radar_visualization({
   svg_id: "radar",
   width: 1450,
   height: 1000,
+  scale: 1.0,
   colors: {
     background: "#fff",
     grid: "#bbb",
@@ -65,7 +66,8 @@ radar_visualization({
 });
 ```
 
-Entries are positioned automatically so that they don't overlap.
+Entries are positioned automatically so that they don't overlap. The "scale" parameter can help
+in adjusting the size of the radar.
 
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
 Radar](http://zalando.github.io/tech-radar/).
@@ -99,7 +101,7 @@ http://localhost:3000/
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017-2022 Zalando SE
+Copyright (c) 2017-2024 Zalando SE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
