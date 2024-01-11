@@ -191,16 +191,21 @@ function radar_visualization(config) {
     ].join(" ");
   }
 
+  // adjust with config.scale.
+  config.scale = config.scale || 1;
+  var scaled_width = config.width * config.scale;
+  var scaled_height = config.height * config.scale;
+
   var svg = d3.select("svg#" + config.svg_id)
     .style("background-color", config.colors.background)
-    .attr("width", config.width)
-    .attr("height", config.height);
+    .attr("width", scaled_width)
+    .attr("height", scaled_height);
 
   var radar = svg.append("g");
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
   } else {
-    radar.attr("transform", translate(config.width / 2, config.height / 2));
+    radar.attr("transform", translate(scaled_width / 2, scaled_height / 2).concat(`scale(${config.scale})`));
   }
 
   var grid = radar.append("g");
