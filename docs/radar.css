@@ -17,3 +17,42 @@ td {
   vertical-align: top;
   padding-right: 60px;
 }
+
+a {
+  color: #7d8edb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#descriptionWrapper {
+  position: fixed;
+  top: 0;
+  right: -410px;
+  width: 350px;
+  height: 100%;
+  padding: 0 30px;
+  transition: all 0.8s ease-out;
+  background: #f3f0f3;
+  box-shadow: -5px 0px 15px 0px #cdcdcd;
+}
+
+#descriptionWrapper.active {
+  right: 0;
+}
+
+#descriptionClose {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  font-size: 18px;
+  line-height: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+text[class^="legend"] {
+  cursor: pointer;
+}

@@ -7,7 +7,8 @@
       "label": "tanstack/query",
       "link": "https://tanstack.com/query/latest",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>React Query is a simple yet robust state management library for CRUD-like operations. Unlike traditional state management libraries, React Query works directly with data fetching operations, handling automatic caching, background fetching and automatic updates without need for boilerplate code.</p><p>When to use: This library is best suited for managing backend data that requires minimal manipulation on the client side. Additionally, React Query can be used in conjunction with other state management solutions to handle server state, while leveraging different libraries for client state as needed.</p><p>Used in Platform and Pollpass</p>"
     },
     {
       "quadrant": 0,
@@ -23,7 +24,8 @@
       "label": "zustand",
       "link": "https://github.com/pmndrs/zustand",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Zustand offers a conventional state management system, rooted in store creations and actions, providing an intuitive way to manage state. It echoes the familiar patterns of libraries like Redux, while simultaneously reducing the need for verbose boilerplate.</p><p><strong>When to use:</strong> Zustand is ideal for scenarios where a traditional, centralized store aligns with your problem-solving strategy.</p><p>Used in Pollpass and Platform</p>"
     },
     {
       "quadrant": 0,
@@ -31,7 +33,8 @@
       "label": "xstate",
       "link": "https://github.com/statelyai/xstate",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>A routing library for React that enables the navigation among different components in an application, managing the URL in sync with the UI.</p>"
     },
     {
       "quadrant": 0,
@@ -47,7 +50,8 @@
       "label": "Material UI",
       "link": "https://mui.com/core/",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Combined with <a href='https://www.tss-react.dev/' target='_blank'>tss-react</a>.</p><p>Used in Platform. For platform apps, refer to the React UI Components common library that implements Platform design system.</p>"
     },
     {
       "quadrant": 0,
@@ -55,7 +59,8 @@
       "label": "CSS Modules",
       "link": "https://github.com/GlobalWebIndex/hooked-bdp/blob/a41c34f3cfbe3bd4c92146053a6ab8e60668c1f3/src/components/common/Button/index.tsx#L3",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>CSS Modules offer a styling solution that aligns closely with traditional CSS, with the added benefit of automatically generating unique class names. This feature ensures that your styles are contained within their respective components, preventing any style conflicts.</p><p>In case Next.js is used (Hooked squad).</p>"
     },
     {
       "quadrant": 0,
@@ -63,7 +68,8 @@
       "label": "Tailwind",
       "link": "https://github.com/tailwindlabs/tailwindcss",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Tailwind is a utility-first CSS framework that offers low-level utility classes, enabling you to build custom designs directly within your markup. It emphasizes rapid design customization and maintains a consistent design system throughout your application. With Tailwind, your styles are immediately visible alongside your markup, allowing for straightforward identification of applied styles. This approach also mitigates the issue of unused CSS classes and simplifies the code review process for styling.</p><p>Used in Pollpass.</p>"
     },
     {
       "quadrant": 0,
@@ -71,7 +77,8 @@
       "label": "axios",
       "link": "https://github.com/axios/axios",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Platform and Pollpass</p>"
     },
     {
       "quadrant": 0,
@@ -79,7 +86,8 @@
       "label": "httpz",
       "link": "https://github.com/GlobalWebIndex/platform2-lib/blob/master/src/httpz.ts",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Based on <a href='https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API' target='_blank'>Fetch API</a>, used in Platform and in Export Manager</p>"
     },
     {
       "quadrant": 0,
@@ -87,7 +95,8 @@
       "label": "zod",
       "link": "https://github.com/colinhacks/zod",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>A TypeScript-first schema declaration and validation library that allows you to build structured, type-safe data models with minimal effort.</p><p>Used in Platform and Pollpass</p>"
     },
     {
       "quadrant": 0,
@@ -95,7 +104,8 @@
       "label": "jest",
       "link": "https://github.com/jestjs/jest",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Platform and Pollpass</p>"
     },
     {
       "quadrant": 0,
@@ -103,7 +113,8 @@
       "label": "React Testing Library",
       "link": "https://testing-library.com/docs/react-testing-library/intro/",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Platform and Export Manager</p>"
     },
     {
       "quadrant": 0,
@@ -111,7 +122,8 @@
       "label": "Vitest",
       "link": "https://vitest.dev/",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Chart Builder and Export Manager</p>"
     },
     {
       "quadrant": 0,
@@ -119,7 +131,8 @@
       "label": "Webpack",
       "link": "https://webpack.js.org/",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Platform. e.g platform's <a href='https://github.com/GlobalWebIndex/platform2-header/blob/develop/webpack.prod.config.ts' target='_blank'>header</a> micro frontend</p>"
     },
     {
       "quadrant": 0,
@@ -127,7 +140,8 @@
       "label": "Vite",
       "link": "https://vitejs.dev/",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "<p>Used in Pollpass, Export Manager and Chart Builder</p>"
     },
     {
       "quadrant": 3,

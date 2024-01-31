@@ -48,10 +48,10 @@ function radar_visualization(config) {
   ];
 
   const rings = [
-    { radius: 130 },
-    { radius: 220 },
-    { radius: 310 },
-    { radius: 400 }
+    { radius: 160 },
+    { radius: 250 },
+    { radius: 340 },
+    { radius: 430 }
   ];
 
   const title_offset =
@@ -196,6 +196,11 @@ function radar_visualization(config) {
   var scaled_width = config.width * config.scale;
   var scaled_height = config.height * config.scale;
 
+  var descriptionWrapper = d3.select("#descriptionWrapper")
+  var description = d3.select("#description")
+  d3.select("#descriptionClose").on("click", function(d){
+    descriptionWrapper.attr("class", "")
+  })
   var svg = d3.select("svg#" + config.svg_id)
     .style("background-color", config.colors.background)
     .attr("width", scaled_width)
@@ -212,13 +217,13 @@ function radar_visualization(config) {
 
   // draw grid lines
   grid.append("line")
-    .attr("x1", 0).attr("y1", -400)
-    .attr("x2", 0).attr("y2", 400)
+    .attr("x1", 0).attr("y1", -430)
+    .attr("x2", 0).attr("y2", 430)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
   grid.append("line")
-    .attr("x1", -400).attr("y1", 0)
-    .attr("x2", 400).attr("y2", 0)
+    .attr("x1", -430).attr("y1", 0)
+    .attr("x2", 430).attr("y2", 0)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
 
@@ -324,13 +329,7 @@ function radar_visualization(config) {
           .data(segmented[quadrant][ring])
           .enter()
             .append("a")
-              .attr("href", function (d, i) {
-                 return d.link ? d.link : "#"; // stay on same page if no link was provided
-              })
-              // Add a target if (and only if) there is a link and we want new tabs
-              .attr("target", function (d, i) {
-                 return (d.link && config.links_in_new_tabs) ? "_blank" : null;
-              })
+              .on("click", showDescription)
             .append("text")
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
@@ -339,7 +338,8 @@ function radar_visualization(config) {
               .style("font-family", "Arial, Helvetica")
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .on("click", showDescription);
       }
     }
   }
@@ -404,6 +404,20 @@ function radar_visualization(config) {
     legendItem.removeAttribute("fill");
   }
 
+  function showDescription (d){
+    description.html("")
+    description
+      .append("h2")
+      .append("a")
+      .attr("href", function () {
+        return d.link ? d.link : "#";
+      })
+      .attr("target", "_blank")
+      .text(d.label)
+    description.append("div").html(d.description)
+    descriptionWrapper.attr("class", "active")
+  }
+
   // draw blips on radar
   var blips = rink.selectAll(".blip")
     .data(config.entries)
@@ -418,15 +432,9 @@ function radar_visualization(config) {
   blips.each(function(d) {
     var blip = d3.select(this);
 
-    // blip link
-    if (d.active && Object.prototype.hasOwnProperty.call(d, "link") && d.link) {
-      blip = blip.append("a")
-        .attr("xlink:href", d.link);
-
-      if (config.links_in_new_tabs) {
-        blip.attr("target", "_blank");
-      }
-    }
+    // blib description
+    blip = blip.append("a")
+      .on("click", showDescription)
 
     // blip shape
     if (d.moved > 0) {
