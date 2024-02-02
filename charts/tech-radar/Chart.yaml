@@ -1,0 +1,5 @@
+apiVersion: v2
+name: tech-radar
+description: A Helm chart for Zalando Tech Radar
+version: 1.0.0
+appVersion: 1.0.0

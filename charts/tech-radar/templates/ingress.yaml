@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "name" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    external-dns/create-records: "yes"
+spec:
+  ingressClassName: nginx-internal
+  rules:
+  - host: {{ .Values.ingress.domainName }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ include "name" . }}
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

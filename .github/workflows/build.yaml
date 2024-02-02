@@ -1,0 +1,44 @@
+name: Build
+run-name: ${{ github.actor }} pushed to ${{ github.ref_name }}
+
+on:
+  push:
+    branches:
+      - create-helm-chart
+
+jobs:
+  build:
+    runs-on: [ self-hosted, gwi-hosted, default ]
+    container:
+      image: eu.gcr.io/gwi-host-net/ubuntu:act-latest
+      credentials:
+        username: _json_key
+        password: ${{ secrets.SA_GWI_HOST_NET }}
+    outputs:
+      image: ${{ steps.buildAndPush.outputs.image }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build and push Docker image
+        uses: GlobalWebIndex/github-actions/rt/build-and-push@main
+        with:
+          project: 'gwi-host-net'
+          target_env: 'production'
+          build_stage: 'production'
+          custom_tag: ${{ github.sha }}
+          ssh_key: ${{ secrets.DRONE_SSH_KEY }}
+          json_key: ${{ secrets.SA_GWI_HOST_NET }}
+
+      - name: Deploy Helm chart
+        uses: GlobalWebIndex/github-actions/helm-deploy@v2.4
+        env:
+          HELM_CHART_PATH: ./charts/tech-radar
+          GCP_CREDENTIALS: ${{ secrets.SA_GWI_HOST_NET }}
+          GKE_PROJECT: 'gwi-host-net'
+          GKE_CLUSTER_NAME: 'gwi-central'
+          GKE_ZONE: europe-west1
+          HELM_RELEASE_NAMESPACE: tech-radar
+          HELM_VALUES: image.tag=${{ github.sha }}
+          HELM_VALUES_FILES: ./charts/tech-radar/env/production/values.yaml
+          HELM_RELEASE_NAME: tech-radar

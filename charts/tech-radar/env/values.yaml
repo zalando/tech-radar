@@ -1,0 +1,11 @@
+replicaCount: 1
+namespace: tech-radar
+ingress:
+  domainName: tech-radar-test.in.globalwebindex.com
+image:
+  repository: gcr.io/gwi-host-net/tech-radar
+  tag: development
+  pullPolicy: Always
+service:
+  type: ClusterIP
+  port: 80
