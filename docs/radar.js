@@ -406,14 +406,22 @@ function radar_visualization(config) {
 
   function showDescription (d){
     description.html("")
-    description
-      .append("h2")
-      .append("a")
-      .attr("href", function () {
-        return d.link ? d.link : "#";
-      })
-      .attr("target", "_blank")
-      .text(d.label)
+    
+    if (typeof d.link !== "undefined") {
+      description
+        .append("h2")
+        .append("a")
+        .attr("href", function () {
+          return d.link ? d.link : "#";
+        })
+        .attr("target", "_blank")
+        .text(d.label)
+    } else {
+      description
+        .append("h2")
+        .append("span")
+        .text(d.label)
+    }
     description.append("div").html(d.description)
     descriptionWrapper.attr("class", "active")
   }

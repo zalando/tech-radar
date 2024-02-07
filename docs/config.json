@@ -193,16 +193,70 @@
       "link": "https://www.docker.com/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "discipline": "general"
     },
     {
       "quadrant": 1,
       "ring": 0,
-      "label": "Kubernetes",
+      "label": "Kubernetes/GKE",
       "link": "https://kubernetes.io/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 1,
+      "ring": 0,
+      "label": "Google Cloud Platform",
+      "link": "https://cloud.google.com/",
+      "active": true,
+      "moved": 0,
+      "discipline": "devops"
+    },
+    {
+      "quadrant": 1,
+      "ring": 0,
+      "label": "Wiz",
+      "link": "https://www.wiz.io/",
+      "active": true,
+      "moved": 0,
+      "discipline": "devops"
+    },
+    {
+      "quadrant": 1,
+      "ring": 0,
+      "label": "Google Chronicle",
+      "link": "https://chronicle.security/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 1,
+      "ring": 1,
+      "label": "InfluxDB",
+      "link": "https://www.influxdata.com/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 1,
+      "ring": 1,
+      "label": "Pinecone",
+      "link": "https://www.pinecone.io/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "PG Vector",
+      "link": "https://github.com/pgvector/pgvector",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
     },
     {
       "quadrant": 1,
@@ -211,7 +265,7 @@
       "link": "https://github.com/features/actions",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "discipline": "general"
     },
     {
       "quadrant": 0,
@@ -220,7 +274,7 @@
       "link": "https://go.dev/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "discipline": "backend"
     },
     {
       "quadrant": 0,
@@ -237,13 +291,76 @@
       "link": "https://www.python.org/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "discipline": "backend"
     },
     {
       "quadrant": 0,
       "ring": 0,
       "label": "Scala",
       "link": "https://www.scala-lang.org/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Scala Akka",
+      "link": "https://akka.io/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 1,
+      "label": "Langchain",
+      "link": "https://www.langchain.com/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 2,
+      "label": "Vertex AI",
+      "link": "https://cloud.google.com/vertex-ai",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 3,
+      "label": "Elm",
+      "link": "https://elm-lang.org/",
+      "active": true,
+      "moved": 0,
+      "discipline": "frontend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 3,
+      "label": "Ruby",
+      "link": "https://www.ruby-lang.org/en/",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 3,
+      "label": "Angular",
+      "link": "https://angular.io/",
+      "active": true,
+      "moved": 0,
+      "discipline": "frontend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 3,
+      "label": "ScalaJS",
+      "link": "https://www.scala-js.org/",
       "active": true,
       "moved": 0,
       "discipline": "frontend"
@@ -267,12 +384,144 @@
       "discipline": "qa"
     },
     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "OpenAI API",
+      "link": "https://openai.com/blog/openai-api",
+      "active": true,
+      "moved": 0,
+      "discipline": "backend"
+    },
+    {
       "quadrant": 3,
       "ring": 0,
-      "label": " Atlantis",
+      "label": "Atlantis",
       "link": "https://www.typescriptlang.org/",
       "active": true,
       "moved": 0,
+      "discipline": "devops"
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "CI/CD",
+      "active": true,
+      "moved": 0,
+      "description": "CI/CD infrastructure as a service",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "Team Topologies",
+      "active": true,
+      "moved": 0,
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "Product Management",
+      "active": true,
+      "moved": 0,
+      "description": "Applying Product Management to internal platforms",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "Confluence",
+      "active": true,
+      "moved": 0,
+      "description": "Confluence as a knowledge Base",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 1,
+      "label": "Cost calculation",
+      "active": true,
+      "moved": 0,
+      "description": "Run cost as architecture fitness function",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 1,
+      "label": "LLMs",
+      "active": true,
+      "moved": 0,
+      "description": "Fine tuned LLMs",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 1,
+      "label": "Prompt Engineering",
+      "active": true,
+      "moved": 0,
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 2,
+      "label": "LLMs (Domain Specific)",
+      "active": true,
+      "moved": 0,
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 2,
+      "label": "PlantUML",
+      "active": true,
+      "moved": 0,
+      "description": "Architecture Diagrams through PlantUML",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 2,
+      "ring": 2,
+      "label": "Tech Debt",
+      "active": true,
+      "moved": 0,
+      "description": "Tracking Health over Tech Debt",
+      "discipline": "general"
+    },
+    {
+      "quadrant": 0,
+      "ring": 1,
+      "label": "ChatGPT",
+      "active": true,
+      "moved": 0,
+      "link": "https://chat.openai.com/",
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 2,
+      "label": "Github Copilot",
+      "active": true,
+      "moved": 0,
+      "link": "https://github.com/features/copilot",
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Grafana",
+      "active": true,
+      "moved": 0,
+      "link": "https://grafana.com/",
+      "discipline": "backend"
+    },
+    {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Prometheus",
+      "active": true,
+      "moved": 0,
+      "link": "https://prometheus.io/",
       "discipline": "devops"
     }
   ]
