@@ -56,3 +56,13 @@ a:hover {
 text[class^="legend"] {
   cursor: pointer;
 }
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.legend div label {
+  cursor: pointer;
+}

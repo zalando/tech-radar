@@ -9,7 +9,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>React Query is a simple yet robust state management library for CRUD-like operations. Unlike traditional state management libraries, React Query works directly with data fetching operations, handling automatic caching, background fetching and automatic updates without need for boilerplate code.</p><p>When to use: This library is best suited for managing backend data that requires minimal manipulation on the client side. Additionally, React Query can be used in conjunction with other state management solutions to handle server state, while leveraging different libraries for client state as needed.</p><p>Used in Platform and Pollpass</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -18,7 +20,9 @@
       "link": "https://github.com/pmndrs/jotai",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -28,7 +32,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Zustand offers a conventional state management system, rooted in store creations and actions, providing an intuitive way to manage state. It echoes the familiar patterns of libraries like Redux, while simultaneously reducing the need for verbose boilerplate.</p><p><strong>When to use:</strong> Zustand is ideal for scenarios where a traditional, centralized store aligns with your problem-solving strategy.</p><p>Used in Pollpass and Platform</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -38,7 +44,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>A routing library for React that enables the navigation among different components in an application, managing the URL in sync with the UI.</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -47,7 +55,9 @@
       "link": "https://github.com/remix-run/react-router",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -57,7 +67,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Combined with <a href='https://www.tss-react.dev/' target='_blank'>tss-react</a>.</p><p>Used in Platform. For platform apps, refer to the React UI Components common library that implements Platform design system.</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -67,7 +79,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>CSS Modules offer a styling solution that aligns closely with traditional CSS, with the added benefit of automatically generating unique class names. This feature ensures that your styles are contained within their respective components, preventing any style conflicts.</p><p>In case Next.js is used (Hooked squad).</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -77,7 +91,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Tailwind is a utility-first CSS framework that offers low-level utility classes, enabling you to build custom designs directly within your markup. It emphasizes rapid design customization and maintains a consistent design system throughout your application. With Tailwind, your styles are immediately visible alongside your markup, allowing for straightforward identification of applied styles. This approach also mitigates the issue of unused CSS classes and simplifies the code review process for styling.</p><p>Used in Pollpass.</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -87,7 +103,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Platform and Pollpass</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -97,7 +115,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Based on <a href='https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API' target='_blank'>Fetch API</a>, used in Platform and in Export Manager</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -107,7 +127,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>A TypeScript-first schema declaration and validation library that allows you to build structured, type-safe data models with minimal effort.</p><p>Used in Platform and Pollpass</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -117,7 +139,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Platform and Pollpass</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -127,7 +151,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Platform and Export Manager</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -137,7 +163,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Chart Builder and Export Manager</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -147,7 +175,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Platform. e.g platform's <a href='https://github.com/GlobalWebIndex/platform2-header/blob/develop/webpack.prod.config.ts' target='_blank'>header</a> micro frontend</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -157,7 +187,9 @@
       "active": true,
       "moved": 0,
       "description": "<p>Used in Pollpass, Export Manager and Chart Builder</p>",
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 3,
@@ -166,7 +198,9 @@
       "link": "https://pnpm.io/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 3,
@@ -175,7 +209,9 @@
       "link": "https://yarnpkg.com/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 3,
@@ -184,7 +220,9 @@
       "link": "https://bun.sh/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 1,
@@ -193,7 +231,9 @@
       "link": "https://www.docker.com/",
       "active": true,
       "moved": 0,
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 1,
@@ -202,7 +242,9 @@
       "link": "https://kubernetes.io/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 1,
@@ -211,7 +253,9 @@
       "link": "https://cloud.google.com/",
       "active": true,
       "moved": 0,
-      "discipline": "devops"
+      "disciplines": [
+        "devops"
+      ]
     },
     {
       "quadrant": 1,
@@ -220,7 +264,9 @@
       "link": "https://www.wiz.io/",
       "active": true,
       "moved": 0,
-      "discipline": "devops"
+      "disciplines": [
+        "devops"
+      ]
     },
     {
       "quadrant": 1,
@@ -229,7 +275,9 @@
       "link": "https://chronicle.security/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 1,
@@ -238,7 +286,9 @@
       "link": "https://www.influxdata.com/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 1,
@@ -247,7 +297,9 @@
       "link": "https://www.pinecone.io/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 1,
@@ -256,7 +308,9 @@
       "link": "https://github.com/pgvector/pgvector",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 1,
@@ -265,7 +319,9 @@
       "link": "https://github.com/features/actions",
       "active": true,
       "moved": 0,
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 0,
@@ -274,7 +330,9 @@
       "link": "https://go.dev/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -282,7 +340,9 @@
       "label": "JavaScript",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -291,7 +351,9 @@
       "link": "https://www.python.org/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -300,7 +362,9 @@
       "link": "https://www.scala-lang.org/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -309,7 +373,9 @@
       "link": "https://akka.io/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -318,7 +384,9 @@
       "link": "https://www.langchain.com/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -327,7 +395,9 @@
       "link": "https://cloud.google.com/vertex-ai",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -336,7 +406,9 @@
       "link": "https://elm-lang.org/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -345,7 +417,9 @@
       "link": "https://www.ruby-lang.org/en/",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -354,7 +428,9 @@
       "link": "https://angular.io/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -363,7 +439,9 @@
       "link": "https://www.scala-js.org/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -372,7 +450,9 @@
       "link": "https://www.typescriptlang.org/",
       "active": true,
       "moved": 0,
-      "discipline": "frontend"
+      "disciplines": [
+        "frontend"
+      ]
     },
     {
       "quadrant": 0,
@@ -381,7 +461,9 @@
       "link": "https://www.typescriptlang.org/",
       "active": true,
       "moved": 0,
-      "discipline": "qa"
+      "disciplines": [
+        "qa"
+      ]
     },
     {
       "quadrant": 0,
@@ -390,7 +472,9 @@
       "link": "https://openai.com/blog/openai-api",
       "active": true,
       "moved": 0,
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 3,
@@ -399,7 +483,9 @@
       "link": "https://www.typescriptlang.org/",
       "active": true,
       "moved": 0,
-      "discipline": "devops"
+      "disciplines": [
+        "devops"
+      ]
     },
     {
       "quadrant": 2,
@@ -408,7 +494,9 @@
       "active": true,
       "moved": 0,
       "description": "CI/CD infrastructure as a service",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -416,7 +504,9 @@
       "label": "Team Topologies",
       "active": true,
       "moved": 0,
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -425,7 +515,9 @@
       "active": true,
       "moved": 0,
       "description": "Applying Product Management to internal platforms",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -434,7 +526,9 @@
       "active": true,
       "moved": 0,
       "description": "Confluence as a knowledge Base",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -443,7 +537,9 @@
       "active": true,
       "moved": 0,
       "description": "Run cost as architecture fitness function",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -452,7 +548,9 @@
       "active": true,
       "moved": 0,
       "description": "Fine tuned LLMs",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -460,7 +558,9 @@
       "label": "Prompt Engineering",
       "active": true,
       "moved": 0,
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -468,7 +568,9 @@
       "label": "LLMs (Domain Specific)",
       "active": true,
       "moved": 0,
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -477,7 +579,9 @@
       "active": true,
       "moved": 0,
       "description": "Architecture Diagrams through PlantUML",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 2,
@@ -486,7 +590,9 @@
       "active": true,
       "moved": 0,
       "description": "Tracking Health over Tech Debt",
-      "discipline": "general"
+      "disciplines": [
+        "general"
+      ]
     },
     {
       "quadrant": 0,
@@ -495,7 +601,9 @@
       "active": true,
       "moved": 0,
       "link": "https://chat.openai.com/",
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -504,7 +612,9 @@
       "active": true,
       "moved": 0,
       "link": "https://github.com/features/copilot",
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -513,7 +623,9 @@
       "active": true,
       "moved": 0,
       "link": "https://grafana.com/",
-      "discipline": "backend"
+      "disciplines": [
+        "backend"
+      ]
     },
     {
       "quadrant": 0,
@@ -522,7 +634,9 @@
       "active": true,
       "moved": 0,
       "link": "https://prometheus.io/",
-      "discipline": "devops"
+      "disciplines": [
+        "devops"
+      ]
     }
   ]
 }

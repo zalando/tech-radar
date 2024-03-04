@@ -33,6 +33,7 @@
           document.getElementById('backend').checked ? "backend" : "",
           document.getElementById('devops').checked ? "devops" : "",
           document.getElementById('qa').checked ? "qa" : "",
+          document.getElementById('bi').checked ? "bi" : "",
           document.getElementById('general').checked ? "general" : ""
         ];
         radar_visualization({
@@ -61,7 +62,7 @@
           print_layout: true,
           links_in_new_tabs: true,
           // zoomed_quadrant: 0,
-          entries: data.entries.filter(entry => visibleDisciplines.some(d => d === entry.discipline) || !entry.discipline)
+          entries: data.entries.filter(entry => visibleDisciplines.some(discipline => entry.disciplines.includes(discipline)) || !entry.disciplines.length)
         });
       }).catch(function (err) {
         console.log('Error loading config.json', err);
@@ -82,7 +83,7 @@
     <tr>
       <td>
 
-        <fieldset style="display: flex;">
+        <fieldset class="legend">
           <legend>View disciplines:</legend>
 
           <div>
@@ -103,6 +104,11 @@
           <div>
             <input type="checkbox" id="qa" name="qa" onclick="updateRadar()" />
             <label for="qa">QA</label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="bi" name="bi" onclick="updateRadar()" />
+            <label for="bi">BI</label>
           </div>
 
           <div>
