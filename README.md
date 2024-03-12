@@ -37,6 +37,7 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
+  font_family: "Arial, Helvetica",
   title: "My Radar",
   quadrants: [
     { name: "Bottom Right" },
