@@ -210,6 +210,9 @@ function radar_visualization(config) {
 
   var grid = radar.append("g");
 
+  // define default font-family
+  config.font_family = config.font_family || "Arial, Helvetica";
+
   // draw grid lines
   grid.append("line")
     .attr("x1", 0).attr("y1", -400)
@@ -252,7 +255,7 @@ function radar_visualization(config) {
         .attr("text-anchor", "middle")
         .style("fill", config.rings[i].color)
         .style("opacity", 0.35)
-        .style("font-family", "Arial, Helvetica")
+        .style("font-family", config.font_family)
         .style("font-size", "42px")
         .style("font-weight", "bold")
         .style("pointer-events", "none")
@@ -279,7 +282,7 @@ function radar_visualization(config) {
     radar.append("text")
       .attr("transform", translate(title_offset.x, title_offset.y))
       .text(config.title)
-      .style("font-family", "Arial, Helvetica")
+      .style("font-family", config.font_family)
       .style("font-size", "30")
       .style("font-weight", "bold")
 
@@ -288,7 +291,7 @@ function radar_visualization(config) {
       .append("text")
       .attr("transform", translate(title_offset.x, title_offset.y + 20))
       .text(config.date || "")
-      .style("font-family", "Arial, Helvetica")
+      .style("font-family", config.font_family)
       .style("font-size", "14")
       .style("fill", "#999")
 
@@ -297,7 +300,7 @@ function radar_visualization(config) {
       .attr("transform", translate(footer_offset.x, footer_offset.y))
       .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
-      .style("font-family", "Arial, Helvetica")
+      .style("font-family", config.font_family)
       .style("font-size", "10px");
 
     // legend
@@ -309,14 +312,14 @@ function radar_visualization(config) {
           legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
-        .style("font-family", "Arial, Helvetica")
+        .style("font-family", config.font_family)
         .style("font-size", "18px")
         .style("font-weight", "bold");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
-          .style("font-family", "Arial, Helvetica")
+          .style("font-family", config.font_family)
           .style("font-size", "12px")
           .style("font-weight", "bold")
           .style("fill", config.rings[ring].color);
@@ -336,7 +339,7 @@ function radar_visualization(config) {
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; })
-              .style("font-family", "Arial, Helvetica")
+              .style("font-family", config.font_family)
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
@@ -361,7 +364,7 @@ function radar_visualization(config) {
     .attr("ry", 4)
     .style("fill", "#333");
   bubble.append("text")
-    .style("font-family", "sans-serif")
+    .style("font-family", config.font_family)
     .style("font-size", "10px")
     .style("fill", "#fff");
   bubble.append("path")
@@ -451,7 +454,7 @@ function radar_visualization(config) {
         .attr("y", 3)
         .attr("text-anchor", "middle")
         .style("fill", "#fff")
-        .style("font-family", "Arial, Helvetica")
+        .style("font-family", config.font_family)
         .style("font-size", function(d) { return blip_text.length > 2 ? "8px" : "9px"; })
         .style("pointer-events", "none")
         .style("user-select", "none");
