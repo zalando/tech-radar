@@ -1,17 +1,10 @@
 {
-  "date": "2023.11",
+  "date": "2024.04",
   "entries": [
     {
       "quadrant": 3,
       "ring": 2,
       "label": "AWS Athena",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "AWS Data Pipeline",
       "active": true,
       "moved": 0
     },
@@ -34,7 +27,7 @@
       "ring": 2,
       "label": "AWS Lake Formation",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 3,
@@ -67,13 +60,6 @@
     },
     {
       "quadrant": 3,
-      "ring": 3,
-      "label": "Hadoop",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
       "ring": 1,
       "label": "Presto",
       "active": true,
@@ -91,13 +77,6 @@
       "quadrant": 3,
       "ring": 2,
       "label": "Streamlit",
-      "active": true,
-      "moved": 1
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "YARN",
       "active": true,
       "moved": 0
     },
@@ -119,13 +98,6 @@
       "quadrant": 2,
       "ring": 0,
       "label": "AWS S3",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 2,
-      "ring": 3,
-      "label": "Aerospike",
       "active": true,
       "moved": 0
     },
@@ -162,13 +134,6 @@
       "quadrant": 2,
       "ring": 3,
       "label": "Consul",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 2,
-      "ring": 3,
-      "label": "CouchBase",
       "active": true,
       "moved": 0
     },
@@ -317,10 +282,31 @@
     },
     {
       "quadrant": 1,
+      "ring": 2,
+      "label": "AWS Service Catalog",
+      "active": true,
+      "moved": 1
+    },
+    {
+      "quadrant": 1,
       "ring": 1,
       "label": "AWS Step Functions",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "Amazon Bedrock",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "Amazon Pinpoint",
+      "active": true,
+      "moved": 1
     },
     {
       "quadrant": 1,
@@ -336,6 +322,20 @@
       "link": "https://engineering.zalando.com/tags/docker.html",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "GraalVM",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "Kotlin Multiplatform",
+      "active": true,
+      "moved": 1
     },
     {
       "quadrant": 1,
@@ -378,11 +378,11 @@
       "ring": 1,
       "label": "WebAssembly",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 1,
-      "ring": 3,
+      "ring": 0,
       "label": "ZMON",
       "active": true,
       "moved": 0
