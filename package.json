@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "directories": {
-    "doc": "docs"
+    "doc": "src"
   },
   "devDependencies": {
     "browser-sync": "^3.0.2",
@@ -16,9 +16,9 @@
     "socket.io": "^4.7.2"
   },
   "scripts": {
-    "start": "browser-sync docs -w",
+    "start": "browser-sync src -w",
     "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint docs/*.js",
-    "lint:html": "eslint docs/*.html"
+    "lint:js": "eslint src/*.js",
+    "lint:html": "eslint src/*.html"
   }
 }
