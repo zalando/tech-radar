@@ -17,3 +17,9 @@ td {
   vertical-align: top;
   padding-right: 60px;
 }
+.hover-underline {
+  text-decoration: none;
+}
+.hover-underline:hover {
+  text-decoration: underline;
+}

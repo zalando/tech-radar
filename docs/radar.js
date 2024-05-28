@@ -23,6 +23,19 @@
 
 function radar_visualization(config) {
 
+  config.svg_id = config.svg || "radar";
+  config.width = config.width || 1450;
+  config.height = config.height || 1000;
+  config.colors = config.colors || {
+      background: "#fff",
+      grid: '#dddde0',
+      inactive: "#ddd"
+    };
+  config.print_layout = config.print_layout || true;
+  config.links_in_new_tabs = config.links_in_new_tabs || true;
+  config.tech_radar_homepage = config.tech_radar_homepage || '#';
+  config.print_ring_descriptions = config.print_ring_descriptions || null;
+
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
   var seed = 42;
@@ -58,7 +71,7 @@ function radar_visualization(config) {
     { x: -675, y: -420 };
 
   const footer_offset =
-    { x: -675, y: 420 };
+    { x: -150, y: 450 };
 
   const legend_offset = [
     { x: 450, y: 90 },
@@ -279,8 +292,11 @@ function radar_visualization(config) {
   if (config.print_layout) {
 
     // title
-    radar.append("text")
+    radar.append("a")
+      .attr("href", config.tech_radar_homepage)
       .attr("transform", translate(title_offset.x, title_offset.y))
+      .append("text")
+      .attr("class", "hover-underline")  // add class for hover effect
       .text(config.title)
       .style("font-family", config.font_family)
       .style("font-size", "30")
@@ -298,7 +314,7 @@ function radar_visualization(config) {
     // footer
     radar.append("text")
       .attr("transform", translate(footer_offset.x, footer_offset.y))
-      .text("▲ moved up     ▼ moved down")
+      .text("▲ moved up     ▼ moved down   ★ new    〇 no change")
       .attr("xml:space", "preserve")
       .style("font-family", config.font_family)
       .style("font-size", "10px");
@@ -440,6 +456,10 @@ function radar_visualization(config) {
       blip.append("path")
         .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
         .style("fill", d.color);
+    } else if (d.moved == null) {
+        blip.append("path")
+          .attr("d", d3.symbol().type(d3.symbolStar).size(200))
+          .style("fill", d.color);
     } else {
       blip.append("circle")
         .attr("r", 9)
@@ -474,4 +494,56 @@ function radar_visualization(config) {
     .velocityDecay(0.19) // magic number (found by experimentation)
     .force("collision", d3.forceCollide().radius(12).strength(0.85))
     .on("tick", ticked);
+
+  // table of ring assignment descriptions
+  function createTable() {
+    var table = d3.select("body").append("table")
+      .attr("class", "radar-table")
+      .style("border-collapse", "collapse")
+      .style("margin-top", "20px")
+      .style("margin-left", "auto")
+      .style("margin-right", "auto")
+      .style("width", "80%")
+      .style("font-family", "Arial, Helvetica")
+      .style("font-size", "13px")
+      .style("text-align", "left");
+  
+    var thead = table.append("thead");
+    var tbody = table.append("tbody");
+  
+    // Define fixed width for each column
+    var columnWidth = `${100 / config.rings.length}%`;
+  
+    // Create table header row with ring names
+    var headerRow = thead.append("tr")
+      .style("border", "1px solid #ddd");
+  
+    headerRow.selectAll("th")
+      .data(config.rings)
+      .enter()
+      .append("th")
+      .style("padding", "8px")
+      .style("border", "1px solid #ddd")
+      .style("background-color", d => d.color)
+      .style("color", "#fff")
+      .style("width", columnWidth)
+      .text(d => d.name);
+  
+    // Create table body row with descriptions
+    var descriptionRow = tbody.append("tr")
+      .style("border", "1px solid #ddd");
+  
+    descriptionRow.selectAll("td")
+      .data(config.rings)
+      .enter()
+      .append("td")
+      .style("padding", "8px")
+      .style("border", "1px solid #ddd")
+      .style("width", columnWidth)
+      .text(d => d.description);
+  }
+
+  if (config.print_ring_descriptions) {
+    createTable();
+  }
 }
