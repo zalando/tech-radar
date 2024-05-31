@@ -1,0 +1,462 @@
+{
+    "devops": {
+        "adopt": [
+            {
+                "label": "Icinga",
+                "moved": 0
+            },
+            {
+                "label": "Ha-Proxy",
+                "moved": 0
+            },
+            {
+                "label": "Let\"s Encrypt / certbot",
+                "moved": 0
+            },
+            {
+                "label": "Apache - NginX",
+                "moved": 0
+            },
+            {
+                "label": "Puppet",
+                "moved": 0
+            },
+            {
+                "label": "Ansible",
+                "moved": 0
+            },
+            {
+                "label": "AWS",
+                "moved": 1
+            },
+            {
+                "label": "Debian",
+                "moved": 0
+            },
+            {
+                "label": "Ubuntu",
+                "moved": 0
+            },
+            {
+                "label": "Bitbucket / Git",
+                "moved": 0
+            },
+            {
+                "label": "Jenkins",
+                "moved": 0
+            },
+            {
+                "label": "Maven",
+                "moved": 0
+            },
+            {
+                "label": "Tomcat",
+                "moved": 0
+            },
+            {
+                "label": "Kubernetes",
+                "moved": 0
+            },
+            {
+                "label": "Traefik",
+                "moved": 0
+            }
+        ],
+        "trial": [
+            {
+                "label": "Prometheus",
+                "moved": 0
+            },
+            {
+                "label": "Jetty",
+                "moved": 0
+            },
+            {
+                "label": "ProxySQL",
+                "moved": 0
+            },
+            {
+                "label": "Terraform",
+                "moved": 1
+            }
+        ],
+        "assess": [
+            {
+                "label": "Graylog",
+                "moved": 1
+            },
+            {
+                "label": "Harbor",
+                "moved": -1
+            },
+            {
+                "label": "Gradle",
+                "moved": 0
+            },
+            {
+                "label": "Undertow",
+                "moved": 0
+            }
+        ],
+        "hold": [
+            {
+                "label": "Zabbix",
+                "moved": -1
+            },
+            {
+                "label": "Consul",
+                "moved": 0
+            },
+            {
+                "label": "Docker Swarm",
+                "moved": -1
+            }
+        ]
+    },
+    "frontend": {
+        "adopt": [
+            {
+                "label": "React / Next",
+                "moved": 0
+            },
+            {
+                "label": "Storybook / Chromatic",
+                "moved": 0
+            },
+            {
+                "label": "Vue.js / Nuxt",
+                "moved": 0
+            },
+            {
+                "label": "Cypress",
+                "moved": 0
+            },
+            {
+                "label": "Jest",
+                "moved": 0
+            },
+            {
+                "label": "Puppeteer",
+                "moved": 0
+            },
+            {
+                "label": "StencilJS",
+                "moved": 0
+            },
+            {
+                "label": "Typescript",
+                "moved": 0
+            },
+            {
+                "label": "NPM workspaces",
+                "moved": 1
+            },
+            {
+                "label": "Angular",
+                "moved": 1
+            },
+            {
+                "label": "Vite.js / esbuild",
+                "moved": 1
+            }
+        ],
+        "trial": [
+            {
+                "label": "Shopify / Hydrogen",
+                "moved": 1
+            },
+            {
+                "label": "Redux",
+                "moved": 0
+            },
+            {
+                "label": "Rollup",
+                "moved": 1
+            },
+            {
+                "label": "SvelteKit",
+                "moved": 0
+            },
+            {
+                "label": "Tailwind",
+                "moved": 0
+            },
+            {
+                "label": "DaisyUI",
+                "moved": 0
+            }
+        ],
+        "assess": [
+            {
+                "label": "Contentful",
+                "moved": 0
+            },
+            {
+                "label": "Electron",
+                "moved": 0
+            },
+            {
+                "label": "Progressive Web Apps",
+                "moved": 0
+            },
+            {
+                "label": "Three.js",
+                "moved": 0
+            },
+            {
+                "label": "BunJS",
+                "moved": 0
+            },
+            {
+                "label": "GraphQL",
+                "moved": 0
+            },
+            {
+                "label": "Playwright",
+                "moved": 0
+            },
+            {
+                "label": "pnpm",
+                "moved": 0
+            },
+            {
+                "label": "yarn",
+                "moved": 0
+            }
+        ],
+        "hold": [
+            {
+                "label": "Webpack",
+                "moved": 0
+            },
+            {
+                "label": "Gulp",
+                "moved": 0
+            },
+            {
+                "label": "TestCafe",
+                "moved": 0
+            },
+            {
+                "label": "Lerna",
+                "moved": 0
+            },
+            {
+                "label": "Grunt",
+                "moved": 0
+            },
+            {
+                "label": "Less",
+                "moved": 0
+            },
+            {
+                "label": "Sass",
+                "moved": -1
+            },
+            {
+                "label": "Bootstrap",
+                "moved": 0
+            },
+            {
+                "label": "Jquery",
+                "moved": 0
+            }
+        ]
+    },
+    "java": {
+        "adopt": [
+            {
+                "label": "Docker",
+                "moved": 0
+            },
+            {
+                "label": "Elasticsearch",
+                "moved": 0
+            },
+            {
+                "label": "Freemarker",
+                "moved": 0
+            },
+            {
+                "label": "Java",
+                "moved": 0
+            },
+            {
+                "label": "KeyCloak",
+                "moved": 0
+            },
+            {
+                "label": "Magnolia CMS",
+                "moved": 0
+            },
+            {
+                "label": "Maven",
+                "moved": 0
+            },
+            {
+                "label": "MongoDB",
+                "moved": 0
+            },
+            {
+                "label": "MySQL / MariaDB",
+                "moved": 0
+            },
+            {
+                "label": "PostgreSQL",
+                "moved": 1
+            },
+            {
+                "label": "RabbitMQ",
+                "moved": 0
+            },
+            {
+                "label": "Spring Boot",
+                "moved": 0
+            }
+        ],
+        "trial": [
+            {
+                "label": "Apache kafka",
+                "moved": 1
+            },
+            {
+                "label": "AWS Lambda",
+                "moved": 0
+            },
+            {
+                "label": "Quarkus",
+                "moved": 0
+            },
+            {
+                "label": "SAP commerce",
+                "moved": 0
+            },
+            {
+                "label": "Testcontainers",
+                "moved": 1
+            },
+            {
+                "label": "Thymeleaf",
+                "moved": 0
+            }
+        ],
+        "assess": [
+            {
+                "label": "GraphQL",
+                "moved": 0
+            },
+            {
+                "label": "Kotlin",
+                "moved": -1
+            },
+            {
+                "label": "Micronaut",
+                "moved": -1
+            }
+        ],
+        "hold": [
+            {
+                "label": "Apache SOLR",
+                "moved": -1
+            },
+            {
+                "label": "Spring Framework",
+                "moved": -1
+            }
+        ]
+    },
+    "php": {
+        "adopt": [
+            {
+                "label": "PHP 7.4 / 8.x",
+                "moved": 0
+            },
+            {
+                "label": "RabbitMQ",
+                "moved": 0
+            },
+            {
+                "label": "Shopware 6",
+                "moved": 0
+            },
+            {
+                "label": "Symfony",
+                "moved": 0
+            },
+            {
+                "label": "TYPO3",
+                "moved": 0
+            },
+            {
+                "label": "Composer",
+                "moved": 0
+            },
+            {
+                "label": "Doctrine",
+                "moved": 0
+            },
+            {
+                "label": "Elasticsearch",
+                "moved": 0
+            },
+            {
+                "label": "MySQL / PostgreSQL",
+                "moved": 0
+            },
+            {
+                "label": "PHP Unit",
+                "moved": 0
+            },
+            {
+                "label": "DDEV",
+                "moved": 0
+            },
+            {
+                "label": "Docker Compose",
+                "moved": 0
+            },
+            {
+                "label": "Swagger",
+                "moved": 0
+            }
+        ],
+        "trial": [
+            {
+                "label": "Satis",
+                "moved": 0
+            },
+            {
+                "label": "Casandra",
+                "moved": 0
+            },
+            {
+                "label": "PHP Code Sniffer",
+                "moved": 0
+            },
+            {
+                "label": "CS Fixer",
+                "moved": 0
+            },
+            {
+                "label": "Mess Detector",
+                "moved": 0
+            }
+        ],
+        "assess": [
+            {
+                "label": "Codeconception",
+                "moved": 0
+            }
+        ],
+        "hold": [
+            {
+                "label": "Shopware 5",
+                "moved": -1
+            },
+            {
+                "label": "Smarty",
+                "moved": -1
+            }
+        ]
+    }
+}
