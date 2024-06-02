@@ -1,9 +1,9 @@
 {
     "id": "neofonie",
     "label": "Neofonie Tech Radar",
-    "version": "2024.05",
+    "version": "2024.06",
     "versions": [
-        "2024.05"
+        "2024.06"
     ],
     "quadrants": [
         {

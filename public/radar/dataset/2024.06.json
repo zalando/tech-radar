@@ -124,7 +124,7 @@
                 "moved": 0
             },
             {
-                "label": "Vue.js / Nuxt",
+                "label": "Vue / Nuxt",
                 "moved": 0
             },
             {
@@ -368,7 +368,7 @@
     "php": {
         "adopt": [
             {
-                "label": "PHP 7.4 / 8.x",
+                "label": "PHP >= 8.1",
                 "moved": 0
             },
             {
@@ -423,7 +423,7 @@
         "trial": [
             {
                 "label": "Satis",
-                "moved": 0
+                "moved": -1
             },
             {
                 "label": "Casandra",
