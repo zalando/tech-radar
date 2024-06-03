@@ -501,9 +501,8 @@ function radar_visualization(config) {
       .attr("class", "radar-table")
       .style("border-collapse", "collapse")
       .style("margin-top", "20px")
-      .style("margin-left", "auto")
-      .style("margin-right", "auto")
-      .style("width", "80%")
+      .style("margin-left", "50px")
+      .style("margin-right", "50px")
       .style("font-family", "Arial, Helvetica")
       .style("font-size", "13px")
       .style("text-align", "left");
