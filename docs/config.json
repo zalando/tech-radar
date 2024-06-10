@@ -29,6 +29,14 @@
       "link": "https://www.notion.so/agreena/Kedro-model-development-standard-b7dc332bd39e4067bd5c7d59d7add9f0",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "VertexAI Batch predict",
+      "link": "https://www.notion.so/agreena/VertexAI-Batch-predict-8f035cf1fb0a43279f6a918ea1b43226?pvs=4",
+      "active": true,
+      "moved": 0
     }
   ]
 }
