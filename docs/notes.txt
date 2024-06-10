@@ -1,0 +1,11 @@
+quadrant
+0 Managed Services
+1 3rd party systems
+2 Datastores
+3 Data and ML Frameworks
+
+rings
+0 ADOPT - we use in a production environment, and we are convinced that it will work on a large scale
+1 TRIAL - we have seen work with success in projects, they are more risky, but we have at least one POC
+2 ASSESS - technologies that are promising and have clear potential value-add for us; we want to use it but we need to check it
+3 HOLD - Technologies not recommended to be used for new projects.

@@ -21,6 +21,158 @@
       "label": "VS Code",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 1,
+      "label": "Kedro",
+      "link": "https://www.notion.so/agreena/Kedro-model-development-standard-b7dc332bd39e4067bd5c7d59d7add9f0",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 1,
+      "label": "pip-tools",
+      "link": "https://www.notion.so/agreena/pip-tools-2b5647b014c142fa87fd8a46065d2f2e?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 3,
+      "label": "poetry",
+      "link": "https://www.notion.so/agreena/poetry-7b904f0180314b1ba6f252a9320d0659?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 3,
+      "label": "MXNet",
+      "link": "https://www.notion.so/agreena/MXNet-b7974534b14a4c6ba322e277b22374f8",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Tensorflow",
+      "link": "https://www.notion.so/agreena/Tensorflow-c70ccdacd2504e999dccea4f030ee6ba?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Makefile + bash scripting",
+      "link": "https://www.notion.so/agreena/Makefile-bash-scripting-7ed8bdae777a4c6b81d6e1112a2ae05f?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 3,
+      "label": "VertexAI Batch predict",
+      "link": "https://www.notion.so/agreena/VertexAI-Batch-predict-8f035cf1fb0a43279f6a918ea1b43226?pvs=4",
+      "active": true,
+      "moved": 3
+    },
+    {
+      "quadrant": 0, 
+      "ring": 3,
+      "label": "VertexAI model registry",
+      "link": "https://www.notion.so/agreena/VertexAI-model-registry-b32df5b61d3a49209a5cc5485c364156",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 3,
+      "label": "Google Cloud Infrastructure",
+      "link": "https://www.notion.so/agreena/GCP-Cloud-5ac8f49dac6447c0ad5f954143e72a97?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1, 
+      "ring": 3,
+      "label": "Weights & Biases",
+      "link": "https://www.notion.so/agreena/Weights-Biases-b82a29972a5642fbb6f8d8a821d78651?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 2,
+      "label": "Ray",
+      "link": "https://www.notion.so/agreena/Ray-f87f87267fed4e7b9fd871a8984b76f9?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 2,
+      "label": "MLFlow",
+      "link": "https://www.notion.so/agreena/MLFlow-f87b2441e7c3494f9b3dba7508700020",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 1,
+      "label": "VertexAI Workbench",
+      "link": "https://www.notion.so/agreena/VertexAI-Workbench-38dd0b231140476a81bee9273cc122bd?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1, 
+      "ring": 0,
+      "label": "CircleCI",
+      "link": "https://www.notion.so/agreena/CircleCI-65c1641c143c4937b8cd95b546a11e2b?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 0,
+      "label": "VertexAI Online predict",
+      "link": "https://www.notion.so/agreena/CircleCI-65c1641c143c4937b8cd95b546a11e2b?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 1,
+      "label": "VertexAI Training",
+      "link": "https://www.notion.so/agreena/VertexAI-Training-4caf4ee7253549949cf33a8e267f31e5?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 0,
+      "label": "STAC - SpatioTemporal Asset Catalogs",
+      "link": "https://www.notion.so/agreena/STAC-SpatioTemporal-Asset-Catalogs-7281b576c1ca4b3d91e090d48368ef1a?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 1,
+      "label": "VertexAI Pipelines / KubeFlow",
+      "link": "https://www.notion.so/agreena/Vertex-AI-Pipelines-352145a1097f48a39dd828d6c8f22ea3?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 3,
+      "label": "Horovod",
+      "link": "https://www.notion.so/agreena/Horovod-32bfb45ac8d14abc9a3aaf1adf91d127",
+      "active": true,
+      "moved": 0
     }
   ]
 }
