@@ -76,7 +76,7 @@
       "label": "VertexAI Batch predict",
       "link": "https://www.notion.so/agreena/VertexAI-Batch-predict-8f035cf1fb0a43279f6a918ea1b43226?pvs=4",
       "active": true,
-      "moved": 3
+      "moved": 0
     },
     {
       "quadrant": 0, 
@@ -138,7 +138,7 @@
       "quadrant": 0, 
       "ring": 0,
       "label": "VertexAI Online predict",
-      "link": "https://www.notion.so/agreena/CircleCI-65c1641c143c4937b8cd95b546a11e2b?pvs=4",
+      "link": "https://www.notion.so/agreena/VertexAI-Online-predict-aa013a7e612147dfa39e48d0a2fe7e77?pvs=4",
       "active": true,
       "moved": 0
     },
@@ -153,7 +153,7 @@
     {
       "quadrant": 2, 
       "ring": 0,
-      "label": "STAC - SpatioTemporal Asset Catalogs",
+      "label": "STAC",
       "link": "https://www.notion.so/agreena/STAC-SpatioTemporal-Asset-Catalogs-7281b576c1ca4b3d91e090d48368ef1a?pvs=4",
       "active": true,
       "moved": 0
@@ -161,7 +161,7 @@
     {
       "quadrant": 0, 
       "ring": 1,
-      "label": "VertexAI Pipelines / KubeFlow",
+      "label": "VertexAI Pipeline",
       "link": "https://www.notion.so/agreena/Vertex-AI-Pipelines-352145a1097f48a39dd828d6c8f22ea3?pvs=4",
       "active": true,
       "moved": 0
