@@ -39,6 +39,27 @@
     {
       "quadrant": 3,
       "ring": 0,
+      "label": "Python",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Jupyter Notebook",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "VS Code",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
       "label": "Databricks",
       "active": true,
       "moved": 0
