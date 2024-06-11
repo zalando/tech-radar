@@ -167,6 +167,70 @@
       "moved": 0
     },
     {
+      "quadrant": 2, 
+      "ring": 1,
+      "label": "Microsoft Planetary Computer API",
+      "link": "https://www.notion.so/agreena/Microsoft-Planetary-Computer-1b2b7e5eb53f43bf9df7dba1d12e47da",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 2,
+      "label": "NASA LPDAAC - HLS",
+      "link": "https://www.notion.so/agreena/NASA-Harmonized-Landsat-Sentinel-Access-0e4e18f6f076420b85bdb6a6b9d1ed1a",
+      "active": false,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 0,
+      "label": "Element 84 API",
+      "link": "https://element84.com/geospatial/introducing-earth-search-v1-new-datasets-now-available/",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 1,
+      "label": "GLAD - For NEM",
+      "link": "https://www.notion.so/agreena/Land-Cover-Native-Ecosystem-Model-f30282abf6394b2ea3f75b4d6e9b3dd0",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 0,
+      "label": "GLAD - Deforestation",
+      "link": "https://www.notion.so/agreena/Deforestation-Detection-c9e1be9441a143e0868f6e98317faa88",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 3,
+      "label": "Google Earth Engine",
+      "link": "https://www.notion.so/agreena/Integration-of-GEE-cloud-masking-For-data-set-inference-Description-bfde8a9dcfea488eb0f8e45a96f1c941#2f23ab96f59f42ec9b517d9d83e0aaf8",
+      "active": false,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 3,
+      "label": "ASF API",
+      "link": "https://www.notion.so/agreena/ASF-Sentinel-1-RTC-81adb467966042ad91176a372f3f5dd7",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1, 
+      "ring": 3,
+      "label": "ESA SNAP",
+      "link": "https://www.notion.so/agreena/Sentinel-1-SNAP-Processing-623ebc6b75524ea788cebdf461896cc5",
+      "active": true,
+      "moved": 0
+    },
+    {
       "quadrant": 3,
       "ring": 3,
       "label": "Horovod",
