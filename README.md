@@ -37,6 +37,9 @@ radar_visualization({
     grid: "#bbb",
     inactive: "#ddd"
   },
+  // Some font families might lead to font size issues
+  // Arial, Helvetica, or Source Sans Pro seem to work well though
+  font_family: "Arial, Helvetica",
   title: "My Radar",
   quadrants: [
     { name: "Bottom Right" },
