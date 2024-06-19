@@ -33,8 +33,8 @@ function radar_visualization(config) {
     };
   config.print_layout = config.print_layout || true;
   config.links_in_new_tabs = config.links_in_new_tabs || true;
-  config.tech_radar_homepage = config.tech_radar_homepage || '#';
-  config.print_ring_descriptions = config.print_ring_descriptions || null;
+  config.repo_url = config.repo_url || '#';
+  config.print_ring_descriptions_table = config.print_ring_descriptions_table || null;
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -293,7 +293,7 @@ function radar_visualization(config) {
 
     // title
     radar.append("a")
-      .attr("href", config.tech_radar_homepage)
+      .attr("href", config.repo_url)
       .attr("transform", translate(title_offset.x, title_offset.y))
       .append("text")
       .attr("class", "hover-underline")  // add class for hover effect
@@ -317,7 +317,7 @@ function radar_visualization(config) {
       .text("▲ moved up     ▼ moved down   ★ new    〇 no change")
       .attr("xml:space", "preserve")
       .style("font-family", config.font_family)
-      .style("font-size", "10px");
+      .style("font-size", "12px");
 
     // legend
     var legend = radar.append("g");
@@ -448,15 +448,15 @@ function radar_visualization(config) {
     }
 
     // blip shape
-    if (d.moved > 0) {
+    if (d.moved == 1) {
       blip.append("path")
         .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
         .style("fill", d.color);
-    } else if (d.moved < 0) {
+    } else if (d.moved == -1) {
       blip.append("path")
         .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
         .style("fill", d.color);
-    } else if (d.moved == null) {
+    } else if (d.moved == 2) {
         blip.append("path")
           .attr("d", d3.symbol().type(d3.symbolStar).size(200))
           .style("fill", d.color);
@@ -495,25 +495,24 @@ function radar_visualization(config) {
     .force("collision", d3.forceCollide().radius(12).strength(0.85))
     .on("tick", ticked);
 
-  // table of ring assignment descriptions
-  function createTable() {
+  function ringDescriptionsTable() {
     var table = d3.select("body").append("table")
       .attr("class", "radar-table")
       .style("border-collapse", "collapse")
       .style("margin-top", "20px")
       .style("margin-left", "50px")
       .style("margin-right", "50px")
-      .style("font-family", "Arial, Helvetica")
+      .style("font-family", config.font_family)
       .style("font-size", "13px")
       .style("text-align", "left");
   
     var thead = table.append("thead");
     var tbody = table.append("tbody");
   
-    // Define fixed width for each column
+    // define fixed width for each column
     var columnWidth = `${100 / config.rings.length}%`;
   
-    // Create table header row with ring names
+    // create table header row with ring names
     var headerRow = thead.append("tr")
       .style("border", "1px solid #ddd");
   
@@ -528,7 +527,7 @@ function radar_visualization(config) {
       .style("width", columnWidth)
       .text(d => d.name);
   
-    // Create table body row with descriptions
+    // create table body row with descriptions
     var descriptionRow = tbody.append("tr")
       .style("border", "1px solid #ddd");
   
@@ -542,7 +541,7 @@ function radar_visualization(config) {
       .text(d => d.description);
   }
 
-  if (config.print_ring_descriptions) {
-    createTable();
+  if (config.print_ring_descriptions_table) {
+    ringDescriptionsTable();
   }
 }

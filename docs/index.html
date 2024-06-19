@@ -23,7 +23,7 @@ fetch('./config.json').then(function(response) {
   return response.json();
 }).then(function(data) {
   radar_visualization({
-    tech_radar_homepage: "https://github.com/zalando/tech-radar",
+    repo_url: "https://github.com/zalando/tech-radar",
     title: "Zalando Tech Radar",
     date: data.date,
     quadrants: [
