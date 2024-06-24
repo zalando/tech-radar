@@ -23,14 +23,7 @@ fetch('./config.json').then(function(response) {
   return response.json();
 }).then(function(data) {
   radar_visualization({
-    svg_id: "radar",
-    width: 1450,
-    height: 1000,
-    colors: {
-      background: "#fff",
-      grid: '#dddde0',
-      inactive: "#ddd"
-    },
+    repo_url: "https://github.com/zalando/tech-radar",
     title: "Zalando Tech Radar",
     date: data.date,
     quadrants: [
@@ -45,9 +38,6 @@ fetch('./config.json').then(function(response) {
       { name: "ASSESS", color: "#c7ba00" },
       { name: "HOLD", color: "#e09b96" }
     ],
-    print_layout: true,
-    links_in_new_tabs: true,
-    // zoomed_quadrant: 0,
     entries: data.entries
   });
 }).catch(function(err) {
