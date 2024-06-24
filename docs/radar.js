@@ -34,7 +34,7 @@ function radar_visualization(config) {
   config.print_layout = config.print_layout || true;
   config.links_in_new_tabs = config.links_in_new_tabs || true;
   config.repo_url = config.repo_url || '#';
-  config.print_ring_descriptions_table = config.print_ring_descriptions_table || null;
+  config.print_ring_descriptions_table = config.print_ring_descriptions_table || false;
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -71,7 +71,7 @@ function radar_visualization(config) {
     { x: -675, y: -420 };
 
   const footer_offset =
-    { x: -150, y: 450 };
+    { x: -155, y: 450 };
 
   const legend_offset = [
     { x: 450, y: 90 },
@@ -314,7 +314,7 @@ function radar_visualization(config) {
     // footer
     radar.append("text")
       .attr("transform", translate(footer_offset.x, footer_offset.y))
-      .text("▲ moved up     ▼ moved down   ★ new    〇 no change")
+      .text("▲ moved up     ▼ moved down     ★ new     〇 no change")
       .attr("xml:space", "preserve")
       .style("font-family", config.font_family)
       .style("font-size", "12px");
@@ -457,9 +457,9 @@ function radar_visualization(config) {
         .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
         .style("fill", d.color);
     } else if (d.moved == 2) {
-        blip.append("path")
-          .attr("d", d3.symbol().type(d3.symbolStar).size(200))
-          .style("fill", d.color);
+      blip.append("path")
+        .attr("d", d3.symbol().type(d3.symbolStar).size(200))
+        .style("fill", d.color);
     } else {
       blip.append("circle")
         .attr("r", 9)

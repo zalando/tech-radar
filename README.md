@@ -28,6 +28,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```js
 radar_visualization({
+  repo_url: "https://github.com/zalando/tech-radar",
   svg_id: "radar",
   width: 1450,
   height: 1000,
@@ -63,6 +64,7 @@ radar_visualization({
       moved: -1             // -1 = moved out (triangle pointing down)
                             //  0 = not moved (circle)
                             //  1 = moved in  (triangle pointing up)
+                            //  2 = new       (star)
    },
     // ...
   ]
