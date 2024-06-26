@@ -26,15 +26,15 @@ function radar_visualization(config) {
   config.svg_id = config.svg || "radar";
   config.width = config.width || 1450;
   config.height = config.height || 1000;
-  config.colors = config.colors || {
+  config.colors = ("colors" in config) ? config.colors : {
       background: "#fff",
       grid: '#dddde0',
       inactive: "#ddd"
     };
-  config.print_layout = config.print_layout || true;
-  config.links_in_new_tabs = config.links_in_new_tabs || true;
+  config.print_layout = ("print_layout" in config) ? config.print_layout : true;
+  config.links_in_new_tabs = ("links_in_new_tabs" in config) ? config.links_in_new_tabs : true;
   config.repo_url = config.repo_url || '#';
-  config.print_ring_descriptions_table = config.print_ring_descriptions_table || false;
+  config.print_ring_descriptions_table = ("print_ring_descriptions_table" in config) ? config.print_ring_descriptions_table : false;
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
