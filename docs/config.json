@@ -1,10 +1,17 @@
 {
-  "date": "2024.06",
+  "date": "2024.07",
   "entries": [
     {
       "quadrant": 3,
       "ring": 0,
       "label": "Python",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Terraform",
       "active": true,
       "moved": 0
     },
@@ -34,6 +41,14 @@
       "quadrant": 3,
       "ring": 1,
       "label": "pip-tools",
+      "link": "https://www.notion.so/agreena/pip-tools-2b5647b014c142fa87fd8a46065d2f2e?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 1,
+      "label": "pre-commit",
       "link": "https://www.notion.so/agreena/pip-tools-2b5647b014c142fa87fd8a46065d2f2e?pvs=4",
       "active": true,
       "moved": 0
@@ -95,6 +110,27 @@
       "moved": 0
     },
     {
+      "quadrant": 0, 
+      "ring": 0,
+      "label": "Google Cloud Composer",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 0,
+      "label": "GCP API Gateway",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0, 
+      "ring": 2,
+      "label": "Anyscale",
+      "active": true,
+      "moved": 0
+    },
+    {
       "quadrant": 1, 
       "ring": 3,
       "label": "Weights & Biases",
@@ -135,6 +171,69 @@
       "moved": 0
     },
     {
+      "quadrant": 1, 
+      "ring": 0,
+      "label": "Sentry",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 0,
+      "label": "FastAPI",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 0,
+      "label": "PostGIS",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 2,
+      "label": "GeoParquet",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 2,
+      "label": "DuckDB",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 1,
+      "label": "Apache Beam/DataFlow",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 0,
+      "label": "Airflow",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3, 
+      "ring": 2,
+      "label": "Prefect",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1, 
+      "ring": 2,
+      "label": "Honeycomb",
+      "active": true,
+      "moved": 0
+    },
+    {
       "quadrant": 0, 
       "ring": 0,
       "label": "VertexAI Online predict",
@@ -153,8 +252,24 @@
     {
       "quadrant": 2, 
       "ring": 0,
-      "label": "STAC",
+      "label": "STAC (Internal)",
       "link": "https://www.notion.so/agreena/STAC-SpatioTemporal-Asset-Catalogs-7281b576c1ca4b3d91e090d48368ef1a?pvs=4",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 0,
+      "label": "OpenStreetMap",
+      "link": "https://www.notion.so/agreena/OpenStreetMap-fe3fcc9756e3439fb58e6ae8c90fd27f",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2, 
+      "ring": 3,
+      "label": "ISRIC Soilgrids API",
+      "link": "https://www.notion.so/agreena/ISRIC-SoilGRIDS-API-d3be706ad84642adb55e0c61aecdcc71",
       "active": true,
       "moved": 0
     },
