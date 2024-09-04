@@ -9,6 +9,12 @@
 <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="vars.js"></script>
+<script src="config_1.js"></script>
+<script src="config_2.js"></script>
+<script src="config_3.js"></script>
+<script src="config_4.js"></script>
+<script src="config_5.js"></script>
 <script src="radar.js"></script>
 
 <link rel="stylesheet" href="radar.css">
@@ -21,7 +27,16 @@
 <script>
 fetch('./config.json').then(function(response) {
   return response.json();
-}).then(function(data) {
+}).then(function(datax) {
+
+    const data = {"date": "2024.06", entries: [
+        ...window.config1.entries,
+        ...window.config2.entries,
+        ...window.config3.entries,
+        ...window.config4.entries,
+        ...window.config5.entries,
+    ]};
+
   radar_visualization({
     repo_url: "https://github.com/zalando/tech-radar",
     title: "Zalando Tech Radar",
