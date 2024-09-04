@@ -28,9 +28,9 @@
 <script>
 fetch('./config.json').then(function(response) {
   return response.json();
-}).then(function(datax) {
+}).then(function(dataConfig) {
 
-    const data = {"date": "2024.06", entries: [
+    const data = {"date": dataConfig.date, entries: [
         ...window.config1.entries,
         ...window.config2.entries,
         ...window.config3.entries,
