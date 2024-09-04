@@ -158,5 +158,19 @@ window.config2 = {
             "active": true,
             "moved": 0
         },
+        {
+            "quadrant": window.QUADRANT_BOTTOM_LEFT,
+            "ring": window.RING_HOLD,
+            "label": "Telekom Cloud (open telekom cloud)",
+            "active": true,
+            "moved": 0
+        },
+        {
+            "quadrant": window.QUADRANT_BOTTOM_LEFT,
+            "ring": window.RING_ADOPT,
+            "label": "Hetzner Cloud",
+            "active": true,
+            "moved": 0
+        },
     ]
 }
