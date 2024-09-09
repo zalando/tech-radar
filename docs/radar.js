@@ -35,6 +35,7 @@ function radar_visualization(config) {
   config.links_in_new_tabs = ("links_in_new_tabs" in config) ? config.links_in_new_tabs : true;
   config.repo_url = config.repo_url || '#';
   config.print_ring_descriptions_table = ("print_ring_descriptions_table" in config) ? config.print_ring_descriptions_table : false;
+  config.footer_offset = config.footer_offset || { x: -155, y: 450 };
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -69,9 +70,6 @@ function radar_visualization(config) {
 
   const title_offset =
     { x: -675, y: -420 };
-
-  const footer_offset =
-    { x: -155, y: 450 };
 
   const legend_offset = [
     { x: 450, y: 90 },
@@ -313,8 +311,8 @@ function radar_visualization(config) {
 
     // footer
     radar.append("text")
-      .attr("transform", translate(footer_offset.x, footer_offset.y))
-      .text("▲ moved up     ▼ moved down     ★ new     〇 no change")
+      .attr("transform", translate(config.footer_offset.x, config.footer_offset.y))
+      .text("▲ moved up     ▼ moved down     ★ new     ⚫ no change")
       .attr("xml:space", "preserve")
       .style("font-family", config.font_family)
       .style("font-size", "12px");
@@ -499,7 +497,6 @@ function radar_visualization(config) {
     var table = d3.select("body").append("table")
       .attr("class", "radar-table")
       .style("border-collapse", "collapse")
-      .style("margin-top", "20px")
       .style("margin-left", "50px")
       .style("margin-right", "50px")
       .style("font-family", config.font_family)
