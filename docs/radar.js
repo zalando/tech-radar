@@ -312,7 +312,7 @@ function radar_visualization(config) {
     // footer
     radar.append("text")
       .attr("transform", translate(config.footer_offset.x, config.footer_offset.y))
-      .text("▲ moved up     ▼ moved down     ★ new     ● no change")
+      .text("▲ moved up     ▼ moved down     ★ new     ⬤ no change")
       .attr("xml:space", "preserve")
       .style("font-family", config.font_family)
       .style("font-size", "12px");
