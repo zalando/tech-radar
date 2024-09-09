@@ -498,7 +498,7 @@ function radar_visualization(config) {
       .attr("class", "radar-table")
       .style("border-collapse", "collapse")
       .style("position", "relative")
-      .style("top", "-50px")  // Adjust this value to move the table closer vertically
+      .style("top", "-70px")  // Adjust this value to move the table closer vertically
       .style("margin-left", "50px")
       .style("margin-right", "50px")
       .style("font-family", config.font_family)
