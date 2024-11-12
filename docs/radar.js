@@ -35,6 +35,13 @@ function radar_visualization(config) {
   config.links_in_new_tabs = ("links_in_new_tabs" in config) ? config.links_in_new_tabs : true;
   config.repo_url = config.repo_url || '#';
   config.print_ring_descriptions_table = ("print_ring_descriptions_table" in config) ? config.print_ring_descriptions_table : false;
+  config.legend_offset = config.legend_offset || [
+    { x: 450, y: 90 },
+    { x: -675, y: 90 },
+    { x: -675, y: -310 },
+    { x: 450, y: -310 }
+  ]
+  config.title_offset = config.title_offset || { x: -675, y: -420 };
   config.footer_offset = config.footer_offset || { x: -155, y: 450 };
 
   // custom random number generator, to make random sequence reproducible
@@ -66,16 +73,6 @@ function radar_visualization(config) {
     { radius: 220 },
     { radius: 310 },
     { radius: 400 }
-  ];
-
-  const title_offset =
-    { x: -675, y: -420 };
-
-  const legend_offset = [
-    { x: 450, y: 90 },
-    { x: -675, y: 90 },
-    { x: -675, y: -310 },
-    { x: 450, y: -310 }
   ];
 
   function polar(cartesian) {
@@ -281,8 +278,8 @@ function radar_visualization(config) {
       dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
     }
     return translate(
-      legend_offset[quadrant].x + dx,
-      legend_offset[quadrant].y + dy
+      config.legend_offset[quadrant].x + dx,
+      config.legend_offset[quadrant].y + dy
     );
   }
 
@@ -292,7 +289,7 @@ function radar_visualization(config) {
     // title
     radar.append("a")
       .attr("href", config.repo_url)
-      .attr("transform", translate(title_offset.x, title_offset.y))
+      .attr("transform", translate(config.title_offset.x, config.title_offset.y))
       .append("text")
       .attr("class", "hover-underline")  // add class for hover effect
       .text(config.title)
@@ -303,7 +300,7 @@ function radar_visualization(config) {
     // date
     radar
       .append("text")
-      .attr("transform", translate(title_offset.x, title_offset.y + 20))
+      .attr("transform", translate(config.title_offset.x, config.title_offset.y + 20))
       .text(config.date || "")
       .style("font-family", config.font_family)
       .style("font-size", "14")
@@ -322,8 +319,8 @@ function radar_visualization(config) {
     for (var quadrant = 0; quadrant < 4; quadrant++) {
       legend.append("text")
         .attr("transform", translate(
-          legend_offset[quadrant].x,
-          legend_offset[quadrant].y - 45
+          config.legend_offset[quadrant].x,
+          config.legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
         .style("font-family", config.font_family)
@@ -504,17 +501,17 @@ function radar_visualization(config) {
       .style("font-family", config.font_family)
       .style("font-size", "13px")
       .style("text-align", "left");
-  
+
     var thead = table.append("thead");
     var tbody = table.append("tbody");
-  
+
     // define fixed width for each column
     var columnWidth = `${100 / config.rings.length}%`;
-  
+
     // create table header row with ring names
     var headerRow = thead.append("tr")
       .style("border", "1px solid #ddd");
-  
+
     headerRow.selectAll("th")
       .data(config.rings)
       .enter()
@@ -525,11 +522,11 @@ function radar_visualization(config) {
       .style("color", "#fff")
       .style("width", columnWidth)
       .text(d => d.name);
-  
+
     // create table body row with descriptions
     var descriptionRow = tbody.append("tr")
       .style("border", "1px solid #ddd");
-  
+
     descriptionRow.selectAll("td")
       .data(config.rings)
       .enter()
