@@ -350,13 +350,56 @@ function radar_visualization(config) {
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; })
+              .text(function(d, i) { return d.id + ". " + d.label; }) // XXX
               .style("font-family", config.font_family)
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .call(wrapText);
       }
     }
+  }
+
+  // Define a function for wrapping text into multiple lines
+  function wrapText(text) {
+    var width = 120; // Set the width you want for wrapping
+    let previousElementHeight = 0;
+    let previousElementY = 0;
+
+    text.each(function() {
+      var textElement = d3.select(this);
+      var words = textElement.text().split(" ");
+      var line = [];
+
+      var lineY = parseFloat(
+          previousElementY + previousElementHeight // textElement.attr("y")
+      ); // Start from the initial Y position
+
+      // Create an array of lines
+      textElement.text(null); // Remove the existing text
+      var tspan = textElement.append("tspan").attr("x", 0).attr("y", lineY).attr("dy", 0);
+      for (var i = 0; i < words.length; i++) {
+        line.push(words[i]);
+        tspan.text(line.join(" "));
+
+        // If the line is too wide, move to the next line
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop(); // Remove the word that caused the overflow
+          tspan.text(line.join(" ")); // Set the text for the previous line
+          line = [words[i]]; // Start a new line with the current word
+
+          // Add a new tspan for the next line and increase the vertical offset
+          tspan = textElement.append("tspan")
+              .attr("x", 0)
+              .attr("dy", 10) // This ensures vertical space between lines
+              .text(words[i]);
+        }
+      }
+
+      var bbox = textElement.node().getBBox();
+      previousElementHeight = bbox.height; // Get the height of the current text element
+      previousElementY = bbox.y;
+    });
   }
 
   // layer for entries
