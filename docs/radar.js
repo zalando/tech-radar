@@ -36,6 +36,7 @@ function radar_visualization(config) {
   config.repo_url = config.repo_url || '#';
   config.print_ring_descriptions_table = ("print_ring_descriptions_table" in config) ? config.print_ring_descriptions_table : false;
   config.footer_offset = config.footer_offset || { x: -155, y: 450 };
+  config.legend_column_width = config.legend_column_width || 140
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -274,8 +275,8 @@ function radar_visualization(config) {
     }
   }
 
-  function legend_transform(quadrant, ring, index=null) {
-    var dx = ring < 2 ? 0 : 140;
+  function legend_transform(quadrant, ring, legendColumnWidth, index=null) {
+    var dx = ring < 2 ? 0 : legendColumnWidth;
     var dy = (index == null ? -16 : index * 12);
     if (ring % 2 === 1) {
       dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
@@ -331,7 +332,7 @@ function radar_visualization(config) {
         .style("font-weight", "bold");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring))
+          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
           .style("font-size", "12px")
@@ -349,7 +350,7 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
+              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; })
@@ -427,7 +428,7 @@ function radar_visualization(config) {
     .enter()
       .append("g")
         .attr("class", "blip")
-        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
+        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, config.legend_column_width, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
         .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
@@ -504,17 +505,17 @@ function radar_visualization(config) {
       .style("font-family", config.font_family)
       .style("font-size", "13px")
       .style("text-align", "left");
-  
+
     var thead = table.append("thead");
     var tbody = table.append("tbody");
-  
+
     // define fixed width for each column
     var columnWidth = `${100 / config.rings.length}%`;
-  
+
     // create table header row with ring names
     var headerRow = thead.append("tr")
       .style("border", "1px solid #ddd");
-  
+
     headerRow.selectAll("th")
       .data(config.rings)
       .enter()
@@ -525,11 +526,11 @@ function radar_visualization(config) {
       .style("color", "#fff")
       .style("width", columnWidth)
       .text(d => d.name);
-  
+
     // create table body row with descriptions
     var descriptionRow = tbody.append("tr")
       .style("border", "1px solid #ddd");
-  
+
     descriptionRow.selectAll("td")
       .data(config.rings)
       .enter()
