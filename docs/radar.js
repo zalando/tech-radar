@@ -272,12 +272,14 @@ function radar_visualization(config) {
     }
   }
 
-  function legend_transform(quadrant, ring, legendColumnWidth, index=null) {
+  function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
     var dx = ring < 2 ? 0 : legendColumnWidth;
     var dy = (index == null ? -16 : index * 12);
+
     if (ring % 2 === 1) {
-      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+      dy = dy + 36 + previousHeight;
     }
+
     return translate(
       config.legend_offset[quadrant].x + dx,
       config.legend_offset[quadrant].y + dy
@@ -327,9 +329,13 @@ function radar_visualization(config) {
         .style("font-family", config.font_family)
         .style("font-size", "18px")
         .style("font-weight", "bold");
+      let previosHeight = 0
       for (var ring = 0; ring < 4; ring++) {
+        if (ring % 2 === 0) {
+          previosHeight = 0
+        }
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width))
+          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previosHeight))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
           .style("font-size", "12px")
@@ -347,7 +353,7 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i); })
+              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i, previosHeight); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; }) // XXX
@@ -355,7 +361,13 @@ function radar_visualization(config) {
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
-              .call(wrapText);
+              .call(wrapText)
+              .each(function(d, i) {
+                var textElement = d3.select(this);
+                var bbox = textElement.node().getBBox(); // Get the bounding box for the text element
+                previosHeight += bbox.height; // Add to total height
+                console.log("Total height of legend item " + d.id + ": " + bbox.height);
+              });
       }
     }
   }
