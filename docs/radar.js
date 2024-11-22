@@ -274,7 +274,7 @@ function radar_visualization(config) {
 
   function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
     var dx = ring < 2 ? 0 : legendColumnWidth;
-    var dy = (index == null ? -16 : index * 12);
+    var dy = (index == null ? -16 : index * 10); /// LINE HEIGTH - now shared with wrapText function XXXX
 
     if (ring % 2 === 1) {
       dy = dy + 36 + previousHeight;
@@ -374,7 +374,7 @@ function radar_visualization(config) {
 
   // Define a function for wrapping text into multiple lines
   function wrapText(text) {
-    var width = 120; // Set the width you want for wrapping
+    var width = config.legend_column_width; // Set the width you want for wrapping
     let previousElementHeight = 0;
     let previousElementY = 0;
 
@@ -403,7 +403,7 @@ function radar_visualization(config) {
           // Add a new tspan for the next line and increase the vertical offset
           tspan = textElement.append("tspan")
               .attr("x", 0)
-              .attr("dy", 10) // This ensures vertical space between lines
+              .attr("dy", 10) /// LINE HEIGTH - now shared with wrapText function XXXX
               .text(words[i]);
         }
       }
