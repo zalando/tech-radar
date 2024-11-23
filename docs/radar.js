@@ -274,7 +274,7 @@ function radar_visualization(config) {
 
   function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
     var dx = ring < 2 ? 0 : legendColumnWidth;
-    var dy = (index == null ? -16 : index * 10); /// LINE HEIGTH - now shared with wrapText function XXXX
+    var dy = (index == null ? -16 : index * 10); /// LINE HEIGHT - now shared with wrapText function XXXX
 
     if (ring % 2 === 1) {
       dy = dy + 36 + previousHeight;
@@ -372,20 +372,21 @@ function radar_visualization(config) {
     }
   }
 
-  // Define a function for wrapping text into multiple lines
   function wrapText(text) {
-    var width = config.legend_column_width; // Set the width you want for wrapping
     let previousElementHeight = 0;
     let previousElementY = 0;
 
     text.each(function() {
-      var textElement = d3.select(this);
-      var words = textElement.text().split(" ");
-      var line = [];
+      const textElement = d3.select(this);
+      const words = textElement.text().split(" ");
+      let line = [];
 
-      var lineY = parseFloat(
-          previousElementY + previousElementHeight // textElement.attr("y")
-      ); // Start from the initial Y position
+      const lineY = previousElementY + previousElementHeight;
+
+      var number = `${textElement.text().split(".")[0]}. |`;
+      var legendNumberText = textElement.append("tspan").text(number)
+      var legendBar = textElement.append("tspan").text('|')
+      var numberWidth = legendNumberText.node().getComputedTextLength() - legendBar.node().getComputedTextLength();
 
       // Create an array of lines
       textElement.text(null); // Remove the existing text
@@ -395,20 +396,20 @@ function radar_visualization(config) {
         tspan.text(line.join(" "));
 
         // If the line is too wide, move to the next line
-        if (tspan.node().getComputedTextLength() > width) {
+        if (tspan.node().getComputedTextLength() > config.legend_column_width) {
           line.pop(); // Remove the word that caused the overflow
           tspan.text(line.join(" ")); // Set the text for the previous line
           line = [words[i]]; // Start a new line with the current word
 
           // Add a new tspan for the next line and increase the vertical offset
           tspan = textElement.append("tspan")
-              .attr("x", 0)
+              .attr("x", numberWidth)
               .attr("dy", 10) /// LINE HEIGTH - now shared with wrapText function XXXX
               .text(words[i]);
         }
       }
 
-      var bbox = textElement.node().getBBox();
+      const bbox = textElement.node().getBBox();
       previousElementHeight = bbox.height; // Get the height of the current text element
       previousElementY = bbox.y;
     });
