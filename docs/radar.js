@@ -23,6 +23,7 @@
 
 function radar_visualization(config) {
 
+  let quadrant;
   config.svg_id = config.svg || "radar";
   config.width = config.width || 1450;
   config.height = config.height || 1000;
@@ -164,7 +165,7 @@ function radar_visualization(config) {
 
   // partition entries according to segments
   var segmented = new Array(4);
-  for (var quadrant = 0; quadrant < 4; quadrant++) {
+  for (quadrant = 0; quadrant < 4; quadrant++) {
     segmented[quadrant] = new Array(4);
     for (var ring = 0; ring < 4; ring++) {
       segmented[quadrant][ring] = [];
@@ -177,7 +178,7 @@ function radar_visualization(config) {
 
   // assign unique sequential id to each entry
   var id = 1;
-  for (var quadrant of [2,3,1,0]) {
+  for (quadrant of [2,3,1,0]) {
     for (var ring = 0; ring < 4; ring++) {
       var entries = segmented[quadrant][ring];
       entries.sort(function(a,b) { return a.label.localeCompare(b.label); })
@@ -272,9 +273,9 @@ function radar_visualization(config) {
     }
   }
 
-  function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
-    var dx = ring < 2 ? 0 : legendColumnWidth;
-    var dy = (index == null ? -16 : index * 10); /// LINE HEIGHT - now shared with wrapText function XXXX
+  function legendTransform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
+    const dx = ring < 2 ? 0 : legendColumnWidth;
+    let dy = (index == null ? -16 : index * 10); /// LINE HEIGHT - now shared with wrapText function XXXX
 
     if (ring % 2 === 1) {
       dy = dy + 36 + previousHeight;
@@ -288,7 +289,6 @@ function radar_visualization(config) {
 
   // draw title and legend (only in print layout)
   if (config.print_layout) {
-
     // title
     radar.append("a")
       .attr("href", config.repo_url)
@@ -318,8 +318,8 @@ function radar_visualization(config) {
       .style("font-size", "12px");
 
     // legend
-    var legend = radar.append("g");
-    for (var quadrant = 0; quadrant < 4; quadrant++) {
+    const legend = radar.append("g");
+    for (let quadrant = 0; quadrant < 4; quadrant++) {
       legend.append("text")
         .attr("transform", translate(
           config.legend_offset[quadrant].x,
@@ -329,13 +329,13 @@ function radar_visualization(config) {
         .style("font-family", config.font_family)
         .style("font-size", "18px")
         .style("font-weight", "bold");
-      let previosHeight = 0
-      for (var ring = 0; ring < 4; ring++) {
+      let previousLegendHeight = 0
+      for (let ring = 0; ring < 4; ring++) {
         if (ring % 2 === 0) {
-          previosHeight = 0
+          previousLegendHeight = 0
         }
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previosHeight))
+          .attr("transform", legendTransform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
           .style("font-size", "12px")
@@ -353,7 +353,7 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i, previosHeight); })
+              .attr("transform", function(d, i) { return legendTransform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d, i) { return d.id + ". " + d.label; }) // XXX
@@ -362,11 +362,8 @@ function radar_visualization(config) {
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
               .call(wrapText)
-              .each(function(d, i) {
-                var textElement = d3.select(this);
-                var bbox = textElement.node().getBBox(); // Get the bounding box for the text element
-                previosHeight += bbox.height; // Add to total height
-                console.log("Total height of legend item " + d.id + ": " + bbox.height);
+              .each(function() {
+                previousLegendHeight += d3.select(this).node().getBBox().height;
               });
       }
     }
@@ -383,25 +380,28 @@ function radar_visualization(config) {
 
       const lineY = previousElementY + previousElementHeight;
 
-      var number = `${textElement.text().split(".")[0]}. |`;
-      var legendNumberText = textElement.append("tspan").text(number)
-      var legendBar = textElement.append("tspan").text('|')
-      var numberWidth = legendNumberText.node().getComputedTextLength() - legendBar.node().getComputedTextLength();
+      const number = `${textElement.text().split(".")[0]}. |`;
+      const legendNumberText = textElement.append("tspan").text(number);
+      const legendBar = textElement.append("tspan").text('|');
+      const numberWidth = legendNumberText.node().getComputedTextLength() - legendBar.node().getComputedTextLength();
 
-      // Create an array of lines
-      textElement.text(null); // Remove the existing text
-      var tspan = textElement.append("tspan").attr("x", 0).attr("y", lineY).attr("dy", 0);
-      for (var i = 0; i < words.length; i++) {
+      textElement.text(null);
+
+      let tspan = textElement
+          .append("tspan")
+          .attr("x", 0)
+          .attr("y", lineY)
+          .attr("dy", 0);
+
+      for (let i = 0; i < words.length; i++) {
         line.push(words[i]);
         tspan.text(line.join(" "));
 
-        // If the line is too wide, move to the next line
         if (tspan.node().getComputedTextLength() > config.legend_column_width) {
-          line.pop(); // Remove the word that caused the overflow
-          tspan.text(line.join(" ")); // Set the text for the previous line
-          line = [words[i]]; // Start a new line with the current word
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [words[i]];
 
-          // Add a new tspan for the next line and increase the vertical offset
           tspan = textElement.append("tspan")
               .attr("x", numberWidth)
               .attr("dy", 10) /// LINE HEIGTH - now shared with wrapText function XXXX
@@ -410,7 +410,7 @@ function radar_visualization(config) {
       }
 
       const bbox = textElement.node().getBBox();
-      previousElementHeight = bbox.height; // Get the height of the current text element
+      previousElementHeight = bbox.height;
       previousElementY = bbox.y;
     });
   }
@@ -481,7 +481,7 @@ function radar_visualization(config) {
     .enter()
       .append("g")
         .attr("class", "blip")
-        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, config.legend_column_width, i); })
+        .attr("transform", function(d, i) { return legendTransform(d.quadrant, d.ring, config.legend_column_width, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
         .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
