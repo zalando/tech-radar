@@ -45,6 +45,7 @@ function radar_visualization(config) {
   config.title_offset = config.title_offset || { x: -675, y: -420 };
   config.footer_offset = config.footer_offset || { x: -155, y: 450 };
   config.legend_column_width = config.legend_column_width || 140
+  config.line_height = config.line_height || 10
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -275,7 +276,7 @@ function radar_visualization(config) {
 
   function legendTransform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
     const dx = ring < 2 ? 0 : legendColumnWidth;
-    let dy = (index == null ? -16 : index * 10); /// LINE HEIGHT - now shared with wrapText function XXXX
+    let dy = (index == null ? -16 : index * config.line_height);
 
     if (ring % 2 === 1) {
       dy = dy + 36 + previousHeight;
@@ -401,7 +402,7 @@ function radar_visualization(config) {
 
           tspan = textElement.append("tspan")
               .attr("x", numberWidth)
-              .attr("dy", 10)
+              .attr("dy", config.line_height)
               .text(words[i]);
         }
       }
