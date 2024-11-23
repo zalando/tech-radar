@@ -45,7 +45,7 @@ function radar_visualization(config) {
   config.title_offset = config.title_offset || { x: -675, y: -420 };
   config.footer_offset = config.footer_offset || { x: -155, y: 450 };
   config.legend_column_width = config.legend_column_width || 140
-  config.line_height = config.line_height || 10
+  config.line_height = 10
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -378,6 +378,7 @@ function radar_visualization(config) {
       const words = textElement.text().split(" ");
       let line = [];
 
+      // Use '|' at the end of the string so that spaces are not trimmed during rendering.
       const number = `${textElement.text().split(".")[0]}. |`;
       const legendNumberText = textElement.append("tspan").text(number);
       const legendBar = textElement.append("tspan").text('|');
