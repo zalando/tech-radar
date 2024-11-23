@@ -23,7 +23,6 @@
 
 function radar_visualization(config) {
 
-  let quadrant;
   config.svg_id = config.svg || "radar";
   config.width = config.width || 1450;
   config.height = config.height || 1000;
@@ -166,7 +165,7 @@ function radar_visualization(config) {
 
   // partition entries according to segments
   var segmented = new Array(4);
-  for (quadrant = 0; quadrant < 4; quadrant++) {
+  for (let quadrant = 0; quadrant < 4; quadrant++) {
     segmented[quadrant] = new Array(4);
     for (var ring = 0; ring < 4; ring++) {
       segmented[quadrant][ring] = [];
