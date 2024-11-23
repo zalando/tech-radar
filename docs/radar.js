@@ -356,7 +356,7 @@ function radar_visualization(config) {
               .attr("transform", function(d, i) { return legendTransform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; }) // XXX
+              .text(function(d) { return d.id + ". " + d.label; })
               .style("font-family", config.font_family)
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
@@ -370,15 +370,12 @@ function radar_visualization(config) {
   }
 
   function wrapText(text) {
-    let previousElementHeight = 0;
-    let previousElementY = 0;
+    let heightForNextElement = 0;
 
     text.each(function() {
       const textElement = d3.select(this);
       const words = textElement.text().split(" ");
       let line = [];
-
-      const lineY = previousElementY + previousElementHeight;
 
       const number = `${textElement.text().split(".")[0]}. |`;
       const legendNumberText = textElement.append("tspan").text(number);
@@ -390,7 +387,7 @@ function radar_visualization(config) {
       let tspan = textElement
           .append("tspan")
           .attr("x", 0)
-          .attr("y", lineY)
+          .attr("y", heightForNextElement)
           .attr("dy", 0);
 
       for (let i = 0; i < words.length; i++) {
@@ -404,14 +401,13 @@ function radar_visualization(config) {
 
           tspan = textElement.append("tspan")
               .attr("x", numberWidth)
-              .attr("dy", 10) /// LINE HEIGTH - now shared with wrapText function XXXX
+              .attr("dy", 10)
               .text(words[i]);
         }
       }
 
-      const bbox = textElement.node().getBBox();
-      previousElementHeight = bbox.height;
-      previousElementY = bbox.y;
+      const textBoundingBox = textElement.node().getBBox();
+      heightForNextElement = textBoundingBox.y + textBoundingBox.height;
     });
   }
 
