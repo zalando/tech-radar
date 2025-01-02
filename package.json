@@ -1,9 +1,9 @@
 {
   "name": "flaconi-tech-radar",
-  "version": "2024.1.0",
+  "version": "2025.1.0",
   "description": "Visualizing our technology choices",
-  "homepage": "https://github.com/zalando/tech-radar#readme",
-  "repository": "https://github.com/zalando/tech-radar.git",
+  "homepage": "https://github.com/flaconi/tech-radar#readme",
+  "repository": "https://github.com/flaconi/tech-radar.git",
   "license": "MIT",
   "private": true,
   "directories": {
