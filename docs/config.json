@@ -23,12 +23,6 @@
           "active": true,
           "moved": 0,
           "link": "https://github.com/flaconi/lib-logger"
-        },
-        {
-          "label": "monitoring-service",
-          "active": true,
-          "moved": 0,
-          "link": "https://github.com/Flaconi/monitoring-service"
         }
       ],
       "HOLD": [
@@ -170,6 +164,12 @@
         "label": "Terragrunt",
         "active": true,
         "moved": 0
+      },
+      {
+        "label": "monitoring-service",
+        "active": true,
+        "moved": 0,
+        "link": "https://github.com/Flaconi/monitoring-service"
       }]
     }
   }
