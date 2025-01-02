@@ -1,5 +1,5 @@
 {
-  "date": "2024.12",
+  "date": "2025.01",
   "entriesOpt": {
     "Languages & Frameworks": {
       "ADOPT": [
@@ -12,6 +12,17 @@
           "label": "Node.js",
           "active": true,
           "moved": 0
+        },{
+          "label": "ct-node-client",
+          "active": true,
+          "moved": 0,
+          "link": "https://github.com/flaconi/ct-node-client"
+        },
+        {
+          "label": "lib-logger",
+          "active": true,
+          "moved": 0,
+          "link": "https://github.com/flaconi/lib-logger"
         }
       ],
       "HOLD": [
