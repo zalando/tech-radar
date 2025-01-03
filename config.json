@@ -1,0 +1,144 @@
+{
+  "basePath": "/tech-radar",
+  "baseUrl": "",
+  "editUrl": "https://github.dev/flaconi/tech-radar/blob/master/radar/{release}/{id}.md",
+  "logoFile": "logo.svg",
+  "jsFile": "",
+  "toggles": {
+    "showChart": true,
+    "showTagFilter": true,
+    "showQuadrantList": true,
+    "showEmptyRings": false
+  },
+  "sections": ["radar", "tags", "list"],
+  "colors": {
+    "foreground": "#E5E8E9",
+    "background": "#38464D",
+    "highlight": "#F58300",
+    "content": "#E5E8E9",
+    "text": "#575757",
+    "link": "#F58300",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "tag": "rgba(255, 255, 255, 0.1)"
+  },
+  "quadrants": [
+    {
+      "id": "languages-and-frameworks",
+      "title": "Languages & Frameworks",
+      "description": "A selection of programming languages, alongside essential frameworks for building a variety of custom software.",
+      "color": "#7092F5"
+    },
+    {
+      "id": "methods-and-patterns",
+      "title": "Methods & Patterns",
+      "description": "Key software development methods and design patterns, covering everything from continuous integration and testing to architecture.",
+      "color": "#535EAA"
+    },
+    {
+      "id": "platforms-and-operations",
+      "title": "Platforms & Operations",
+      "description": "Technologies and tools for software and infrastructure operations, including platforms and services for managing and scaling applications.",
+      "color": "#436D84"
+    },
+    {
+      "id": "tools",
+      "title": "Tools",
+      "description": "A range of software tools, from simple productivity enhancers to comprehensive project solutions, catering to various project needs.",
+      "color": "#278489"
+    }
+  ],
+  "rings": [
+    {
+      "id": "adopt",
+      "title": "Adopt",
+      "description": "Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Flaconi production environment, low risk and recommended to be widely used.",
+      "color": "#4A9940",
+      "radius": 0.5,
+      "strokeWidth": 5
+    },
+    {
+      "id": "trial",
+      "title": "Trial",
+      "description": "Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organisation walked this path and will share knowledge and experiences.",
+      "color": "#E4AE1D",
+      "radius": 0.69,
+      "strokeWidth": 3
+    },
+    {
+      "id": "assess",
+      "title": "Assess",
+      "description": "Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.",
+      "color": "#535EAA",
+      "radius": 0.85,
+      "strokeWidth": 2
+    },
+    {
+      "id": "hold",
+      "title": "Hold",
+      "description": "Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.",
+      "color": "#E35726",
+      "radius": 1,
+      "strokeWidth": 0.75
+    }
+  ],
+  "flags": {
+    "new": {
+      "color": "#D74A39",
+      "title": "New",
+      "titleShort": "N",
+      "description": "New in this version"
+    },
+    "changed": {
+      "color": "#535EAA",
+      "title": "Changed",
+      "titleShort": "C",
+      "description": "Recently changed"
+    },
+    "default": {
+      "description": "Unchanged"
+    }
+  },
+  "chart": {
+    "size": 800,
+    "blipSize": 12
+  },
+  "social": [
+    {
+      "href": "https://www.instagram.com/flaconi/",
+      "icon": "instagram"
+    },
+    {
+      "href": "https://www.facebook.com/flaconi.de/",
+      "icon": "facebook"
+    },
+    {
+      "href": "https://www.linkedin.com/company/flaconi-gmbh",
+      "icon": "linkedIn"
+    },
+    {
+      "href": "https://www.youtube.com/c/flaconi",
+      "icon": "youtube"
+    },
+    {
+      "href": "https://github.com/flaconi",
+      "icon": "github"
+    }
+  ],
+  "imprint": "https://www.flaconi.de/impressum/",
+  "labels": {
+    "title": "Technology Radar",
+    "imprint": "Imprint",
+    "quadrant": "Quadrant",
+    "quadrantOverview": "Quadrant Overview",
+    "zoomIn": "Zoom in",
+    "filterByTag": "Filter by Tag",
+    "footer": "",
+    "notUpdated": "This item was not updated in last three versions of the Radar. Should it have appeared in one of the more recent editions, there is a good chance it remains pertinent. However, if the item dates back further, its relevance may have diminished and our current evaluation could vary. Regrettably, our capacity to consistently revisit items from past Radar editions is limited.",
+    "notFound": "404 - Page not found",
+    "pageAbout": "How to use Flaconi Technology Radar?",
+    "pageOverview": "Technologies Overview",
+    "pageSearch": "Search",
+    "searchPlaceholder": "What are you looking for?",
+    "metaDescription": ""
+  }
+}
