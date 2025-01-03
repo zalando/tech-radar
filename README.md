@@ -1,105 +1,81 @@
-# Motivation
+# Flaconi Technology Radar 
+This Tech Radar is built by using the [AOE Technology Radar](https://github.com/AOEpeople/aoe_technology_radar), which contains the skeleton app.
 
-At [Flaconi](http://flaconi.de), we maintain a [public Tech
-Radar](http://flaconi.github.io/tech-radar/) to help our engineering teams
-align on technology choices. It is based on the [pioneering work
-by ThoughtWorks](https://www.thoughtworks.com/radar) and [zalando](https://zalando.github.io/tech-radar).
+## Contribute to the Technical Radar
 
-This repository contains the code to generate the visualization:
-[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
-Feel free to use and adapt it for your own purposes.
+### Create a new Technology Radar release
+For a new Technology Radar release, create a folder of the release date (YYYY-MM-DD) under `./radar`.
 
-## Usage
+### Maintaining content
+The items are written in Markdown (`.md`) format.
 
-1. include `d3.js` and `radar.js`:
-
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://flaconi.github.io/tech-radar/release/radar-0.9.js"></script>
-```
-
-2. insert an empty `svg` tag:
-
-```html
-<svg id="radar"></svg>
-```
-
-3. configure the radar visualization:
-
-```js
-radar_visualization({
-  repo_url: "https://github.com/flaconi/tech-radar",
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  scale: 1.0,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  // Some font families might lead to font size issues
-  // Arial, Helvetica, or Source Sans Pro seem to work well though
-  font_family: "Arial, Helvetica",
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#5ba300" },
-    { name: "SECOND", color: "#009eb0" },
-    { name: "THIRD",  color: "#c7ba00" },
-    { name: "OUTER",  color: "#e09b96" }
-  ],
-  print_layout: true,
-  links_in_new_tabs: true,
-  entries: [
-   {
-      label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
-      ring: 2,              // 0,1,2,3 (starting from inside)
-      moved: -1             // -1 = moved out (triangle pointing down)
-                            //  0 = not moved (circle)
-                            //  1 = moved in  (triangle pointing up)
-                            //  2 = new       (star)
-   },
-    // ...
-  ]
-});
-```
-
-Entries are positioned automatically so that they don't overlap. The "scale" parameter can help
-in adjusting the size of the radar.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://flaconi.github.io/tech-radar/).
-
-## Deployment
-
-Tech Radar is a static page, so it can be deployed using any hosting provider of your choice offering static page hosting.
-
-## Local Development
-
-1. install dependencies with yarn (or npm):
+Each file has a meta header where the attributes of the item are listed:
 
 ```
-yarn 
+---
+title:      "JavaScript"
+ring:       adopt
+quadrant:   languages-and-frameworks
+tags: [frontend, coding]
+---
+
+Text goes here. You can use **markdown** here.
 ```
 
-2. start local dev server:
+Following front-matter attributes are possible:
+
+- **title**: Name of the Item
+- **quadrant**: Quadrant. One of `languages-and-frameworks` (for `Languages and Frameworks` quadrant),
+  `methods-and-patterns`(for `Techniques` quadrant), `platforms-and-aoe-services`
+  (for `Platforms` quadrant), `tools` (for `Tools` quadrant)
+- **ring**: Ring section in radar. One of `trial`, `assess`, `adopt`, `stop`
+- **tags**: Optional tags for filtering.
+- **featured**: (Optional, default "true") If you set this to "false", the item
+  will not be visible in the radar quadrants but still be available in the overview.
+
+The name of the .md file acts as item identifier and may overwrite items with
+the same name from older releases.
+
+If an item is overwritten in a new release, the attributes from the new item are
+merged with the old ones, and a new history entry is created for that item.
+
+You can integrate images in your markdown. Put the image files in your public folder and reference them:
 
 ```
-yarn start
+![an image](/images/an-image.png)
 ```
 
-3. your default browser should automatically open and show the url
- 
+### Content Guidelines
+You can update the rings and the quadrants in the `config.json` file. If you update the names of the rings and quadrants,
+you will need to update the technologies .md files accordingly.
+
+The text on the "How to use the Flaconi Technology Radar" page can be updated in the `about.md` file.
+
+## Development
+
+### Host the application under a sub path
+To host the application under a sub path, set the environment variable `PUBLIC_URL`, e.g. "/tech-radar".
+The default is `/`.
+
+> For local development you can use `/build` and use this for the following steps.
+
+### Build the radar
 ```
-http://localhost:3000/
+yarn install
+yarn serve
 ```
+
+Then open the Tech Radar here: http://localhost:3000/tech-radar
+
+### Build the radar with static files
+```
+yarn install
+yarn build
+```
+
+## Note
+The Flaconi Technology Radar are built starting from the [AOE Tech Radar content](https://www.aoe.com/techradar/index.html).
+If you want to build your own Technical Radar you may want to have a look at the [AOE Tech Radar GitHub repository](https://github.com/AOEpeople/aoe_technology_radar).
 
 ## License
 

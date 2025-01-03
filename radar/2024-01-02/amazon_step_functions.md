@@ -10,4 +10,4 @@ Step Functions is a good choice for simple processes like CRUD operations agains
 It is also a good choice for more complex workflows where only a few steps are run inside a lambda function. That 
 overall reduces the maintenance overhead of lambda services as they become much smaller and less complex. Also,
 Step Functions visualizes the workflow in a state machine, which makes it easier to understand and debug.
-```
+
