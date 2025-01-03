@@ -6,19 +6,11 @@
   "repository": "https://github.com/flaconi/tech-radar.git",
   "license": "MIT",
   "private": true,
-  "directories": {
-    "doc": "docs"
-  },
-  "devDependencies": {
-    "browser-sync": "^3.0.2",
-    "eslint": "^8.52.0",
-    "eslint-plugin-html": "^7.1.0",
-    "socket.io": "^4.7.2"
-  },
   "scripts": {
-    "start": "browser-sync docs -w",
-    "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint docs/*.js",
-    "lint:html": "eslint docs/*.html"
+    "build": "techradar build",
+    "serve": "techradar serve"
+  },
+  "dependencies": {
+    "aoe_technology_radar": "^4.4.0"
   }
 }
