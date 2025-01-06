@@ -391,19 +391,21 @@ function radar_visualization(config) {
           .attr("y", heightForNextElement)
           .attr("dy", 0);
 
-      for (let i = 0; i < words.length; i++) {
-        line.push(words[i]);
+      for (let position = 0; position < words.length; position++) {
+        line.push(words[position]);
         tspan.text(line.join(" "));
 
-        if (tspan.node().getComputedTextLength() > config.legend_column_width) {
+        // Avoid wrap for first line to end up in a situation where the long text without whitespace is wrapped
+        // (causing the first line near the legend number to be blank).
+        if (tspan.node().getComputedTextLength() > config.legend_column_width && position !== 1) {
           line.pop();
           tspan.text(line.join(" "));
-          line = [words[i]];
+          line = [words[position]];
 
           tspan = textElement.append("tspan")
               .attr("x", numberWidth)
               .attr("dy", config.legend_line_height)
-              .text(words[i]);
+              .text(words[position]);
         }
       }
 
