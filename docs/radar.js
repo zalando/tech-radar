@@ -361,7 +361,7 @@ function radar_visualization(config) {
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
-              .call(wrapText)
+              .call(wrap_text)
               .each(function() {
                 previousLegendHeight += d3.select(this).node().getBBox().height;
               });
@@ -369,7 +369,7 @@ function radar_visualization(config) {
     }
   }
 
-  function wrapText(text) {
+  function wrap_text(text) {
     let heightForNextElement = 0;
 
     text.each(function() {
