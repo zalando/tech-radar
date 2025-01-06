@@ -395,7 +395,7 @@ function radar_visualization(config) {
         line.push(words[position]);
         tspan.text(line.join(" "));
 
-        // Avoid wrap for first line to end up in a situation where the long text without whitespace is wrapped
+        // Avoid wrap for first line (position !== 1) to end up in a situation where the long text without whitespace is wrapped
         // (causing the first line near the legend number to be blank).
         if (tspan.node().getComputedTextLength() > config.legend_column_width && position !== 1) {
           line.pop();
