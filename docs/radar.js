@@ -273,7 +273,7 @@ function radar_visualization(config) {
     }
   }
 
-  function legendTransform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
+  function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
     const dx = ring < 2 ? 0 : legendColumnWidth;
     let dy = (index == null ? -16 : index * config.legend_line_height);
 
@@ -335,7 +335,7 @@ function radar_visualization(config) {
           previousLegendHeight = 0
         }
         legend.append("text")
-          .attr("transform", legendTransform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
+          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
           .style("font-size", "12px")
@@ -353,7 +353,7 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legendTransform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
+              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
               .text(function(d) { return d.id + ". " + d.label; })
@@ -478,7 +478,7 @@ function radar_visualization(config) {
     .enter()
       .append("g")
         .attr("class", "blip")
-        .attr("transform", function(d, i) { return legendTransform(d.quadrant, d.ring, config.legend_column_width, i); })
+        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, config.legend_column_width, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
         .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
