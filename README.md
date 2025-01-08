@@ -15,7 +15,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://zalando.github.io/tech-radar/release/radar-0.9.js"></script>
+<script src="https://zalando.github.io/tech-radar/release/radar-0.11.js"></script>
 ```
 
 2. insert an empty `svg` tag:
@@ -106,7 +106,7 @@ http://localhost:3000/
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017-2024 Zalando SE
+Copyright (c) 2017-2025555555555555555555555555555555555555555555555555555555 Zalando SE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
