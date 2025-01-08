@@ -44,6 +44,7 @@ function radar_visualization(config) {
   config.title_offset = config.title_offset || { x: -675, y: -420 };
   config.footer_offset = config.footer_offset || { x: -155, y: 450 };
   config.legend_column_width = config.legend_column_width || 140
+  config.legend_line_height = config.legend_line_height || 10
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -164,7 +165,7 @@ function radar_visualization(config) {
 
   // partition entries according to segments
   var segmented = new Array(4);
-  for (var quadrant = 0; quadrant < 4; quadrant++) {
+  for (let quadrant = 0; quadrant < 4; quadrant++) {
     segmented[quadrant] = new Array(4);
     for (var ring = 0; ring < 4; ring++) {
       segmented[quadrant][ring] = [];
@@ -177,7 +178,7 @@ function radar_visualization(config) {
 
   // assign unique sequential id to each entry
   var id = 1;
-  for (var quadrant of [2,3,1,0]) {
+  for (quadrant of [2,3,1,0]) {
     for (var ring = 0; ring < 4; ring++) {
       var entries = segmented[quadrant][ring];
       entries.sort(function(a,b) { return a.label.localeCompare(b.label); })
@@ -272,12 +273,14 @@ function radar_visualization(config) {
     }
   }
 
-  function legend_transform(quadrant, ring, legendColumnWidth, index=null) {
-    var dx = ring < 2 ? 0 : legendColumnWidth;
-    var dy = (index == null ? -16 : index * 12);
+  function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
+    const dx = ring < 2 ? 0 : legendColumnWidth;
+    let dy = (index == null ? -16 : index * config.legend_line_height);
+
     if (ring % 2 === 1) {
-      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+      dy = dy + 36 + previousHeight;
     }
+
     return translate(
       config.legend_offset[quadrant].x + dx,
       config.legend_offset[quadrant].y + dy
@@ -286,7 +289,6 @@ function radar_visualization(config) {
 
   // draw title and legend (only in print layout)
   if (config.print_layout) {
-
     // title
     radar.append("a")
       .attr("href", config.repo_url)
@@ -316,8 +318,8 @@ function radar_visualization(config) {
       .style("font-size", "12px");
 
     // legend
-    var legend = radar.append("g");
-    for (var quadrant = 0; quadrant < 4; quadrant++) {
+    const legend = radar.append("g");
+    for (let quadrant = 0; quadrant < 4; quadrant++) {
       legend.append("text")
         .attr("transform", translate(
           config.legend_offset[quadrant].x,
@@ -327,9 +329,13 @@ function radar_visualization(config) {
         .style("font-family", config.font_family)
         .style("font-size", "18px")
         .style("font-weight", "bold");
-      for (var ring = 0; ring < 4; ring++) {
+      let previousLegendHeight = 0
+      for (let ring = 0; ring < 4; ring++) {
+        if (ring % 2 === 0) {
+          previousLegendHeight = 0
+        }
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width))
+          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
           .style("font-size", "12px")
@@ -347,16 +353,65 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i); })
+              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; })
+              .text(function(d) { return d.id + ". " + d.label; })
               .style("font-family", config.font_family)
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .call(wrap_text)
+              .each(function() {
+                previousLegendHeight += d3.select(this).node().getBBox().height;
+              });
       }
     }
+  }
+
+  function wrap_text(text) {
+    let heightForNextElement = 0;
+
+    text.each(function() {
+      const textElement = d3.select(this);
+      const words = textElement.text().split(" ");
+      let line = [];
+
+      // Use '|' at the end of the string so that spaces are not trimmed during rendering.
+      const number = `${textElement.text().split(".")[0]}. |`;
+      const legendNumberText = textElement.append("tspan").text(number);
+      const legendBar = textElement.append("tspan").text('|');
+      const numberWidth = legendNumberText.node().getComputedTextLength() - legendBar.node().getComputedTextLength();
+
+      textElement.text(null);
+
+      let tspan = textElement
+          .append("tspan")
+          .attr("x", 0)
+          .attr("y", heightForNextElement)
+          .attr("dy", 0);
+
+      for (let position = 0; position < words.length; position++) {
+        line.push(words[position]);
+        tspan.text(line.join(" "));
+
+        // Avoid wrap for first line (position !== 1) to not end up in a situation where the long text without
+        // whitespace is wrapped (causing the first line near the legend number to be blank).
+        if (tspan.node().getComputedTextLength() > config.legend_column_width && position !== 1) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [words[position]];
+
+          tspan = textElement.append("tspan")
+              .attr("x", numberWidth)
+              .attr("dy", config.legend_line_height)
+              .text(words[position]);
+        }
+      }
+
+      const textBoundingBox = textElement.node().getBBox();
+      heightForNextElement = textBoundingBox.y + textBoundingBox.height;
+    });
   }
 
   // layer for entries
