@@ -2,7 +2,8 @@
 title: "TypeScript"
 ring: adopt
 quadrant: languages-and-frameworks
-tags: [engineering, backend]
+tags: [backend]
+departments: [engineering]
 ---
 
 [TypeScript](https://www.typescriptlang.org/) is a language that gets transpiled to native JavaScript code.

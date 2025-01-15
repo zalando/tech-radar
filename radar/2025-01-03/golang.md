@@ -2,7 +2,8 @@
 title: "Golang"
 ring: adopt
 quadrant: languages-and-frameworks
-tags: [engineering, backend, enterprise-app]
+tags: [backend]
+departments: [enterprise-apps]
 ---
 
 [Go](https://go.dev/) is a simple, fast, and scalable language ideal for 

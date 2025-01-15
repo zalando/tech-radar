@@ -3,6 +3,7 @@ title: "Amazon RDS for MySQL"
 ring: adopt
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon RDS for MySQL](https://aws.amazon.com/rds/mysql) is an easy to manage relational database optimized for total cost of ownership.
 We only use it for some projects where we need a relational database and do not want to manage the database ourselves.

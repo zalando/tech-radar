@@ -11,6 +11,6 @@
     "serve": "techradar serve"
   },
   "dependencies": {
-    "aoe_technology_radar": "^4.4.0"
+    "aoe_technology_radar": "github:flaconi/tech-radar-core#v1.0.1"
   }
 }

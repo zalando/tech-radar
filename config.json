@@ -8,9 +8,10 @@
     "showChart": true,
     "showTagFilter": true,
     "showQuadrantList": true,
-    "showEmptyRings": false
+    "showEmptyRings": false,
+    "showDepartmentFilter": true
   },
-  "sections": ["radar", "tags", "list"],
+  "sections": ["radar", "tags", "departments", "list"],
   "colors": {
     "foreground": "#E5E8E9",
     "background": "#38464D",

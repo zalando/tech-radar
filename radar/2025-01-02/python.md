@@ -3,6 +3,7 @@ title: "Python"
 ring: hold
 quadrant: languages-and-frameworks
 tags: [engineering, backend]
+departments: [engineering]
 ---
 
 To reduce the number of programming languages in use, we recommend to reduce the use of Python. Python is a great language

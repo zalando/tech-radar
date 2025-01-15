@@ -3,6 +3,7 @@ title: "Amazon Api Gateway"
 ring: adopt
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon Api Gateway](https://aws.amazon.com/api-gateway/) is a fully managed service that makes it easy for developers 
 to create, publish, maintain, monitor, and secure APIs at any scale. It replaces our old Amazon ELB based gateway to improve

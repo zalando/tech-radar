@@ -2,7 +2,6 @@
 # yarn lockfile v1
 
 
-aoe_technology_radar@^4.4.0:
+"aoe_technology_radar@github:flaconi/tech-radar-core#v1.0.1":
   version "4.4.0"
-  resolved "https://registry.yarnpkg.com/aoe_technology_radar/-/aoe_technology_radar-4.4.0.tgz#5b83429f707ab6942dbcfe24d711239778fb3626"
-  integrity sha512-r/6kWsT5FOJ4nf/aRu7hhqL06TntBGi5JM72GvoD30LAi3Qz4DFnOIAeCoCzxW/UovrY6Ko9PsS227QxzZ1VeA==
+  resolved "https://codeload.github.com/flaconi/tech-radar-core/tar.gz/51f53aa7be6db37133c4a371495aab428cdbc25f"

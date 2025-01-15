@@ -3,6 +3,7 @@ title: "Amazon Step Functions"
 ring: adopt
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon Step Functions](https://aws.amazon.com/step-functions/)provides serverless orchestration for modern applications. 
 Orchestration centrally manages a workflow by breaking it into multiple steps, adding flow logic, and tracking the inputs and outputs between the steps. 

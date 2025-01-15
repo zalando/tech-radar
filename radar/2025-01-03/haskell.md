@@ -2,7 +2,8 @@
 title: "Haskell"
 ring: hold
 quadrant: languages-and-frameworks
-tags: [engineering, backend, enterprise-app]
+tags: [backend]
+departments: [enterprise-apps]
 ---
 
 To mitigate the bus factor and enhance the diversity of contributors to our

@@ -3,6 +3,7 @@ title: "Amazon DynamoDB"
 ring: adopt
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a serverless, NoSQL, fully managed database with single-digit millisecond performance at any scale.
 We use it for projects where we need a NoSQL database and do not want to manage the database ourselves.

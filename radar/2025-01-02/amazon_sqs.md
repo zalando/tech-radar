@@ -3,6 +3,7 @@ title: "Amazon SQS"
 ring: adopt
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon SQS](https://aws.amazon.com/sqs/) is a managed message queuing for microservices, distributed systems, and serverless applications.
 It is used in various places to decouple services and allow them to communicate asynchronously. 

@@ -3,6 +3,7 @@ title: "Amazon Elastic Container Service"
 ring: trial
 quadrant: platforms-and-operations
 tags: [infrastructure, aws]
+departments: [engineering]
 ---
 [Amazon Elastic Container Service](https://aws.amazon.com/ecs/)  is a fully managed container orchestration service that 
 helps you to more efficiently deploy, manage, and scale containerized applications.

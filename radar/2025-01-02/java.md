@@ -2,7 +2,8 @@
 title: "Java"
 ring: hold
 quadrant: languages-and-frameworks
-tags: [engineering, backend]
+tags: [backend]
+departments: [engineering]
 ---
 
 To reduce the number of programming languages in use, we recommend to reduce the use of Java. Java is a great language
