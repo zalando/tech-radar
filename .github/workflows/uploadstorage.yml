@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+jobs:
+  deploy:
+    #if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Upload to Azure Storage
+        uses: azure/cli@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+              --source . \
+              --destination '$web' \
+              --account-name techradarblob \
+              --sas-token "${{ secrets.SASTOKENSTORAGE }}" 
