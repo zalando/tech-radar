@@ -20,5 +20,4 @@ jobs:
               --destination '$web' \
               --account-name techradarblob \
               --overwrite true \
-              --pattern *.* \
               --sas-token "${{ secrets.SECRETSAS}}" 
