@@ -16,7 +16,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch \
-              --source . \
+              --source ./docs \
               --destination '$web' \
               --account-name techradarblob \
               --overwrite true \
