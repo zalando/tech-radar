@@ -19,4 +19,6 @@ jobs:
               --source . \
               --destination '$web' \
               --account-name techradarblob \
-              --sas-token "${{ secrets.SASTOKENSTORAGE }}" 
+              --overwrite true \
+              --pattern *.* \
+              --sas-token "${{ secrets.SECRETSAS}}" 
