@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   pull_request:
     types: [closed]
+  push:
+    branches: [main]
 jobs:
   deploy:
     #if: github.event.pull_request.merged == true
