@@ -3,29 +3,29 @@
   "entries": [
     {
       "quadrant": 3,
-      "ring": 1,
-      "label": "AWS Athena",
+      "ring": 0,
+      "label": "Willo",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "AWS EMR",
+      "label": "Metaview",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
-      "ring": 2,
-      "label": "AWS Glue",
+      "ring": 1,
+      "label": "Synthesia AI",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
-      "ring": 2,
-      "label": "AWS Lake Formation",
+      "ring": 0,
+      "label": "Fireflies",
       "active": true,
       "moved": 0
     },
