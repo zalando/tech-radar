@@ -2,112 +2,110 @@
   "Last Date Update": "12.02.2025",
   "entries": [
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "Willo",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "Metaview",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 1,
       "label": "Synthesia AI",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "Fireflies",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
-      "label": "Airflow",
+      "label": "Chat GPT",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
+      "ring": 1,
+      "label": "Zapier",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
       "ring": 0,
-      "label": "Databricks",
+      "label": "Xero",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
-      "quadrant": 3,
-      "ring": 1,
-      "label": "Flink",
-      "link": "https://engineering.zalando.com/tags/apache-flink.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 1,
-      "label": "Google BigQuery",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 1,
-      "label": "Presto",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
-      "label": "Spark",
+      "label": "Notion",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "Lucidchart",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
+      "ring": 0,
+      "label": "Slack",
       "link": "https://engineering.zalando.com/tags/apache-spark.html",
       "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 2,
-      "label": "Streamlit",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 1,
-      "label": "dbt",
-      "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
       "quadrant": 2,
       "ring": 0,
-      "label": "AWS DynamoDB",
+      "label": "Arcade",
       "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
       "quadrant": 2,
-      "ring": 0,
-      "label": "AWS S3",
+      "ring": 3,
+      "label": "Asana",
       "active": true,
-      "moved": 0
+      "moved": 2
+    },
+    {
+       "quadrant": 2,
+      "ring": 3,
+      "label": "Granola.ai",
+      "active": true,
+      "moved": 2
     },
     {
       "quadrant": 2,
-      "ring": 0,
-      "label": "Amazon ElastiCache",
-      "link": "https://engineering.zalando.com/tags/redis.html",
+      "ring": 3,
+      "label": "Fetcher.ai",
       "active": true,
-      "moved": 1
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
+      "ring": 3,
+      "label": "HireVue",
+      "active": true,
+      "moved": 2
     },
     {
       "quadrant": 2,
