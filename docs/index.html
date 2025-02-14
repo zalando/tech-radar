@@ -5,18 +5,26 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="description" content="Instant Impact Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Instant Impact Tech Radar</title>
-<link rel="shortcut icon" href="https://https://instant-impact.slack.com/files/U06HMMD9TPY/F08D0KQMLN8/ii_icon_-_favicon_-_48x48.png?origin_team=T09JDDW0P&origin_channel=D07S0QDJJHZ>
+<title>Instant Impact Tech Radar Test</title>
+<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="radar.js"></script>
 
 <link rel="stylesheet" href="radar.css">
+<style>
+  #radar {
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+    display: block;
+  }
+</style>
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+<svg id="radar" width="900" height="900"></svg>
 
 <script>
 fetch('./config.json').then(function(response) {
@@ -27,10 +35,10 @@ fetch('./config.json').then(function(response) {
     title: "Instant Impact Tech Radar",
     date: data.date,
     quadrants: [
-      { name: "Techniques" },
-      { name: "Frameworks" },
-      { name: "Platforms" },
-      { name: "Tools" },
+      { name: "Languages & Frameworks" },
+      { name: "Infrastructure & Operations" },
+      { name: "Data Management" },
+      { name: "Tools & Services" },
     ],
     rings: [
       { name: "ADOPT", color: "#5ba300" },
@@ -54,7 +62,7 @@ fetch('./config.json').then(function(response) {
 <p>
 The Tech Radar is a tool that supports Instant Impact's Transformation Team globally by providing a platform to share knowledge and experience with our various technologies. This easy-to-read format makes tools easier to discover and helps us evaluate technologies thoroughly. This project is based on the [Zalando/tech-radar](https://github.com/zalando/tech-radar).
 
-The Instant Impact Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment<em>. We categorise technologies into four rings, defined as follows:
+The Instant Impact Tech Radar is a list of technologies, complemented by an assessment result, called *ring assignment*. We categorise technologies into four rings, defined as follows:
 We categorise the technologies into the following four quadrants: 
 
 <ul>
@@ -96,3 +104,4 @@ In addition to the Tech Radar, we actively collaborate with existing tech partne
 
 </body>
 </html>
+
