@@ -111,7 +111,7 @@
       "ring": 3,
       "label": "SWARM",
       "active": true,
-      "moved": 3
+      "moved": 2
     },
     {
       "quadrant": 2,
@@ -195,7 +195,7 @@
       "ring": 3,
       "label": "ArcticShores",
       "active": true,
-      "moved": 3
+      "moved": 2
     },
     {
       "quadrant": 3,
