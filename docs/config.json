@@ -1,12 +1,12 @@
 {
-  "date": "2024.06",
+  "date": "2025.02",
   "entries": [
     {
       "quadrant": 3,
       "ring": 1,
       "label": "AWS Athena",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 3,
@@ -31,8 +31,15 @@
     },
     {
       "quadrant": 3,
+      "ring": 1,
+      "label": "Amazon Translate",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
       "ring": 0,
-      "label": "Airflow",
+      "label": "Apache Airflow",
       "active": true,
       "moved": 0
     },
@@ -107,7 +114,7 @@
       "label": "Amazon ElastiCache",
       "link": "https://engineering.zalando.com/tags/redis.html",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 2,
@@ -119,6 +126,13 @@
     {
       "quadrant": 2,
       "ring": 1,
+      "label": "Amazon Neptune",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
+      "ring": 1,
       "label": "Amazon Redshift",
       "active": true,
       "moved": 0
@@ -126,7 +140,7 @@
     {
       "quadrant": 2,
       "ring": 1,
-      "label": "Amazon Feature Store",
+      "label": "Amazon SageMaker Feature Store",
       "active": true,
       "moved": 0
     },
@@ -230,13 +244,6 @@
       "label": "Redis",
       "link": "https://engineering.zalando.com/tags/redis.html",
       "active": true,
-      "moved": -1
-    },
-    {
-      "quadrant": 2,
-      "ring": 2,
-      "label": "RocksDB",
-      "active": true,
       "moved": 0
     },
     {
@@ -252,7 +259,7 @@
       "label": "Valkey",
       "link": "https://engineering.zalando.com/tags/redis.html",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
