@@ -136,7 +136,7 @@
     },
     {
       "quadrant": 2,
-      "ring": 2,
+      "ring": 3,
       "label": "Gatekeeper",
       "active": true,
       "moved": 2
