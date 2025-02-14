@@ -395,7 +395,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 3,
       "label": "Clojure",
       "link": "https://engineering.zalando.com/tags/clojure.html",
@@ -403,14 +403,14 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 1,
       "label": "Dart",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Go",
       "link": "https://engineering.zalando.com/tags/golang.html",
@@ -418,7 +418,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "GraphQL",
       "link": "https://engineering.zalando.com/tags/graphql.html",
@@ -426,7 +426,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 3,
       "label": "Haskell",
       "link": "https://engineering.zalando.com/tags/haskell.html",
@@ -434,7 +434,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Java",
       "link": "https://engineering.zalando.com/tags/java.html",
@@ -442,7 +442,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "JavaScript",
       "link": "https://engineering.zalando.com/tags/javascript.html",
@@ -450,7 +450,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Kotlin",
       "link": "https://engineering.zalando.com/tags/kotlin.html",
@@ -458,7 +458,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "OpenAPI (Swagger)",
       "link": "https://engineering.zalando.com/tags/openapi.html",
@@ -466,7 +466,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Python",
       "link": "https://engineering.zalando.com/tags/python.html",
@@ -474,14 +474,14 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 2,
       "label": "R",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 3,
       "label": "Rust",
       "link": "https://engineering.zalando.com/tags/rust.html",
@@ -489,7 +489,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Scala",
       "link": "https://engineering.zalando.com/tags/scala.html",
@@ -497,7 +497,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "Swift",
       "link": "https://engineering.zalando.com/tags/swift.html",
@@ -505,7 +505,7 @@
       "moved": 0
     },
     {
-      "quadrant": 0,
+      "quadrant": 1,
       "ring": 0,
       "label": "TypeScript",
       "link": "https://engineering.zalando.com/tags/typescript.html",
