@@ -9,21 +9,21 @@
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 0,
       "ring": 0,
       "label": "Metaview",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 1,
       "ring": 1,
       "label": "Synthesia AI",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 3,
       "ring": 0,
       "label": "Fireflies",
       "active": true,
