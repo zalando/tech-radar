@@ -28,8 +28,8 @@ fetch('./config.json').then(function(response) {
     title: "Instant Impact Tech Radar",
     date: data.date,
     quadrants: [
-      { name: "Languages" },
-      { name: "Infrastructure" },
+      { name: "Techniques" },
+      { name: "Frameworks" },
       { name: "Datastores" },
       { name: "Data Management" },
     ],
@@ -53,26 +53,36 @@ fetch('./config.json').then(function(response) {
 <h3>What is the Tech Radar?</h3>
 
 <p>
-The Tech Radar is a tool that supports Instant Impact's Transformation Team globally by providing a platform to share knowledge and experience with our various technologies. This easy-to-read format makes tools easier to discover and helps us evaluate technologies thoroughly. This project is based on the This project is based on the Zalando/tech-radar.
+The Tech Radar is a tool that supports Instant Impact globally by providing a platform to share knowledge and experience with our various technologies. This easy-to-read format makes tools easier to discover and helps us evaluate technologies thoroughly. This project is based on the Zalando/tech-radar.
 
 The Instant Impact Tech Radar is a list of technologies, complemented by an assessment result, called *ring assignment*. We categorise technologies into four rings, defined as follows:
 We categorise the technologies into the following four quadrants: 
 </p>
 
 <ul>
-<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Instant Impact production environment, low risk and recommended to be widely used.</li>
-<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also on a large scale. Typically technology that has a high adoption rate across our clients and internally.</li>
+<li><strong>TRIAL</strong> &mdash; Technologies that we are trialling to solve an existing challenge; once the benefits are confirmed and limitations are understood we would move to ADOPT. We typically move to TRIAL once we have ASSESSEDs.</li>
+<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth investing some research and investigation into to see if it has the desired impact. ASSESS technologies are new to us and are highly unproven in our organisation.</li>
+<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for our clients and internally at Instant Impact. Technologies that we have decided not to renew contractually or are not (yet for us) solving a specifically challenge or other reasons. It is our recommendation that HOLD technologies should not be used unless for specific projects and discussion with the Transformation Team.</li>
 </ul>
 
+</p>
+We categorise the technologies into the following four quadrants: 
+</p>
+
+ <ul>
+<li><strong>TOOLS</strong> &mdash; A TOOL is a specialised software or application designed to perform a specific task or solve a particular problem four our clients or internal teams. It typically integrates with other systems but does not provide a full infrastructure on its own.  They are considered adds on to the existing platforms that we all used across most of our clients and internally.</li>
+<li><strong>PLATFORMS</strong> &mdash; A PLATFORM is a comprehensive system or ecosystem that provides the infrastructure to build, deploy, or manage multiple processes. It often supports multiple tools and can function as a standalone solution to solve one or multiple problems.</li>
+<li><strong>FRAMEWORKS</strong> &mdash; FRAMEWORKS or methodologies we have adopted as a business. They usually follow best practices and help us gain efficiencies in certain areas.  A framework is a structured method that provides guidelines, models, or criteria to help make decisions or complete tasks. It is often repeatable and provides a clear systematic approach to solving problems.</li>
+<li><strong>TECHNIQUES</strong> &mdash; A TECHNIQUE is a tactical method or approach used to achieve a goal or solve a problem. It is more flexible than a framework and does not necessarily follow a structured model.</li>
+</ul> 
+  
 </td><td>
 
 <h3>What is the purpose?</h3>
 
 <p>
-The Tech Radar is a tool to inspire and support the Transformation Team at Instant Impact to pick the best technologies for new projects and to solve some of our problems.  It provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Our Tech Radar sets out the changes in technologies that are of interest to us a business— changes that we think our teams should pay attention to become an even more tech-enabled business. </p>
-</p>
+The Tech Radar is a tool to inspire and support the Transformation Team at Instant Impact to pick the best technologies for new projects and to solve some of our problems.  It provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Our Tech Radar sets out the changes in technologies that are of interest to us a business— changes that we think our teams should pay attention to become an even more tech-enabled business.</p>
 
 <h3>How do we maintain it?</h3>
 
