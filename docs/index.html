@@ -6,7 +6,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="description" content="Instant Impact Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zalando Tech Radar</title>
+<title>Instant Impact Tech Radar</title>
 <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -25,7 +25,7 @@ fetch('./config.json').then(function(response) {
 }).then(function(data) {
   radar_visualization({
     repo_url: "https://github.com/Instant-Impact/tech-radar",
-    title: "Zalando Tech Radar",
+    title: "Instant Impact Tech Radar",
     date: data.date,
     quadrants: [
       { name: "Languages" },
