@@ -436,22 +436,21 @@
       "ring": 0,
       "label": "Rice Framework",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 1,
       "ring": 0,
       "label": "Implementation Framework",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 1,
       "ring": 0,
       "label": "Project Management Framework",
-      "link": "https://engineering.zalando.com/tags/rabbitmq.html",
       "active": true,
-      "moved": 2
+      "moved": 0
     }
   ]
 }
