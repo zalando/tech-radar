@@ -389,41 +389,23 @@
     {
       "quadrant": 3,
       "ring": 1,
-      "label": "Dart",
+      "label": "SynthesiaAI",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "Go",
-      "link": "https://engineering.zalando.com/tags/golang.html",
+      "label": "Zapier",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 3,
-      "ring": 0,
-      "label": "GraphQL",
-      "link": "https://engineering.zalando.com/tags/graphql.html",
+      "quadrant": 2,
+      "ring": 2,
+      "label": "AgenticAI Sourcing and Screening AI",
       "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "Haskell",
-      "link": "https://engineering.zalando.com/tags/haskell.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 0,
-      "label": "Java",
-      "link": "https://engineering.zalando.com/tags/java.html",
-      "active": true,
-      "moved": 0
+      "moved": 2
     },
     {
       "quadrant": 1,
