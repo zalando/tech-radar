@@ -88,21 +88,7 @@
     {
       "quadrant": 2,
       "ring": 3,
-      "label": "Screenloop",
-      "active": true,
-      "moved": 2
-    },
-    {
-      "quadrant": 2,
-      "ring": 3,
       "label": "HireEz",
-      "active": true,
-      "moved": 2
-    },
-    {
-      "quadrant": 2,
-      "ring": 3,
-      "label": "Gem",
       "active": true,
       "moved": 2
     },
@@ -165,13 +151,6 @@
     {
       "quadrant": 2,
       "ring": 3,
-      "label": "successfactors",
-      "active": true,
-      "moved": 2
-    },
-    {
-      "quadrant": 2,
-      "ring": 3,
       "label": "Noebrain",
       "active": true,
       "moved": 2
@@ -192,7 +171,7 @@
     },
     {
       "quadrant": 2,
-      "ring": 3,
+      "ring": 1,
       "label": "ArcticShores",
       "active": true,
       "moved": 2
