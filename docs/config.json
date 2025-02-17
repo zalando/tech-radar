@@ -23,35 +23,35 @@
       "moved": 0
     },
     {
-      "quadrant": 2,
+      "quadrant": 0,
       "ring": 0,
       "label": "Apollo",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 0,
       "ring": 0,
       "label": "Hubspot",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 2,
+      "quadrant": 3,
       "ring": 0,
       "label": "Lattice",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 2,
+      "quadrant": 3,
       "ring": 0,
       "label": "Workamp",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 2,
+      "quadrant": 3,
       "ring": 0,
       "label": "Hibob",
       "active": true,
@@ -121,14 +121,14 @@
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 0,
       "ring": 3,
       "label": "Jiminny",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 2,
+      "quadrant": 0,
       "ring": 3,
       "label": "Gong",
       "active": true,
@@ -198,14 +198,14 @@
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "Willo",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "Metaview",
       "active": true,
@@ -268,14 +268,14 @@
       "moved": 0
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "LinkedIn Insigts",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 0,
       "label": "LinkedIn Recruiter",
       "active": true,
@@ -296,42 +296,42 @@
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Fetcher.ai",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "HireVue",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Interview.Prep.ai",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Candidate.fyi",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Huru.ai",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Paradox.ai",
       "active": true,
@@ -359,14 +359,14 @@
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "Test Partnerships",
       "active": true,
       "moved": 2
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "DISC",
       "active": true,
@@ -380,7 +380,7 @@
       "moved": 0
     },
     {
-      "quadrant": 3,
+      "quadrant": 2,
       "ring": 3,
       "label": "TestGorillas",
       "active": true,
@@ -425,7 +425,6 @@
       "quadrant": 1,
       "ring": 0,
       "label": "Project Management Framework",
-      "link": "https://engineering.zalando.com/tags/rabbitmq.html",
       "active": true,
       "moved": 0
     }
