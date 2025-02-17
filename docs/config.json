@@ -199,88 +199,85 @@
     },
     {
       "quadrant": 3,
-      "ring": 3,
-      "label": "Oracle DB",
+      "ring": 0,
+      "label": "Willo",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "PostgreSQL",
-      "link": "https://engineering.zalando.com/tags/postgresql.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "Redis",
-      "link": "https://engineering.zalando.com/tags/redis.html",
-      "active": true,
-      "moved": -1
-    },
-    {
-      "quadrant": 3,
-      "ring": 2,
-      "label": "RocksDB",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "Solr",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 3,
-      "ring": 2,
-      "label": "Valkey",
-      "link": "https://engineering.zalando.com/tags/redis.html",
-      "active": true,
-      "moved": 2
-    },
-    {
-      "quadrant": 3,
-      "ring": 3,
-      "label": "ZooKeeper",
+      "label": "Metaview",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "AWS CloudFormation",
+      "label": "Fireflies",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "AWS CloudFront",
+      "label": "Innternal Chatbot (Stan)",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
-      "ring": 1,
-      "label": "AWS Elemental MediaConvert",
+      "ring": 0,
+      "label": "ChatGPT",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
-      "ring": 1,
-      "label": "AWS Lambda",
+      "ring": 0,
+      "label": "Xero",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 3,
-      "ring": 2,
-      "label": "AWS Service Catalog",
+      "ring": 0,
+      "label": "Notion",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Lucidchart",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "Slack",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": " Aracade",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "LinkedIn Insigts",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 3,
+      "ring": 0,
+      "label": "LinkedIn Recruiter",
       "active": true,
       "moved": 0
     },
