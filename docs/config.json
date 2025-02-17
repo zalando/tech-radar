@@ -136,6 +136,20 @@
     },
     {
       "quadrant": 2,
+      "ring": 1,
+      "label": "Adway",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
+      "ring": 1,
+      "label": "App Cast",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
       "ring": 3,
       "label": "HiredScore",
       "active": true,
