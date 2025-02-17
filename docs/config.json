@@ -417,9 +417,8 @@
     },
     {
       "quadrant": 3,
-      "ring": 3,
-      "label": "Haskell",
-      "link": "https://engineering.zalando.com/tags/haskell.html",
+      "ring": 0,
+      "label": "Test",
       "active": true,
       "moved": 0
     },
