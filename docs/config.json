@@ -395,7 +395,7 @@
     },
     {
       "quadrant": 3,
-      "ring": 0,
+      "ring": 1,
       "label": "Zapier",
       "active": true,
       "moved": 0
