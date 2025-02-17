@@ -34,28 +34,28 @@
       "ring": 0,
       "label": "Hubspot",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
       "ring": 0,
       "label": "Lattice",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
       "ring": 0,
       "label": "Workamp",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
       "ring": 0,
       "label": "Hibob",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
@@ -436,14 +436,14 @@
       "ring": 0,
       "label": "Rice Framework",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 1,
       "ring": 0,
       "label": "Implementation Framework",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 1,
@@ -451,7 +451,7 @@
       "label": "Project Management Framework",
       "link": "https://engineering.zalando.com/tags/rabbitmq.html",
       "active": true,
-      "moved": 2
+      "moved": 0
     }
   ]
 }
