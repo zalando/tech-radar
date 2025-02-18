@@ -440,38 +440,49 @@ function radar_visualization(config) {
 
   function showBubble(d) {
     if (d.active || config.print_layout) {
-      var tooltip = d3.select("#bubble text")
-        .text(d.label);
-      var bbox = tooltip.node().getBBox();
-      d3.select("#bubble")
-        .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
-        .style("opacity", 0.8);
-      d3.select("#bubble rect")
-        .attr("x", -5)
-        .attr("y", -bbox.height)
-        .attr("width", bbox.width + 10)
-        .attr("height", bbox.height + 4);
-      d3.select("#bubble path")
-        .attr("transform", translate(bbox.width / 2 - 5, 3));
+      // Remove any existing tooltips
+      d3.selectAll('.tech-tooltip').remove();
+      
+      // Create new tooltip
+      var tooltip = d3.select('body')
+        .append('div')
+        .attr('class', 'tech-tooltip')
+        .style('opacity', 0);
+
+      // Add content to tooltip
+      tooltip.html(`
+        <h3>${d.label}</h3>
+        <div class="category">${d.quadrant} - ${d.ring}</div>
+        ${d.description ? `<div class="description">${d.description}</div>` : ''}
+        ${d.link ? `<p><a href="${d.link}" target="_blank">Learn more</a></p>` : ''}
+      `);
+
+      // Position tooltip near mouse
+      var mouseCoords = d3.mouse(document.body);
+      tooltip.style('left', (mouseCoords[0] + 20) + 'px')
+             .style('top', (mouseCoords[1] - 20) + 'px')
+             .style('opacity', 1);
     }
   }
 
   function hideBubble(d) {
-    var bubble = d3.select("#bubble")
-      .attr("transform", translate(0,0))
-      .style("opacity", 0);
+    // Remove tooltip
+    d3.selectAll('.tech-tooltip').remove();
   }
 
   function highlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("filter", "url(#solid)");
-    legendItem.setAttribute("fill", "white");
+    if (legendItem) {
+      legendItem.style.backgroundColor = '#f0f0f0';
+      legendItem.style.transition = 'background-color 0.2s';
+    }
   }
 
   function unhighlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.removeAttribute("filter");
-    legendItem.removeAttribute("fill");
+    if (legendItem) {
+      legendItem.style.backgroundColor = 'transparent';
+    }
   }
 
   // draw blips on radar

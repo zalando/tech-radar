@@ -6,21 +6,24 @@
       "ring": 0,
       "label": "Pinpoint",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "Recruitment CRM and analytics platform for managing candidate relationships"
     },
     {
       "quadrant": 2,
       "ring": 0,
       "label": "PoppAI",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "AI-powered recruitment automation and candidate screening platform"
     },
     {
       "quadrant": 2,
       "ring": 0,
       "label": "HireSweet",
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "description": "Automated talent sourcing and engagement platform"
     },
     {
       "quadrant": 0,

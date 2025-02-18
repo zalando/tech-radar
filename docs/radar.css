@@ -3,6 +3,44 @@ body {
   font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
   padding-bottom: 50px;
 }
+
+.tech-tooltip {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  pointer-events: none;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+.tech-tooltip h3 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tech-tooltip p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.tech-tooltip .category {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.tech-tooltip .description {
+  color: #333;
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 280px;
+}
 h3 {
   margin-top: 50px;
 }
