@@ -361,6 +361,7 @@ function radar_visualization(config) {
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .on("mouseup", function(d) { showDialog(d.html); })
               .call(wrap_text)
               .each(function() {
                 previousLegendHeight += d3.select(this).node().getBBox().height;
@@ -482,7 +483,9 @@ function radar_visualization(config) {
         .attr("class", "blip")
         .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, config.legend_column_width, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+        .on("mouseup", function(d) { showDialog(d.html); })
+        ;
 
   // configure each blip
   blips.each(function(d) {
