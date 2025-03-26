@@ -1,0 +1,38 @@
+name: Update Technologies List
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - 'docs/technologies/**'
+
+jobs:
+  update-technologies-list:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+
+      - name: Generate technologies list
+        run: |
+          ls -1 docs/technologies/ | sort > docs/technologies.txt
+
+      - name: Commit changes if needed
+        run: |
+          if git diff --exit-code docs/technologies.txt; then
+            echo "No changes to docs/technologies.txt, skipping commit"
+            exit 0
+          fi
+          
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          
+          git add docs/technologies.txt
+          git commit -m "Update docs/technologies.txt [skip ci]" -m "Automated update of technologies list"
+          git push

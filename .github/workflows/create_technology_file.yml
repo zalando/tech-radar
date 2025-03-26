@@ -1,0 +1,170 @@
+name: Create Technology File
+
+on:
+  issues:
+    types: [opened]
+
+# Add permissions at workflow level
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-technology-file:
+    if: contains(github.event.issue.labels.*.name, 'new-technology')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Extract technology info
+        id: extract
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+            
+            // Extract fields from the form - improved extraction
+            function extractValue(fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([^\\n]+)`);
+              const match = body.match(regex);
+              return match ? match[1].trim() : '';
+            }
+            
+            function extractTextArea(fieldName) {
+              // Match everything between the field header and the next header or end of text
+              const regex = new RegExp(`### ${fieldName}\\s*\\n([\\s\\S]*?)(?=\\s*###|$)`);
+              const match = body.match(regex);
+              if (!match) return '';
+            
+              // Get the raw text including leading spaces
+              const rawText = match[1];
+            
+              // Remove only the trailing whitespace that might be before the next header
+              return rawText.replace(/\s+$/, '');
+            }
+            
+            const techName = extractValue('Technology Name');
+            const quadrantFull = extractValue('Quadrant');
+            const ringFull = extractValue('Ring');
+            // Always set active to true as requested
+            const active = "true";
+            const moved = extractValue('Movement Direction');
+            const description = extractTextArea('Description');
+            
+            console.log("Extracted description:", description);
+            
+            // Extract just the number from the quadrant and ring values
+            const quadrant = quadrantFull.split(' - ')[0];
+            const ring = ringFull.split(' - ')[0];
+            
+            // The label is the same as the technology name
+            const label = techName;
+            
+            // Create sanitized file name (alphanumeric only)
+            const fileName = techName.replace(/[^a-zA-Z0-9]/g, '');
+            const branchName = `add-technology-${fileName.toLowerCase()}`;
+            
+            // Strip markdown code block formatting if present
+            let cleanDescription = description;
+            
+            // Remove ```markdown and ``` if they exist at the beginning and end
+            cleanDescription = cleanDescription.replace(/^```markdown\s*/, '');
+            cleanDescription = cleanDescription.replace(/\s*```$/, '');
+            
+            // Set outputs
+            core.setOutput('tech_name', techName);
+            core.setOutput('file_name', fileName);
+            core.setOutput('branch_name', branchName);
+            core.setOutput('quadrant', quadrant);
+            core.setOutput('ring', ring);
+            core.setOutput('active', 'true');
+            core.setOutput('moved', 2);
+            core.setOutput('label', label);
+            core.setOutput('description', cleanDescription);
+
+      - name: Debug extracted values
+        run: |
+          echo "Description length: ${#DESCRIPTION}"
+          echo "Description (first 20 chars): ${DESCRIPTION:0:20}"
+        env:
+          DESCRIPTION: ${{ steps.extract.outputs.description }}
+
+      - name: Create branch
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git checkout -b ${{ steps.extract.outputs.branch_name }}
+
+      - name: Create technology file
+        shell: bash
+        run: |
+          mkdir -p docs/technologies/
+          cat << 'ENDOFFILE' > docs/technologies/${{ steps.extract.outputs.file_name }}.md
+          ---
+          quadrant: ${{ steps.extract.outputs.quadrant }}
+          ring: ${{ steps.extract.outputs.ring }}
+          label: "${{ steps.extract.outputs.label }}"
+          active: ${{ steps.extract.outputs.active }}
+          moved: ${{ steps.extract.outputs.moved }}
+          ---
+          # ${{ steps.extract.outputs.tech_name }}
+
+          ${{ steps.extract.outputs.description }}
+          ENDOFFILE
+
+      - name: Commit and push
+        run: |
+          git add docs/technologies/${{ steps.extract.outputs.file_name }}.md
+          git commit -m "Add ${{ steps.extract.outputs.tech_name }} technology"
+          git push origin ${{ steps.extract.outputs.branch_name }}
+
+      - name: Create PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              // Get the default branch name
+              const { data: repo } = await github.rest.repos.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              });
+            
+              const defaultBranch = repo.default_branch;
+              console.log(`Repository default branch is: ${defaultBranch}`);
+            
+              const { data: pullRequest } = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Add ${process.env.TECH_NAME} technology`,
+                body: `Closes #${context.issue.number}`,
+                head: process.env.BRANCH_NAME,
+                base: defaultBranch
+              });
+            
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `Created PR #${pullRequest.number} with the new technology file. [View PR](${pullRequest.html_url})`
+              });
+            
+              console.log(`Successfully created PR #${pullRequest.number}`);
+            } catch (error) {
+              console.error(`Error creating PR: ${error.message}`);
+            
+              // Add a comment to the issue about the failure
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `⚠️ Failed to create a PR automatically. Error: ${error.message}\n\nThe changes are still pushed to branch: \`${process.env.BRANCH_NAME}\``
+              });
+            }
+        env:
+          TECH_NAME: ${{ steps.extract.outputs.tech_name }}
+          BRANCH_NAME: ${{ steps.extract.outputs.branch_name }}
