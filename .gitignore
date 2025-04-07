@@ -1,8 +1,16 @@
 node_modules/
 .DS_Store
 .idea/
+dist/
 
 # yarn
 yarn-error.log
+.yarn/*
+!.yarn/releases/
+!.yarn/releases/*.cjs
+.yarnrc.yml
+.pnp.*
+
+#tech radar build output
 .techradar
 build/
