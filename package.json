@@ -15,10 +15,14 @@
     "eslint-plugin-html": "^7.1.0",
     "socket.io": "^4.7.2"
   },
+  "homepage": "https://2hatab.github.io/tech-radar",
   "scripts": {
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
-    "lint:html": "eslint docs/*.html"
+    "lint:html": "eslint docs/*.html",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
