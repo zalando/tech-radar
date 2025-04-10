@@ -254,7 +254,7 @@
       "moved": 0
     },
     {
-      "quadrant": 2,
+      "quadrant": 3,
       "ring": 2,
       "label": "Valkey",
       "link": "https://engineering.zalando.com/tags/redis.html",
