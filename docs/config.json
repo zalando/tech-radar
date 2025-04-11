@@ -235,42 +235,42 @@
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 0,
       "label": "Kafka",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 0,
       "label": "ClickHouse",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 0,
       "label": "Redis",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 0,
       "label": "Pg",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 3,
       "label": "MySQL",
       "active": true,
       "moved": 0
     },
     {
-      "quadrant": -1,
+      "quadrant": 3,
       "ring": 3,
       "label": "sqlight",
       "active": true,
