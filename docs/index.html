@@ -2,68 +2,114 @@
 <html lang="en">
 
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="description" content="One-cloud Tech Radar">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>One-cloud Tech Radarr</title>
-<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="description" content="One-cloud Tech Radar">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One-cloud Tech Radar</title>
+  <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+  <link rel="stylesheet" href="radar.css">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="radar.js"></script>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="radar.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
 
-<link rel="stylesheet" href="radar.css">
+    #radar {
+      display: none;
+    }
+
+    #radar-loader-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fff;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 6px solid #ddd;
+      border-top-color: #009eb0;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+  <div id="radar-loader-wrapper">
+    <div class="spinner"></div>
+  </div>
 
-<script>
-fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgU8NzBgwcyGnI9Lig3xG27qonQNHbo6scfs04Ywu614aXMBn2N9r2SmQIiWpj0CcCRpf_jTrIQPJqp2a5_43gkxkWMtwA0KJ98yQH9mAmBeKP3C-8qmDP6Pcm6g9jKk7z1_AZZqTQ6Db6BT7tmF1oY0V-GyXbf4qDQWk9_1_BqYQgONkDvMWsD_bllRlyuFTNjLCwOUiGME4A077rm8fTkBWMGsSN4uvSSR4IMHBqPSh5PzQJvUvElGNNQVZAp0bXJWvBNLu_vGlILUpXEeGhCxK3zrMTszFl-D0sI&lib=MVzIwiIXCf9Nzgfo2T-vWOVrp5Tgpw0-o').then(function(response) {
-  return response.json();
-}).then(function(data) {
-  radar_visualization({
-    repo_url: "https://github.com/zalando/tech-radar",
-    title: "NOC Tech Radar",
-    date: data.date,
-    quadrants: [
-      { name: "Languages & frameworks" },
-      { name: "Platform & infrastructure" },
-      { name: "Techniques & tools" },
-      { name: "Data Management" },
-    ],
-    rings: [
-      { name: "ADOPT", color: "#5ba300" },
-      { name: "TRIAL", color: "#009eb0" },
-      { name: "ASSESS", color: "#c7ba00" },
-      { name: "HOLD", color: "#e09b96" }
-    ],
-    entries: data.entries
-  });
-}).catch(function(err) {
-  console.log('Error loading config.json', err);
-});
-</script>
+  <svg id="radar"></svg>
 
-<table>
-<tr>
-<td>
+  <script>
+    const API_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgU8NzBgwcyGnI9Lig3xG27qonQNHbo6scfs04Ywu614aXMBn2N9r2SmQIiWpj0CcCRpf_jTrIQPJqp2a5_43gkxkWMtwA0KJ98yQH9mAmBeKP3C-8qmDP6Pcm6g9jKk7z1_AZZqTQ6Db6BT7tmF1oY0V-GyXbf4qDQWk9_1_BqYQgONkDvMWsD_bllRlyuFTNjLCwOUiGME4A077rm8fTkBWMGsSN4uvSSR4IMHBqPSh5PzQJvUvElGNNQVZAp0bXJWvBNLu_vGlILUpXEeGhCxK3zrMTszFl-D0sI&lib=MVzIwiIXCf9Nzgfo2T-vWOVrp5Tgpw0-o';
 
-<h3>Что такое Tech Radar?</h3>
+    async function loadRadar() {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
 
-<p> Технический радар — это список технологий, дополненный результатом их оценки, называемым <em>присвоением кольца</em> (ring assignment). Мы используем четыре кольца со следующими значениями: </p>
+        document.getElementById("radar-loader-wrapper").style.display = "none";
+        document.getElementById("radar").style.display = "block";
 
-<ul>
-<li><strong>ADOPT</strong> &mdash; Технологии, в которых мы уверены и которые хорошо подходят для наших целей, в том числе в масштабируемых системах. Это технологии, которые активно используются в нашем продакшене, имеют сложившуюся культуру применения, несут минимальные риски и рекомендуются для широкого использования.</li>
-<li><strong>TRIAL</strong> &mdash; Технологии, которые уже успешно применялись в реальных проектах для решения конкретных задач. Мы получили первый серьёзный опыт использования, подтвердили преимущества и начали выявлять ограничения. Эти технологии немного более рискованные, но в нашей организации уже есть инженеры, применявшие их и готовые делиться опытом.</li>
-<li><strong>ASSESS</strong> &mdash; Перспективные технологии с очевидным потенциальным вкладом в развитие. Стоит инвестировать немного времени в исследование и прототипирование, чтобы оценить их влияние. Эти технологии более рискованные: часто новые и ещё не проверенные в нашей организации. Однако есть инженеры, которые их изучают и продвигают, возможно, уже начаты прототипы в некоторых командах.</li>
-<li><strong>HOLD</strong> &mdash; Технологии, не рекомендуемые для новых проектов. Мы считаем, что в них не стоит (пока) инвестировать дополнительные ресурсы. Эти технологии можно продолжать использовать в уже начатых проектах, но для новых инициатив применять не следует.</li>
-</ul>
+        radar_visualization({
+          repo_url: "https://github.com/zalando/tech-radar",
+          title: "NOC Tech Radar",
+          date: data.date,
+          quadrants: [
+            { name: "Languages & frameworks" },
+            { name: "Platform & infrastructure" },
+            { name: "Techniques & tools" },
+            { name: "Data Management" }
+          ],
+          rings: [
+            { name: "ADOPT", color: "#5ba300" },
+            { name: "TRIAL", color: "#009eb0" },
+            { name: "ASSESS", color: "#c7ba00" },
+            { name: "HOLD", color: "#e09b96" }
+          ],
+          entries: data.entries
+        });
+      } catch (error) {
+        document.getElementById("radar-loader-wrapper").innerHTML =
+          "<p style='color:red'>Ошибка загрузки данных Tech Radar</p>";
+        console.error("Error loading tech radar data:", error);
+      }
+    }
 
-</td><td>
+    loadRadar();
+  </script>
 
-</td></tr>
-</table>
+  <table>
+    <tr>
+      <td>
+        <h3>Что такое Tech Radar?</h3>
+        <p> Технический радар — это список технологий, дополненный результатом их оценки, называемым <em>присвоением кольца</em> (ring assignment). Мы используем четыре кольца со следующими значениями: </p>
+        <ul>
+          <li><strong>ADOPT</strong> — Технологии, в которых мы уверены и которые хорошо подходят для наших целей, в том числе в масштабируемых системах. Это технологии, которые активно используются в нашем продакшене, имеют сложившуюся культуру применения, несут минимальные риски и рекомендуются для широкого использования.</li>
+          <li><strong>TRIAL</strong> — Технологии, которые уже успешно применялись в реальных проектах для решения конкретных задач. Мы получили первый серьёзный опыт использования, подтвердили преимущества и начали выявлять ограничения. Эти технологии немного более рискованные, но в нашей организации уже есть инженеры, применявшие их и готовые делиться опытом.</li>
+          <li><strong>ASSESS</strong> — Перспективные технологии с очевидным потенциальным вкладом в развитие. Стоит инвестировать немного времени в исследование и прототипирование, чтобы оценить их влияние. Эти технологии более рискованные: часто новые и ещё не проверенные в нашей организации. Однако есть инженеры, которые их изучают и продвигают, возможно, уже начаты прототипы в некоторых командах.</li>
+          <li><strong>HOLD</strong> — Технологии, не рекомендуемые для новых проектов. Мы считаем, что в них не стоит (пока) инвестировать дополнительные ресурсы. Эти технологии можно продолжать использовать в уже начатых проектах, но для новых инициатив применять не следует.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>
