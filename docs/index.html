@@ -19,7 +19,7 @@
 <svg id="radar"></svg>
 
 <script>
-fetch('./config.json').then(function(response) {
+fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgU8NzBgwcyGnI9Lig3xG27qonQNHbo6scfs04Ywu614aXMBn2N9r2SmQIiWpj0CcCRpf_jTrIQPJqp2a5_43gkxkWMtwA0KJ98yQH9mAmBeKP3C-8qmDP6Pcm6g9jKk7z1_AZZqTQ6Db6BT7tmF1oY0V-GyXbf4qDQWk9_1_BqYQgONkDvMWsD_bllRlyuFTNjLCwOUiGME4A077rm8fTkBWMGsSN4uvSSR4IMHBqPSh5PzQJvUvElGNNQVZAp0bXJWvBNLu_vGlILUpXEeGhCxK3zrMTszFl-D0sI&lib=MVzIwiIXCf9Nzgfo2T-vWOVrp5Tgpw0-o').then(function(response) {
   return response.json();
 }).then(function(data) {
   radar_visualization({
@@ -49,40 +49,18 @@ fetch('./config.json').then(function(response) {
 <tr>
 <td>
 
-<h3>What is the Tech Radar?</h3>
+<h3>Что такое Tech Radar?</h3>
 
-<p>
-The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
-</p>
+<p> Технический радар — это список технологий, дополненный результатом их оценки, называемым <em>присвоением кольца</em> (ring assignment). Мы используем четыре кольца со следующими значениями: </p>
 
 <ul>
-<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Zalando production environment, low risk and recommended to be widely used.</li>
-<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+<li><strong>ADOPT</strong> &mdash; Технологии, в которых мы уверены и которые хорошо подходят для наших целей, в том числе в масштабируемых системах. Это технологии, которые активно используются в нашем продакшене, имеют сложившуюся культуру применения, несут минимальные риски и рекомендуются для широкого использования.</li>
+<li><strong>TRIAL</strong> &mdash; Технологии, которые уже успешно применялись в реальных проектах для решения конкретных задач. Мы получили первый серьёзный опыт использования, подтвердили преимущества и начали выявлять ограничения. Эти технологии немного более рискованные, но в нашей организации уже есть инженеры, применявшие их и готовые делиться опытом.</li>
+<li><strong>ASSESS</strong> &mdash; Перспективные технологии с очевидным потенциальным вкладом в развитие. Стоит инвестировать немного времени в исследование и прототипирование, чтобы оценить их влияние. Эти технологии более рискованные: часто новые и ещё не проверенные в нашей организации. Однако есть инженеры, которые их изучают и продвигают, возможно, уже начаты прототипы в некоторых командах.</li>
+<li><strong>HOLD</strong> &mdash; Технологии, не рекомендуемые для новых проектов. Мы считаем, что в них не стоит (пока) инвестировать дополнительные ресурсы. Эти технологии можно продолжать использовать в уже начатых проектах, но для новых инициатив применять не следует.</li>
 </ul>
 
 </td><td>
-
-<h3>What is the purpose?</h3>
-
-<p>
-The Tech Radar is a tool to inspire and support Engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
-</p>
-
-<h3>How do we maintain it?</h3>
-
-<p>
-The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Zalando across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Zalando and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
-</p>
-
-<p>
-Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar at Zalando.
-</p>
-
-<p>
-<em>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/zalando/tech-radar">open sourced the code</a> to generate this visualization.</em>
-</p>
 
 </td></tr>
 </table>
