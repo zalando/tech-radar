@@ -1,54 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="One-cloud Tech Radar">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>One-cloud Tech Radar</title>
-  <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
-  <link rel="stylesheet" href="radar.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Tech Radar</title>
+  <link rel="stylesheet" href="radar.css" />
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="radar.js"></script>
-
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: sans-serif;
-    }
-
-    #radar {
-      display: none;
-    }
-
-    #radar-loader-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #fff;
-    }
-
-    .spinner {
-      width: 48px;
-      height: 48px;
-      border: 6px solid #ddd;
-      border-top-color: #009eb0;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
 </head>
-
 <body>
+  <header>
+    <div class="logo-title">
+      <img src="logo.png" alt="Logo" />
+      <span class="title">Tech Radar</span>
+    </div>
+    <div class="source-selector">
+      <label for="radar-source">Источник:</label>
+      <select id="radar-source">
+        <option value="noc">NOC</option>
+        <option value="onecloud">One-cloud</option>
+      </select>
+    </div>
+  </header>
 
   <div id="radar-loader-wrapper">
     <div class="spinner"></div>
@@ -56,22 +30,64 @@
 
   <svg id="radar"></svg>
 
-  <script>
-    const API_URL = './config.json';
+  <div class="legend">
+    <h2>Что такое Tech Radar?</h2>
+    <p>
+      Технический радар — это список технологий, дополненный результатом их оценки, называемым присвоением кольца (ring assignment).
+      Мы используем четыре кольца со следующими значениями:
+    </p>
+  
+    <div class="ring-columns">
+      <div class="ring">
+        <span class="dot adopt"></span>
+        <strong>ADOPT</strong> — Технологии, в которых мы уверены и которые хорошо подходят для наших целей, в том числе в масштабируемых системах.
+      </div>
+  
+      <div class="ring">
+        <span class="dot trial"></span>
+        <strong>TRIAL</strong> — Технологии, которые уже успешно применялись в реальных проектах. Мы подтвердили их преимущества и начали выявлять ограничения.
+      </div>
+  
+      <div class="ring">
+        <span class="dot assess"></span>
+        <strong>ASSESS</strong> — Перспективные технологии с потенциалом. Требуют исследования и прототипирования для оценки пользы и рисков.
+      </div>
+  
+      <div class="ring">
+        <span class="dot hold"></span>
+        <strong>HOLD</strong> — Технологии, не рекомендуемые для новых проектов. Можно использовать в текущих, но не начинать новые.
+      </div>
+    </div>
+  </div>
+    
 
-    async function loadRadar() {
+  <script>
+    const loader = document.getElementById("radar-loader-wrapper");
+    const radarSvg = document.getElementById("radar");
+
+    async function loadRadar(sourceKey) {
+      loader.style.display = "flex";
+      radarSvg.style.display = "none";
+      radarSvg.innerHTML = "";
+
+      const url = sourceKey === 'noc' ? './config.json' : './config-onecloud.json';
+
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error("Network response was not ok");
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Ошибка сети");
         const data = await response.json();
 
-        document.getElementById("radar-loader-wrapper").style.display = "none";
-        document.getElementById("radar").style.display = "block";
+        loader.style.display = "none";
+        radarSvg.style.display = "block";
 
         radar_visualization({
           repo_url: "https://github.com/zalando/tech-radar",
-          title: "NOC Tech Radar",
+          title: sourceKey === 'noc' ? "NOC Tech Radar" : "One-cloud Tech Radar",
           date: data.date,
+          print_layout: true,
+          svg_id: "radar",
+          scale: 1.0,
+          links_in_new_tabs: true,
           quadrants: [
             { name: "Languages & frameworks" },
             { name: "Platform & infrastructure" },
@@ -87,29 +103,16 @@
           entries: data.entries
         });
       } catch (error) {
-        document.getElementById("radar-loader-wrapper").innerHTML =
-          "<p style='color:red'>Ошибка загрузки данных Tech Radar</p>";
-        console.error("Error loading tech radar data:", error);
+        loader.innerHTML = "<p style='color:red'>Не удалось загрузить данные</p>";
+        console.error("Ошибка загрузки:", error);
       }
     }
 
-    loadRadar();
+    loadRadar("noc");
+
+    document.getElementById("radar-source").addEventListener("change", (e) => {
+      loadRadar(e.target.value);
+    });
   </script>
-
-  <table>
-    <tr>
-      <td>
-        <h3>Что такое Tech Radar?</h3>
-        <p> Технический радар — это список технологий, дополненный результатом их оценки, называемым <em>присвоением кольца</em> (ring assignment). Мы используем четыре кольца со следующими значениями: </p>
-        <ul>
-          <li><strong>ADOPT</strong> — Технологии, в которых мы уверены и которые хорошо подходят для наших целей, в том числе в масштабируемых системах. Это технологии, которые активно используются в нашем продакшене, имеют сложившуюся культуру применения, несут минимальные риски и рекомендуются для широкого использования.</li>
-          <li><strong>TRIAL</strong> — Технологии, которые уже успешно применялись в реальных проектах для решения конкретных задач. Мы получили первый серьёзный опыт использования, подтвердили преимущества и начали выявлять ограничения. Эти технологии немного более рискованные, но в нашей организации уже есть инженеры, применявшие их и готовые делиться опытом.</li>
-          <li><strong>ASSESS</strong> — Перспективные технологии с очевидным потенциальным вкладом в развитие. Стоит инвестировать немного времени в исследование и прототипирование, чтобы оценить их влияние. Эти технологии более рискованные: часто новые и ещё не проверенные в нашей организации. Однако есть инженеры, которые их изучают и продвигают, возможно, уже начаты прототипы в некоторых командах.</li>
-          <li><strong>HOLD</strong> — Технологии, не рекомендуемые для новых проектов. Мы считаем, что в них не стоит (пока) инвестировать дополнительные ресурсы. Эти технологии можно продолжать использовать в уже начатых проектах, но для новых инициатив применять не следует.</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
-
 </body>
 </html>

@@ -23,3 +23,158 @@ td {
 .hover-underline:hover {
   text-decoration: underline;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.8rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 48px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-title img {
+  height: 28px;
+  width: 28px;
+  border-radius: 6px;
+}
+
+.logo-title .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #009eb0;
+}
+
+.source-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.source-selector label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.source-selector select {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+select {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+#radar-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 6px solid #ddd;
+  border-top-color: #009eb0;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#radar {
+  display: none;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .legend {
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-top: 2px solid #e5e5e5;
+    border-radius: 8px;
+  }
+
+  .source-selector {
+    align-self: flex-end;
+  }
+}
+
+.legend {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8fafc;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #222;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  border-radius: 8px;
+}
+
+.legend h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.ring-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.ring {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 0.4rem;
+  flex-shrink: 0;
+}
+
+.adopt  { background-color: #5ba300; }
+.trial  { background-color: #009eb0; }
+.assess { background-color: #c7ba00; }
+.hold   { background-color: #e09b96; }
