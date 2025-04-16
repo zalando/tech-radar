@@ -25,8 +25,8 @@ body:
       options:
         - "0 - Languages"
         - "1 - Infrastructure"
-        - "2 - Datastores"
-        - "3 - Data Management"
+        - "2 - Data"
+        - "3 - Frameworks"
     validations:
       required: true
   - type: dropdown

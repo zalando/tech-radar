@@ -56,8 +56,8 @@ function getTechnologies() {
             quadrants: [
               {name: "Languages"},
               {name: "Infrastructure"},
-              {name: "Datastores"},
-              {name: "Data Management"},
+              {name: "Data"},
+              {name: "Frameworks"},
             ],
             rings: [
               {name: "ADOPT", color: "#5ba300"},
