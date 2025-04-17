@@ -22,4 +22,4 @@ Poetry (https://python-poetry.org/) is a Python dependency management and packag
 * Occasional compatibility issues with some packages
 * Not as lightweight as more focused tools
 
-**Note:** This technology is recommended to be put on hold in favor of UV (https://github.com/astral-sh/uv), which offers similar functionality with significantly better performance. Organizations already using Poetry successfully can continue, but new projects should consider UV as the preferred alternative.
+**Note:** This technology is recommended to be put on hold in favor of UV (https://github.com/astral-sh/uv), which offers similar functionality with significantly better performance. Projects already using Poetry successfully can continue, but new projects should consider UV as the preferred alternative.
