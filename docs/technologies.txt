@@ -6,3 +6,4 @@ kubernetes.md
 precommit.md
 python.md
 ruff.md
+uv.md
