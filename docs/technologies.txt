@@ -3,6 +3,7 @@ docker-image.md
 htmx.md
 java.md
 kubernetes.md
+poetry.md
 precommit.md
 python.md
 ruff.md
