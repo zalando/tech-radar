@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "browser-sync": "^3.0.2",
-    "eslint": "^9.23.0",
+    "eslint": "^9.25.0",
     "eslint-plugin-html": "^8.1.2",
     "socket.io": "^4.7.2"
   },
