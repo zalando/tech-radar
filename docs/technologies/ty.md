@@ -7,8 +7,10 @@ moved: 2
 ---
 # ty
 
-An extremely fast Python type checker and language server, written in Rust. By the makers of Ruff and UV.
+Ty (https://github.com/astral-sh/ty) is an extremely fast Python type checker and language server, written in Rust. By the makers of Ruff and UV.
 
 > [!WARNING]
 > ty is pre-release software and not ready for production use. Expect to encounter bugs, missing
 > features, and fatal errors.
+
+https://github.com/astral-sh/ty
