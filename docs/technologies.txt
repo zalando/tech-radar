@@ -7,4 +7,5 @@ poetry.md
 precommit.md
 python.md
 ruff.md
+ty.md
 uv.md
