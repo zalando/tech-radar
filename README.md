@@ -14,8 +14,8 @@ Feel free to use and adapt it for your own purposes.
 1. include `d3.js` and `radar.js`:
 
 ```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://zalando.github.io/tech-radar/release/radar-0.11.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://zalando.github.io/tech-radar/release/radar-0.12.js"></script>
 ```
 
 2. insert an empty `svg` tag:
