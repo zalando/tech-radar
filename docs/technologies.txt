@@ -9,3 +9,5 @@ python.md
 ruff.md
 ty.md
 uv.md
+pdm.md
+streamlit.md
