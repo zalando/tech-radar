@@ -1,5 +1,5 @@
 {
-  "date": "2025.02",
+  "date": "2025.05",
   "entries": [
     {
       "quadrant": 3,
@@ -96,6 +96,13 @@
     },
     {
       "quadrant": 2,
+      "ring": 1,
+      "label": "AWS DocumentDB",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2,
       "ring": 0,
       "label": "AWS DynamoDB",
       "active": true,
@@ -128,7 +135,7 @@
       "ring": 1,
       "label": "Amazon Neptune",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
     {
       "quadrant": 2,
