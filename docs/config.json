@@ -176,13 +176,6 @@
     },
     {
       "quadrant": 2,
-      "ring": 0,
-      "label": "Exasol",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 2,
       "ring": 3,
       "label": "HBase",
       "active": true,
