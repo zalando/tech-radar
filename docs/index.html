@@ -3,10 +3,10 @@
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="description" content="Zalando Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
+<meta name="description" content="TEQ Radar: a tool to visualize technology choices, inspire and support Engineering teams at TEQYARD to pick the best technologies for new projects">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zalando Tech Radar</title>
-<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+<title>TEQ Radar</title>
+<!--<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">-->
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="radar.js"></script>
@@ -19,29 +19,42 @@
 <svg id="radar"></svg>
 
 <script>
-fetch('./config.json').then(function(response) {
-  return response.json();
-}).then(function(data) {
+// Load metadata and all quadrant configs
+Promise.all([
+  fetch('./config-metadata.json').then(r => r.json()),
+  fetch('./config/quadrant-0-languages-frameworks.json').then(r => r.json()),
+  fetch('./config/quadrant-1-platform-infrastructure.json').then(r => r.json()),
+  fetch('./config/quadrant-2-tools.json').then(r => r.json()),
+  fetch('./config/quadrant-3-techniques.json').then(r => r.json())
+]).then(function([metadata, q0, q1, q2, q3]) {
+  // Merge entries from all quadrants and add quadrant numbers
+  const entries = [
+    ...q0.entries.map(e => ({ ...e, quadrant: 0 })),
+    ...q1.entries.map(e => ({ ...e, quadrant: 1 })),
+    ...q2.entries.map(e => ({ ...e, quadrant: 2 })),
+    ...q3.entries.map(e => ({ ...e, quadrant: 3 }))
+  ];
+
   radar_visualization({
-    repo_url: "https://github.com/zalando/tech-radar",
-    title: "Zalando Tech Radar",
-    date: data.date,
+    repo_url: "https://github.com/teqyard/teq-radar",
+    title: "TEQ Radar",
+    date: metadata.date,
     quadrants: [
-      { name: "Languages" },
-      { name: "Infrastructure" },
-      { name: "Datastores" },
-      { name: "Data Management" },
+      { name: "Languages & Frameworks" },
+      { name: "Platform & Infrastructure" },
+      { name: "Tools" },
+      { name: "Techniques" },
     ],
     rings: [
-      { name: "ADOPT", color: "#5ba300" },
+      { name: "IN USE", color: "#5ba300" },
       { name: "TRIAL", color: "#009eb0" },
       { name: "ASSESS", color: "#c7ba00" },
-      { name: "HOLD", color: "#e09b96" }
+      { name: "PHASE OUT", color: "#e09b96" }
     ],
-    entries: data.entries
+    entries: entries
   });
 }).catch(function(err) {
-  console.log('Error loading config.json', err);
+  console.log('Error loading config files', err);
 });
 </script>
 
@@ -49,17 +62,17 @@ fetch('./config.json').then(function(response) {
 <tr>
 <td>
 
-<h3>What is the Tech Radar?</h3>
+<h3>What is the TEQ Radar?</h3>
 
 <p>
-The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
+The TEQ Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
 </p>
 
 <ul>
 <li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Zalando production environment, low risk and recommended to be widely used.</li>
 <li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
 <li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+<li><strong>PHASE OUT</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not worth to (further) invest in. PHASE OUT technologies should not be used for new projects, but usually can be continued for existing projects.</li>
 </ul>
 
 </td><td>
@@ -67,22 +80,15 @@ The Zalando Tech Radar is a list of technologies, complemented by an assessment 
 <h3>What is the purpose?</h3>
 
 <p>
-The Tech Radar is a tool to inspire and support Engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
+The TEQ Radar is a tool to inspire and support Engineering teams at TEQYARD to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
 </p>
 
 <h3>How do we maintain it?</h3>
 
 <p>
-The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Zalando across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Zalando and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
+The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at TEQYARD across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at TEQYARD and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
 </p>
 
-<p>
-Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar at Zalando.
-</p>
-
-<p>
-<em>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/zalando/tech-radar">open sourced the code</a> to generate this visualization.</em>
-</p>
 
 </td></tr>
 </table>

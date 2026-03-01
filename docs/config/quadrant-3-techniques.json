@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "label": "GitOps",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Scrum",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Retrospectives",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    }
+  ]
+}

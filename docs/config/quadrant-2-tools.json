@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "label": "Kubernetes",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Docker",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "VS Code",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    }
+  ]
+}

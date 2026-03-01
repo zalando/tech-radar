@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "label": "Azure",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Azure Web Apps",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    }
+  ]
+}

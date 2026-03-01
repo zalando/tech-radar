@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "label": "Python",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Langfuse",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "ZenML",
+      "ring": 1,
+      "active": true,
+      "moved": 0
+    }
+  ]
+}
