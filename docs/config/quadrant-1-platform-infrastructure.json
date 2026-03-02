@@ -11,6 +11,13 @@
       "ring": 0,
       "active": true,
       "moved": 0
+    },
+    {
+      "label": "GitHub",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://github.com/TEQYARD-GmbH"
     }
   ]
 }

@@ -17,6 +17,12 @@
       "ring": 0,
       "active": true,
       "moved": 0
+    },
+    {
+      "label": "git",
+      "ring": 0,
+      "active": true,
+      "moved": 0
     }
   ]
 }

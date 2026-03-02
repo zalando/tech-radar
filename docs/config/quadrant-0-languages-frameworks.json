@@ -17,6 +17,27 @@
       "ring": 1,
       "active": true,
       "moved": 0
+    },
+    {
+      "label": "Python LlamaIndex",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://github.com/run-llama/llama_index"
+    },
+    {
+      "label": "Python FastAPI",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://fastapi.tiangolo.com/"
+    },
+    {
+      "label": "Python Pydantic",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://docs.pydantic.dev/latest/"
     }
   ]
 }
