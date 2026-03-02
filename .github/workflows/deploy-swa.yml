@@ -1,0 +1,32 @@
+name: Deploy TEQ Radar to Azure Static Web Apps
+
+on:
+  push:
+    branches:
+      - add-terraform
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build (no build required)
+        run: |
+          echo "Deploying static files from docs/"
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used by the action
+          action: "upload"
+          app_location: "docs"
+          api_location: ""
+          output_location: ""
