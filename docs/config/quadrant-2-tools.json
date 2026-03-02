@@ -23,6 +23,30 @@
       "ring": 0,
       "active": true,
       "moved": 0
+    },
+    {
+      "label": "Python uv",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Python mypy",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Python poetry",
+      "ring": 2,
+      "active": false,
+      "moved": 0
+    },
+    {
+      "label": "Python ty",
+      "ring": 1,
+      "active": true,
+      "moved": 0
     }
   ]
 }
