@@ -3,7 +3,7 @@ name: Deploy TEQ Radar to Azure Static Web Apps
 on:
   push:
     branches:
-      - add-terraform
+      - main
 
 jobs:
   build_and_deploy:
@@ -17,9 +17,31 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Build (no build required)
+      - name: Install dependencies
         run: |
-          echo "Deploying static files from docs/"
+          if [ -f package.json ]; then
+            echo "package.json found — installing dependencies"
+            if command -v yarn >/dev/null 2>&1; then
+              yarn --frozen-lockfile || npm install
+            else
+              npm ci || npm install
+            fi
+          else
+            echo "No package.json found — skipping dependency install"
+          fi
+
+      - name: Build (if applicable)
+        run: |
+          if [ -f package.json ] && grep -q '"build"' package.json; then
+            echo "Build script detected — running build"
+            if command -v yarn >/dev/null 2>&1; then
+              yarn build
+            else
+              npm run build
+            fi
+          else
+            echo "No build script defined — skipping build step"
+          fi
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
