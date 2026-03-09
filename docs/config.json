@@ -1,5 +1,5 @@
 {
-  "date": "2025.05",
+  "date": "2026.03",
   "entries": [
     {
       "quadrant": 3,
@@ -405,72 +405,81 @@
     },
     {
       "quadrant": 0,
-      "ring": 3,
-      "label": "Clojure",
-      "link": "https://engineering.zalando.com/tags/clojure.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 1,
-      "label": "Dart",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
       "ring": 0,
-      "label": "Go",
-      "link": "https://engineering.zalando.com/tags/golang.html",
+      "label": "TypeScript",
+      "link": "https://www.typescriptlang.org/",
       "active": true,
       "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 0,
-      "label": "GraphQL",
-      "link": "https://engineering.zalando.com/tags/graphql.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 3,
-      "label": "Haskell",
-      "link": "https://engineering.zalando.com/tags/haskell.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 0,
-      "label": "Java",
-      "link": "https://engineering.zalando.com/tags/java.html",
-      "active": true,
-      "moved": 0
-    },
-    {
+     },
+     {
       "quadrant": 0,
       "ring": 0,
       "label": "JavaScript",
-      "link": "https://engineering.zalando.com/tags/javascript.html",
+      "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 0,
       "ring": 0,
+      "label": "Golang",
+      "link": "https://go.dev/",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Java",
+      "link": "https://dev.java/",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 3,
       "label": "Kotlin",
-      "link": "https://engineering.zalando.com/tags/kotlin.html",
+      "link": "https://kotlinlang.org/",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Angular",
+      "link": "https://angular.dev/",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Apps Script",
+      "link": "https://developers.google.com/apps-script",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Flutter",
+      "link": "https://flutter.dev/",
+      "active": true,
+      "moved": 0
+     },
+     {
+      "quadrant": 0,
+      "ring": 0,
+      "label": "Dart",
+      "link": "https://dart.dev/",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 0,
       "ring": 0,
-      "label": "OpenAPI (Swagger)",
-      "link": "https://engineering.zalando.com/tags/openapi.html",
+      "label": "Terraform",
+      "link": "https://www.terraform.io/",
       "active": true,
       "moved": 0
     },
@@ -478,46 +487,7 @@
       "quadrant": 0,
       "ring": 0,
       "label": "Python",
-      "link": "https://engineering.zalando.com/tags/python.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 2,
-      "label": "R",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 3,
-      "label": "Rust",
-      "link": "https://engineering.zalando.com/tags/rust.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 0,
-      "label": "Scala",
-      "link": "https://engineering.zalando.com/tags/scala.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 0,
-      "label": "Swift",
-      "link": "https://engineering.zalando.com/tags/swift.html",
-      "active": true,
-      "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 0,
-      "label": "TypeScript",
-      "link": "https://engineering.zalando.com/tags/typescript.html",
+      "link": "https://www.python.org/",
       "active": true,
       "moved": 0
     },
