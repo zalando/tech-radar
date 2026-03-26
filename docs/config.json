@@ -1,5 +1,5 @@
 {
-  "date": "2025.05",
+  "date": "2026.03",
   "entries": [
     {
       "quadrant": 3,
@@ -52,11 +52,11 @@
     },
     {
       "quadrant": 3,
-      "ring": 1,
+      "ring": 0,
       "label": "Flink",
       "link": "https://engineering.zalando.com/tags/apache-flink.html",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 3,
@@ -400,6 +400,13 @@
       "quadrant": 1,
       "ring": 0,
       "label": "ZMON",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "mem0",
       "active": true,
       "moved": 0
     },
