@@ -1,5 +1,5 @@
 {
-  "date": "2026.03",
+  "date": "2026.05",
   "entries": [
     {
       "quadrant": 3,
@@ -139,7 +139,7 @@
     },
     {
       "quadrant": 2,
-      "ring": 1,
+      "ring": 0,
       "label": "Amazon Redshift",
       "active": true,
       "moved": 0
@@ -284,6 +284,13 @@
     },
     {
       "quadrant": 1,
+      "ring": 0,
+      "label": "AWS EKS",
+      "active": true,
+      "moved": 1
+    },
+    {
+      "quadrant": 1,
       "ring": 1,
       "label": "AWS Elemental MediaConvert",
       "active": true,
@@ -312,17 +319,24 @@
     },
     {
       "quadrant": 1,
-      "ring": 2,
-      "label": "Amazon Bedrock",
+      "ring": 1,
+      "label": "AWS Transcribe",
       "active": true,
       "moved": 0
     },
     {
       "quadrant": 1,
-      "ring": 2,
-      "label": "Amazon Pinpoint",
+      "ring": 1,
+      "label": "Agentgateway",
       "active": true,
-      "moved": 0
+      "moved": 2
+    },
+    {
+      "quadrant": 1,
+      "ring": 1,
+      "label": "Amazon Bedrock",
+      "active": true,
+      "moved": 1
     },
     {
       "quadrant": 1,
@@ -341,7 +355,7 @@
     },
     {
       "quadrant": 1,
-      "ring": 2,
+      "ring": 3,
       "label": "GraalVM",
       "active": true,
       "moved": 0
@@ -360,6 +374,13 @@
       "link": "https://engineering.zalando.com/tags/kubernetes.html",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 1,
+      "label": "LiteLLM",
+      "active": true,
+      "moved": 1
     },
     {
       "quadrant": 1,
