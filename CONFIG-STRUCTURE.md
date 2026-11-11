@@ -53,6 +53,8 @@ Edit the appropriate quadrant file and add an entry to the `entries` array:
   - `0`: No movement
   - `1`: Moved inward (toward center)
   - `-1`: Moved outward (toward edge)
+  - `2`: New on the radar
+- **link** (string, optional): URL of the technology's website, shown as a link in the list
 
 ## Global Metadata
 

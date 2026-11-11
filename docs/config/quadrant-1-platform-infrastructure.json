@@ -36,6 +36,62 @@
       "active": true,
       "moved": 0,
       "link": "https://github.com/TEQYARD-GmbH"
+    },
+    {
+      "label": "GitHub Actions",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://docs.github.com/actions"
+    },
+    {
+      "label": "GitHub Container Registry",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://docs.github.com/packages"
+    },
+    {
+      "label": "Traefik",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://traefik.io/traefik/"
+    },
+    {
+      "label": "Nginx",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://nginx.org/"
+    },
+    {
+      "label": "Ollama",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://ollama.com/"
+    },
+    {
+      "label": "MinIO",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://min.io/"
+    },
+    {
+      "label": "vLLM",
+      "ring": 2,
+      "active": true,
+      "moved": 2,
+      "link": "https://docs.vllm.ai/"
+    },
+    {
+      "label": "Apache Kafka",
+      "ring": 2,
+      "active": true,
+      "moved": 2,
+      "link": "https://kafka.apache.org/"
     }
   ]
 }
