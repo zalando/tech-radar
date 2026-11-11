@@ -22,10 +22,12 @@
     { name: "PHASE OUT", color: "#e20000", screen: "#f95759", ink: "#2d0000" }
   ];
 
-  var RADII = [130, 220, 310, 400];
+  // IN USE holds most entries, so it gets the widest ring
+  var RADII = [215, 295, 355, 400];
   var VIEW = 440; // half size of the full view box
   var BLIP_GAP = 25; // minimum distance between blip centers
   var AXIS_GAP = 15; // minimum distance of a blip from the axes
+  var LABEL_LANE = 36; // free lane below the center for the ring names
 
   // quadrant angles (multiples of PI) and direction, same as radar.js
   var GEOMETRY = [
@@ -136,7 +138,7 @@
     var x = r * Math.cos(t);
     var y = r * Math.sin(t);
     // keep blips off the axes
-    e.x = g.fx * Math.max(Math.abs(x), AXIS_GAP);
+    e.x = g.fx * Math.max(Math.abs(x), g.fy > 0 ? LABEL_LANE : AXIS_GAP);
     e.y = g.fy * Math.max(Math.abs(y), AXIS_GAP);
   }
 
@@ -431,14 +433,16 @@
     }
     svg("line", { x1: 0, y1: 0, x2: 0, y2: -RADII[3], "class": "fx__beam-edge" }, fx.beam);
 
-    // ring names on both ends of the horizontal axis
+    // ring names follow the bottom of each ring band (the less crowded half),
+    // so narrow outer rings still have room for them; blips keep a lane free
     var labels = svg("g", { "class": "radar__ring-labels" }, root);
+    var defs = svg("defs", {}, root);
     RINGS.forEach(function (ring, i) {
-      var mid = (ringInner(i) + RADII[i]) / 2 + (i === 0 ? -10 : 0);
-      [-1, 1].forEach(function (side) {
-        var t = svg("text", { x: side * mid, y: 0, fill: ring.screen, "class": "radar__ring-label" }, labels);
-        t.textContent = ring.name;
-      });
+      var mid = (RADII[i] + (i === 0 ? RADII[0] * 0.55 : RADII[i - 1])) / 2;
+      svg("path", { id: "ring-arc-" + i, d: "M" + -mid + ",0A" + mid + "," + mid + " 0 0,0 " + mid + ",0" }, defs);
+      var t = svg("text", { fill: ring.screen, "class": "radar__ring-label" }, labels);
+      var tp = svg("textPath", { href: "#ring-arc-" + i, startOffset: "50%" }, t);
+      tp.textContent = ring.name;
     });
 
     // quadrant names in the corners
