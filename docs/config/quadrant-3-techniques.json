@@ -22,14 +22,34 @@
       "label": "Semantic Release",
       "ring": 0,
       "active": true,
-      "moved": 1,
+      "moved": 0,
       "link": "https://semantic-release.gitbook.io/"
     },
     {
+      "label": "Conventional Commits",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://www.conventionalcommits.org/"
+    },
+    {
       "label": "SBOM",
-      "ring": 1,
+      "ring": 0,
       "active": true,
       "moved": 1
+    },
+    {
+      "label": "AI-assisted development",
+      "ring": 0,
+      "active": true,
+      "moved": 2
+    },
+    {
+      "label": "Model Context Protocol",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://modelcontextprotocol.io/"
     }
   ]
 }
