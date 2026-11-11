@@ -78,6 +78,8 @@
     renderList();
     bindControls();
     applyHash(true);
+    syncLayout();
+    window.addEventListener("resize", syncLayout);
     document.body.classList.add("is-ready");
   }).catch(function (err) {
     $("entry-list").innerHTML = '<p class="panel__empty">The radar data could not be loaded.</p>';
@@ -302,6 +304,32 @@
   }
 
   // ---------------------------------------------------------------- radar
+
+  var WIDE = window.matchMedia("(min-width: 1200px)");
+  var MIN_EXPLORER_HEIGHT = 680;
+
+  // on wide screens radar and list fill the rest of the first screen and the
+  // radar card is as wide as the radar (see radar.css); the load sweep is
+  // placed over the rendered radar circle
+  function syncLayout() {
+    var stage = $("radar-stage");
+    var explorer = $("explorer");
+    if (WIDE.matches) {
+      var top = explorer.getBoundingClientRect().top + window.pageYOffset;
+      explorer.style.height = Math.max(MIN_EXPLORER_HEIGHT, Math.round(window.innerHeight - top)) + "px";
+      var cs = getComputedStyle(stage);
+      var h = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      explorer.style.setProperty("--radar-size", Math.max(320, Math.round(h)) + "px");
+    } else {
+      explorer.style.removeProperty("--radar-size");
+      explorer.style.removeProperty("height");
+    }
+    var r = $("radar").getBoundingClientRect();
+    var s = stage.getBoundingClientRect();
+    stage.style.setProperty("--sweep-x", (r.left - s.left + r.width / 2) + "px");
+    stage.style.setProperty("--sweep-y", (r.top - s.top + r.height / 2) + "px");
+    stage.style.setProperty("--sweep-size", Math.min(r.width, r.height) + "px");
+  }
 
   function setView(box) {
     viewBox = box;

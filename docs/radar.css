@@ -303,9 +303,40 @@ a:active {
   margin-top: calc(-1 * var(--spacing-xl));
   align-items: start;
 }
+/* wide screens: the explorer fills the rest of the first screen (height and
+   --radar-size are set by app.js), the radar card is as wide as the radar and
+   the list takes the remaining width */
 @media (min-width: 1200px) {
   .explorer {
-    grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
+    height: 680px;
+    grid-template-columns: minmax(0, calc(var(--radar-size, 600px) + 2 * var(--spacing-lg) + 2px)) minmax(360px, 1fr);
+    align-items: stretch;
+    padding-bottom: var(--spacing-xl);
+  }
+  .radar-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .radar-stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .radar-stage .radar {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    aspect-ratio: auto;
+  }
+  .group__list {
+    columns: 300px;
+    column-gap: var(--spacing-lg);
+  }
+  .entry {
+    break-inside: avoid;
   }
 }
 
@@ -440,9 +471,9 @@ a:active {
 /* the sweep circle matches the outer ring: 400 of 880 view box units */
 .radar-sweep {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(calc(100% - 2 * var(--spacing-lg)), var(--radar-max));
+  top: var(--sweep-y, 50%);
+  left: var(--sweep-x, 50%);
+  width: var(--sweep-size, min(calc(100% - 2 * var(--spacing-lg)), var(--radar-max)));
   aspect-ratio: 1;
   transform: translate(-50%, -50%) scale(0.909);
   border-radius: 50%;
@@ -512,13 +543,7 @@ a:active {
   flex-direction: column;
   min-height: 0;
 }
-@media (min-width: 1200px) {
-  .panel {
-    position: sticky;
-    top: var(--spacing-xl);
-    max-height: calc(100vh - 2 * var(--spacing-xl));
-  }
-}
+
 .panel__head {
   padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-sm);
   border-bottom: var(--border-width-sm) solid var(--color-border-subtle);
