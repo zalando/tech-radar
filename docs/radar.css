@@ -759,12 +759,23 @@ a:active {
   min-height: 0;
 }
 
+/* one row, same height as the quadrant tabs (56px + border), so both
+   header lines of the console line up */
 .panel__head {
-  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  height: 57px;
+  padding: 0 var(--spacing-lg);
   border-bottom: var(--border-width-sm) solid var(--color-border-subtle);
 }
+.panel__head .textfield {
+  flex: 1;
+  min-width: 0;
+}
 .panel__count {
-  margin: var(--spacing-sm) 0 0;
+  flex: none;
+  margin: 0;
   font-size: 14px;
   line-height: 20px;
   color: var(--color-content-subtle);
@@ -818,9 +829,6 @@ a:active {
 }
 
 .group__title {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
