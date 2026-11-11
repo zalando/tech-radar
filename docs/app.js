@@ -13,11 +13,13 @@
   ];
 
   // colors: accent/success/10, accent/tertiary/9, accent/caution/10, accent/danger/9
+  // screen: brighter tone of the same hue for the dark radar screen
+  // (success/9, link/hover, caution/9, brand/secondary); ink: blip number color
   var RINGS = [
-    { name: "IN USE", color: "#307f35" },
-    { name: "TRIAL", color: "#4766d2" },
-    { name: "ASSESS", color: "#b06912" },
-    { name: "PHASE OUT", color: "#e20000" }
+    { name: "IN USE", color: "#307f35", screen: "#41ae49", ink: "#0d230f" },
+    { name: "TRIAL", color: "#4766d2", screen: "#91a4e7", ink: "#16223a" },
+    { name: "ASSESS", color: "#b06912", screen: "#f08f19", ink: "#301d05" },
+    { name: "PHASE OUT", color: "#e20000", screen: "#f95759", ink: "#2d0000" }
   ];
 
   var RADII = [130, 220, 310, 400];
@@ -79,6 +81,7 @@
     bindControls();
     applyHash(true);
     syncLayout();
+    startBeam();
     window.addEventListener("resize", syncLayout);
     document.body.classList.add("is-ready");
   }).catch(function (err) {
@@ -309,8 +312,7 @@
   var MIN_EXPLORER_HEIGHT = 680;
 
   // on wide screens radar and list fill the rest of the first screen and the
-  // radar card is as wide as the radar (see radar.css); the load sweep is
-  // placed over the rendered radar circle
+  // radar card is as wide as the radar (see radar.css)
   function syncLayout() {
     var stage = $("radar-stage");
     var explorer = $("explorer");
@@ -324,11 +326,6 @@
       explorer.style.removeProperty("--radar-size");
       explorer.style.removeProperty("height");
     }
-    var r = $("radar").getBoundingClientRect();
-    var s = stage.getBoundingClientRect();
-    stage.style.setProperty("--sweep-x", (r.left - s.left + r.width / 2) + "px");
-    stage.style.setProperty("--sweep-y", (r.top - s.top + r.height / 2) + "px");
-    stage.style.setProperty("--sweep-size", Math.min(r.width, r.height) + "px");
   }
 
   function setView(box) {
@@ -362,6 +359,24 @@
     return "M" + points.join(" ") + "z";
   }
 
+  function polarPoint(r, bearing) {
+    var t = (bearing - 90) * Math.PI / 180;
+    return [r * Math.cos(t), r * Math.sin(t)];
+  }
+
+  function sectorPath(q, ring) {
+    var g = GEOMETRY[q];
+    var t0 = g.tMin * Math.PI;
+    var t1 = g.tMax * Math.PI;
+    var R = RADII[ring];
+    var r = ring === 0 ? 0 : RADII[ring - 1];
+    var p = function (rad, t) { return (rad * Math.cos(t)).toFixed(1) + "," + (rad * Math.sin(t)).toFixed(1); };
+    return "M" + p(R, t0) + "A" + R + "," + R + " 0 0,1 " + p(R, t1) +
+      "L" + p(r, t1) + (r ? "A" + r + "," + r + " 0 0,0 " + p(r, t0) : "") + "z";
+  }
+
+  var fx = {};
+
   function renderRadar() {
     var root = $("radar");
     setView(viewBox);
@@ -371,18 +386,56 @@
     var circlePath = function (r) { return "M" + r + ",0A" + r + "," + r + " 0 1,0 " + -r + ",0A" + r + "," + r + " 0 1,0 " + r + ",0z"; };
     RADII.forEach(function (r, i) {
       var d = circlePath(r) + (i > 0 ? circlePath(RADII[i - 1]) : "");
-      svg("path", { d: d, fill: RINGS[i].color, "fill-rule": "evenodd", "class": "radar__band" }, grid);
+      svg("path", { d: d, fill: RINGS[i].screen, "fill-rule": "evenodd", "class": "radar__band" }, grid);
       svg("circle", { r: r, "class": "radar__ring" }, grid);
     });
     svg("line", { x1: -RADII[3], y1: 0, x2: RADII[3], y2: 0, "class": "radar__axis" }, grid);
     svg("line", { x1: 0, y1: -RADII[3], x2: 0, y2: RADII[3], "class": "radar__axis" }, grid);
+
+    // range ticks on the axes and a bearing scale around the outer ring
+    var ticks = "";
+    for (var d = 10; d < RADII[3]; d += 10) {
+      var len = d % 50 === 0 ? 5 : 2.5;
+      ticks += "M" + d + "," + -len + "v" + 2 * len + "M" + -d + "," + -len + "v" + 2 * len +
+        "M" + -len + "," + d + "h" + 2 * len + "M" + -len + "," + -d + "h" + 2 * len;
+    }
+    for (var b = 0; b < 360; b += 5) {
+      var inner = polarPoint(RADII[3], b);
+      var outer = polarPoint(RADII[3] + (b % 30 === 0 ? 9 : 4), b);
+      ticks += "M" + inner[0].toFixed(1) + "," + inner[1].toFixed(1) + "L" + outer[0].toFixed(1) + "," + outer[1].toFixed(1);
+    }
+    svg("path", { d: ticks, "class": "radar__ticks" }, grid);
+    for (var deg = 0; deg < 360; deg += 30) {
+      if (deg % 90 === 0) { continue; }
+      var at = polarPoint(RADII[3] + 19, deg);
+      var bt = svg("text", { x: at[0].toFixed(1), y: at[1].toFixed(1), "class": "radar__bearing" }, grid);
+      bt.textContent = ("00" + deg).slice(-3);
+    }
+
+    // sector highlight and range line of the locked entry, below the blips
+    fx.sector = svg("path", { "class": "fx__sector", d: "" }, root);
+    fx.rangeCircle = svg("circle", { "class": "fx__range-circle", r: 0 }, root);
+    fx.rangeLine = svg("line", { "class": "fx__range-line", x1: 0, y1: 0, x2: 0, y2: 0 }, root);
+
+    // radar beam: a bright leading edge with a fading trail of thin wedges
+    fx.beam = svg("g", { "class": "fx__beam" }, root);
+    var slices = 28;
+    for (var k = 0; k < slices; k++) {
+      var a0 = polarPoint(RADII[3], -k * 2);
+      var a1 = polarPoint(RADII[3], -(k + 1) * 2);
+      svg("path", {
+        d: "M0,0L" + a0[0].toFixed(1) + "," + a0[1].toFixed(1) + "A" + RADII[3] + "," + RADII[3] + " 0 0,0 " + a1[0].toFixed(1) + "," + a1[1].toFixed(1) + "z",
+        "fill-opacity": (0.26 * Math.pow(1 - k / slices, 2.2)).toFixed(3)
+      }, fx.beam);
+    }
+    svg("line", { x1: 0, y1: 0, x2: 0, y2: -RADII[3], "class": "fx__beam-edge" }, fx.beam);
 
     // ring names on both ends of the horizontal axis
     var labels = svg("g", { "class": "radar__ring-labels" }, root);
     RINGS.forEach(function (ring, i) {
       var mid = (ringInner(i) + RADII[i]) / 2 + (i === 0 ? -10 : 0);
       [-1, 1].forEach(function (side) {
-        var t = svg("text", { x: side * mid, y: 0, fill: ring.color, "class": "radar__ring-label" }, labels);
+        var t = svg("text", { x: side * mid, y: 0, fill: ring.screen, "class": "radar__ring-label" }, labels);
         t.textContent = ring.name;
       });
     });
@@ -402,30 +455,184 @@
 
     var layer = svg("g", { "class": "radar__blips" }, root);
     entries.forEach(function (e, index) {
+      var ring = RINGS[e.ring];
+      e.bearing = (Math.atan2(e.x, -e.y) * 180 / Math.PI + 360) % 360;
+      e.range = Math.sqrt(e.x * e.x + e.y * e.y) / RADII[3];
       var g = svg("g", {
         "class": "blip",
         transform: "translate(" + e.x.toFixed(1) + "," + e.y.toFixed(1) + ")",
         "data-id": e.id
       }, layer);
-      var body = svg("g", { "class": "blip__body" }, g);
+      var lens = svg("g", { "class": "blip__lens" }, g);
+      var body = svg("g", { "class": "blip__body" }, lens);
       body.style.setProperty("--delay", (350 + e.ring * 140 + (index % 14) * 18) + "ms");
+      e.halo = svg("circle", { r: 15, fill: ring.screen, "class": "blip__halo" }, body);
       var textY = 0.5;
       if (e.moved === 1) {
-        svg("path", { d: "M-12.5,7 12.5,7 0,-14.5z", fill: RINGS[e.ring].color }, body);
+        svg("path", { d: "M-12.5,7 12.5,7 0,-14.5z", fill: ring.screen }, body);
         textY = 2.5;
       } else if (e.moved === -1) {
-        svg("path", { d: "M-12.5,-7 12.5,-7 0,14.5z", fill: RINGS[e.ring].color }, body);
+        svg("path", { d: "M-12.5,-7 12.5,-7 0,14.5z", fill: ring.screen }, body);
         textY = -2;
       } else if (e.moved === 2) {
-        svg("path", { d: starPath(15, 7.5), fill: RINGS[e.ring].color }, body);
+        svg("path", { d: starPath(15, 7.5), fill: ring.screen }, body);
         textY = 1.5;
       } else {
-        svg("circle", { r: 11, fill: RINGS[e.ring].color }, body);
+        svg("circle", { r: 11, fill: ring.screen }, body);
       }
-      var label = svg("text", { y: textY, "class": "blip__number" }, body);
+      var label = svg("text", { y: textY, fill: ring.ink, "class": "blip__number" }, body);
       label.textContent = e.id;
       e.node = g;
+      e.lens = lens;
+      e.body = body;
     });
+
+    // lock-on reticle (rebuilt on every lock so its animation restarts)
+    fx.reticleLayer = svg("g", { "class": "fx__reticle-layer" }, root);
+
+    // cursor crosshair
+    fx.cursor = svg("g", { "class": "fx__cursor" }, root);
+    svg("line", { x1: -2000, x2: 2000, y1: 0, y2: 0 }, fx.cursor);
+    svg("line", { x1: 0, x2: 0, y1: -2000, y2: 2000 }, fx.cursor);
+    svg("circle", { r: 6 }, fx.cursor);
+  }
+
+  // ---------------------------------------------------------------- effects
+
+  // lock-on: sector glow, range line, reticle with sonar pings
+  function lockOn(e) {
+    if (fx.locked === e.id) { return; }
+    fx.locked = e.id;
+    var root = $("radar");
+    root.style.setProperty("--lock-color", RINGS[e.ring].screen);
+    fx.sector.setAttribute("d", sectorPath(e.quadrant, e.ring));
+    fx.rangeCircle.setAttribute("r", (e.range * RADII[3]).toFixed(1));
+    fx.rangeLine.setAttribute("x2", e.x.toFixed(1));
+    fx.rangeLine.setAttribute("y2", e.y.toFixed(1));
+    root.classList.add("is-locked");
+
+    fx.reticleLayer.innerHTML = "";
+    var r = svg("g", { "class": "reticle", transform: "translate(" + e.x.toFixed(1) + "," + e.y.toFixed(1) + ")" }, fx.reticleLayer);
+    svg("circle", { r: 13, "class": "reticle__ping" }, r);
+    svg("circle", { r: 13, "class": "reticle__ping reticle__ping--late" }, r);
+    var spin = svg("g", { "class": "reticle__spin" }, r);
+    svg("circle", { r: 22, "class": "reticle__ring" }, spin);
+    var brackets = svg("g", { "class": "reticle__brackets" }, r);
+    svg("path", { d: "M-27,-17V-27H-17M17,-27H27V-17M27,17V27H17M-17,27H-27V17" }, brackets);
+  }
+
+  function release() {
+    if (!fx.locked) { return; }
+    fx.locked = null;
+    $("radar").classList.remove("is-locked");
+    fx.reticleLayer.innerHTML = "";
+  }
+
+  // text decode effect for the HUD label
+  var GLYPHS = "<>/[]{}=+*#%01ABCDEFXYZ";
+  function decode(el, text) {
+    if (el.decodeFrame) { cancelAnimationFrame(el.decodeFrame); }
+    if (REDUCED_MOTION) { el.textContent = text; return; }
+    var t0 = performance.now();
+    var duration = 380;
+    var step = function (now) {
+      var p = Math.min(1, (now - t0) / duration);
+      var shown = Math.floor(p * text.length);
+      var out = text.slice(0, shown);
+      for (var i = shown; i < text.length; i++) {
+        out += text[i] === " " ? " " : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      }
+      el.textContent = out;
+      el.decodeFrame = p < 1 ? requestAnimationFrame(step) : null;
+    };
+    el.decodeFrame = requestAnimationFrame(step);
+  }
+
+  // radar beam: rotates continuously, blips ping when it passes them
+  var BEAM_PERIOD = 6500;
+  function startBeam() {
+    if (REDUCED_MOTION) { fx.beam.style.display = "none"; return; }
+    var angle = 0;
+    var last = null;
+    var frame = function (now) {
+      if (last !== null) {
+        var prev = angle;
+        angle = (angle + (now - last) * 360 / BEAM_PERIOD) % 360;
+        fx.beam.setAttribute("transform", "rotate(" + angle.toFixed(2) + ")");
+        var wrapped = angle < prev;
+        entries.forEach(function (e) {
+          var hit = wrapped ? (e.bearing > prev || e.bearing <= angle) : (e.bearing > prev && e.bearing <= angle);
+          if (hit) { ping(e); }
+        });
+      }
+      last = now;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+
+  function ping(e) {
+    if (!e.halo.animate) { return; }
+    e.halo.animate([
+      { transform: "scale(0.8)", opacity: 0.85 },
+      { transform: "scale(2.4)", opacity: 0 }
+    ], { duration: 1200, easing: "cubic-bezier(0.2, 0.9, 0.2, 1)" });
+    e.body.animate([
+      { filter: "brightness(1.9)" },
+      { filter: "brightness(1)" }
+    ], { duration: 900, easing: "ease-out" });
+  }
+
+  // magnifier around the cursor, crosshair and coordinate readout
+  var lensFrame = null;
+  function onRadarMove(ev) {
+    if (ev.pointerType && ev.pointerType !== "mouse") { return; }
+    var root = $("radar");
+    var ctm = root.getScreenCTM();
+    if (!ctm) { return; }
+    var pt = root.createSVGPoint();
+    pt.x = ev.clientX;
+    pt.y = ev.clientY;
+    var p = pt.matrixTransform(ctm.inverse());
+    if (lensFrame) { cancelAnimationFrame(lensFrame); }
+    lensFrame = requestAnimationFrame(function () {
+      lensFrame = null;
+      var radius = 85 * viewBox[2] / (2 * VIEW);
+      var nearest = null;
+      var nearestD = 20; // hit radius in radar units, independent of the magnifier
+      entries.forEach(function (e) {
+        var d = Math.sqrt((e.x - p.x) * (e.x - p.x) + (e.y - p.y) * (e.y - p.y));
+        var s = d < radius ? 1 + 0.6 * Math.pow(1 - d / radius, 2) : 1;
+        e.lens.style.transform = s > 1.001 ? "scale(" + s.toFixed(3) + ")" : "";
+        if (d < nearestD && matches(e)) { nearest = e; nearestD = d; }
+      });
+      setHover(nearest ? nearest.id : null);
+      fx.cursor.setAttribute("transform", "translate(" + p.x.toFixed(1) + "," + p.y.toFixed(1) + ")");
+      root.classList.add("has-cursor");
+      readout(p.x, p.y);
+    });
+  }
+
+  function onRadarLeave() {
+    if (lensFrame) { cancelAnimationFrame(lensFrame); lensFrame = null; }
+    entries.forEach(function (e) { e.lens.style.transform = ""; });
+    $("radar").classList.remove("has-cursor");
+    $("radar-readout").classList.remove("is-visible");
+  }
+
+  function readout(x, y) {
+    var r = Math.sqrt(x * x + y * y);
+    var bearing = (Math.atan2(x, -y) * 180 / Math.PI + 360) % 360;
+    var where = "OUT OF RANGE";
+    if (r <= RADII[3]) {
+      var ring = 0;
+      while (r > RADII[ring]) { ring++; }
+      var q = x >= 0 ? (y >= 0 ? 0 : 3) : (y >= 0 ? 1 : 2);
+      where = RINGS[ring].name + " / " + QUADRANTS[q].short.toUpperCase();
+    }
+    var el = $("radar-readout");
+    el.textContent = "BRG " + ("00" + bearing.toFixed(1)).slice(-5) + "°   RNG " + (r / RADII[3]).toFixed(2) + "   " + where;
+    el.classList.add("is-visible");
   }
 
   // ---------------------------------------------------------------- list
@@ -446,6 +653,7 @@
       var ul = html("ul", "group__list");
       entries.filter(function (e) { return e.ring === i; }).forEach(function (e) {
         var li = html("li", "entry");
+        li.style.setProperty("--c", ring.color);
         li.setAttribute("data-id", e.id);
         var button = html("button", "entry__main");
         button.type = "button";
@@ -517,9 +725,11 @@
     });
     var e = id ? byId(id) : null;
     if (e && !e.row.hidden) {
+      lockOn(e);
       showTooltip(e);
       if (scroll) { scrollIntoList(e.row); }
     } else {
+      release();
       hideTooltip();
     }
   }
@@ -532,21 +742,51 @@
     }
   }
 
+  // HUD next to the locked blip, flips to the left near the right edge
   function showTooltip(e) {
     var tip = $("radar-tooltip");
     var stage = $("radar-stage").getBoundingClientRect();
     var blip = e.node.getBoundingClientRect();
-    tip.innerHTML = "";
-    tip.appendChild(html("strong", null, e.label));
-    var meta = RINGS[e.ring].name + " · " + QUADRANTS[e.quadrant].name;
-    if (MOVEMENT[String(e.moved)]) { meta += " · " + MOVEMENT[String(e.moved)].text; }
-    tip.appendChild(html("span", null, meta));
-    tip.style.left = (blip.left + blip.width / 2 - stage.left) + "px";
-    tip.style.top = (blip.top - stage.top) + "px";
+    var ring = RINGS[e.ring];
+    var move = MOVEMENT[String(e.moved)];
+    if (tip.getAttribute("data-id") !== String(e.id)) {
+      tip.setAttribute("data-id", e.id);
+      tip.innerHTML = "";
+      tip.style.setProperty("--hud-color", ring.screen);
+      var head = html("div", "hud__head");
+      head.appendChild(html("span", null, "TGT " + ("00" + e.id).slice(-3)));
+      head.appendChild(html("span", "hud__ring", ring.name));
+      tip.appendChild(head);
+      var label = html("strong", "hud__label", e.label);
+      tip.appendChild(label);
+      var dl = html("dl", "hud__data");
+      [
+        ["SECTOR", QUADRANTS[e.quadrant].name],
+        ["BEARING", e.bearing.toFixed(1) + "°"],
+        ["RANGE", e.range.toFixed(2)],
+        ["STATUS", move ? (e.moved === 2 ? "★ " : e.moved === 1 ? "▲ " : "▼ ") + move.text : "● No change"]
+      ].forEach(function (row) {
+        dl.appendChild(html("dt", null, row[0]));
+        dl.appendChild(html("dd", null, row[1]));
+      });
+      tip.appendChild(dl);
+      decode(label, e.label);
+    }
+    var cx = blip.left + blip.width / 2 - stage.left;
+    var cy = blip.top + blip.height / 2 - stage.top;
+    var flip = cx + 280 > stage.width;
+    tip.classList.toggle("is-flipped", flip);
     tip.classList.add("is-visible");
+    var half = tip.offsetHeight / 2 + 8;
+    tip.style.left = cx + "px";
+    tip.style.top = Math.max(half, Math.min(stage.height - half, cy)) + "px";
   }
 
-  function hideTooltip() { $("radar-tooltip").classList.remove("is-visible"); }
+  function hideTooltip() {
+    var tip = $("radar-tooltip");
+    tip.classList.remove("is-visible");
+    tip.removeAttribute("data-id");
+  }
 
   // ---------------------------------------------------------------- events
 
@@ -570,14 +810,8 @@
     var radar = $("radar");
     var list = $("entry-list");
 
-    radar.addEventListener("pointerover", function (ev) {
-      var id = idFrom(ev.target);
-      if (id && matches(byId(id))) { setHover(id); }
-    });
-    radar.addEventListener("pointerleave", function () { setHover(null); });
-    radar.addEventListener("pointerout", function (ev) {
-      if (!ev.relatedTarget || !ev.relatedTarget.closest || !ev.relatedTarget.closest(".blip")) { setHover(null); }
-    });
+    radar.addEventListener("pointerleave", function () { setHover(null); onRadarLeave(); });
+    radar.addEventListener("pointermove", onRadarMove);
     radar.addEventListener("click", function (ev) {
       var quadrantLabel = ev.target.closest(".radar__quadrant-label");
       if (quadrantLabel) {
@@ -585,7 +819,7 @@
         setQuadrant(state.quadrant === q ? null : q);
         return;
       }
-      var id = idFrom(ev.target);
+      var id = state.hover || idFrom(ev.target);
       if (id && matches(byId(id))) { pin(id, true); } else if (state.pinned) { pin(state.pinned, false); }
     });
 

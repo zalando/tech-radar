@@ -43,6 +43,7 @@
   --color-border-strong: #1c1d1f;
   --color-border-brand-primary: #16223a;
   --color-border-brand-tertiary: #4766d2;
+  --color-border-brand-secondary: #f95759;
   --color-link: #4766d2;
   --color-link-hover: #91a4e7;
   --color-link-active: #334793;
@@ -350,13 +351,33 @@ a:active {
   box-shadow: var(--shadow-md);
 }
 
-/* ------------------------------------------------------------ tabs (variant line, tone primary) */
+/* ------------------------------------------------------------ radar screen */
 
+/* the radar card is a dark "screen" in brand navy; ring colors switch to the
+   brighter tone of the same hue (success/9, link/hover, caution/9, brand/secondary) */
+.radar-card {
+  --screen-bg: var(--color-background-brand-primary);
+  --screen-glow: var(--accent-primary-9);
+  --screen-line: #ffffff1f;
+  --screen-line-strong: #ffffff40;
+  --screen-text: var(--color-content-invert);
+  --screen-muted: #c6cdda; /* accent/primary/3 */
+  --beam: #91a4e7; /* link/hover */
+  --hud-bg: #081020eb; /* accent/primary/12, translucent */
+  --font-mono-hud: var(--font-mono);
+  color: var(--screen-text);
+  background:
+    radial-gradient(circle at 50% 55%, var(--screen-glow) 0, transparent 70%),
+    var(--screen-bg);
+  border-color: var(--screen-bg);
+}
+
+/* tabs on the screen (variant line, tone secondary) */
 .tabs {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
-  border-bottom: var(--border-width-sm) solid var(--color-border-default);
+  border-bottom: var(--border-width-sm) solid var(--screen-line);
 }
 .tabs__trigger {
   flex: none;
@@ -364,31 +385,41 @@ a:active {
   border: 0;
   border-bottom: var(--border-width-lg) solid transparent;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: var(--color-background-default);
-  color: var(--color-content-default);
+  background: transparent;
+  color: var(--screen-muted);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
 }
 .tabs__trigger:hover {
-  background: var(--color-background-surface);
+  background: var(--screen-line);
+  color: var(--screen-text);
 }
 .tabs__trigger[aria-selected="true"],
 .tabs__trigger:active {
-  border-bottom-color: var(--color-border-brand-primary);
+  color: var(--screen-text);
+  border-bottom-color: var(--color-border-brand-secondary);
 }
 .tabs__trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring-knockout);
   outline-offset: -2px;
 }
-
-/* ------------------------------------------------------------ radar */
 
 .radar-stage {
   --radar-max: max(320px, calc(100vh - 200px));
   position: relative;
   padding: var(--spacing-lg);
+}
+/* faint scan lines over the screen */
+.radar-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, #ffffff08 0 1px, transparent 1px 3px);
 }
 .radar {
   display: block;
@@ -399,26 +430,42 @@ a:active {
   overflow: hidden;
   user-select: none;
 }
+.radar.has-cursor {
+  cursor: crosshair;
+}
 
 .radar__band {
-  fill-opacity: 0.06;
+  fill-opacity: 0.07;
 }
 .radar__ring,
 .radar__axis {
   fill: none;
-  stroke: var(--color-border-subtle);
+  stroke: var(--screen-line-strong);
   stroke-width: 1;
+}
+.radar__ticks {
+  fill: none;
+  stroke: var(--screen-line-strong);
+  stroke-width: 1;
+}
+.radar__bearing {
+  font-family: var(--font-mono-hud);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  fill: var(--screen-muted);
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .radar__ring-label {
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-anchor: middle;
   dominant-baseline: central;
   paint-order: stroke;
-  stroke: var(--color-background-default);
-  stroke-width: 5px;
+  stroke: var(--screen-bg);
+  stroke-width: 6px;
   stroke-linejoin: round;
   pointer-events: none;
 }
@@ -426,31 +473,53 @@ a:active {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 24px;
-  fill: var(--color-content-default);
+  fill: var(--screen-text);
   cursor: pointer;
+  transition: fill 0.15s;
 }
 .radar__quadrant-label:hover {
-  fill: var(--color-link);
+  fill: var(--beam);
 }
 .radar.is-zoomed .radar__quadrant-label {
   display: none;
 }
 
+/* beam */
+.fx__beam {
+  fill: var(--beam);
+  pointer-events: none;
+}
+.fx__beam-edge {
+  stroke: var(--beam);
+  stroke-width: 1.5;
+  stroke-opacity: 0.9;
+}
+
+/* blips */
 .blip {
   cursor: pointer;
+}
+.blip__lens {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.12s ease-out;
 }
 .blip__body {
   transform-box: fill-box;
   transform-origin: center;
-  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.2s;
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.25s;
   animation: blip-in 0.5s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
   animation-delay: var(--delay, 0s);
+}
+.blip__halo {
+  opacity: 0.18;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 .blip__number {
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 11px;
-  fill: var(--color-content-invert);
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;
@@ -458,58 +527,189 @@ a:active {
 .radar.has-focus .blip__body,
 .radar.is-filtered .blip.is-dimmed .blip__body,
 .radar.is-zoomed .blip.is-dimmed .blip__body {
-  opacity: 0.25;
+  opacity: 0.22;
 }
 .radar .blip.is-focus .blip__body {
   opacity: 1;
-  transform: scale(1.45);
-}
-.radar.has-focus .blip.is-focus {
-  filter: drop-shadow(0 0 6px #00000040);
+  transform: scale(1.5);
 }
 
-/* the sweep circle matches the outer ring: 400 of 880 view box units */
-.radar-sweep {
-  position: absolute;
-  top: var(--sweep-y, 50%);
-  left: var(--sweep-x, 50%);
-  width: var(--sweep-size, min(calc(100% - 2 * var(--spacing-lg)), var(--radar-max)));
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%) scale(0.909);
-  border-radius: 50%;
+/* lock-on */
+.fx__sector {
+  fill: var(--lock-color, var(--beam));
+  fill-opacity: 0;
+  stroke: var(--lock-color, var(--beam));
+  stroke-opacity: 0;
+  stroke-width: 1.5;
   pointer-events: none;
-  background: conic-gradient(from 0deg, transparent 0deg 290deg, #4766d22e 360deg);
-  opacity: 0;
+  transition: fill-opacity 0.25s, stroke-opacity 0.25s;
 }
-.is-ready .radar-sweep {
-  animation: sweep 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s 1;
+.fx__range-circle {
+  fill: none;
+  stroke: var(--lock-color, var(--beam));
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.fx__range-line {
+  stroke: var(--lock-color, var(--beam));
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+  opacity: 0;
+  pointer-events: none;
+}
+.radar.is-locked .fx__sector {
+  fill-opacity: 0.16;
+  stroke-opacity: 0.6;
+}
+.radar.is-locked .fx__range-circle {
+  opacity: 0.55;
+}
+.radar.is-locked .fx__range-line {
+  opacity: 0.85;
+  animation: dash-flow 0.6s linear infinite;
 }
 
+.reticle {
+  pointer-events: none;
+  color: var(--lock-color, var(--beam));
+}
+.reticle__ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-dasharray: 10 6;
+}
+.reticle__spin {
+  animation: spin 3s linear infinite, lock-in 0.35s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
+}
+.reticle__spin,
+.reticle__brackets,
+.reticle__ping {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+.reticle__brackets {
+  fill: none;
+  stroke: var(--screen-text);
+  stroke-width: 2;
+  animation: lock-in 0.4s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
+}
+.reticle__ping {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  animation: sonar 1.8s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
+}
+.reticle__ping--late {
+  animation-delay: 0.9s;
+}
+
+.fx__cursor {
+  pointer-events: none;
+  opacity: 0;
+  stroke: var(--beam);
+  stroke-width: 0.75;
+  stroke-opacity: 0.35;
+  fill: none;
+}
+.radar.has-cursor .fx__cursor {
+  opacity: 1;
+}
+
+/* coordinate readout */
+.radar-readout {
+  position: absolute;
+  left: 50%;
+  bottom: var(--spacing-md);
+  transform: translateX(-50%);
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-mono-hud);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  white-space: pre;
+  color: var(--beam);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.radar-readout.is-visible {
+  opacity: 1;
+}
+
+/* HUD tooltip */
 .radar-tooltip {
+  --hud-color: var(--beam);
   position: absolute;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  max-width: 260px;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
-  background: var(--color-background-brand-primary);
-  color: var(--color-content-invert);
-  font-size: 14px;
-  line-height: 20px;
+  min-width: 220px;
+  max-width: 280px;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+  border: 1px solid var(--hud-color);
+  border-radius: var(--radius-sm);
+  background: var(--hud-bg);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 24px -4px var(--hud-color), inset 0 0 18px -10px var(--hud-color);
+  color: var(--screen-text);
   pointer-events: none;
-  transform: translate(-50%, calc(-100% - var(--spacing-sm)));
+  transform: translate(36px, -50%);
   opacity: 0;
-  transition: opacity 0.12s;
+  transition: opacity 0.15s;
+}
+.radar-tooltip.is-flipped {
+  transform: translate(calc(-100% - 36px), -50%);
 }
 .radar-tooltip.is-visible {
   opacity: 1;
+  animation: hud-in 0.25s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
-.radar-tooltip strong {
+.hud__head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  font-family: var(--font-mono-hud);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  color: var(--screen-muted);
+}
+.hud__ring {
+  color: var(--hud-color);
+  font-weight: 700;
+}
+.hud__label {
+  display: block;
+  margin: var(--spacing-xs) 0 var(--spacing-sm);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--screen-text);
+  text-shadow: 0 0 12px var(--hud-color);
+}
+.hud__data {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px var(--spacing-md);
+  margin: 0;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--screen-line);
+  font-family: var(--font-mono-hud);
+  font-size: 12px;
+  line-height: 16px;
+}
+.hud__data dt {
+  color: var(--screen-muted);
+  letter-spacing: 0.06em;
+}
+.hud__data dd {
+  margin: 0;
+  color: var(--screen-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .radar-key {
@@ -519,11 +719,11 @@ a:active {
   gap: var(--spacing-xs) var(--spacing-xl);
   margin: 0;
   padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
-  border-top: var(--border-width-sm) solid var(--color-border-subtle);
+  border-top: var(--border-width-sm) solid var(--screen-line);
   list-style: none;
   font-size: 14px;
   line-height: 20px;
-  color: var(--color-content-subtle);
+  color: var(--screen-muted);
 }
 .radar-key li {
   display: inline-flex;
@@ -533,7 +733,7 @@ a:active {
 .radar-key svg {
   width: 16px;
   height: 16px;
-  fill: var(--color-content-subtle);
+  fill: var(--screen-muted);
 }
 
 /* ------------------------------------------------------------ panel */
@@ -636,11 +836,22 @@ a:active {
   border-radius: var(--radius-md);
   transition: background-color 0.15s;
 }
+.entry {
+  position: relative;
+}
+/* hover/focus: the row lights up in its ring color, linked to the radar lock */
 .entry.is-focus {
-  background: var(--color-background-surface);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--c) 16%, transparent), transparent 70%);
+  box-shadow: inset 3px 0 0 var(--c);
 }
 .entry.is-pinned {
-  background: var(--color-background-subtle);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--c) 24%, transparent), var(--color-background-surface));
+  box-shadow: inset 3px 0 0 var(--c);
+}
+.entry.is-focus .entry__num,
+.entry.is-pinned .entry__num {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 25%, transparent), 0 0 14px var(--c);
+  transform: scale(1.08);
 }
 .entry__main {
   flex: 1;
@@ -658,6 +869,7 @@ a:active {
   cursor: pointer;
 }
 .entry__num {
+  transition: box-shadow 0.2s, transform 0.2s;
   flex: none;
   display: grid;
   place-items: center;
@@ -806,11 +1018,22 @@ a:active {
 @keyframes grow {
   from { transform: scaleX(0); }
 }
-@keyframes sweep {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.909) rotate(0deg); }
-  15% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.909) rotate(360deg); }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes lock-in {
+  from { transform: scale(2.4); opacity: 0; }
+}
+@keyframes sonar {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(3.6); opacity: 0; }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -10; }
+}
+@keyframes hud-in {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 @media (prefers-reduced-motion: reduce) {
   *,
