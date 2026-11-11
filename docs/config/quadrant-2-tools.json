@@ -40,7 +40,15 @@
       "label": "Python uv",
       "ring": 0,
       "active": true,
-      "moved": 0
+      "moved": 0,
+      "link": "https://docs.astral.sh/uv/"
+    },
+    {
+      "label": "Python Ruff",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://docs.astral.sh/ruff/"
     },
     {
       "label": "Python mypy",
@@ -49,16 +57,11 @@
       "moved": 0
     },
     {
-      "label": "Python poetry",
-      "ring": 3,
-      "active": false,
-      "moved": 0
-    },
-    {
-      "label": "Python ty",
-      "ring": 1,
+      "label": "Python pytest",
+      "ring": 0,
       "active": true,
-      "moved": 0
+      "moved": 2,
+      "link": "https://docs.pytest.org/"
     },
     {
       "label": "Maven",
@@ -79,10 +82,17 @@
       "moved": 0
     },
     {
-      "label": "postgreSQL",
+      "label": "PostgreSQL",
       "ring": 0,
       "active": true,
       "moved": 0
+    },
+    {
+      "label": "pgvector",
+      "ring": 0,
+      "active": true,
+      "moved": 1,
+      "link": "https://github.com/pgvector/pgvector"
     },
     {
       "label": "OpenSearch",
@@ -91,13 +101,13 @@
       "moved": 0
     },
     {
-      "label": "ElasticSearch",
+      "label": "Elasticsearch",
       "ring": 0,
       "active": true,
       "moved": 0
     },
     {
-      "label": "localstack",
+      "label": "LocalStack",
       "ring": 0,
       "active": true,
       "moved": 0
@@ -109,7 +119,7 @@
       "moved": 0
     },
     {
-      "label": "Swagger",
+      "label": "Swagger / OpenAPI",
       "ring": 0,
       "active": true,
       "moved": 0
@@ -118,42 +128,133 @@
       "label": "ArgoCD",
       "ring": 0,
       "active": true,
-      "moved": 1,
+      "moved": 0,
       "link": "https://argo-cd.readthedocs.io/"
+    },
+    {
+      "label": "Kustomize",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://kustomize.io/"
+    },
+    {
+      "label": "Minikube",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://minikube.sigs.k8s.io/"
     },
     {
       "label": "SonarQube",
       "ring": 0,
       "active": true,
-      "moved": 1,
+      "moved": 0,
       "link": "https://www.sonarsource.com/products/sonarcloud/"
     },
     {
       "label": "Trivy",
-      "ring": 1,
+      "ring": 0,
       "active": true,
       "moved": 1,
       "link": "https://trivy.dev/"
     },
     {
       "label": "Testcontainers",
-      "ring": 1,
+      "ring": 0,
       "active": true,
       "moved": 1,
       "link": "https://testcontainers.com/"
     },
     {
-      "label": "pgvector",
+      "label": "Dependabot",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://docs.github.com/code-security/dependabot"
+    },
+    {
+      "label": "pre-commit",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://pre-commit.com/"
+    },
+    {
+      "label": "ESLint & Prettier",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://eslint.org/"
+    },
+    {
+      "label": "Vitest",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://vitest.dev/"
+    },
+    {
+      "label": "Playwright",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://playwright.dev/"
+    },
+    {
+      "label": "Storybook",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://storybook.js.org/"
+    },
+    {
+      "label": "OpenTelemetry",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://opentelemetry.io/"
+    },
+    {
+      "label": "Prometheus",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://prometheus.io/"
+    },
+    {
+      "label": "Grafana",
       "ring": 1,
       "active": true,
-      "moved": 1,
-      "link": "https://github.com/pgvector/pgvector"
+      "moved": 2,
+      "link": "https://grafana.com/"
+    },
+    {
+      "label": "Sentry",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://sentry.io/"
+    },
+    {
+      "label": "Python ty",
+      "ring": 1,
+      "active": true,
+      "moved": 0,
+      "link": "https://docs.astral.sh/ty/"
     },
     {
       "label": "RabbitMQ",
-      "ring": 2,
+      "ring": 1,
       "active": true,
-      "moved": 1
+      "moved": 1,
+      "link": "https://www.rabbitmq.com/"
+    },
+    {
+      "label": "Python poetry",
+      "ring": 3,
+      "active": false,
+      "moved": 0
     }
   ]
 }

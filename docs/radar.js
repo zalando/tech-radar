@@ -222,6 +222,8 @@ function radar_visualization(config) {
 
   // define default font-family
   config.font_family = config.font_family || "Arial, Helvetica";
+  // optional separate font for headings (quadrant and ring titles)
+  config.heading_font_family = config.heading_font_family || config.font_family;
 
   // draw grid lines
   grid.append("line")
@@ -265,7 +267,7 @@ function radar_visualization(config) {
         .attr("text-anchor", "middle")
         .style("fill", config.rings[i].color)
         .style("opacity", 0.35)
-        .style("font-family", config.font_family)
+        .style("font-family", config.heading_font_family)
         .style("font-size", "42px")
         .style("font-weight", "bold")
         .style("pointer-events", "none")
@@ -326,7 +328,7 @@ function radar_visualization(config) {
           config.legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
-        .style("font-family", config.font_family)
+        .style("font-family", config.heading_font_family)
         .style("font-size", "18px")
         .style("font-weight", "bold");
       let previousLegendHeight = 0
@@ -337,7 +339,7 @@ function radar_visualization(config) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
           .text(config.rings[ring].name)
-          .style("font-family", config.font_family)
+          .style("font-family", config.heading_font_family)
           .style("font-size", "12px")
           .style("font-weight", "bold")
           .style("fill", config.rings[ring].color);

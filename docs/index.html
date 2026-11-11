@@ -5,93 +5,117 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="description" content="TEQ Radar: a tool to visualize technology choices, inspire and support Engineering teams at TEQYARD to pick the best technologies for new projects">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#16223a">
 <title>TEQ Radar</title>
-<!--<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">-->
-
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="radar.js"></script>
-
+<link rel="icon" type="image/svg+xml" href="logo-short.svg">
+<link rel="preload" href="fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-sans-3-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="radar.css">
+<script src="app.js" defer></script>
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="./">
+      <svg class="site-header__logo" role="img" aria-label="TEQYARD" width='197' height='24' viewBox='0 0 197 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M70.802 18.9031C69.461 19.7409 67.8519 20.2645 66.1355 20.2645C61.3617 20.2645 57.4997 16.4944 57.4997 11.8341C57.4997 7.17374 61.3617 3.4036 66.1355 3.4036C70.9093 3.4036 74.7712 7.17374 74.7712 11.8341C74.7712 13.5097 74.2885 15.0282 73.4303 16.3373L75.8976 18.746C77.3458 16.8085 78.204 14.3999 78.204 11.7817C78.204 5.28867 72.7866 0 66.1355 0C59.4843 0 54.0669 5.28867 54.0669 11.7817C54.0669 18.2747 59.4843 23.5634 66.1355 23.5634C68.8174 23.5634 71.2847 22.7256 73.323 21.2594L70.802 18.9031Z' fill='#F95759'/><path d='M75.8728 18.8165L73.2944 21.335L76.026 24.0001L78.6043 21.4816L75.8728 18.8165Z' fill='#F95759'/><path d='M28.75 23.4587H46.7188C47.1479 23.4587 47.3625 23.2492 47.3625 22.8303V21.1023C47.3625 20.6834 47.1479 20.474 46.7188 20.474H31.271V13.562H41.7841C42.2132 13.562 42.4278 13.3526 42.4278 12.9337V11.3104C42.4278 10.8915 42.2132 10.6821 41.7841 10.6821H31.271V4.24141H46.7188C47.1479 4.24141 47.3625 4.03196 47.3625 3.61305V1.88507C47.3625 1.46616 47.1479 1.25671 46.7188 1.25671H28.75C28.3209 1.25671 28.1064 1.46616 28.1064 1.88507V22.8827C28.1064 23.2492 28.3209 23.4587 28.75 23.4587ZM9.06484 23.4587H10.9958C11.4249 23.4587 11.6395 23.2492 11.6395 22.8303V4.18905H19.417C19.8461 4.18905 20.0607 3.97959 20.0607 3.56069V1.83271C20.0607 1.4138 19.8461 1.20435 19.417 1.20435H0.643657C0.214552 1.20435 0 1.4138 0 1.83271V3.56069C0 3.97959 0.214552 4.18905 0.643657 4.18905H8.42118V22.8303C8.42118 23.2492 8.63574 23.4587 9.06484 23.4587Z' fill='#F95759'/><path d='M177.435 20.5262V4.24129H188.538C192.078 4.24129 193.312 5.34091 193.312 9.58232V15.2375C193.312 19.479 192.025 20.5262 188.538 20.5262H177.435ZM174.914 23.4585H188.806C194.331 23.4585 196.423 20.9451 196.423 15.2375V9.58232C196.423 3.82238 194.331 1.25659 188.806 1.25659H174.914C174.485 1.25659 174.27 1.46604 174.27 1.88495V22.8826C174.27 23.2491 174.539 23.4585 174.914 23.4585ZM162.202 9.26815C162.202 13.0907 160.7 13.8761 156.141 13.8761H147.183V4.18893H156.141C160.7 4.18893 162.202 5.02674 162.202 8.90161V9.26815ZM165.42 9.32051V8.95397C165.42 3.71766 163.167 1.25659 156.409 1.25659H144.716C144.287 1.25659 144.072 1.46604 144.072 1.88495V22.8826C144.072 23.3015 144.287 23.5109 144.716 23.5109H146.593C147.022 23.5109 147.237 23.3015 147.237 22.8826V16.9132H156.945L161.29 23.1444C161.505 23.4062 161.719 23.5633 162.041 23.5633H164.294C164.83 23.5633 164.991 23.1967 164.723 22.8302L160.325 16.6513C164.133 15.7612 165.42 13.3525 165.42 9.32051ZM117.092 16.599L123.314 4.55547L129.483 16.599H117.092ZM133.506 23.4585H135.651C136.134 23.4585 136.348 23.1444 136.134 22.7255L125.138 1.6755C124.977 1.36132 124.762 1.25659 124.387 1.25659H122.134C121.759 1.25659 121.544 1.36132 121.383 1.6755L110.334 22.7255C110.119 23.1444 110.334 23.4585 110.817 23.4585H112.962C113.338 23.4585 113.552 23.3538 113.713 23.0396L115.698 19.2695H130.824L132.755 23.0396C132.915 23.3015 133.13 23.4585 133.506 23.4585ZM95.2615 23.4585H97.1925C97.6216 23.4585 97.8362 23.2491 97.8362 22.8302V17.3844L108.349 1.98967C108.617 1.57077 108.457 1.25659 107.92 1.25659H105.721C105.399 1.25659 105.131 1.36132 104.916 1.6755L96.227 14.5045L87.4304 1.6755C87.2158 1.41368 87.0013 1.25659 86.6794 1.25659H84.4266C83.8902 1.25659 83.7293 1.62313 83.9975 1.98967L94.6715 17.3844V22.8302C94.6179 23.2491 94.8861 23.4585 95.2615 23.4585Z' fill='white'/></svg>
+      <span class="site-header__title">TEQ Radar</span>
+    </a>
+    <span class="site-header__date" id="radar-date"></span>
+  </div>
+</header>
 
-<script>
-// Load metadata and all quadrant configs
-Promise.all([
-  fetch('./config-metadata.json').then(r => r.json()),
-  fetch('./config/quadrant-0-languages-frameworks.json').then(r => r.json()),
-  fetch('./config/quadrant-1-platform-infrastructure.json').then(r => r.json()),
-  fetch('./config/quadrant-2-tools.json').then(r => r.json()),
-  fetch('./config/quadrant-3-techniques.json').then(r => r.json())
-]).then(function([metadata, q0, q1, q2, q3]) {
-  // Merge entries from all quadrants and add quadrant numbers
-  const entries = [
-    ...q0.entries.map(e => ({ ...e, quadrant: 0 })),
-    ...q1.entries.map(e => ({ ...e, quadrant: 1 })),
-    ...q2.entries.map(e => ({ ...e, quadrant: 2 })),
-    ...q3.entries.map(e => ({ ...e, quadrant: 3 }))
-  ];
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__text">
+    <h1 class="hero__title" id="hero-title">Our technology choices, at a glance</h1>
+    <p class="hero__lead">Which languages, platforms, tools and techniques we use, try out, look into or phase out at TEQYARD.</p>
+  </div>
+  <div class="hero__stats">
+    <dl class="stats">
+      <div class="stats__item"><dt>Technologies</dt><dd id="stat-total">&ndash;</dd></div>
+      <div class="stats__item"><dt>Moved</dt><dd id="stat-moved">&ndash;</dd></div>
+      <div class="stats__item"><dt>New</dt><dd id="stat-new">&ndash;</dd></div>
+    </dl>
+    <div class="ring-bar" id="ring-bar" aria-hidden="true"></div>
+    <ul class="ring-bar__legend" id="ring-bar-legend"></ul>
+  </div>
+</section>
 
-  radar_visualization({
-    repo_url: "https://github.com/teqyard/teq-radar",
-    title: "TEQ Radar",
-    date: metadata.date,
-    quadrants: [
-      { name: "Languages & Frameworks" },
-      { name: "Platform & Infrastructure" },
-      { name: "Tools" },
-      { name: "Techniques" },
-    ],
-    rings: [
-      { name: "IN USE", color: "#5ba300" },
-      { name: "TRIAL", color: "#009eb0" },
-      { name: "ASSESS", color: "#c7ba00" },
-      { name: "PHASE OUT", color: "#e09b96" }
-    ],
-    entries: entries
-  });
-}).catch(function(err) {
-  console.log('Error loading config files', err);
-});
-</script>
+<main class="explorer" id="explorer">
+  <section class="radar-card" aria-label="Radar">
+    <div class="tabs" id="quadrant-tabs" role="tablist" aria-label="Quadrant"></div>
+    <div class="radar-stage" id="radar-stage">
+      <svg id="radar" class="radar" role="img" aria-label="Radar of all technologies by quadrant and ring. The list next to it contains the same entries."></svg>
+      <div class="radar-tooltip" id="radar-tooltip" role="status"></div>
+      <p class="radar-readout" id="radar-readout" aria-hidden="true"></p>
+    </div>
+    <ul class="radar-key">
+      <li><svg viewBox="-16 -16 32 32" aria-hidden="true"><circle r="10.5"/></svg>No change</li>
+      <li><svg viewBox="-16 -16 32 32" aria-hidden="true"><path d="M-12.5,7 12.5,7 0,-14.5z"/></svg>Moved in</li>
+      <li><svg viewBox="-16 -16 32 32" aria-hidden="true"><path d="M-12.5,-7 12.5,-7 0,14.5z"/></svg>Moved out</li>
+      <li><svg viewBox="-16 -16 32 32" aria-hidden="true"><path d="M0,-15 4.4,-6.1 14.3,-4.6 7.1,2.3 8.8,12.1 0,7.5 -8.8,12.1 -7.1,2.3 -14.3,-4.6 -4.4,-6.1z"/></svg>New</li>
+    </ul>
+  </section>
 
-<table>
-<tr>
-<td>
+  <aside class="panel" aria-label="Technologies">
+    <div class="panel__head">
+      <label class="visually-hidden" for="search">Search technologies</label>
+      <div class="textfield">
+        <svg class="textfield__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input class="textfield__input" id="search" type="search" placeholder="Search, e.g. Kubernetes" autocomplete="off">
+      </div>
+      <p class="panel__count" id="result-count" aria-live="polite"></p>
+    </div>
+    <div class="panel__list" id="entry-list"></div>
+    <p class="panel__empty" id="empty-state" hidden>No technology matches your search.</p>
+  </aside>
+</main>
 
-<h3>What is the TEQ Radar?</h3>
+<section class="section" aria-labelledby="rings-title">
+  <h2 class="section__title" id="rings-title">What the rings mean</h2>
+  <div class="ring-cards">
+    <article class="ring-card" data-ring-card="0">
+      <h3 class="ring-card__name">IN USE</h3>
+      <p class="ring-card__count"></p>
+      <p>Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our production environment, low risk and recommended to be widely used.</p>
+    </article>
+    <article class="ring-card" data-ring-card="1">
+      <h3 class="ring-card__name">TRIAL</h3>
+      <p class="ring-card__count"></p>
+      <p>Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirms benefits and can uncover limitations. Slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</p>
+    </article>
+    <article class="ring-card" data-ring-card="2">
+      <h3 class="ring-card__name">ASSESS</h3>
+      <p class="ring-card__count"></p>
+      <p>Technologies that are promising and have clear potential value-add for us; worth investing some research and prototyping effort in to see if they have impact. Higher risk; often brand new and unproven in our organisation, but you will find engineers who know and promote them.</p>
+    </article>
+    <article class="ring-card" data-ring-card="3">
+      <h3 class="ring-card__name">PHASE OUT</h3>
+      <p class="ring-card__count"></p>
+      <p>Technologies we think are not worth (further) investing in. They should not be used for new projects, but can usually be continued in existing projects.</p>
+    </article>
+  </div>
+</section>
 
-<p>
-The TEQ Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
-</p>
-
-<ul>
-<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our production environment, low risk and recommended to be widely used.</li>
-<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>PHASE OUT</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not worth to (further) invest in. PHASE OUT technologies should not be used for new projects, but usually can be continued for existing projects.</li>
-</ul>
-
-</td><td>
-
-<h3>What is the purpose?</h3>
-
-<p>
+<section class="section about" aria-label="About the radar">
+  <div class="about__col">
+    <h2 class="section__title">What is the purpose?</h2>
+    <p>
 The TEQ Radar is a tool to inspire and support Engineering teams at TEQYARD to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
-</p>
+    </p>
+  </div>
+  <div class="about__col">
+    <h2 class="section__title">How do we maintain it?</h2>
+    <p>
+The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at TEQYARD across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at TEQYARD and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.
+    </p>
+  </div>
+</section>
 
-<h3>How do we maintain it?</h3>
-
-<p>
-The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at TEQYARD across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at TEQYARD and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
-</p>
-
-
-</td></tr>
-</table>
+<footer class="site-footer">
+  Maintained in <a href="https://github.com/TEQYARD-GmbH/teq-radar">GitHub</a> &mdash; radar entries live in <code>docs/config/quadrant-*.json</code>, see <code>CONFIG-STRUCTURE.md</code>.
+</footer>
 
 </body>
 </html>

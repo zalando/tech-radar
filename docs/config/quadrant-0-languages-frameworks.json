@@ -7,51 +7,6 @@
       "moved": 0
     },
     {
-      "label": "Langfuse",
-      "ring": 0,
-      "active": true,
-      "moved": 0
-    },
-    {
-      "label": "ZenML",
-      "ring": 1,
-      "active": true,
-      "moved": 0
-    },
-    {
-      "label": "Python LlamaIndex",
-      "ring": 0,
-      "active": true,
-      "moved": 0,
-      "link": "https://github.com/run-llama/llama_index"
-    },
-    {
-      "label": "Python FastAPI",
-      "ring": 0,
-      "active": true,
-      "moved": 0,
-      "link": "https://fastapi.tiangolo.com/"
-    },
-    {
-      "label": "Java Spring Boot",
-      "ring": 0,
-      "active": true,
-      "moved": 0
-    },
-    {
-      "label": "Java Spring Cloud Gateway",
-      "ring": 0,
-      "active": true,
-      "moved": 0
-    },
-    {
-      "label": "Python Pydantic",
-      "ring": 0,
-      "active": true,
-      "moved": 0,
-      "link": "https://docs.pydantic.dev/latest/"
-    },
-    {
       "label": "Typescript",
       "ring": 0,
       "active": true,
@@ -70,6 +25,81 @@
       "moved": 0
     },
     {
+      "label": "Tailwind CSS",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://tailwindcss.com/"
+    },
+    {
+      "label": "Radix UI",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://www.radix-ui.com/"
+    },
+    {
+      "label": "TanStack Query",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://tanstack.com/query"
+    },
+    {
+      "label": "Java Spring Boot",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Java Spring Cloud Gateway",
+      "ring": 0,
+      "active": true,
+      "moved": 0
+    },
+    {
+      "label": "Python FastAPI",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://fastapi.tiangolo.com/"
+    },
+    {
+      "label": "Python Pydantic",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://docs.pydantic.dev/latest/"
+    },
+    {
+      "label": "Python SQLAlchemy",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://www.sqlalchemy.org/"
+    },
+    {
+      "label": "Python OpenAI SDK",
+      "ring": 0,
+      "active": true,
+      "moved": 2,
+      "link": "https://github.com/openai/openai-python"
+    },
+    {
+      "label": "Python LlamaIndex",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://github.com/run-llama/llama_index"
+    },
+    {
+      "label": "Langfuse",
+      "ring": 0,
+      "active": true,
+      "moved": 0,
+      "link": "https://langfuse.com/"
+    },
+    {
       "label": "Terraform",
       "ring": 0,
       "active": true,
@@ -79,24 +109,54 @@
       "label": "Expo",
       "ring": 0,
       "active": true,
-      "moved": 2
+      "moved": 0,
+      "link": "https://expo.dev/"
     },
     {
-      "label": "Hyperledger Fabrics",
-      "ring": 1,
+      "label": "React Native",
+      "ring": 0,
       "active": true,
-      "moved": 0
+      "moved": 2,
+      "link": "https://reactnative.dev/"
     },
     {
       "label": "Next.js",
-      "ring": 1,
+      "ring": 0,
       "active": true,
       "moved": 1,
       "link": "https://nextjs.org/"
     },
     {
+      "label": "Zustand",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://zustand.docs.pmnd.rs/"
+    },
+    {
+      "label": "PyTorch",
+      "ring": 1,
+      "active": true,
+      "moved": 2,
+      "link": "https://pytorch.org/"
+    },
+    {
+      "label": "ZenML",
+      "ring": 1,
+      "active": true,
+      "moved": 0,
+      "link": "https://www.zenml.io/"
+    },
+    {
+      "label": "Hyperledger Fabric",
+      "ring": 1,
+      "active": true,
+      "moved": 0,
+      "link": "https://www.hyperledger.org/projects/fabric"
+    },
+    {
       "label": "Java Spring AI",
-      "ring": 2,
+      "ring": 1,
       "active": true,
       "moved": 1,
       "link": "https://spring.io/projects/spring-ai"
@@ -105,7 +165,7 @@
       "label": "Python OpenAI Agents SDK",
       "ring": 2,
       "active": true,
-      "moved": 1,
+      "moved": 0,
       "link": "https://openai.github.io/openai-agents-python/"
     }
   ]
