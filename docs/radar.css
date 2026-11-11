@@ -1011,7 +1011,7 @@ a:active {
 .about {
   display: grid;
   gap: var(--layout-gutter);
-  margin: var(--spacing-4xl) var(--layout-margin) 0;
+  margin: var(--spacing-4xl) var(--layout-margin);
   padding: var(--spacing-xl);
 }
 @media (min-width: 960px) {
@@ -1019,19 +1019,6 @@ a:active {
 }
 .about p {
   margin: 0;
-}
-
-/* ------------------------------------------------------------ footer */
-
-.site-footer {
-  margin-top: auto;
-  padding: var(--spacing-4xl) var(--layout-margin) var(--spacing-xl);
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--color-content-default);
-}
-.site-footer code {
-  font-family: var(--font-mono);
 }
 
 /* ------------------------------------------------------------ motion */
