@@ -646,8 +646,8 @@ a:active {
   --hud-color: var(--beam);
   position: absolute;
   z-index: 2;
-  min-width: 220px;
-  max-width: 280px;
+  min-width: min(220px, calc(100% - 16px));
+  max-width: min(280px, calc(100% - 16px));
   padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
   border: 1px solid var(--hud-color);
   border-radius: var(--radius-sm);
@@ -662,6 +662,9 @@ a:active {
 }
 .radar-tooltip.is-flipped {
   transform: translate(calc(-100% - 36px), -50%);
+}
+.radar-tooltip.is-stacked {
+  transform: none;
 }
 .radar-tooltip.is-visible {
   opacity: 1;

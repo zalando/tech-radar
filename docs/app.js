@@ -774,13 +774,28 @@
     }
     var cx = blip.left + blip.width / 2 - stage.left;
     var cy = blip.top + blip.height / 2 - stage.top;
-    var flip = cx + 280 > stage.width;
-    tip.classList.toggle("is-flipped", flip);
+    var gap = 36; // distance between blip and HUD
+    var edge = 8; // minimum distance to the stage border
+    var w = tip.offsetWidth;
+    var h = tip.offsetHeight;
+    var right = cx + gap + w <= stage.width - edge;
+    var left = cx - gap - w >= edge;
+    tip.classList.toggle("is-flipped", !right && left);
+    tip.classList.toggle("is-stacked", !right && !left);
+    if (right || left) {
+      // beside the blip, vertically centered on it
+      tip.style.left = cx + "px";
+      tip.style.top = clamp(cy, h / 2 + edge, stage.height - h / 2 - edge) + "px";
+    } else {
+      // narrow screens: centered below the blip, or above it when there is no room
+      var below = cy + gap + h <= stage.height - edge;
+      tip.style.left = clamp(cx - w / 2, edge, stage.width - w - edge) + "px";
+      tip.style.top = clamp(below ? cy + gap : cy - gap - h, edge, stage.height - h - edge) + "px";
+    }
     tip.classList.add("is-visible");
-    var half = tip.offsetHeight / 2 + 8;
-    tip.style.left = cx + "px";
-    tip.style.top = Math.max(half, Math.min(stage.height - half, cy)) + "px";
   }
+
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
 
   function hideTooltip() {
     var tip = $("radar-tooltip");
