@@ -11,6 +11,8 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="radar.js"></script>
 
+<link rel="preload" href="fonts/carlito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-sans-3-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="radar.css">
 </head>
 
@@ -39,7 +41,12 @@ Promise.all([
   fetch('./config/quadrant-0-languages-frameworks.json').then(r => r.json()),
   fetch('./config/quadrant-1-platform-infrastructure.json').then(r => r.json()),
   fetch('./config/quadrant-2-tools.json').then(r => r.json()),
-  fetch('./config/quadrant-3-techniques.json').then(r => r.json())
+  fetch('./config/quadrant-3-techniques.json').then(r => r.json()),
+  // radar.js measures legend text (getComputedTextLength/getBBox) to wrap and
+  // stack it, so the web fonts must be ready before the radar is drawn
+  document.fonts.load("400 11px Carlito"),
+  document.fonts.load("700 18px 'Source Sans 3'"),
+  document.fonts.ready
 ]).then(function([metadata, q0, q1, q2, q3]) {
   // Merge entries from all quadrants and add quadrant numbers
   const entries = [
