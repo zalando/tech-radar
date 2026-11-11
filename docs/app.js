@@ -224,13 +224,14 @@
       var count = entries.filter(function (e) { return e.ring === i; }).length;
       var seg = html("span", "ring-bar__segment");
       seg.style.flexGrow = count;
-      seg.style.backgroundColor = ring.color;
+      seg.style.backgroundColor = ring.screen;
       seg.title = ring.name + ": " + count;
       bar.appendChild(seg);
 
       var item = html("li", "ring-bar__item");
       var dot = html("span", "dot");
-      dot.style.backgroundColor = ring.color;
+      dot.style.backgroundColor = ring.screen;
+      dot.style.color = ring.screen;
       item.appendChild(dot);
       item.appendChild(document.createTextNode(ring.name + " "));
       item.appendChild(html("strong", null, String(count)));
@@ -242,7 +243,7 @@
     Array.prototype.forEach.call(document.querySelectorAll("[data-ring-card]"), function (card) {
       var i = Number(card.getAttribute("data-ring-card"));
       var count = entries.filter(function (e) { return e.ring === i; }).length;
-      card.style.setProperty("--ring-color", RINGS[i].color);
+      card.style.setProperty("--ring-color", RINGS[i].screen);
       card.querySelector(".ring-card__count").textContent = count + (count === 1 ? " technology" : " technologies");
     });
   }
@@ -645,7 +646,7 @@
       group.setAttribute("data-ring", i);
       var title = html("h3", "group__title");
       var dot = html("span", "dot");
-      dot.style.backgroundColor = ring.color;
+      dot.style.backgroundColor = ring.screen;
       title.appendChild(dot);
       title.appendChild(document.createTextNode(ring.name));
       title.appendChild(html("span", "group__count"));
@@ -653,13 +654,14 @@
       var ul = html("ul", "group__list");
       entries.filter(function (e) { return e.ring === i; }).forEach(function (e) {
         var li = html("li", "entry");
-        li.style.setProperty("--c", ring.color);
+        li.style.setProperty("--c", ring.screen);
         li.setAttribute("data-id", e.id);
         var button = html("button", "entry__main");
         button.type = "button";
         button.setAttribute("data-id", e.id);
         var num = html("span", "entry__num", String(e.id));
-        num.style.backgroundColor = ring.color;
+        num.style.backgroundColor = ring.screen;
+        num.style.color = ring.ink;
         button.appendChild(num);
         var text = html("span", "entry__text");
         text.appendChild(html("span", "entry__label", e.label));

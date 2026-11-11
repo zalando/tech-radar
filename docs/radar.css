@@ -30,34 +30,41 @@
 }
 
 :root {
-  /* color */
-  --color-background-brand-primary: #16223a;
-  --color-background-default: #ffffff;
-  --color-background-surface: #f1f1f2;
-  --color-background-subtle: #dbe1eb;
-  --color-content-default: #1c1d1f;
-  --color-content-subtle: #7a7e87;
+  /* color: the whole page is one dark brand-navy surface. HiTEQ has no dark
+     theme yet, so the roles below map onto the navy ramp (accent/primary 3-12)
+     and the light content/link tokens that are meant for dark backgrounds */
+  --navy-12: #081020;          /* accent/primary/12 */
+  --navy-11: #0c1629;          /* accent/primary/11 */
+  --navy-10: #16223a;          /* accent/primary/10 = background/brand-primary */
+  --navy-9: #27334b;           /* accent/primary/9 */
+  --navy-3: #c6cdda;           /* accent/primary/3 */
+  --color-background-brand-primary: var(--navy-10);
+  --color-background-default: var(--navy-10);   /* cards, panels */
+  --color-background-surface: var(--navy-11);   /* page */
+  --color-background-subtle: var(--navy-9);     /* pinned / raised */
+  --color-content-default: #ffffff;             /* content/invert */
+  --color-content-subtle: var(--navy-3);
   --color-content-invert: #ffffff;
-  --color-border-default: #b3b6bb;
-  --color-border-subtle: #d0d2d5;
-  --color-border-strong: #1c1d1f;
-  --color-border-brand-primary: #16223a;
-  --color-border-brand-tertiary: #4766d2;
+  --color-border-default: #ffffff40;
+  --color-border-subtle: #ffffff1f;
+  --color-border-strong: #ffffff;
+  --color-border-brand-primary: #ffffff;
+  --color-border-brand-tertiary: #91a4e7;
   --color-border-brand-secondary: #f95759;
-  --color-link: #4766d2;
-  --color-link-hover: #91a4e7;
-  --color-link-active: #334793;
-  --color-focus-ring: #16223a;
+  --color-link: #91a4e7;                        /* link/hover */
+  --color-link-hover: #d4dcf6;                  /* accent/tertiary/3 */
+  --color-link-active: #91a4e7;
+  --color-focus-ring: #ffffff;                  /* focus-ring/knockout */
   --color-focus-ring-knockout: #ffffff;
-  --accent-primary-9: #27334b;
+  --accent-primary-9: var(--navy-9);
 
-  /* badge, variant soft */
-  --badge-primary-bg: #dbe1eb;
-  --badge-primary-fg: #0c1629;
-  --badge-success-bg: #d9efdb;
-  --badge-success-fg: #1e5122;
-  --badge-caution-bg: #fce9d1;
-  --badge-caution-fg: #70430c;
+  /* badge on dark: tinted surface with the bright tone of the same hue */
+  --badge-primary-bg: #91a4e72e;
+  --badge-primary-fg: #d4dcf6;
+  --badge-success-bg: #41ae492e;
+  --badge-success-fg: #b3dfb6;
+  --badge-caution-bg: #f08f192e;
+  --badge-caution-fg: #f9d2a3;
 
   /* typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
@@ -79,7 +86,7 @@
   --radius-round: 999px;
   --border-width-sm: 1px;
   --border-width-lg: 4px;
-  --shadow-md: 0 0 16px 0 #0000000f;
+  --shadow-md: none;
 
   /* layout */
   --layout-margin: 16px;
@@ -156,7 +163,8 @@ a:active {
 /* ------------------------------------------------------------ header */
 
 .site-header {
-  background: var(--color-background-brand-primary);
+  background: var(--color-background-surface);
+  border-bottom: var(--border-width-sm) solid var(--color-border-subtle);
   color: var(--color-content-invert);
   padding: var(--spacing-lg) var(--layout-margin);
 }
@@ -208,10 +216,7 @@ a:active {
   gap: var(--spacing-xl) var(--layout-gutter);
   padding: var(--spacing-xl) var(--layout-margin) var(--spacing-4xl);
   color: var(--color-content-invert);
-  background:
-    radial-gradient(circle at 100% 0%, var(--accent-primary-9) 0, transparent 60%),
-    var(--color-background-brand-primary);
-  border-top: 1px solid var(--accent-primary-9);
+  background: radial-gradient(ellipse 60% 120% at 100% 0%, var(--navy-10) 0, transparent 70%);
 }
 @media (min-width: 960px) {
   .hero {
@@ -291,7 +296,7 @@ a:active {
   gap: var(--spacing-sm);
 }
 .ring-bar__item .dot {
-  box-shadow: 0 0 0 2px var(--color-content-invert);
+  box-shadow: 0 0 8px currentColor;
 }
 
 /* ------------------------------------------------------------ explorer layout */
@@ -299,9 +304,8 @@ a:active {
 .explorer {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--layout-gutter);
+  gap: 0;
   padding: 0 var(--layout-margin);
-  margin-top: calc(-1 * var(--spacing-xl));
   align-items: start;
 }
 /* wide screens: the explorer fills the rest of the first screen (height and
@@ -348,7 +352,16 @@ a:active {
   background: var(--color-background-default);
   border: var(--border-width-sm) solid var(--color-border-subtle);
   border-radius: 0;
-  box-shadow: var(--shadow-md);
+}
+/* radar and list form one console: shared outer border, a hairline between */
+.panel {
+  border-top: 0;
+}
+@media (min-width: 1200px) {
+  .panel {
+    border-top: var(--border-width-sm) solid var(--color-border-subtle);
+    border-left: 0;
+  }
 }
 
 /* ------------------------------------------------------------ radar screen */
@@ -369,7 +382,7 @@ a:active {
   background:
     radial-gradient(circle at 50% 55%, var(--screen-glow) 0, transparent 70%),
     var(--screen-bg);
-  border-color: var(--screen-bg);
+  border-color: var(--color-border-subtle);
 }
 
 /* tabs on the screen (variant line, tone secondary) */
@@ -668,7 +681,6 @@ a:active {
 }
 .radar-tooltip.is-visible {
   opacity: 1;
-  animation: hud-in 0.25s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 .hud__head {
   display: flex;
@@ -787,12 +799,13 @@ a:active {
   pointer-events: none;
 }
 .textfield__input {
+  color-scheme: dark;
   width: 100%;
   height: 40px;
   padding: 0 var(--spacing-md) 0 var(--spacing-3xl);
   border: var(--border-width-sm) solid var(--color-border-default);
   border-radius: var(--radius-md);
-  background: var(--color-background-default);
+  background: var(--color-background-surface);
   color: var(--color-content-default);
   font: inherit;
 }
@@ -1034,10 +1047,7 @@ a:active {
 @keyframes dash-flow {
   to { stroke-dashoffset: -10; }
 }
-@keyframes hud-in {
-  from { opacity: 0; clip-path: inset(0 100% 0 0); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); }
-}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
